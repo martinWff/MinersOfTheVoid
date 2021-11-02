@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Pirate360 : MonoBehaviour
 {
     private GameObject player;
     private float Distance;
@@ -11,11 +11,20 @@ public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletOffset = 4f;
     public float bulletSpeed = 14;
-    public float bulletCooldownTime = 0.5f;
+    public float bulletCooldownTime = 4f;
     private float bulletShootTime = 0.5f;
     public float enemyRange = 20;
 
-    
+
+    public int bulletsAmount = 10;
+
+    //angle
+    public int angle2 = 70;
+
+    public int startAngle = 0;
+    public int endAngle = 360;
+
+
 
     //Enemy rotation
     private Rigidbody2D enemy;
@@ -28,11 +37,11 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = this.GetComponent<Rigidbody2D>();
 
-        
-        
+
+
     }
 
-   
+
     void Update()
     {
         if (player == null) return;
@@ -45,14 +54,17 @@ public class Enemy : MonoBehaviour
         if (Distance < enemyRange)
         {
 
-            
-            
+
+
             if ((bulletShootTime <= 0))
             {
 
-                
+
                 Debug.Log(bulletPrefab);
-                Vector3 Shotdirection = transform.up;
+
+                float angleStep = (endAngle - startAngle) / bulletsAmount;
+
+                Vector3 Shotdirection = new Vector3(Mathf.Cos(angle2 * Mathf.Deg2Rad), Mathf.Sin(angle2 * Mathf.Deg2Rad), transform.position.z);
 
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
 
@@ -66,6 +78,5 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
-}
 
+}

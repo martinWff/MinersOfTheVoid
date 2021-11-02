@@ -10,6 +10,7 @@ public class BulletPool : MonoBehaviour
     [SerializeField]
     private GameObject pooledBullet;
     private bool notEnougthBulletsInPool = true;
+    
 
     //list to store the bullets
     private List<GameObject> bullets;
@@ -24,6 +25,7 @@ public class BulletPool : MonoBehaviour
     void Start()
     {
         bullets = new List<GameObject>();
+  
     }
 
     public GameObject GetBullet()
