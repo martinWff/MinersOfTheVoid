@@ -2,40 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class HumanPirate : MonoBehaviour
 {
-    private GameObject player;
-    private float Distance;
+    //stats
+    public int moveSpeed = 10;
+    public int pirateLife = 100;
+    public int pirateDamage = 10;
 
     //Enemy shoot
     public GameObject bulletPrefab;
     public float bulletOffset = 4f;
     public float bulletSpeed = 14;
-    public float bulletCooldownTime = 0.5f;
-    private float bulletShootTime = 0.5f;
+    public float bulletCooldownTime = 4f;
+    private float bulletShootTime = 1.5f;
+
+    //Gameobjects
+    private GameObject player;
+
+    //Distance
+    private float Distance;
     public float enemyRange = 20;
-
-    
-
-    //Enemy rotation
-    private Rigidbody2D enemy;
-
-
 
     void Start()
     {
-
         player = GameObject.FindGameObjectWithTag("Player");
-        enemy = this.GetComponent<Rigidbody2D>();
-
-        
-        
     }
 
-   
+    
     void Update()
     {
-        if (player == null) return;
         Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         
 
@@ -43,14 +38,14 @@ public class Enemy : MonoBehaviour
         if (Distance < enemyRange)
         {
 
-            
-            
+            //Debug.Log("entra na area do enemi");
             if ((bulletShootTime <= 0))
             {
 
-                
-                Debug.Log(bulletPrefab);
-                Vector3 Shotdirection = transform.up;
+
+                Debug.Log("player position: "+ playerPosition);
+                Vector3 Shotdirection = playerPosition;
+
 
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
 
@@ -61,9 +56,9 @@ public class Enemy : MonoBehaviour
             {
                 bulletShootTime -= Time.deltaTime;
             }
+
         }
+
+
     }
-
-    
 }
-
