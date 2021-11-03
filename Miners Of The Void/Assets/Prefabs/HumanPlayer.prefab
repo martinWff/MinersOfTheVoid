@@ -146,8 +146,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRotationDistance: 40
-  moveForce: 4
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
   bulletOffset: 1.5
   bulletSpeed: 14
   bulletCooldownTime: 0.5
+  moveForce: 4
+  totalShield: 20
+  shield: 20
+  regenRate: 2
+  hp: 20
+  statusDisplay: {fileID: 0}
+  statusDisplayText: {fileID: 0}
+  playerDamage: 10
+  speedLevel: 1
+  dmgLevel: 1
+  shieldLevel: 1
+  healthLevel: 1
+  backweaponMode: 0

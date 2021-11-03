@@ -10,9 +10,9 @@ public class Bullet : MonoBehaviour
     SpaceshipMovement sM;
     void Start()
     {
+
         Destroy(gameObject, bulletLifeTime);
-        player = GameObject.Find("PlayerSpaceship");
-        sM = player.GetComponent<SpaceshipMovement>();
+
     }
 
     // Update is called once per frame
