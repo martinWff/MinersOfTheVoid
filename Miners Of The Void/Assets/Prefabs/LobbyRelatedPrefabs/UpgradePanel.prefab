@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 873408396}
   - component: {fileID: 873408395}
   - component: {fileID: 1516881193}
+  - component: {fileID: 6134094636567448263}
   m_Layer: 5
   m_Name: BackWeapon
   m_TagString: Untagged
@@ -631,7 +632,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1516881193}
+      - m_Target: {fileID: 6134094636567448263}
         m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
         m_MethodName: ASummon
         m_Mode: 1
@@ -644,6 +645,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1516881193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873408393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeType: BackWeapon
+--- !u!114 &6134094636567448263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

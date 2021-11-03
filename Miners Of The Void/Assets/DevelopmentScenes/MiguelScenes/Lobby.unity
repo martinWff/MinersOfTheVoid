@@ -4595,34 +4595,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1516881193}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ASummon
-      objectReference: {fileID: 0}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 873408395, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1082098126, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4634,6 +4606,14 @@ PrefabInstance:
     - target: {fileID: 1082098126, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473650497, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -235.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473650497, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 5096874292957243470, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_Pivot.x
@@ -4730,24 +4710,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5096874292957243470, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
   m_PrefabInstance: {fileID: 1516881190}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1516881192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 873408393, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-  m_PrefabInstance: {fileID: 1516881190}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1516881193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516881192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeType: BackWeapon
 --- !u!4 &1519663196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}

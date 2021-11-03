@@ -15,7 +15,7 @@ public class SpaceshipMovement : MonoBehaviour
     public float bulletSpeed = 14;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
-    private float angle = 90;
+    
     //movement
     float verticalInput;
     float horizontalInput;

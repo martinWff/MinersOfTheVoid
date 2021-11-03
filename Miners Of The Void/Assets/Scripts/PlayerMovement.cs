@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float bulletSpeed = 14;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
-    private float angle = 90;
     float verticalInput;
     float horizontalInput;
     private Vector3 test;
