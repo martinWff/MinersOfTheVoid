@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class StaticCameraController : MonoBehaviour
 {
-    
+    public bool Human;
     private Transform player;
     void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+    {   if (Human)
+            player = GameObject.Find("HumanPlayer").transform;
+        else
+            player = GameObject.Find("PlayerSpaceship").transform;
     }
 
     // Update is called once per frame

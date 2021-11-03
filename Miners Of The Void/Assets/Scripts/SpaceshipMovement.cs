@@ -7,28 +7,42 @@ public class SpaceshipMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float minRotationDistance = 40;
-    public float moveForce = 4;
+    
+
+    //Shot
     public GameObject bulletPrefab;
     public float bulletOffset = 1.5f;
     public float bulletSpeed = 14;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
     private float angle = 90;
+    //movement
     float verticalInput;
     float horizontalInput;
+    public float moveForce = 4;
     private Vector3 test;
+    //status
     public float totalShield = 20;
-    public float shield = 10;
+    public float shield = 20;
+    public float regenRate = 2;
     public float hp = 20;
     public GameObject statusDisplay;
     public Text statusDisplayText;
     public float playerDamage = 10;
+  
+    public float speedLevel = 1;
+    public float dmgLevel = 1;
+    public float shieldLevel = 1;
+    public float healthLevel = 1;
+    public bool backweaponMode = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        statusDisplay = GameObject.Find("Text");
+        statusDisplay = GameObject.Find("UiHpShield");
         statusDisplayText=statusDisplay.GetComponent<Text>();
+
+        
 
     }
     private void Update()
@@ -42,8 +56,15 @@ public class SpaceshipMovement : MonoBehaviour
         {
             Vector3 Shotdirection = transform.right;
             GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset),Quaternion.identity);
-            bulletShootTime = bulletCooldownTime;
             bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
+
+            if (backweaponMode)
+            {
+                Vector3 Shotdirection2 = -transform.right;
+                GameObject bullet2 = Instantiate(bulletPrefab, transform.position + (Shotdirection2.normalized * bulletOffset), Quaternion.identity);
+                bullet2.GetComponent<Rigidbody2D>().velocity = Shotdirection2.normalized * bulletSpeed;
+            }
+            bulletShootTime = bulletCooldownTime;
         }
         if (bulletShootTime >= 0)
         {
@@ -54,8 +75,7 @@ public class SpaceshipMovement : MonoBehaviour
             shield += (totalShield / 10) * Time.deltaTime;
         }
         if (shield > totalShield) shield = totalShield;
-        Debug.Log(shield);
-        Debug.Log(hp);
+       
     }
 
     private void FixedUpdate()
@@ -103,6 +123,7 @@ public class SpaceshipMovement : MonoBehaviour
         }
     }
 
+ 
 
 
 }

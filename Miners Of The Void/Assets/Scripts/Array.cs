@@ -116,6 +116,7 @@ public class Array<T>
         Array<T> newArray = new Array<T>(arr.Length);
         for (int i = 0; i < arr.Length; i++) {
             newArray.InsertAt(arr[i],i);
+            Debug.Log("teste");
         }
         return newArray;
     }
