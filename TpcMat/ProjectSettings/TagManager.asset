@@ -3,16 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Menu
-  - Bullet
-  - Spaceship
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Structures
+  - 
   - Water
   - UI
   - 
@@ -44,16 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 1852552899
-    locked: 0
-  - name: Structures
-    uniqueID: 843640653
-    locked: 0
-  - name: Entitys
-    uniqueID: 3447520227
-    locked: 0
-  - name: Menu
-    uniqueID: 1565080207
     locked: 0
