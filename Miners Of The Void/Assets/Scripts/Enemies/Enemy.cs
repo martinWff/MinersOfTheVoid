@@ -14,9 +14,12 @@ public class Enemy : MonoBehaviour
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
     public float enemyRange = 20;
+
+    //Enemy stats
     public float enemieHealth = 20;
-    public float enemieShield = 10;
+    public float totalShield = 10;
     public float shield = 10;
+    float playerdmg;
     Bullet bullet;
 
 
@@ -31,6 +34,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Spaceship");
         enemy = this.GetComponent<Rigidbody2D>();
         bullet = GameObject.FindGameObjectWithTag("Bullet").GetComponent<Bullet>();
+        playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
 
 
 
@@ -68,19 +72,19 @@ public class Enemy : MonoBehaviour
         }
 
         //status/UI
-        if (shield < enemieShield)
+        if (shield < totalShield)
         {
-            shield += (enemieShield / 10) * Time.deltaTime;
+            shield += (totalShield / 10) * Time.deltaTime;
         }
-        if (shield > enemieShield) shield = enemieShield;
+        if (shield > totalShield) shield = totalShield;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
 
-            if (shield >= 10) shield -= 10;
-            if (shield < 10)
+            if (shield >= playerdmg) shield -= playerdmg;
+            if (shield < playerdmg)
             {
                 if (shield != 0) enemieHealth -= (10 - shield);
 
