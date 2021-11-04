@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class HumanPirate1 : MonoBehaviour
 {
     private GameObject player;
     private float Distance;
 
     //Enemy shoot
     public GameObject bulletPrefab;
-    public float bulletOffset = 1.5f;
+    public float bulletOffset = 4f;
     public float bulletSpeed = 14;
     public float bulletCooldownTime = 0.5f;
-    private float bulletShootTime = 0.5f;
+    private float bulletShootTime = 1.5f;
     public float enemyRange = 20;
-    public float enemieHealth = 20;
-    public float enemieShield = 10;
-    public float shield = 10;
-    Bullet bullet;
+
 
 
     //Enemy rotation
@@ -28,9 +25,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
 
-        player = GameObject.FindGameObjectWithTag("Spaceship");
+        player = GameObject.FindGameObjectWithTag("Player");
         enemy = this.GetComponent<Rigidbody2D>();
-        bullet = GameObject.FindGameObjectWithTag("Bullet").GetComponent<Bullet>();
 
 
 
@@ -45,19 +41,22 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         enemy.rotation = angle - 90;
 
-        Distance = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.y - transform.position.y, 2));
+
+        Distance = Mathf.Sqrt(Mathf.Pow(playerPosition.x - transform.position.x, 2) + Mathf.Pow(playerPosition.y - transform.position.y, 2));
         if (Distance < enemyRange)
         {
 
-
+            Debug.Log("entra na area");
 
             if ((bulletShootTime <= 0))
             {
 
 
-                Debug.Log(bulletPrefab);
+                //Debug.Log(bulletPrefab);
                 Vector3 Shotdirection = transform.up;
+
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
+
                 bulletShootTime = bulletCooldownTime;
                 bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
             }
@@ -66,39 +65,5 @@ public class Enemy : MonoBehaviour
                 bulletShootTime -= Time.deltaTime;
             }
         }
-
-        //status/UI
-        if (shield < enemieShield)
-        {
-            shield += (enemieShield / 10) * Time.deltaTime;
-        }
-        if (shield > enemieShield) shield = enemieShield;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-
-            if (shield >= 10) shield -= 10;
-            if (shield < 10)
-            {
-                if (shield != 0) enemieHealth -= (10 - shield);
-
-                shield = 0;
-            }
-            if (enemieHealth <= 0)
-            {
-                enemieHealth = 0;
-                shield = 0;
-                Destroy(gameObject);
-            }
-
-            Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
-
-            Destroy(collision.gameObject);
-        }
-    }
-
-
-
 }
