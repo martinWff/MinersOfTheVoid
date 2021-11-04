@@ -111,7 +111,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "BulletEnemie")
         { 
             if (shield >= 10) shield -= 10;
             if (shield < 10)

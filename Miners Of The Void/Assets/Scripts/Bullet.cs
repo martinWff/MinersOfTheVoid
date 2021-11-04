@@ -16,19 +16,12 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-       
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "BulletEnemie")
         {
             Destroy(gameObject);
-            if(friendlyFire == true)
             Destroy(collision.gameObject);
         }
-        
     }
-
 }
