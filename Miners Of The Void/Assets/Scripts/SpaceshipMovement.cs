@@ -24,7 +24,6 @@ public class SpaceshipMovement : MonoBehaviour
     //status
     public float totalShield = 20;
     public float shield = 20;
-    public float regenRate = 2;
     public float hp = 20;
     public GameObject statusDisplay;
     public Text statusDisplayText;
@@ -36,13 +35,19 @@ public class SpaceshipMovement : MonoBehaviour
     public float healthLevel = 1;
     public bool backweaponMode = false;
 
+    public GameObject upgradePrefab;
+    public GameObject canvas;
+
+    //DisablingUI
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         statusDisplay = GameObject.Find("UiHpShield");
         statusDisplayText=statusDisplay.GetComponent<Text>();
+        canvas = GameObject.Find("Canvas");
 
-        
 
     }
     private void Update()
@@ -75,7 +80,9 @@ public class SpaceshipMovement : MonoBehaviour
             shield += (totalShield / 10) * Time.deltaTime;
         }
         if (shield > totalShield) shield = totalShield;
-       
+
+        if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
+
     }
 
     private void FixedUpdate()
@@ -93,6 +100,7 @@ public class SpaceshipMovement : MonoBehaviour
         }
         rb.velocity = ((verticalInput * transform.right) +
                       (horizontalInput * transform.up)) * moveForce;
+
         statusDisplayText.text = "Hp: " + Mathf.Floor(hp) + " / Shield: " + Mathf.Floor(shield);
 
 

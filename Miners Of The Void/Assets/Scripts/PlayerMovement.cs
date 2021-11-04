@@ -16,9 +16,11 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     private Vector3 test;
     public bool firepermission = true;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
     private void Update()
     {
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         {
             bulletShootTime -= Time.deltaTime;
         }
+        
 
     }
 

@@ -13,16 +13,18 @@ namespace MOV.Upgrades
         public Upgrade[] upgrade = new Upgrade[4];
         public string upgradeType;
         private float level;
-        
+        Array<string> mySlots = new Array<string>(4);
+       
 
 
 
         // Start is called before the first frame update
         void Start()
         {
-                player = GameObject.FindGameObjectWithTag("Spaceship");
-                playerstats = player.GetComponent<SpaceshipMovement>();
+            player = GameObject.FindGameObjectWithTag("Spaceship");
 
+            playerstats = player.GetComponent<SpaceshipMovement>();
+            
 
         }
 
@@ -34,25 +36,38 @@ namespace MOV.Upgrades
         
         public void ASummon()
         {
-            if (upgradeType == "Speed")
-            {
-                level = playerstats.speedLevel;
-                AddUpgrade(new Speed("speed"));
-            }
-            if (upgradeType == "Shield")
-            {
-                level = playerstats.shieldLevel;
-                AddUpgrade(new Shield("shield"));
-            }
-            if (upgradeType == "Health")
-            {
-                level = playerstats.healthLevel;
-                AddUpgrade(new Hp("health"));
-            }
-            if (upgradeType == "BackWeapon")
-            {  
-                AddUpgrade(new BackWeapon("backweapon"));
-            }
+           // if (mySlots.Length < 4)
+           // {
+                if (upgradeType == "Speed")
+                {
+                    level = playerstats.speedLevel;
+                    AddUpgrade(new Speed("speed"));
+                    mySlots.InsertAtEnd("speed");
+                }
+                if (upgradeType == "Shield")
+                {
+                    level = playerstats.shieldLevel;
+                    AddUpgrade(new Shield("shield"));
+                    mySlots.InsertAtEnd("shield");
+                  
+                    
+                }
+                if (upgradeType == "Health")
+                {
+                    level = playerstats.healthLevel;
+           
+                    AddUpgrade(new Hp("health"));
+                    
+                }
+                if (upgradeType == "BackWeapon")
+                {
+                  
+                    AddUpgrade(new BackWeapon("backweapon"));
+
+                    
+                }
+            // } else Debug.Log("All Slots full");
+
 
 
 
@@ -96,7 +111,6 @@ namespace MOV.Upgrades
     {
         if (level < 6)
         {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield += 10;
             GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield += 10;
             GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().shieldLevel += 1;
         }
@@ -192,6 +206,7 @@ namespace MOV.Upgrades
         if (level < 6)
         {
             GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce += 4;
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed += 3;
             GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
         }
         else Debug.Log("Limit reached");

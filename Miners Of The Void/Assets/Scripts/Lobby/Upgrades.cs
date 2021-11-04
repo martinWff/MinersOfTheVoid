@@ -9,7 +9,7 @@ public class Upgrades : MonoBehaviour
     public GameObject imagem;
     public bool upgradeplaced;
     GameObject slot1;
-   
+    
     
     
 
@@ -18,6 +18,7 @@ public class Upgrades : MonoBehaviour
     {
 
         
+
         player = GameObject.FindGameObjectWithTag("Player");
         NPC = GameObject.Find("UpgradeNPC");
     }
@@ -27,6 +28,10 @@ public class Upgrades : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = true;
         NPC.GetComponent<NPCMenus>().openMenu = false;
         Destroy(gameObject);    
+    }
+    public void AddUpgradeInSlot()
+    {
+        
     }
     
     
