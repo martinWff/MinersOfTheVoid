@@ -2,50 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanPirate : MonoBehaviour
+public class HumanPirate1 : MonoBehaviour
 {
-    //stats
-    public int moveSpeed = 10;
-    public int pirateLife = 100;
-    public int pirateDamage = 10;
+    private GameObject player;
+    private float Distance;
 
     //Enemy shoot
     public GameObject bulletPrefab;
     public float bulletOffset = 4f;
     public float bulletSpeed = 14;
-    public float bulletCooldownTime = 4f;
+    public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 1.5f;
-
-    //Gameobjects
-    private GameObject player;
-
-    //Distance
-    private float Distance;
     public float enemyRange = 20;
+
+
+
+    //Enemy rotation
+    private Rigidbody2D enemy;
+
+
 
     void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
+        enemy = this.GetComponent<Rigidbody2D>();
+
+
+
     }
 
-    
+
     void Update()
     {
+        if (player == null) return;
         Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-        
+        Vector3 direction = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        enemy.rotation = angle - 90;
+
 
         Distance = Mathf.Sqrt(Mathf.Pow(playerPosition.x - transform.position.x, 2) + Mathf.Pow(playerPosition.y - transform.position.y, 2));
         if (Distance < enemyRange)
         {
 
-            //Debug.Log("entra na area do enemi");
+            Debug.Log("entra na area");
+
             if ((bulletShootTime <= 0))
             {
 
 
-                Debug.Log("player position: "+ player.transform.position);
+                //Debug.Log(bulletPrefab);
                 Vector3 Shotdirection = transform.up;
-
 
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
 
@@ -56,9 +64,6 @@ public class HumanPirate : MonoBehaviour
             {
                 bulletShootTime -= Time.deltaTime;
             }
-
         }
-
-
     }
 }

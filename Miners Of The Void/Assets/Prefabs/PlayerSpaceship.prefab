@@ -104,13 +104,19 @@ MonoBehaviour:
   bulletOffset: 2.5
   bulletSpeed: 20
   bulletCooldownTime: 0.4
+  moveForce: 4
   totalShield: 20
   shield: 10
+  regenRate: 2
   hp: 20
   statusDisplay: {fileID: 0}
   statusDisplayText: {fileID: 0}
   playerDamage: 10
-  angle2: 0
+  speedLevel: 1
+  dmgLevel: 1
+  shieldLevel: 1
+  healthLevel: 1
+  backweaponMode: 0
 --- !u!50 &2724869212869716261
 Rigidbody2D:
   serializedVersion: 4
