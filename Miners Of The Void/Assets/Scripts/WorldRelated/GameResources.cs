@@ -18,6 +18,12 @@ public class OreStack : IResourceEqual {
         this.oreName = oreName;
         this.amount = amount;
     }
+    public OreStack(string oreName, int amount,Sprite sprite)
+    {
+        this.oreName = oreName;
+        this.amount = amount;
+        this.sprite = sprite;
+    }
 
     public int? CompareDifference(object obj)
     {
