@@ -14,13 +14,14 @@ public class Enemy : MonoBehaviour
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
     public float enemyRange = 20;
+    private Bullet bullet;
 
     //Enemy stats
     public float enemieHealth = 20;
     public float totalShield = 10;
     public float shield = 10;
-    float playerdmg;
-    Bullet bullet;
+    public float playerdmg;
+    
 
 
     //Enemy rotation
@@ -32,9 +33,13 @@ public class Enemy : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Spaceship");
+        Debug.Log(player);
         enemy = this.GetComponent<Rigidbody2D>();
-        bullet = GameObject.FindGameObjectWithTag("Bullet").GetComponent<Bullet>();
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
+        Debug.Log(playerdmg);
+        bullet = bulletPrefab.GetComponent<Bullet>();
+        
+        
 
 
 
