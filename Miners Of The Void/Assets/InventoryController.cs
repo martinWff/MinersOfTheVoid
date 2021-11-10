@@ -18,23 +18,6 @@ public class InventoryController : MonoBehaviour
         Inventory.onInventoryChanged += SpawnSlot;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-  /*  public void AttachInventory(Inventory i)
-    {
-        inventory = i;
-       
-
-        foreach (KeyValuePair<string,OreStack> key in inventory.GetOres())
-        {
-            
-        }
-    }*/
-
     public void SpawnSlot(Inventory inv,string oreName,int amount,bool opt)
     {
         if (opt) return;
