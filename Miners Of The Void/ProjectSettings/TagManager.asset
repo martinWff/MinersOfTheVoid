@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Menu
   - Bullet
+  - BulletEnemie
   - Spaceship
   layers:
   - Default

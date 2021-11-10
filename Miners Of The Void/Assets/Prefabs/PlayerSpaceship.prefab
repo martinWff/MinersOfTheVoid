@@ -94,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7805b27c7ad80c64ca1f5c45fa5f59ac, type: 3}
   m_Name: 
@@ -107,7 +107,6 @@ MonoBehaviour:
   moveForce: 4
   totalShield: 20
   shield: 10
-  regenRate: 2
   hp: 20
   statusDisplay: {fileID: 0}
   statusDisplayText: {fileID: 0}
@@ -117,6 +116,8 @@ MonoBehaviour:
   shieldLevel: 1
   healthLevel: 1
   backweaponMode: 0
+  upgradePrefab: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  canvas: {fileID: 0}
 --- !u!50 &2724869212869716261
 Rigidbody2D:
   serializedVersion: 4

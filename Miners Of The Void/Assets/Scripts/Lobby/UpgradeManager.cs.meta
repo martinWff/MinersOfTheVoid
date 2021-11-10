@@ -3,7 +3,16 @@ guid: 32d3e58c434fe7f459d40a11c936891a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - slot1: {instanceID: 0}
+  - slot2: {instanceID: 0}
+  - slot3: {instanceID: 0}
+  - slot4: {instanceID: 0}
+  - speedGO: {instanceID: 0}
+  - shieldGO: {instanceID: 0}
+  - healthGO: {instanceID: 0}
+  - backWeaponGO: {instanceID: 0}
+  - insertGO: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
