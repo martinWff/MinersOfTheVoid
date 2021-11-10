@@ -13,17 +13,17 @@ public class InventoryManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Inventory.onInventoryChanged += SpawnSlot;
     }
 
-    public void SpawnSlot(Inventory inv, string oreName, int amount, bool opt)
+    public void SpawnSlot(Inventory inv, string oreName, int amount, bool addedOnContract)
     {
-        if (opt) return;
+        if (addedOnContract) return;
         if (inv.GetOreAmount(oreName) > 0 && !slotList.ContainsKey(oreName))
         {
-
+           
             GameObject obj = Instantiate(slotPrefab, inventoryPanelTransform);
             Transform btn = obj.transform.Find("Button");
 

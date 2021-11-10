@@ -8,7 +8,7 @@ public class OreGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       oreDistributor.Distribute(0);
+     //  oreDistributor.Distribute(0);
     }
 
     // Update is called once per frame
