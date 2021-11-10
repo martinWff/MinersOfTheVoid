@@ -1,44 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContractTest : MonoBehaviour
 {
     public Inventory inventory;
 
+
     public Contract oreContract;
 
-   // public Contract<EnemyKill> enemyContract;
+    public Sprite goldSprite;
+    public Sprite ironSprite;
+    public Sprite copperSprite;
+
+
+    //  public Text textOutput;
+
+
+    // public Contract<EnemyKill> enemyContract;
     // Start is called before the first frame update
     void Start()
     {
         inventory = new Inventory();
+        //inventory.contractFilter = new Dictionary<string, int>() { { "gold", 15 }, { "iron", 8 } };
+        inventory.AddContractInventoryFilter("gold", 15);
+        inventory.AddContractInventoryFilter("iron", 20);
         Array<Goal> oreArray = new Array<Goal>(2);
-        oreArray.InsertAtEnd(new GatheringGoal("gold","mine gold",5));
-        oreArray.InsertAtEnd(new GatheringGoal("iron", "mine iron", 8));
+        oreArray.InsertAtEnd(new GatheringGoal("gold", "mine 5 gold", 15) {sprite= goldSprite});
+        oreArray.InsertAtEnd(new GatheringGoal("iron", "mine 8 iron", 20) { sprite = ironSprite });
         oreContract = new Contract(Contract.ContractType.mining,oreArray);
-        oreContract.goals = oreArray;
-        inventory.AddOre(new OreStack("gold",5));
-        inventory.AddOre(new OreStack("iron",9));
-    /*   inventory.AddContract(oreContract);
-        Debug.Log(oreContract.HasResourcesRequired(inventory));
-        oreContract.GatherResources(inventory);
-        foreach (ContractResource<OreStack> s in oreContract.resources)
-        {
-            Debug.Log(s.resource);
-        }
-
-        enemyContract = new Contract<EnemyKill>(Contract<EnemyKill>.ContractType.combat, new ContractResource<EnemyKill>(,) {new ContractResource<EnemyKill>(,) });*/
-
         
+        
+        ContractManager.AcceptContract(oreContract);
+
+        oreContract.Start();
+
+
+
+
 
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        
+        //oreContract.CheckGoals();
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+
+            inventory.AddOre(new OreStack("gold", 1,goldSprite));
+            inventory.AddOre(new OreStack("iron", 1,ironSprite));
+            inventory.AddOre(new OreStack("copper", 1, copperSprite));
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+          /*  inventory.RetrieveAmount("gold", 1);
+            inventory.RetrieveAmount("iron", 1);
+            inventory.RetrieveAmount("diamond", 1);*/
+            inventory.ClearContractInventory();
+        }
     }
 
 }

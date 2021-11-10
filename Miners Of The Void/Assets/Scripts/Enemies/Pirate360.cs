@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pirate360 : MonoBehaviour
 {
-    private GameObject player;
+    private GameObject spaceship;
     private float Distance;
 
     //Enemy shoot
@@ -37,9 +37,10 @@ public class Pirate360 : MonoBehaviour
     void Start()
     {
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        spaceship = GameObject.FindGameObjectWithTag("Spaceship");
         enemy = this.GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
+       
 
 
 
@@ -48,13 +49,13 @@ public class Pirate360 : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
-        Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-        Vector3 direction = player.transform.position - transform.position;
+        if (spaceship == null) return;
+        Vector3 playerPosition = new Vector3(spaceship.transform.position.x, spaceship.transform.position.y, spaceship.transform.position.z);
+        Vector3 direction = spaceship.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         enemy.rotation = angle - 90;
         middleAngle = rb.rotation + 90;
-        Debug.Log("Angle: " + middleAngle);
+       //Debug.Log("Angle: " + middleAngle);
 
         startAngle = middleAngle - firstAngle;
         endAngle = middleAngle + secondAngle;
@@ -64,7 +65,7 @@ public class Pirate360 : MonoBehaviour
 
         
 
-        Distance = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.y - transform.position.y, 2));
+        Distance = Mathf.Sqrt(Mathf.Pow(spaceship.transform.position.x - transform.position.x, 2) + Mathf.Pow(spaceship.transform.position.y - transform.position.y, 2));
         if (Distance < enemyRange)
         {
 
@@ -104,6 +105,8 @@ public class Pirate360 : MonoBehaviour
             }
         }
     }
+
+    
 
 
 }

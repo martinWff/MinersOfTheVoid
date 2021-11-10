@@ -48,6 +48,14 @@ public class Contract {
 
     }
 
+    public void Start()
+    {
+        foreach (Goal g in goals)
+        {
+            g.Init();
+        }
+    }
+
     public Contract(ContractType type,Array<Goal> goals)
     {
         contractType = type;
@@ -65,6 +73,7 @@ public class Goal
     public int currentAmount;
     public int requiredAmount;
     public string description;
+    public Sprite sprite;
 
     public virtual void Init()
     {
@@ -106,12 +115,57 @@ public class GatheringGoal : Goal
         Inventory.onInventoryChanged += OnGathered;
     }
 
-    void OnGathered(Inventory inv,OreStack ore)
+    void OnGathered(Inventory inv,string updatedOreName,int amount,bool addedOnContract)
     {
-        if (ore.oreName == oreName)
+        if (addedOnContract)
         {
-            this.currentAmount++;
-            Evaluate();
+            if (oreName == updatedOreName)
+            {
+
+                         
+               this.currentAmount = inv.GetContractOreAmount(updatedOreName);
+                Evaluate();
+                
+            }
         }
+
+
+    }
+}
+
+public class KillGoal : Goal
+{
+    public string enemyId;
+    public KillGoal(string enemyId, string description, int requiredAmount)
+    {
+
+        this.enemyId = enemyId;
+        this.description = description;
+        this.requiredAmount = requiredAmount;
+
+
+    }
+
+    public override void Init()
+    {
+        base.Init();
+      //  Inventory.onInventoryChanged += OnGathered;
+    }
+
+    void OnGathered(Inventory inv, string killedEntity, int amount, bool addedOnContract)
+    {
+        if (addedOnContract)
+        {
+            if (enemyId == killedEntity)
+            {
+
+
+                this.currentAmount = inv.GetContractOreAmount(killedEntity);
+                Evaluate();
+
+            }
+        }
+
+
     }
 }

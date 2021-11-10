@@ -7,12 +7,16 @@ using UnityEngine.Events;
 
 public class Inventory
 {
-    private Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
+    protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
 
+    private Dictionary<string, OreStack> contractOresStacks = new Dictionary<string, OreStack>();
+
+    public Dictionary<string, int> contractFilter = new Dictionary<string, int>();
+    public bool hasContract = true;
 
     //   private Contract contract;
 
-    public delegate void InventoryChanged(Inventory inv, OreStack amountChanged);
+    public delegate void InventoryChanged(Inventory inv, string oreName,int amountChanged,bool addedOnContract);
     public static event InventoryChanged onInventoryChanged;
 
 //    public System.Action<OreStack, int> onItemChanged;
@@ -20,18 +24,67 @@ public class Inventory
 
     public void AddOre(OreStack ore)
     {
-        if (ore.amount == 0) return;
+        if (ore.amount == 0) return;      
+
+           if (contractFilter.ContainsKey(ore.oreName)) 
+        {
+            
+            int vContractFilter = Mathf.Clamp(ore.amount, 0, contractFilter[ore.oreName]); //contractFilter[ore.oreName] - ore.amount;
+
+            OreStack remainder;
+           
+           
+            if (!contractOresStacks.ContainsKey(ore.oreName))
+            {
+
+               OreStack os = new OreStack(ore.oreName, vContractFilter, ore.sprite);
+                contractOresStacks.Add(ore.oreName, os);
+                remainder = new OreStack(ore.oreName, Mathf.Clamp((ore.amount - vContractFilter), 0,ore.amount),ore.sprite);
+              
+                onInventoryChanged?.Invoke(this, os.oreName, os.amount, true);
+                AddOreOnInventory(remainder);
+
+
+            } else //if (contractOresStacks[ore.oreName].amount < contractFilter[ore.oreName])
+            {
+                
+                OreStack v = contractOresStacks[ore.oreName];
+                OreStack os = new OreStack(ore.oreName, Mathf.Clamp((ore.amount + v.amount),v.amount,contractFilter[ore.oreName]));
+                //v.amount += os.amount;
+                contractOresStacks[ore.oreName] = os;
+                int pureValue = ore.amount + v.amount;
+                onInventoryChanged?.Invoke(this, os.oreName, os.amount, true);
+
+                remainder = new OreStack(ore.oreName, Mathf.Clamp((pureValue - contractFilter[ore.oreName]), 0, os.amount+ore.amount), ore.sprite);
+
+
+                onInventoryChanged?.Invoke(this, os.oreName, os.amount-remainder.amount, true);
+                AddOreOnInventory(remainder);
+
+            }
+        }
+        else
+        {
+            AddOreOnInventory(ore);
+        }
+       
+       
+    }
+
+    private void AddOreOnInventory(OreStack ore)
+    {
+        if (ore == null) return;
         if (!oresStacks.ContainsKey(ore.oreName))
         {
             oresStacks.Add(ore.oreName, ore);
-        } else
+        }
+        else
         {
-           OreStack oreStack = oresStacks[ore.oreName];
+            OreStack oreStack = oresStacks[ore.oreName];
             oreStack.amount += ore.amount;
         }
-        //onItemChanged?.Invoke(ore,ore.amount);
-        onInventoryChanged.Invoke(this,ore);
-       
+       onInventoryChanged?.Invoke(this, ore.oreName, ore.amount, false);
+
     }
 
     public bool ContainsOre(string oreName) {
@@ -49,65 +102,63 @@ public class Inventory
     }
 
 
-
-    public OreStack RetrieveAmount(string oreName,int amount)
+    public OreStack GetOreStack(string oreName)
     {
-        OreStack oreStack = null;
+        return oresStacks[oreName];
+    }
 
-        if (amount == 0) return null ;
-        if (oresStacks.ContainsKey(oreName))
+    public int GetContractOreAmount(string oreName)
+    {
+        if (contractOresStacks.ContainsKey(oreName))
         {
-            oreStack = oresStacks[oreName];
-            int clampValue = Mathf.Clamp((oreStack.amount - amount), 0, oreStack.amount);
-            if (clampValue == 0)
-            {
-                oreStack.amount = clampValue;
-                oresStacks.Remove(oreStack.oreName);
-
-                //   onItemChanged.Invoke(oreStack, -clampValue);
-                onInventoryChanged.Invoke(this, oreStack);
-                return oreStack;
-            }
-            else
-            {
-                oreStack.amount -= clampValue;
-                // onItemChanged.Invoke(oreStack, -clampValue);
-                onInventoryChanged.Invoke(this, oreStack);
-                oresStacks[oreStack.oreName]= oreStack;
-                return oreStack;
-            }
-
-
+            return contractOresStacks[oreName].amount;
         }
+        else
+        {
+            return 0;
+        }
+    }
 
-        return oreStack;
+    public void ClearContractInventory()
+    {
+        //contractOresStacks.Clear();
+        Dictionary<string, OreStack> contractOresStacksCopy = new Dictionary<string, OreStack>(contractOresStacks);
+        foreach (KeyValuePair<string,OreStack> co in contractOresStacksCopy)
+        {
+            contractOresStacks[co.Key] = new OreStack(co.Value.oreName,0,co.Value.sprite);
+            onInventoryChanged?.Invoke(this,co.Value.oreName,-co.Value.amount,true);
+        }
+        contractOresStacks.Clear();
     }
 
 
-    public void GatherResources(ContractResource<OreStack>[] resources)
+      public int RetrieveAmount(string oreName,int amount)
     {
-      
-       for (int i = 0; i < resources.Length; i++)
-            {
+        if (amount == 0) return 0;
+        int oreAmount = GetOreAmount(oreName);
+        if (oreAmount <= 0) return 0;
 
-            ContractResource<OreStack> r = resources[i];
-            OreStack resourceOreStack = r.resource;
-            OreStack gatheredOreStack = r.gathered;
-                if (r != null)
-                {
-                    if (r.resource.amount < r.gathered.amount)
-                    {
-                        if (GetOreAmount(r.gathered.oreName) >= r.resource.amount)
-                        {
-                            // gatheredResources[i] += inventory.GetOreAmount(resources[i].oreName);
-                            r.gathered = RetrieveAmount(r.resource.oreName, r.resource.amount);
-                            //  gatheredResources[i].amount += inventory.RemoveOreAmount(resources[i].oreName,resources[i].amount);
+        int clampedAmount = Mathf.Clamp(amount, 0, oreAmount);
+        OreStack oreFound = oresStacks[oreName];
+ 
+        oreFound.amount -= clampedAmount;
+        oresStacks[oreName] = oreFound;
 
+        onInventoryChanged?.Invoke(this, oreName,-clampedAmount, false);
+        
 
-                        }
-                    }
-                }
-            }
-       
+        return clampedAmount;
+    }
+
+    public Dictionary<string, OreStack> GetOres()
+    {
+        return oresStacks;
+    }
+
+    public void AddContractInventoryFilter(string oreName,int amount)
+    {
+        if (!contractFilter.ContainsKey(oreName)) {
+            contractFilter.Add(oreName, amount);
+       }
     }
 }
