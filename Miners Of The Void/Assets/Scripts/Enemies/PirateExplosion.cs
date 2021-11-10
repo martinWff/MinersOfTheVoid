@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceEnemyMove : MonoBehaviour
+public class PirateExplosion : MonoBehaviour
 {
+
     private GameObject spaceship;
     private float distance;
     private Rigidbody2D enemy;
@@ -11,14 +12,16 @@ public class SpaceEnemyMove : MonoBehaviour
     public float speed = 3;
     private Vector3 targetPosition;
 
-    public float nearPlayer = 15;
+    SpriteRenderer pirate_spriterender;
+    Color pirate_NewColor;
+
 
     // Start is called before the first frame update
     void Start()
     {
         spaceship = GameObject.FindGameObjectWithTag("Spaceship");
         enemy = GetComponent<Rigidbody2D>();
-        
+        pirate_spriterender = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -34,13 +37,8 @@ public class SpaceEnemyMove : MonoBehaviour
         distance = Mathf.Sqrt(Mathf.Pow(spaceship.transform.position.x - transform.position.x, 2) + Mathf.Pow(spaceship.transform.position.y - transform.position.y, 2));
         if (distance < enemyRange)
         {
-            if(distance > nearPlayer)
-            {
-                //Debug.Log("speed: " + transform.position);
-               transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-            }
             
+
 
         }
     }
