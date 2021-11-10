@@ -13,6 +13,12 @@ public class ContractManager : MonoBehaviour
     public delegate void ContractAccepted(Contract contract);
     public static event ContractAccepted onContractAccepted;
 
+    public delegate void ContractFinished(Contract contract);
+    public static event ContractFinished onContractFinished;
+
+    public static int contractsLeftUntilBoss;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,5 +42,18 @@ public class ContractManager : MonoBehaviour
     public static void AcceptContract(Contract c)
     {
         instance._AcceptContract(c);
+    }
+
+    public static void CompleteContract(Contract c)
+    {
+        c.CheckGoals();
+        if (c.isCompleted)
+        {
+            onContractFinished?.Invoke(c);
+            if (contractsLeftUntilBoss > 0)
+            {
+                contractsLeftUntilBoss--;
+            }
+        }
     }
 }
