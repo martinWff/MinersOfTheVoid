@@ -468,6 +468,7 @@ MonoBehaviour:
   goldSprite: {fileID: 21300000, guid: 721030692d7205c4c8711e46a8020815, type: 3}
   ironSprite: {fileID: 21300000, guid: f59d1392f3ff6254a86e5076110e5e10, type: 3}
   copperSprite: {fileID: 21300000, guid: e61cd7cae5b84654484e24a9fbd4f93c, type: 3}
+  contractGenerator: {fileID: 963262275}
 --- !u!4 &963262274
 Transform:
   m_ObjectHideFlags: 0
@@ -491,7 +492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 963262272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ed328cac49476b499b8f2a44267aa94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1175687767

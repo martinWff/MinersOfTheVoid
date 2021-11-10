@@ -16,17 +16,35 @@ public class ContractGenerator : MonoBehaviour
         
     }
 
+    public void CreateContract()
+    {
+        if (ContractManager.contractsLeftUntilBoss < 0)
+        {
+
+        } 
+    }
+
     public Contract GenerateContract()
     {
-       
-        
+
+
+        if (ContractManager.contractsLeftUntilBoss < 0)
+        {
+            return GenerateBossContract();
+        }
+
         return null;
        
     }
 
     public Contract GenerateBossContract()
     {
-        return null;
+        Array<Goal> arr = new Array<Goal>(1);
+        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1));
+
+        Contract c = new Contract(Contract.ContractType.position, arr);
+
+        return c;
 
     }
 

@@ -12,9 +12,6 @@ public class Contract {
 
     public ContractType contractType;
 
-// public OreStack[] resources;
-
-// public Dictionary<OreStack,OreStack> gatheredResources;
    public Array<Goal> goals;
     
 
@@ -31,10 +28,7 @@ public class Contract {
         if (goals != null)
         {
 
-            for (int i = 0; i < goals.Count; i++)
-            {
-                isCompleted = goals.TrueForAll((Goal g) => g.completed);
-            }
+             isCompleted = goals.TrueForAll((Goal g) => g.completed);     
           
         }
     }
