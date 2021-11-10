@@ -14,6 +14,9 @@ public class ContractTest : MonoBehaviour
     public Sprite ironSprite;
     public Sprite copperSprite;
 
+    public ContractGenerator contractGenerator;
+    public Contract currentContract;
+
 
     //  public Text textOutput;
 
@@ -26,15 +29,20 @@ public class ContractTest : MonoBehaviour
         //inventory.contractFilter = new Dictionary<string, int>() { { "gold", 15 }, { "iron", 8 } };
         inventory.AddContractInventoryFilter("gold", 15);
         inventory.AddContractInventoryFilter("iron", 20);
-        Array<Goal> oreArray = new Array<Goal>(2);
-        oreArray.InsertAtEnd(new GatheringGoal("gold", "mine 5 gold", 15) {sprite= goldSprite});
-        oreArray.InsertAtEnd(new GatheringGoal("iron", "mine 8 iron", 20) { sprite = ironSprite });
-        oreContract = new Contract(Contract.ContractType.mining,oreArray);
-        
-        
-        ContractManager.AcceptContract(oreContract);
+        /* Array<Goal> oreArray = new Array<Goal>(2);
+         oreArray.InsertAtEnd(new GatheringGoal("gold", "mine 5 gold", 15) {sprite= goldSprite});
+         oreArray.InsertAtEnd(new GatheringGoal("iron", "mine 8 iron", 20) { sprite = ironSprite });
+         oreContract = new Contract(Contract.ContractType.mining,oreArray);*
 
-        oreContract.Start();
+
+
+         ContractManager.AcceptContract(oreContract);
+
+         oreContract.Start();*/
+
+        currentContract = contractGenerator.GenerateBossContract();
+        ContractManager.AcceptContract(currentContract);
+        currentContract.Start();
 
 
 
@@ -52,9 +60,14 @@ public class ContractTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
 
-            inventory.AddOre(new OreStack("gold", 1,goldSprite));
-            inventory.AddOre(new OreStack("iron", 1,ironSprite));
-            inventory.AddOre(new OreStack("copper", 1, copperSprite));
+            /* inventory.AddOre(new OreStack("gold", 1,goldSprite));
+             inventory.AddOre(new OreStack("iron", 1,ironSprite));
+             inventory.AddOre(new OreStack("copper", 1, copperSprite));*/
+            if (currentContract.goals.Get(1).currentAmount < currentContract.goals.Get(1).requiredAmount)
+            {
+                currentContract.goals.Get(1).currentAmount += 1;
+                currentContract.goals.Get(1).Evaluate();
+            }
 
         }
 
