@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - BulletEnemie
   - Spaceship
+  - Alarm
+  - PirateExplosion
   layers:
   - Default
   - TransparentFX
