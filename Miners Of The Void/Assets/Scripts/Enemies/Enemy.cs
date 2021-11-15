@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private Bullet bullet;
 
     //Enemy stats
+
     public float enemieHealth = 20;
     public float totalShield = 10;
     public float shield = 10;
