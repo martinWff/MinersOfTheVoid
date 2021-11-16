@@ -7,7 +7,8 @@ public class StaticCameraController : MonoBehaviour
     public bool Human;
     private Transform player;
     void Start()
-    {   if (Human)
+    {
+        if (Human)
             player = GameObject.Find("HumanPlayer").transform;
         else
             player = GameObject.Find("PlayerSpaceship").transform;
@@ -16,7 +17,16 @@ public class StaticCameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        
         if (player == null) return;
         transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+        
+    }
+    public void ChangeCamera()
+    {
+        if (Human)
+            player = GameObject.Find("HumanPlayer").transform;
+        else
+            player = GameObject.Find("PlayerSpaceship").transform;
     }
 }

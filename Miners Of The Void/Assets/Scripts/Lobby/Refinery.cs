@@ -6,6 +6,7 @@ public class Refinery : MonoBehaviour
 {
     GameObject player;
     GameObject NPC;
+    public GameObject menu;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class Refinery : MonoBehaviour
     public void CloseMenu()
     {
         NPC.GetComponent<NPCMenus>().openMenu = false;
-        Destroy(gameObject);
         player.GetComponent<PlayerMovement>().enabled = true;
+        menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 500);
     }
 }

@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     private Vector3 test;
     public bool firepermission = true;
+    public StaticCameraController camera;
+    public GameObject enemy;
     
     void Start()
     {
@@ -26,10 +28,13 @@ public class PlayerMovement : MonoBehaviour
     {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+        camera = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
         float fireInput = Input.GetAxis("Fire1");
         if (fireInput > 0 && (bulletShootTime <= 0) && firepermission == true)
         {
-            Vector3 Shotdirection = transform.right;
+            Vector3 mouseDirection = Input.mousePosition -
+               Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 Shotdirection = mouseDirection;
             GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
             bulletShootTime = bulletCooldownTime;
             bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
@@ -37,10 +42,30 @@ public class PlayerMovement : MonoBehaviour
         if (bulletShootTime >= 0)
         {
             bulletShootTime -= Time.deltaTime;
+            
         }
         
 
     }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Passage")
+        {
+            camera.Human = false;
+            camera.ChangeCamera();
+            SpaceshipMovement player2 = GameObject.Find("PlayerSpaceship").GetComponent<SpaceshipMovement>();
+            player2.enabled = true;
+            player2.Revive();
+            rb.velocity = new Vector2(0, 0);
+            enemy.GetComponent<Enemy>().enabled = true;
+            enemy.GetComponent<SpaceEnemyMove>().enabled = true;
+            GetComponent<PlayerMovement>().enabled = false;
+            
+            
+        }
+    }
+
 
     private void FixedUpdate()
     {

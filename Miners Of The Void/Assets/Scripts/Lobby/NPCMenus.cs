@@ -28,7 +28,8 @@ public class NPCMenus : MonoBehaviour
         distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.position.x, 2) + Mathf.Pow(transform.position.y - player.position.y, 2));
         if (distance < 3 && Input.GetKeyDown("f") && openMenu == false)
         {
-            menu = Instantiate(menuPrefab,canvas.transform);
+            
+            menuPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
             player.GetComponent<PlayerMovement>().enabled = false;
             openMenu = true;
