@@ -345,3 +345,35 @@ namespace MOV.Upgrades
     }
 
     }
+public class Zoom : Upgrade
+{
+    public Zoom(string upName) : base(upName)
+    {
+    }
+
+    public override void OnPut(float level)
+    {
+        if (level < 6)
+        {
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
+            Debug.Log("Limit reached");
+        }
+    }
+    public override void OnUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void OnRemove()
+    {
+        GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4;
+        GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20;
+    }
+
+}

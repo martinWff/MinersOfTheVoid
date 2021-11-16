@@ -37,7 +37,12 @@ public class SpaceshipMovement : MonoBehaviour
 
     public GameObject upgradePrefab;
     public GameObject canvas;
-
+    private StaticCameraController camera2;
+    public bool dead = false;
+    public bool immortality = false;
+    public GameObject enemy;
+    private Animator animator;
+    
     //DisablingUI
 
 
@@ -47,6 +52,8 @@ public class SpaceshipMovement : MonoBehaviour
         statusDisplay = GameObject.Find("UiHpShield");
         statusDisplayText=statusDisplay.GetComponent<Text>();
         canvas = GameObject.Find("Canvas");
+        camera2 = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
+        animator = GetComponent<Animator>();
 
 
     }
@@ -82,14 +89,16 @@ public class SpaceshipMovement : MonoBehaviour
         if (shield > totalShield) shield = totalShield;
 
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
+        if (verticalInput != 0) animator.SetFloat("isMoving", 1);
+        else animator.SetFloat("isMoving", -1);
 
     }
 
     private void FixedUpdate()
     {
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        
+        verticalInput = Input.GetAxis("Vertical");
         Vector2 mouseDirection = Input.mousePosition -
             Camera.main.WorldToScreenPoint(transform.position);
         if (mouseDirection.magnitude > minRotationDistance)
@@ -98,10 +107,11 @@ public class SpaceshipMovement : MonoBehaviour
                                   mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
         }
-        rb.velocity = ((verticalInput * transform.right) +
-                      (horizontalInput * transform.up)) * moveForce;
+        rb.velocity = (verticalInput * transform.right) * moveForce;
+        
 
         statusDisplayText.text = "Hp: " + Mathf.Floor(hp) + " / Shield: " + Mathf.Floor(shield);
+        
 
 
 
@@ -109,9 +119,9 @@ public class SpaceshipMovement : MonoBehaviour
         //              (horizontalInput * transform.up)) * moveForce;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BulletEnemie")
+        if (collision.gameObject.tag == "BulletEnemie" && !dead && !immortality)
         { 
             if (shield >= 10) shield -= 10;
             if (shield < 10)
@@ -124,14 +134,42 @@ public class SpaceshipMovement : MonoBehaviour
             {
                 hp = 0;
                 shield = 0;
-                Destroy(gameObject);
+                dead = true;
+                TransferPlayer();
             }
             
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "Passage")
+        {
+            TransferPlayer();
+        }
+
+    }
+   
+        
+    
+    private void TransferPlayer()
+    {
+        camera2.Human = true;
+        camera2.ChangeCamera();
+        PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
+        player2.transform.position = new Vector3(8,0,0);
+        player2.enabled = true;
+        enemy.GetComponent<Enemy>().enabled = false;
+        enemy.GetComponent<SpaceEnemyMove>().enabled = false;
+        rb.velocity = new Vector2(0, 0);
+        animator.SetFloat("isMoving", -1);
+        GetComponent<SpaceshipMovement>().enabled = false;
+    }
+    public void Revive()
+    {
+        shield = totalShield;
+        hp = 20 * healthLevel;
+        dead = false;
     }
 
- 
+
 
 
 }

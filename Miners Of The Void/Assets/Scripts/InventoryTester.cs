@@ -11,14 +11,15 @@ public class InventoryTester : MonoBehaviour
     void Start()
     {
         FindObjectOfType<InventoryManager>().inventory = inventory;
-        inventory.AddOre(new OreStack("Iron",5,ironSprite));
         
-        Debug.Log(inventory.GetOreAmount("Iron"));
-}
+
+    }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Backspace)) inventory.AddOre(new OreStack("Iron", 5, ironSprite));
     }
 }
