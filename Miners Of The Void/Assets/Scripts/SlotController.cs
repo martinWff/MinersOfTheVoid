@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SlotController : MonoBehaviour
 {
-    public OreStack oreStack;
+    public OreStack oreStack { get; protected set;}
 
     private int quantity = -1;
     [SerializeField]private Image image;
@@ -17,6 +18,7 @@ public class SlotController : MonoBehaviour
         oreStack = o;
         image.sprite = o.sprite;
         quantityText.text = o.amount.ToString();
+       
     }
 
     private void Update()
@@ -29,5 +31,15 @@ public class SlotController : MonoBehaviour
                 quantityText.text = oreStack.amount.ToString();
             }
         }
+    }
+
+    void Awake()
+    {
+        
+    }
+
+    public void PrepareRefine()
+    {
+        transform.parent.GetComponent<RefineryInventory>().Refine(oreStack.oreName);
     }
 }
