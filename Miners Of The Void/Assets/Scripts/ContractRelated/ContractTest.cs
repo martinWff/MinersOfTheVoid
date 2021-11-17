@@ -39,7 +39,6 @@ public class ContractTest : MonoBehaviour
         inventory.AddOre(new OreStack("Coal", 1, copperSprite));
         Array<Goal> g = new Array<Goal>(1);
         g.InsertAtEnd(new GatheringGoal("Iron", "mine 1 iron", 1,ironSprite));
-        inventory.AddContractInventoryFilter("Iron", 1);
         oreContract = new Contract(Contract.ContractType.mining, g);
         oreContract.goals = g;
       

@@ -19,7 +19,6 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
         Inventory.onInventoryChanged += SpawnSlot;
-        Debug.Log("on inventory changed");
         if (inventory != null)
         {
             Populate();
@@ -72,11 +71,14 @@ public class InventoryController : MonoBehaviour
     {
         Inventory.onInventoryChanged -= SpawnSlot;
     }
-
-
-    public void SpawnSlot(Inventory inv,string oreName,int amount,bool opt)
+    private void OnDestroy()
     {
-        if (opt) return;
+        Inventory.onInventoryChanged -= SpawnSlot;
+    }
+
+
+    public void SpawnSlot(Inventory inv,string oreName,int amount)
+    {
         if (inv.GetOreAmount(oreName) > 0 && !slotList.ContainsKey(oreName)) {
 
           GameObject obj = Instantiate(slotPrefab, transform);

@@ -154,7 +154,7 @@ public class KillGoal : Goal
             {
 
 
-                this.currentAmount = inv.GetContractOreAmount(killedEntity);
+                this.currentAmount = inv.GetOreAmount(killedEntity);
                 Evaluate();
 
             }
