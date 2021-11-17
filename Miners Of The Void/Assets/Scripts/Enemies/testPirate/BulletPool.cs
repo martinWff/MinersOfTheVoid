@@ -59,5 +59,10 @@ public class BulletPool : MonoBehaviour
         return null;
     }
 
+    public void ReturnBullet(GameObject bullet)
+    {
+        bullet.SetActive(false);
+    }
+
    
 }
