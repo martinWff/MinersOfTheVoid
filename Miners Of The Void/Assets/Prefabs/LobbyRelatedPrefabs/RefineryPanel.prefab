@@ -120,7 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1746397106}
   m_HandleRect: {fileID: 1746397105}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999998
   m_Size: 0.37523332
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 25, y: 25}
-  m_Spacing: {x: 15, y: 15}
+  m_Spacing: {x: 30, y: 15}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &3718028146106104809
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97916e28cd6fe02458b6e52bb8f1e0cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 1464214486118114577, guid: b74c5bae66bc0f147afc31031be24275, type: 3}
+  slotPrefab: {fileID: 7125504061109207388, guid: 182e4d0c81845204bb164997d94cbd12, type: 3}
 --- !u!114 &1882296052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,9 +486,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0ee84fe4dfb5548b3d70cbf3a75431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldSprite: {fileID: 21300000, guid: aecd5fb112b47194597216df30401b88, type: 3}
-  ironSprite: {fileID: 21300000, guid: 00bbefcac165e494da876a8470f70a7b, type: 3}
-  copperSprite: {fileID: 21300000, guid: 961147b6c80feef45991b4c3ca309c0c, type: 3}
+  goldOreSprite: {fileID: 21300000, guid: d392f6648865a4741bb792d557b3bb94, type: 3}
+  ironOreSprite: {fileID: 21300000, guid: 5d09bb1803419cb42946e8b00ca0c7f9, type: 3}
+  copperOreSprite: {fileID: 21300000, guid: 0783baceda4547c4e90530f7b24055b9, type: 3}
+  goldNuggetSprite: {fileID: 21300000, guid: 0d9175bfc2d3f8a43a3d32a5c255a123, type: 3}
+  ironNuggetSprite: {fileID: 21300000, guid: 3f223f5a9d8fee54a8c666bb35c43b23, type: 3}
+  copperNuggetSprite: {fileID: 21300000, guid: 2051f9a32ba32c2449dfd4bc74948834, type: 3}
 --- !u!1 &1966378984
 GameObject:
   m_ObjectHideFlags: 0

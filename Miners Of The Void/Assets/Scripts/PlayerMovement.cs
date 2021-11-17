@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
         
     }
     private void Update()
@@ -68,8 +69,11 @@ public class PlayerMovement : MonoBehaviour
             player2.enabled = true;
             player2.Revive();
             rb.velocity = new Vector2(0, 0);
-            enemy.GetComponent<Enemy>().enabled = true;
-            enemy.GetComponent<SpaceEnemyMove>().enabled = true;
+            if (enemy != null)
+            {
+                enemy.GetComponent<Enemy>().enabled = true;
+                enemy.GetComponent<SpaceEnemyMove>().enabled = true;
+            }
             GetComponent<PlayerMovement>().enabled = false;
             
             
