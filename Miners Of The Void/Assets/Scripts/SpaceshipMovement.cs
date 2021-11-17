@@ -52,8 +52,9 @@ public class SpaceshipMovement : MonoBehaviour
         statusDisplay = GameObject.Find("UiHpShield");
         statusDisplayText=statusDisplay.GetComponent<Text>();
         canvas = GameObject.Find("Canvas");
-        camera2 = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
         animator = GetComponent<Animator>();
+        camera2 = GameObject.Find("Main Camera").GetComponent<StaticCameraController>();
+        
 
 
     }
@@ -137,8 +138,10 @@ public class SpaceshipMovement : MonoBehaviour
                 dead = true;
                 TransferPlayer();
             }
-            
+
             Destroy(collision.gameObject);
+            //EnemyPool.bulletInstanse.ReturnBullet(collision.gameObject);
+
         }
         if (collision.gameObject.tag == "Passage")
         {
