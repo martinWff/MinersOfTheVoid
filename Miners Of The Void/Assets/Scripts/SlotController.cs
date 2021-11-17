@@ -33,6 +33,6 @@ public class SlotController : MonoBehaviour
 
     public void PrepareRefine()
     {
-        transform.parent.GetComponent<RefineryInventory>().Refine(oreStack.oreName,1);
+            transform.parent.GetComponent<RefineryInventory>().Refine(oreStack.oreName, oreStack.amount);   
     }
 }

@@ -52,6 +52,7 @@ public class SpaceshipMovement : MonoBehaviour
         statusDisplay = GameObject.Find("UiHpShield");
         statusDisplayText=statusDisplay.GetComponent<Text>();
         canvas = GameObject.Find("Canvas");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
         camera2 = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
         animator = GetComponent<Animator>();
 
@@ -156,11 +157,17 @@ public class SpaceshipMovement : MonoBehaviour
         PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
         player2.transform.position = new Vector3(8,0,0);
         player2.enabled = true;
-        enemy.GetComponent<Enemy>().enabled = false;
-        enemy.GetComponent<SpaceEnemyMove>().enabled = false;
         rb.velocity = new Vector2(0, 0);
+        transform.position = new Vector3(-16.84f, 0.11f, 0);
+        rb.rotation = 0;
         animator.SetFloat("isMoving", -1);
+        if (enemy != null)
+        {
+            enemy.GetComponent<Enemy>().enabled = false;
+            enemy.GetComponent<SpaceEnemyMove>().enabled = false;
+        }
         GetComponent<SpaceshipMovement>().enabled = false;
+        
     }
     public void Revive()
     {
