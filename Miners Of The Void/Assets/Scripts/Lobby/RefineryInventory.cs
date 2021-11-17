@@ -24,7 +24,6 @@ public class RefineryInventory : MonoBehaviour
         inventoryController = GetComponent<InventoryController>();
         Debug.Log(inventoryController.slotPrefab);
         inventory = new Inventory();
-        InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
         myQueue = new Queue<string>();
     }
     void Start()
@@ -56,8 +55,4 @@ public class RefineryInventory : MonoBehaviour
         
     }
     
-    public void RefinerySlotCreated(SlotController slotController)
-    {
-        slotController.GetComponent<RefinerySlotController>().SetupRefinery(this);
-    }
 }
