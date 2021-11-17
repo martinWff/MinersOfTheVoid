@@ -15,7 +15,8 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Inventory.onInventoryChanged += SpawnSlot;
+        //Inventory.onInventoryChanged += SpawnSlot;
+  
     }
 
     public void SpawnSlot(Inventory inv, string oreName, int amount, bool addedOnContract)

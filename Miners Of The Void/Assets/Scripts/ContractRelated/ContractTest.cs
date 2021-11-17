@@ -23,15 +23,44 @@ public class ContractTest : MonoBehaviour
 
     // public Contract<EnemyKill> enemyContract;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        inventory = new Inventory();
+        InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
+    }
+
+
     void Start()
     {
+        // InventoryManager im = FindObjectOfType<InventoryManager>();
+       
+       
+        //controller.inventory = new Inventory();
+        inventory.AddOre(new OreStack("Coal", 1, copperSprite));
+        Array<Goal> g = new Array<Goal>(1);
+        g.InsertAtEnd(new GatheringGoal("Iron", "mine 1 iron", 1,ironSprite));
+        inventory.AddContractInventoryFilter("Iron", 1);
+        oreContract = new Contract(Contract.ContractType.mining, g);
+        oreContract.goals = g;
+      
 
+        ContractManager.AcceptContract(oreContract);
+        oreContract.Start();
+
+    }
+
+    private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
+    {
+        inventoryController.AttachInventory(inventory);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            inventory.AddOre(new OreStack("Iron",1,ironSprite));
+        }
     }
 
 }

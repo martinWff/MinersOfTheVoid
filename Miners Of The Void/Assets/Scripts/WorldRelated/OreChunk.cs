@@ -2,20 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OreGenerator : MonoBehaviour
+public class OreChunk : MonoBehaviour
 {
-    public OreDistributtor oreDistributor;
-
-    List<string> ores = new List<string>(10);
-
- 
+    public string[] ores = new string[30];
+    public OreDistributtor distributor;
     // Start is called before the first frame update
     void Start()
     {
-        //  oreDistributor.Distribute(0);
-
-      //  ores.Add(oreDistributor.GetRandom());
-        
+        for (int i = 0; i < ores.Length; i++) {
+            ores[i] = distributor.Calculate();
+         }
     }
 
     // Update is called once per frame
@@ -23,6 +19,4 @@ public class OreGenerator : MonoBehaviour
     {
         
     }
-
-
 }
