@@ -93,12 +93,13 @@ public class Goal
 public class GatheringGoal : Goal
 {
     public string oreName;
-    public GatheringGoal(string oreName,string description,int requiredAmount)
+    public GatheringGoal(string oreName,string description,int requiredAmount,Sprite sprite)
     {
 
         this.oreName = oreName;
         this.description = description;
         this.requiredAmount = requiredAmount;
+        this.sprite = sprite;
 
                
     }
@@ -109,19 +110,18 @@ public class GatheringGoal : Goal
         Inventory.onInventoryChanged += OnGathered;
     }
 
-    void OnGathered(Inventory inv,string updatedOreName,int amount,bool addedOnContract)
+    void OnGathered(Inventory inv,string updatedOreName,int amount)
     {
-        if (addedOnContract)
-        {
+        
             if (oreName == updatedOreName)
             {
 
                          
-               this.currentAmount = inv.GetContractOreAmount(updatedOreName);
+               this.currentAmount = inv.GetOreAmount(updatedOreName);
                 Evaluate();
                 
             }
-        }
+       
 
 
     }
@@ -154,7 +154,7 @@ public class KillGoal : Goal
             {
 
 
-                this.currentAmount = inv.GetContractOreAmount(killedEntity);
+                this.currentAmount = inv.GetOreAmount(killedEntity);
                 Evaluate();
 
             }

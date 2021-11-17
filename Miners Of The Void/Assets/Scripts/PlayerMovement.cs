@@ -18,7 +18,17 @@ public class PlayerMovement : MonoBehaviour
     public bool firepermission = true;
     public StaticCameraController camera;
     public GameObject enemy;
-    
+
+    // Life
+    public float playerDamage = 10;
+    public float totalShield = 20;
+    public float shield = 20;
+    public float hp = 20;
+
+    public float speedLevel = 1;
+    public float dmgLevel = 1;
+    public float shieldLevel = 1;
+    public float healthLevel = 1;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
