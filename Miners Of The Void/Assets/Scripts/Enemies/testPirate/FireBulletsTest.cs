@@ -10,7 +10,14 @@ public class FireBulletsTest : MonoBehaviour
     [SerializeField]
     private float startAngle = 0f, endAngle = 360f;
 
-  
+    //Enemy stats
+
+    public float enemieHealth = 20;
+    public float totalShield = 10;
+    public float shield = 10;
+    public float playerdmg;
+
+
 
     private Vector2 bulletMoveDirection;
 
@@ -20,6 +27,7 @@ public class FireBulletsTest : MonoBehaviour
     void Start()
     {
         InvokeRepeating("Fire", 0f, 4f);
+        playerdmg = GameObject.Find("PlayerSpaceship").GetComponent<SpaceshipMovement>().playerDamage;
     }
 
     // Update is called once per frame
@@ -43,6 +51,44 @@ public class FireBulletsTest : MonoBehaviour
             bul.GetComponent<BulletTest>().SetMoveDirection(bulDir);
 
             angle += angleStep;
+        }
+    }
+
+    private void Update()
+    {
+        //status/UI
+        if (shield < totalShield)
+        {
+            shield += (totalShield / 10) * Time.deltaTime;
+        }
+        if (shield > totalShield) shield = totalShield;
+    }
+
+
+           
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+
+            if (shield >= playerdmg) shield -= playerdmg;
+            if (shield < playerdmg)
+            {
+                if (shield != 0) enemieHealth -= (10 - shield);
+
+                shield = 0;
+            }
+            if (enemieHealth <= 0)
+            {
+                enemieHealth = 0;
+                shield = 0;
+                Destroy(gameObject);
+            }
+
+            Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
+
+            Destroy(collision.gameObject);
         }
     }
 }
