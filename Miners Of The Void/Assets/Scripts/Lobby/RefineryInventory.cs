@@ -56,9 +56,8 @@ public class RefineryInventory : MonoBehaviour
         
     }
     
-    private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
+    public void RefinerySlotCreated(SlotController slotController)
     {
-        inventoryController.AttachInventory(inventory);
+        slotController.GetComponent<RefinerySlotController>().SetupRefinery(this);
     }
-
 }

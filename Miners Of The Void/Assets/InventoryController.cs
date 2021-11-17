@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
@@ -11,7 +12,8 @@ public class InventoryController : MonoBehaviour
     public static event InventoryControllerCreated onInventoryControllerCreated;
 
     public Dictionary<string, GameObject> slotList = new Dictionary<string, GameObject>();
-
+    public UnityEvent<SlotController> onSlotCreated;
+    public UnityEvent<SlotController> onSlotRemoved;
 
 
 
@@ -54,6 +56,7 @@ public class InventoryController : MonoBehaviour
                 SlotController slotController = obj.GetComponent<SlotController>();
                 slotController.SetContent(oreStack);
                 slotList.Add(o.Key, obj);
+                onSlotCreated?.Invoke(slotController);
 
             }
             if (inventory.GetOreAmount(o.Key) <= 0 && slotList.ContainsKey(o.Key))
@@ -90,7 +93,10 @@ public class InventoryController : MonoBehaviour
           slotController.SetContent(oreStack);
          //     .oreStack = oreStack
           btn.GetComponent<Image>().sprite = oreStack.sprite;
-          slotList.Add(oreName,obj);
+        
+         slotList.Add(oreName,obj);
+          onSlotCreated?.Invoke(slotController);
+            
 
         }
         if (inv.GetOreAmount(oreName) <= 0 && slotList.ContainsKey(oreName))
