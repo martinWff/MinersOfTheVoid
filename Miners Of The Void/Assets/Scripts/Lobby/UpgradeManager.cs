@@ -258,7 +258,7 @@ namespace MOV.Upgrades
         {
             if (level < 6)
             {
-                Debug.Log("I'm here");
+                
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().totalShield = 10 * (level + 1);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().shieldLevel += 1;
             }
@@ -303,7 +303,21 @@ public class Hp : Upgrade
                 Debug.Log("Max level reached!");
             }
         }
-     }
+        else
+        {
+            if (level < 6)
+            {
+
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().hp = 10 * (level + 1);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().healthLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().hp = 20 * level;
+                Debug.Log("Max level reached!");
+            }
+        }
+    }
         public override void OnUpdate()
     {
         throw new System.NotImplementedException();
@@ -337,6 +351,21 @@ public class Hp : Upgrade
                 Debug.Log("Max level reached!");
             }
         }
+        else
+        {
+            if (level < 6)
+            {
+
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().playerDamage = 10 * (level + 1);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().dmgLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().playerDamage = 10 * level;
+                Debug.Log("Max level reached!");
+            }
+        }
+
     }
         public override void OnUpdate()
         {
@@ -362,6 +391,7 @@ public class Hp : Upgrade
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().backweaponMode = true;
             else Debug.Log("You already bought your backweapon!");
         }
+
         }
         public override void OnUpdate()
         {
@@ -396,6 +426,22 @@ public class Hp : Upgrade
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
                 Debug.Log("Limit reached");
+            }
+        }
+        else
+        {
+            if (level < 6)
+            {
+
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().moveForce = 4 * (level + 1);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().bulletSpeed = 20 + (3 * (level + 1));
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().speedLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().moveForce = 4 * level;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().bulletSpeed = 20 + (3 * level);
+                Debug.Log("Max level reached!");
             }
         }
     }
