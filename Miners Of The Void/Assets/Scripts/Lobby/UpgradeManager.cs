@@ -20,6 +20,7 @@ namespace MOV.Upgrades
         public GameObject slot4;
         public GameObject insertGO;
         private bool imageIn = false;
+        private bool full = false;
 
 
 
@@ -40,6 +41,38 @@ namespace MOV.Upgrades
         public void ASummon()
         {
             
+                if (!imageIn)
+                {
+                    if (slot1.transform.childCount == 0)
+                    {
+                        Instantiate(insertGO, slot1.transform);
+                        full = false;
+                    }
+                    else if (slot2.transform.childCount == 0)
+                    {
+                        Instantiate(insertGO, slot2.transform);
+                        full = false;
+                    }
+                    else if (slot3.transform.childCount == 0)
+                    {
+                        Instantiate(insertGO, slot3.transform);
+                        full = false;
+                    }
+                    else if (slot4.transform.childCount == 0)
+                    {
+                        Instantiate(insertGO, slot4.transform);
+                        full = false;
+                        Debug.Log(full);
+                    }
+                    else
+                    {
+                        Debug.Log(full);
+                        full = true;
+                    }
+                    imageIn = true;
+                }
+            if (full == false)
+            {
                 if (upgradeType == "SpeedButton")
                 {
                     level = playerstats.speedLevel;
@@ -77,30 +110,7 @@ namespace MOV.Upgrades
                 //mySlots.InsertAtEnd("backWeapon");
             }
 
-            if (!imageIn)
-            {
-                if (slot1.transform.childCount == 0)
-                {
-                    Instantiate(insertGO, slot1.transform);
-                }
-                else if (slot2.transform.childCount == 0)
-                {
-                    Instantiate(insertGO, slot2.transform);
-                }
-                else if (slot3.transform.childCount == 0)
-                {
-                    Instantiate(insertGO, slot3.transform);
-                }
-                else if (slot4.transform.childCount == 0)
-                {
-                    Instantiate(insertGO, slot4.transform);
-                }
-                else
-                {
-                   
-                }
                 
-                imageIn = true;
             }
             /*Debug.Log(mySlots.Get(0));
             Debug.Log(mySlots.Get(1));
@@ -109,6 +119,7 @@ namespace MOV.Upgrades
         }
         public void UnSummon()
         {
+            
             
             if (upgradeType == "SpeedButton")
             {
@@ -334,3 +345,35 @@ namespace MOV.Upgrades
     }
 
     }
+public class Zoom : Upgrade
+{
+    public Zoom(string upName) : base(upName)
+    {
+    }
+
+    public override void OnPut(float level)
+    {
+        if (level < 6)
+        {
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
+            Debug.Log("Limit reached");
+        }
+    }
+    public override void OnUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void OnRemove()
+    {
+        GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4;
+        GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20;
+    }
+
+}

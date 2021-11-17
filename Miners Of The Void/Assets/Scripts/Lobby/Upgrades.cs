@@ -8,7 +8,7 @@ public class Upgrades : MonoBehaviour
     static GameObject player;
     public GameObject imagem;
     public bool upgradeplaced;
-    GameObject slot1;
+    public GameObject menu;
     
     
     
@@ -27,12 +27,9 @@ public class Upgrades : MonoBehaviour
     {
         player.GetComponent<PlayerMovement>().enabled = true;
         NPC.GetComponent<NPCMenus>().openMenu = false;
-        Destroy(gameObject);    
+        menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 500);    
     }
-    public void AddUpgradeInSlot()
-    {
-        
-    }
+   
     
     
 
