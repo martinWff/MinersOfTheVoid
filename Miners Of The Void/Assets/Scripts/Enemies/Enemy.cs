@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     //Enemy shoot
     public GameObject bulletPrefab;
-    public float bulletOffset = 1.5f;
+    public float bulletOffset = 4f;
     public float bulletSpeed = 14;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
         Debug.Log(playerdmg);
         bullet = bulletPrefab.GetComponent<Bullet>();
-        
+       
         
 
 
@@ -65,8 +65,13 @@ public class Enemy : MonoBehaviour
             {
 
 
-                Debug.Log(bulletPrefab);
+                //Debug.Log(bulletPrefab);
                 Vector3 Shotdirection = transform.up;
+
+                //GameObject bullet = EnemyPool.bulletInstanse.GetEnemyBullet();
+                //bullet.SetActive(true);
+                //bullet.transform.position = transform.position + (Shotdirection.normalized * bulletOffset);
+                //Debug.Log("posição da bala "+bullet.transform.position);
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
                 bulletShootTime = bulletCooldownTime;
                 bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;

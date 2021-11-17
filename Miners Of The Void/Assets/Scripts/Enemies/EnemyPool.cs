@@ -2,48 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPool : MonoBehaviour
+public class EnemyPool : MonoBehaviour
 {
+    public static EnemyPool bulletInstanse;
 
-    public static BulletPool bulletPoolInstanse;
 
     [SerializeField]
     private GameObject pooledBullet;
     private bool notEnougthBulletsInPool = true;
-    
 
-    //list to store the bullets
+    // the list of bulets
     private List<GameObject> bullets;
 
     private void Awake()
     {
-        
-        bulletPoolInstanse = this;
-
+        bulletInstanse = this;
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         bullets = new List<GameObject>();
-  
     }
 
-    public GameObject GetBullet()
-    {
 
+    public GameObject GetEnemyBullet()
+    {
         //if are bullets in the list
-        if(bullets.Count > 0)
+        if (bullets.Count > 0)
         {
-            
-            for(int i = 0; i < bullets.Count; i++)
+
+            for (int i = 0; i < bullets.Count; i++)
             {
-                if(!bullets[i].activeInHierarchy)
+                if (!bullets[i].activeInHierarchy)
                 {
                     return bullets[i];
                 }
             }
-            
+
         }
 
         //if there is no bullets in the list 
@@ -57,13 +53,13 @@ public class BulletPool : MonoBehaviour
             return bul;
         }
 
+
         return null;
     }
 
+    //return the bullet when colid with player
     public void ReturnBullet(GameObject bullet)
     {
         bullet.SetActive(false);
     }
-
-   
 }
