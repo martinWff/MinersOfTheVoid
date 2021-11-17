@@ -21,6 +21,8 @@ namespace MOV.Upgrades
         public GameObject insertGO;
         private bool imageIn = false;
         private bool full = false;
+        public bool human = false;
+        public PlayerMovement humanStats;
 
 
 
@@ -30,6 +32,7 @@ namespace MOV.Upgrades
             player = GameObject.FindGameObjectWithTag("Spaceship");
            // mySlots = new Array<string>(4);
             playerstats = player.GetComponent<SpaceshipMovement>();
+            humanStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
             slot1 = GameObject.Find("Slot1");
             slot2 = GameObject.Find("Slot2");
             slot3 = GameObject.Find("Slot3");
@@ -37,10 +40,10 @@ namespace MOV.Upgrades
             
         }
 
-        
+
         public void ASummon()
         {
-            
+          if (!human) { 
                 if (!imageIn)
                 {
                     if (slot1.transform.childCount == 0)
@@ -77,45 +80,77 @@ namespace MOV.Upgrades
                 {
                     level = playerstats.speedLevel;
                     AddUpgrade(new Speed("speed"));
-                    
-                  //  mySlots.InsertAtEnd("speed");
-                   
-                    
+
+                    //  mySlots.InsertAtEnd("speed");
+
+
                 }
                 if (upgradeType == "ShieldButton")
                 {
                     level = playerstats.shieldLevel;
                     AddUpgrade(new Shield("shield"));
-                //  mySlots.InsertAtEnd("shield");
+                    //  mySlots.InsertAtEnd("shield");
 
 
-            }
+                }
                 if (upgradeType == "HealthButton")
                 {
                     level = playerstats.healthLevel;
-                AddUpgrade(new Hp("health"));
-                // mySlots.InsertAtEnd("health");
-                // mySlots.InsertAtEnd("shield");
-            }
+                    AddUpgrade(new Hp("health"));
+                    // mySlots.InsertAtEnd("health");
+                    // mySlots.InsertAtEnd("shield");
+                }
                 if (upgradeType == "BackWeapon")
                 {
-                
-                AddUpgrade(new BackWeapon("backweapon"));
-                //mySlots.InsertAtEnd("backWeapon");
+
+                    AddUpgrade(new BackWeapon("backweapon"));
+                    //mySlots.InsertAtEnd("backWeapon");
+                }
+                if (upgradeType == "DmgButton")
+                {
+                    level = playerstats.dmgLevel;
+                    AddUpgrade(new Dmg("dmg"));
+                    //mySlots.InsertAtEnd("backWeapon");
+                }
+
+
+              }
             }
-            if (upgradeType == "DmgButton")
+            else
             {
-                level = playerstats.dmgLevel;
-                AddUpgrade(new Dmg("dmg"));
-                //mySlots.InsertAtEnd("backWeapon");
+                if (upgradeType == "SpeedButton")
+                {
+                    level = humanStats.speedLevel;
+                    AddUpgrade(new Speed("speed"));
+
+                    //  mySlots.InsertAtEnd("speed");
+
+
+                }
+                if (upgradeType == "ShieldButton")
+                {
+                    level = humanStats.shieldLevel;
+                    AddUpgrade(new Shield("shield"));
+                    //  mySlots.InsertAtEnd("shield");
+
+
+                }
+                if (upgradeType == "HealthButton")
+                {
+                    level = humanStats.healthLevel;
+                    AddUpgrade(new Hp("health"));
+                    // mySlots.InsertAtEnd("health");
+                    // mySlots.InsertAtEnd("shield");
+                }
+                if (upgradeType == "DmgButton")
+                {
+                    level = humanStats.dmgLevel;
+                    AddUpgrade(new Dmg("dmg"));
+                    //mySlots.InsertAtEnd("backWeapon");
+                }
+
             }
 
-                
-            }
-            /*Debug.Log(mySlots.Get(0));
-            Debug.Log(mySlots.Get(1));
-            Debug.Log(mySlots.Get(2));
-            Debug.Log(mySlots.Get(3));*/
         }
         public void UnSummon()
         {
@@ -171,7 +206,7 @@ namespace MOV.Upgrades
         public void AddUpgrade(Upgrade upg)
         {
 
-            upg.OnPut(level);
+            upg.OnPut(level, human);
 
         }
         
@@ -185,7 +220,7 @@ namespace MOV.Upgrades
         
        public string upgradeName;
 
-        public abstract void OnPut(float level);
+        public abstract void OnPut(float level,bool who);
 
         public abstract void OnUpdate();
 
@@ -204,17 +239,34 @@ namespace MOV.Upgrades
     {
     }
 
-    public override void OnPut(float level)
+    public override void OnPut(float level, bool who)
     {
-        if (level < 6)
+        if (!who)
         {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield = 10 * (level + 1);
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().shieldLevel += 1;
+            if (level < 6)
+            {
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield = 10 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().shieldLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield = 10 * level;
+                Debug.Log("Max level reached!");
+            }
         }
         else
         {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield = 10 * level;
-            Debug.Log("Max level reached!");
+            if (level < 6)
+            {
+                Debug.Log("I'm here");
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().totalShield = 10 * (level + 1);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().shieldLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().totalShield = 10 * level;
+                Debug.Log("Max level reached!");
+            }
         }
     
 
@@ -229,54 +281,61 @@ namespace MOV.Upgrades
     }
         
     }
-    public class Hp : Upgrade
-    {
+public class Hp : Upgrade
+{
     public Hp(string upName) : base(upName)
     {
     }
 
-    public override void OnPut(float level)
+    public override void OnPut(float level, bool who)
+    {
+        if (!who)
         {
-        if (level < 6)
-        {
+            if (level < 6)
+            {
 
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * (level + 1);
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().healthLevel += 1;
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().healthLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * level;
+                Debug.Log("Max level reached!");
+            }
         }
-        else
-        {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * level;
-            Debug.Log("Max level reached!"); 
-        }
-    }
+     }
         public override void OnUpdate()
-        {
-            throw new System.NotImplementedException();
-        }
-        public override void OnRemove()
-        {
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void OnRemove()
+    {
         GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20;
     }
+}
 
-    }
+    
     public class Dmg : Upgrade
     {
     public Dmg(string upName) : base(upName)
     {
     }
 
-    public override void OnPut(float level)
+    public override void OnPut(float level, bool who)
         {
-        if (level < 6)
+        if (!who)
         {
+            if (level < 6)
+            {
 
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().playerDamage = 10 * (level + 1);
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().dmgLevel += 1;
-        }
-        else
-        {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().playerDamage = 10 * level;
-            Debug.Log("Max level reached!");
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().playerDamage = 10 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().dmgLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().playerDamage = 10 * level;
+                Debug.Log("Max level reached!");
+            }
         }
     }
         public override void OnUpdate()
@@ -295,11 +354,14 @@ namespace MOV.Upgrades
     {
     }
 
-    public override void OnPut(float level)
+    public override void OnPut(float level, bool who)
         {
-        if (GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().backweaponMode == false)
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().backweaponMode = true;
-        else Debug.Log("You already bought your backweapon!");
+        if (!who)
+        {
+            if (GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().backweaponMode == false)
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().backweaponMode = true;
+            else Debug.Log("You already bought your backweapon!");
+        }
         }
         public override void OnUpdate()
         {
@@ -319,19 +381,22 @@ namespace MOV.Upgrades
     {
     }
 
-    public override void OnPut(float level)
+    public override void OnPut(float level, bool who)
         {
-        if (level < 6)
+        if (!who)
         {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
-        }
-        else
-        {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
-            Debug.Log("Limit reached");
+            if (level < 6)
+            {
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
+                Debug.Log("Limit reached");
+            }
         }
     }
     public override void OnUpdate()
@@ -345,35 +410,4 @@ namespace MOV.Upgrades
     }
 
     }
-public class Zoom : Upgrade
-{
-    public Zoom(string upName) : base(upName)
-    {
-    }
 
-    public override void OnPut(float level)
-    {
-        if (level < 6)
-        {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
-        }
-        else
-        {
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
-            Debug.Log("Limit reached");
-        }
-    }
-    public override void OnUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public override void OnRemove()
-    {
-        GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4;
-        GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20;
-    }
-
-}
