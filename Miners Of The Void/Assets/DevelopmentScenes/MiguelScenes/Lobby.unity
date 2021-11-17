@@ -1106,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_Padding.m_Left
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 3718028146106104809, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4742597532719624363, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5029,24 +5033,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4373045603281658320, guid: 5afdbb2474300ee409c7ee2ffed25011, type: 3}
   m_PrefabInstance: {fileID: 1552658953}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1215886556 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1215886556, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
-  m_PrefabInstance: {fileID: 344772730}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1215886561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215886556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97916e28cd6fe02458b6e52bb8f1e0cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 0}
 --- !u!1001 &1221569659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7741,7 +7727,6 @@ MonoBehaviour:
   goldSprite: {fileID: 21300000, guid: aecd5fb112b47194597216df30401b88, type: 3}
   ironSprite: {fileID: 21300000, guid: 00bbefcac165e494da876a8470f70a7b, type: 3}
   copperSprite: {fileID: 21300000, guid: 961147b6c80feef45991b4c3ca309c0c, type: 3}
-  contractGenerator: {fileID: 0}
 --- !u!1001 &1887027390
 PrefabInstance:
   m_ObjectHideFlags: 0
