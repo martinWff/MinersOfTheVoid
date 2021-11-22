@@ -43,6 +43,7 @@ public class SpaceshipMovement : MonoBehaviour
     public GameObject enemy;
     private Animator animator;
     
+    private float deathTimer = 0;
     //DisablingUI
 
 
@@ -52,9 +53,9 @@ public class SpaceshipMovement : MonoBehaviour
         statusDisplay = GameObject.Find("UiHpShield");
         statusDisplayText=statusDisplay.GetComponent<Text>();
         canvas = GameObject.Find("Canvas");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        camera2 = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
         animator = GetComponent<Animator>();
-        camera2 = GameObject.Find("Main Camera").GetComponent<StaticCameraController>();
-        
 
 
     }
@@ -92,6 +93,11 @@ public class SpaceshipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
+
+        
+        
+           
+        
 
     }
 
@@ -138,12 +144,10 @@ public class SpaceshipMovement : MonoBehaviour
                 dead = true;
                 TransferPlayer();
             }
-
+            
             Destroy(collision.gameObject);
-            //EnemyPool.bulletInstanse.ReturnBullet(collision.gameObject);
-
         }
-        if (collision.gameObject.tag == "Passage")
+        if (collision.gameObject.tag == "Passage" || collision.gameObject.tag == "Structure")
         {
             TransferPlayer();
         }
@@ -154,16 +158,25 @@ public class SpaceshipMovement : MonoBehaviour
     
     private void TransferPlayer()
     {
-        camera2.Human = true;
-        camera2.ChangeCamera();
-        PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
-        player2.transform.position = new Vector3(8,0,0);
-        player2.enabled = true;
-        enemy.GetComponent<Enemy>().enabled = false;
-        enemy.GetComponent<SpaceEnemyMove>().enabled = false;
-        rb.velocity = new Vector2(0, 0);
-        animator.SetFloat("isMoving", -1);
-        GetComponent<SpaceshipMovement>().enabled = false;
+        
+            camera2.Human = true;
+            camera2.ChangeCamera();
+            PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
+            player2.transform.position = new Vector3(8, 0, 0);
+            player2.enabled = true;
+            rb.velocity = new Vector2(0, 0);
+            transform.position = new Vector3(-16.84f, 0.11f, 0);
+            rb.rotation = 0;
+            animator.SetFloat("isMoving", -1);
+            if (enemy != null)
+            {
+                enemy.GetComponent<Enemy>().enabled = false;
+                enemy.GetComponent<SpaceEnemyMove>().enabled = false;
+            }
+            player2.deathTimer = 60;
+            GetComponent<SpaceshipMovement>().enabled = false;
+        
+        
     }
     public void Revive()
     {
