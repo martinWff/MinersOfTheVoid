@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     //Enemy stats
     public float perEnemieHealthTotal = 1;
-    public float perEnemieShieldTotal = 0.5f;
+    public float perEnemieShieldTotal = 1;
     public float enemieHealthTotal = 20;
     public float enemieHealth = 20;
     public float totalShield = 10;
