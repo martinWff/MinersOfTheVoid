@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,15 +25,22 @@ public class PlayerMovement : MonoBehaviour
     public float totalShield = 20;
     public float shield = 20;
     public float hp = 20;
+    public GameObject statusDisplay;
+    public Text statusDisplayText;
 
     public float speedLevel = 1;
     public float dmgLevel = 1;
     public float shieldLevel = 1;
     public float healthLevel = 1;
+
+    public float deathTimer = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        statusDisplay = GameObject.Find("UiHpShield");
+        statusDisplayText = statusDisplay.GetComponent<Text>();
+
     }
     private void Update()
     {
@@ -54,13 +62,19 @@ public class PlayerMovement : MonoBehaviour
             bulletShootTime -= Time.deltaTime;
             
         }
-        
+        if (shield < totalShield)
+        {
+            shield += (totalShield / 10) * Time.deltaTime;
+        }
+        if (shield > totalShield) shield = totalShield;
+        statusDisplayText.text = "Hp: " + Mathf.Floor(hp) + " / Shield: " + Mathf.Floor(shield);
+        if (deathTimer > 0) deathTimer -= Time.deltaTime;
 
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Passage")
+        if (collision.gameObject.tag == "Passage" && deathTimer <= 0)
         {
             camera.Human = false;
             camera.ChangeCamera();
@@ -68,8 +82,11 @@ public class PlayerMovement : MonoBehaviour
             player2.enabled = true;
             player2.Revive();
             rb.velocity = new Vector2(0, 0);
-            enemy.GetComponent<Enemy>().enabled = true;
-            enemy.GetComponent<SpaceEnemyMove>().enabled = true;
+            if (enemy != null)
+            {
+                enemy.GetComponent<Enemy>().enabled = true;
+                enemy.GetComponent<SpaceEnemyMove>().enabled = true;
+            }
             GetComponent<PlayerMovement>().enabled = false;
             
             
