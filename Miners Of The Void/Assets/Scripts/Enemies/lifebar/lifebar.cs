@@ -10,12 +10,9 @@ public class lifebar : MonoBehaviour
     private void Awake()
     {
 
-        bar = GameObject.Find("Bar").GetComponent<Transform>();
+        //bar = GameObject.Find("Bar").GetComponent<Transform>();
         //bar.localScale = new Vector3(0.5f, 1);
-       
 
-        
-        
     }
 
     // Update is called once per frame

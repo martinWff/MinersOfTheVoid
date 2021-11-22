@@ -8,8 +8,6 @@ public class Enemy : MonoBehaviour
     private float Distance;
 
     [SerializeField] private lifebar lifebar;
-    [SerializeField] private shieldbar shieldbar;
-
 
     //Enemy shoot
     public GameObject bulletPrefab;
@@ -21,15 +19,12 @@ public class Enemy : MonoBehaviour
     private Bullet bullet;
 
     //Enemy stats
-    public float perEnemieHealthTotal = 1;
-    public float perEnemieShieldTotal = 0.5f;
     public float enemieHealthTotal = 20;
     public float enemieHealth = 20;
     public float totalShield = 10;
     public float shield = 10;
     public float playerdmg;
     private float perEnemyLife;
-    private float perEnemyShield;
 
 
 
@@ -47,17 +42,18 @@ public class Enemy : MonoBehaviour
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
         //Debug.Log(playerdmg);
         bullet = bulletPrefab.GetComponent<Bullet>();
-        lifebar.Setsize(perEnemieHealthTotal);
-        shieldbar.Setsize2(perEnemieShieldTotal);
-        //Debug.Log(shieldbar);
+        lifebar.Setsize(0.4f);
+        //Debug.Log(lifebar);
+
+
+
+
 
     }
 
 
     void Update()
     {
-        
-
         if (player == null) return;
         Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         Vector3 direction = player.transform.position - transform.position;
@@ -99,14 +95,12 @@ public class Enemy : MonoBehaviour
         if (shield > totalShield) shield = totalShield;
 
 
-        
+        lifebar.Setsize(perEnemyLife);
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            Debug.Log(gameObject);
 
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
@@ -124,10 +118,6 @@ public class Enemy : MonoBehaviour
 
             Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
             perEnemyLife = enemieHealth / enemieHealthTotal;
-            perEnemyShield = shield / totalShield;
-            lifebar.Setsize(perEnemyLife);
-            shieldbar.Setsize2(perEnemyShield);
-
 
             Destroy(collision.gameObject);
         }
