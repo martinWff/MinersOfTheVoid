@@ -11,6 +11,9 @@ TagManager:
   - Spaceship
   - Alarm
   - PirateExplosion
+  - Passage
+  - RefineryInput
+  - RefineryOutput
   layers:
   - Default
   - TransparentFX

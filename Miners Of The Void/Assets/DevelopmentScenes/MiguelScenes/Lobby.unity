@@ -1078,6 +1078,34 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1882296052, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: goldOrePrefab
+      value: 
+      objectReference: {fileID: 4520412400152991094, guid: 2d227c3f15eee8e4c97405ff321e1a67, type: 3}
+    - target: {fileID: 1882296052, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: ironOrePrefab
+      value: 
+      objectReference: {fileID: 1459819657913238526, guid: 1b54c34ee8365534b923fe062eb47f70, type: 3}
+    - target: {fileID: 1882296052, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: copperOrePrefab
+      value: 
+      objectReference: {fileID: 2711961143151041048, guid: f2704f3752a6a1349a555a6aa0c571b3, type: 3}
+    - target: {fileID: 1882296052, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: goldNuggetPrefab
+      value: 
+      objectReference: {fileID: 4130450791444863332, guid: af0bdc15a894b5040a35cc20f0a580d6, type: 3}
+    - target: {fileID: 1882296052, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: ironNuggetPrefab
+      value: 
+      objectReference: {fileID: 4819509415165891364, guid: aa465c608b0c4ba4caa84dbd8b5e8b65, type: 3}
+    - target: {fileID: 1882296052, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: copperNuggetPrefab
+      value: 
+      objectReference: {fileID: 5796099594884396813, guid: 3e22f99ddeeaad3438340638c3c6d4f5, type: 3}
+    - target: {fileID: 4531263725188712030, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: m_TagString
+      value: RefineryInput
+      objectReference: {fileID: 0}
     - target: {fileID: 4742597532719624363, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1161,6 +1189,10 @@ PrefabInstance:
     - target: {fileID: 4742597532719624363, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491358794025498206, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: m_TagString
+      value: RefineryOutput
       objectReference: {fileID: 0}
     - target: {fileID: 8870235217466389503, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
       propertyPath: m_Name
@@ -1685,7 +1717,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.66666675
+  m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
