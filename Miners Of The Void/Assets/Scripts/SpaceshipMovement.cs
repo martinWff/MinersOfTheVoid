@@ -7,7 +7,9 @@ public class SpaceshipMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float minRotationDistance = 40;
-    
+
+    //objectPool
+    public ObjectPool objectPool;
 
     //Shot
     public GameObject bulletPrefab;
@@ -55,6 +57,7 @@ public class SpaceshipMovement : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         camera2 = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
+        objectPool = FindObjectOfType<ObjectPool>();
         animator = GetComponent<Animator>();
 
 
@@ -145,8 +148,49 @@ public class SpaceshipMovement : MonoBehaviour
                 TransferPlayer();
             }
             
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "BulletEnemiePool" && !dead && !immortality)
+        {
+            if (shield >= 10) shield -= 10;
+            if (shield < 10)
+            {
+                if (shield != 0) hp -= (10 - shield);
+
+                shield = 0;
+            }
+            if (hp <= 0)
+            {
+                hp = 0;
+                shield = 0;
+                dead = true;
+                TransferPlayer();
+            }
+            collision.gameObject.GetComponent<BulletTest>().touchedPlayer = true;
+            objectPool.RetrieveBullet(collision.gameObject);
+        }
+
+        //Pirate Explosion Damage
+        if (collision.gameObject.tag == "PirateExplosion" && !dead && !immortality)
+        {
+            if (shield >= 10) shield -= 10;
+            if (shield < 10)
+            {
+                if (shield != 0) hp -= (10 - shield);
+
+                shield = 0;
+            }
+            if (hp <= 0)
+            {
+                hp = 0;
+                shield = 0;
+                dead = true;
+                TransferPlayer();
+            }
+
+        }
+
         if (collision.gameObject.tag == "Passage" || collision.gameObject.tag == "Structure")
         {
             TransferPlayer();

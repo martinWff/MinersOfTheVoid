@@ -30,10 +30,12 @@ public class Queue<T>
 {
     private QueueNode<T> front;
     private QueueNode<T> back;
+    public int Count { get; private set; }
     public Queue()
     {
         front = null;
         back = null;
+        Count = 0;
     }
     public void Enqueue(T value)
     {
@@ -47,6 +49,7 @@ public class Queue<T>
             back.Next = newnode;
             back = newnode;
         }
+        Count++;
      }
     public QueueNode<T> Dequeue()
     {
@@ -58,6 +61,7 @@ public class Queue<T>
             if (front == null) back = null;
             return node;
         }
+        Count--;
     }
     public bool IsEmpty()
     {

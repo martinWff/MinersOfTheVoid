@@ -131,7 +131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7978085933503266231}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 256995ab7c037f449bf0ef0dc25fe411, type: 3}
   m_Name: 
@@ -152,3 +152,10 @@ MonoBehaviour:
   bulletsAmount: 30
   startAngle: 0
   endAngle: 360
+  objectPool: {fileID: 0}
+  enemieHealth: 20
+  totalShield: 10
+  shield: 10
+  playerdmg: 0
+  timer: 2
+  enemyRange: 20

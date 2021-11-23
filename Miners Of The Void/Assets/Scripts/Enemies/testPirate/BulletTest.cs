@@ -6,6 +6,7 @@ public class BulletTest : MonoBehaviour
 {
     public Vector2 moveDirection;
     private float moveSpeed = 5f;
+    public bool touchedPlayer;
 
     //player colision
   
@@ -14,7 +15,9 @@ public class BulletTest : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("Destroy", 4f);
+        Invoke("Destroy", 5f);
+
+        
     }
 
     // Start is called before the first frame update
@@ -37,7 +40,10 @@ public class BulletTest : MonoBehaviour
 
     private void Destroy()
     {
-        gameObject.SetActive(false);
+        if (!touchedPlayer)
+        {
+            GetComponent<PoolElementBehaviour>().ReturnToPool();
+        }
     }
 
     private void OnDisable()
@@ -46,13 +52,13 @@ public class BulletTest : MonoBehaviour
     }
     
     
-private void OnTriggerEnter2D(Collider2D collision)
+/*private void OnTriggerEnter2D(Collider2D collision)
 {
         if (collision.gameObject.tag == "Spaceship")
         {
-            Destroy(gameObject);
-            
+            GetComponent<PoolElementBehaviour>().ReturnToPool();
+
         }
 
-    }
+    }*/
 }

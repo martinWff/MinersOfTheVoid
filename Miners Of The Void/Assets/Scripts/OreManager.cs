@@ -13,6 +13,9 @@ public class OreManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        int ind;
+       Debug.Log(GetOreMaterialByMaterialName("Iron Ingot",out ind));
+        Debug.Log(ind);
        
     }
 
@@ -58,7 +61,7 @@ public class OreManager : MonoBehaviour
                  for (int i = 0;i<oreResourceObject.materialResourceObjects.Length;i++)
                  {
                    if (oreResourceObject.materialResourceObjects[i].resourceName == materialName) {
-
+                        Debug.Log(materialName);
                         index = i;
                         return oreResourceObject.materialResourceObjects[i];
                    
@@ -68,6 +71,52 @@ public class OreManager : MonoBehaviour
         }
         return null;
     }
+
+
+    public MaterialResourceObject GetOreMaterialByMaterialName(string materialName)
+    {
+        foreach (OreResourceObject oreResourceObject in ores)
+        {
+            if (oreResourceObject != null)
+            {
+
+                for (int i = 0; i < oreResourceObject.materialResourceObjects.Length; i++)
+                {
+                    if (oreResourceObject.materialResourceObjects[i].resourceName == materialName)
+                    {
+                       
+                        return oreResourceObject.materialResourceObjects[i];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    public OreResourceObject GetOreResourceFromMaterial(MaterialResourceObject mat)
+    {
+        if (mat != null)
+        {
+            return GetOreResourceByName(mat.resourceName);
+        }
+        else return null;
+    }
+
+    public OreResourceObject GetOreResourceFromMaterialName(string materialName)
+    {
+        foreach (OreResourceObject oreResourceObject in ores)
+        {
+            foreach (MaterialResourceObject material in oreResourceObject.materialResourceObjects)
+            {
+                if (material.resourceName == materialName)
+                {
+                    return oreResourceObject;
+                }
+            }
+        }
+        return null;
+    }
+
 }
 
 [System.Serializable]

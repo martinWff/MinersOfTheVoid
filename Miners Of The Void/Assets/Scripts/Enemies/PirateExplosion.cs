@@ -13,11 +13,12 @@ public class PirateExplosion : MonoBehaviour
 
     [SerializeField] private lifebar lifebar;
     [SerializeField] private shieldbar shieldbar;
+    [SerializeField] private SpriteRenderer alarm;
 
     private Vector3 targetPosition;
 
-    //game object alarm
-    private SpriteRenderer alarm;
+    
+   
 
     //stop the alarm 
     private bool attack = false;
@@ -49,7 +50,7 @@ public class PirateExplosion : MonoBehaviour
     void Start()
     {
         spaceship = GameObject.FindGameObjectWithTag("Spaceship");
-        alarm = GameObject.FindGameObjectWithTag("Alarm").GetComponent<SpriteRenderer>();
+        //alarm = GameObject.FindGameObjectWithTag("Alarm").GetComponent<SpriteRenderer>();
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Spaceship");
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;

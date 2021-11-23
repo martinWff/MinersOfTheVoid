@@ -6,25 +6,37 @@ public class ObjectPool : MonoBehaviour
 {
     private Queue<GameObject> queue;
     public GameObject replicate;
-    public int capacity = 15;
+    public int capacity = 30;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start");
         queue = new Queue<GameObject>();
         for (int i = 0; i < capacity; i++)
         {
-            GameObject copy = Instantiate(replicate, transform);
-           copy.AddComponent<PoolElementBehaviour>().pool = this;
-           queue.Enqueue(copy);
+            //if(queue.Count < 30)
+            //{
+                GameObject copy = Instantiate(replicate, transform);
+                copy.AddComponent<PoolElementBehaviour>().pool = this;
+                queue.Enqueue(copy);
+            //}
+           
         }
     }
 
     public GameObject GetBullet()
     {
-        GameObject element = queue.Dequeue()?.Data;
-        element.transform.SetParent(null);
-        element.SetActive(true);
-        return element;
+        if (queue.Count > 0)
+        {
+            GameObject element = queue.Dequeue()?.Data;
+            if (element != null)
+            {
+                element.transform.SetParent(null);
+                element.SetActive(true);
+            }
+            return element;
+        }
+        return null;
     }
 
 
@@ -34,4 +46,11 @@ public class ObjectPool : MonoBehaviour
         element.SetActive(false);
         element.transform.SetParent(transform);
     }
+
+    public int CountBullets()
+    {
+        return queue.Count;
+    }
+
+    
 }
