@@ -57,12 +57,13 @@ public class OreManager : MonoBehaviour
         {
             if (oreResourceObject != null)
             {
-                
                  for (int i = 0;i<oreResourceObject.materialResourceObjects.Length;i++)
                  {
+                    Debug.Log("Hellooooo");
                    if (oreResourceObject.materialResourceObjects[i].resourceName == materialName) {
                         Debug.Log(materialName);
                         index = i;
+                        
                         return oreResourceObject.materialResourceObjects[i];
                    
                     }

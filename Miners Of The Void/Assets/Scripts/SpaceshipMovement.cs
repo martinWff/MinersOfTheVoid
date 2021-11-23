@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SpaceshipMovement : MonoBehaviour
 {
@@ -96,7 +97,11 @@ public class SpaceshipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
-
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            DontDestroyOnLoad(gameObject);
+            
+        }
         
         
            

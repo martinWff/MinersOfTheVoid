@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
   m_Name: IronNugget
   m_EditorClassIdentifier: 
-  resourceId: 480
-  resourceName: Iron Nugget
+  resourceId: 1026
+  resourceName: IronNugget
   resourceType: 1
   sprite: {fileID: 21300000, guid: 3f223f5a9d8fee54a8c666bb35c43b23, type: 3}

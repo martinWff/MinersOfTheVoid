@@ -1,62 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RefineryInventory : MonoBehaviour
 {
-    public Inventory inventory;
+    
 
 
-    public Contract oreContract;
-    InventoryController inventoryController;
+    //Sprites
     public Sprite goldOreSprite;
     public Sprite ironOreSprite;
     public Sprite copperOreSprite;
     public Sprite goldNuggetSprite;
     public Sprite ironNuggetSprite;
     public Sprite copperNuggetSprite;
-    private bool imageIsInSlot = false;
 
-    //iron
-    public GameObject ironOrePrefab;
-    public GameObject ironNuggetPrefab;
-    //copper
-    public GameObject copperOrePrefab;
-    public GameObject copperNuggetPrefab;
-    //gold
-    public GameObject goldOrePrefab;
-    public GameObject goldNuggetPrefab;
+    //Class related stuff
+    public OreStack oreStack;
+    public Inventory inventory;
+    public Contract oreContract;
+    InventoryController inventoryController;
 
+    
 
+    //Gameobjects to select
 
-    GameObject inputItem;
-    GameObject outputItem;
-    string ore;
+    public Image inputItem;
+    public Image outputItem;
 
-    //public ContractGenerator contractGenerator;
-    public Contract currentContract;
 
     //Refine
-    Queue<string> myQueue;
+    Queue<MaterialID> myQueue;
+    OreResourceObject ore;
+
+    MaterialResourceObject next;
+    MaterialResourceObject prev;
+
+
+    //Unclassified variables
     float timer = 0;
-    GameObject inputRef;
-    GameObject outputRef;
+    private bool imageIsInSlot = false;
+
     private void Awake()
     {
         inventoryController = GetComponent<InventoryController>();
         Debug.Log(inventoryController.slotPrefab);
         inventory = new Inventory();
         InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
-        myQueue = new Queue<string>();
-        inputRef = GameObject.FindGameObjectWithTag("RefineryInput");
-        outputRef = GameObject.FindGameObjectWithTag("RefineryOutput");
+        myQueue = new Queue<MaterialID>();
         
     }
     void Start()
     {
-        inventory.AddOre(new OreStack("Iron", 6,ironOreSprite));
-        inventory.AddOre(new OreStack("Gold", 3, goldOreSprite));
-        inventory.AddOre(new OreStack("Copper", 5, copperOreSprite));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(10));
     }
     private void Update()
     {
@@ -66,16 +66,13 @@ public class RefineryInventory : MonoBehaviour
             
             if(timer <= 0)
             {
-                Debug.Log("Entrou no if");
-                if (ore == "Iron") inventory.AddOre(new OreStack("Iron Nugget", 1, ironNuggetSprite));
-                else if (ore == "Copper") inventory.AddOre(new OreStack("Copper Nugget", 1, copperNuggetSprite));
-                else if (ore == "Gold") inventory.AddOre(new OreStack("Gold Nugget", 1, goldNuggetSprite));
-                imageIsInSlot = false;
-                Debug.Log(imageIsInSlot);
+
+                inventory.AddOre(new OreStack(next.name, 1, next.sprite));
                 ore = null;
-                Destroy(inputItem);
-                Destroy(outputItem);
+                inputItem.color = new Color(255, 255, 255, 0);
+                outputItem.color = new Color(255, 255, 255, 0);
                 timer = 5;
+                imageIsInSlot = false;
             }
             else
             {
@@ -84,45 +81,44 @@ public class RefineryInventory : MonoBehaviour
         }
         if (!imageIsInSlot && !myQueue.IsEmpty())
         {
-            ore = myQueue.Dequeue().Data;
-            if (ore == "Iron") CreateRefineryItem(ironOrePrefab, ironNuggetPrefab);
-            if (ore == "Copper") CreateRefineryItem(copperOrePrefab, copperNuggetPrefab);
-            if (ore == "Gold") CreateRefineryItem(goldOrePrefab, goldNuggetPrefab);
+            MaterialID id = myQueue.Dequeue().Data;
+            /*prev = ore.materialResourceObjects[id.index];*/
+            
+            prev = OreManager.instance.GetOreMaterialByMaterialName(id.name, out id.index);
+            next = ore.materialResourceObjects[id.index+1];
+
+
+            imageIsInSlot = true;
+            inputItem.sprite = prev.sprite;
+            outputItem.sprite = next.sprite;
+            inputItem.color = new Color(255, 255, 255, 255);
+            outputItem.color = new Color(255, 255, 255, 255);
+            timer = 5;
             imageIsInSlot = true;
         }
         
+        
     }
 
-    public void CreateRefineryItem(GameObject prefabInput, GameObject prefabOutput)
+   /* public void CreateRefineryItem(GameObject prefabInput, GameObject prefabOutput)
     {
        
             inputItem = Instantiate(prefabInput, inputRef.transform);
             outputItem = Instantiate(prefabOutput, outputRef.transform);
         
         
-    }
+    }*/
 
-    public void RefineFunction(string oreInput, string oreOutput, GameObject prefabInput, GameObject prefabOutput,Sprite sprite, bool starting)
-    {
-        if (starting)
-        {
-            inputItem = Instantiate(prefabInput, inputRef.transform);
-            outputItem = Instantiate(prefabOutput, outputRef.transform);
-        }
-        if (!starting)
-        {
-            Destroy(inputItem);
-            Destroy(outputItem);
-            inventory.AddOre(new OreStack(oreOutput, 1, sprite));
-        }
-    }
-    public void Refine(string name, int quantity)
+            public void Refine(string name,int quantity)
     {
         if (quantity >= 3)
         {
+            int index = 0;
             Debug.Log("Dentro da Queue: " + name);
             if (myQueue.IsEmpty()) timer = 5;
-            myQueue.Enqueue(name);
+            Debug.Log(name + index);
+            MaterialResourceObject mat = OreManager.instance.GetOreMaterialByMaterialName(name, out index);
+            myQueue.Enqueue(new MaterialID(name,index));
             inventory.RetrieveAmount(name, 3);
         }
         else Debug.Log("You don't have enough "+name);
@@ -132,7 +128,17 @@ public class RefineryInventory : MonoBehaviour
     private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
     {
         inventoryController.AttachInventory(inventory);
-        
     }
 
+}
+public class MaterialID
+{
+    public string name;
+    public int index;
+
+    public MaterialID(string name,int index)
+    {
+        this.name = name;
+        this.index = index;
+    }
 }

@@ -15,4 +15,4 @@ MonoBehaviour:
   resourceId: 928
   resourceName: Osmium
   resourceType: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: a42017b01d3767d4893f7af58fe31cc6, type: 3}
