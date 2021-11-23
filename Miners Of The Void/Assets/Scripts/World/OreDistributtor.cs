@@ -8,6 +8,7 @@ public class OreDistributtor : MonoBehaviour
     public OreElement[] ores = new OreElement[3 + 2]; //3 commons and 2 rare;
 
     public float[] table = new float[5];
+    [SerializeField]private float amountOfRocksToGenerate = 1;
 
     public List<OreElement> distribution = new List<OreElement>(3+5);
 
@@ -23,10 +24,14 @@ public class OreDistributtor : MonoBehaviour
     void Awake()
     {
        GenerateDistributionPool();
-    /*   for (int i = 0;i<10;i++) { 
-        Debug.Log(Calculate());
-           }*/
-        
+
+        for (int i = 0; i < table.Length; i++)
+        {
+            amountOfRocksToGenerate -= table[i];
+
+        }
+        distributions.Add(new OreDistributionElement("Rock", (int)(amountOfRocksToGenerate * numberOfRocks)));
+
     }
 
     // Update is called once per frame
@@ -41,11 +46,11 @@ public class OreDistributtor : MonoBehaviour
         if (distributions.Count > 0)
         {
 
-            int v = Random.Range(0, ores.Length - 1);
-            /*   string distValue = ores[v].oreName;
-                  string sv = distributionTable[distValue];
-                  distribution.Remove();*/
-            int index = distributions.FindIndex((OreDistributionElement e) => { return e.oreName == ores[v].oreName; });
+            // int v = Random.Range(0, ores.Length - 1);
+
+            int v = Random.Range(0, distributions.Count);
+
+            int index = distributions.FindIndex((OreDistributionElement e) => { return e.oreName == distributions[v].oreName; });
          //   Debug.Log("found index ? " + index);
             if (index >= 0)
             {
@@ -59,7 +64,16 @@ public class OreDistributtor : MonoBehaviour
                 {
                     distributions[index] = element;
                 }
+
                 return element.oreName;
+              /*  if (element.oreName == "Rock")
+                {
+                    return null;
+                }
+                else
+                {
+                    return element.oreName;
+                }*/
             }
             else
             {
@@ -98,6 +112,7 @@ public class OreDistributtor : MonoBehaviour
             distributions.Add(new OreDistributionElement(ores[i].oreName, amount));
 
         }
+        
     }
 
 
