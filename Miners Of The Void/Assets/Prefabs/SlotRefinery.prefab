@@ -301,9 +301,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565b36fee7f368b4d8e92d48b24b1594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreStack:
-    oreName: 
-    sprite: {fileID: 0}
-    amount: 0
   image: {fileID: 4652374030366263739}
   quantityText: {fileID: 7165740635661362097}

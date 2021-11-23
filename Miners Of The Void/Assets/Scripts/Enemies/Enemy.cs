@@ -7,9 +7,13 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private float Distance;
 
+    [SerializeField] private lifebar lifebar;
+    [SerializeField] private shieldbar shieldbar;
+
+
     //Enemy shoot
     public GameObject bulletPrefab;
-    public float bulletOffset = 1.5f;
+    public float bulletOffset = 4f;
     public float bulletSpeed = 14;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
@@ -17,12 +21,16 @@ public class Enemy : MonoBehaviour
     private Bullet bullet;
 
     //Enemy stats
-
+    public float perEnemieHealthTotal = 1;
+    public float perEnemieShieldTotal = 1;
+    public float enemieHealthTotal = 20;
     public float enemieHealth = 20;
     public float totalShield = 10;
     public float shield = 10;
     public float playerdmg;
-    
+    private float perEnemyLife;
+    private float perEnemyShield;
+
 
 
     //Enemy rotation
@@ -34,21 +42,22 @@ public class Enemy : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Spaceship");
-        Debug.Log(player);
+        //Debug.Log(player);
         enemy = this.GetComponent<Rigidbody2D>();
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
-        Debug.Log(playerdmg);
+        //Debug.Log(playerdmg);
         bullet = bulletPrefab.GetComponent<Bullet>();
-        
-        
-
-
+        lifebar.Setsize(perEnemieHealthTotal);
+        shieldbar.Setsize2(perEnemieShieldTotal);
+        //Debug.Log(shieldbar);
 
     }
 
 
     void Update()
     {
+        
+
         if (player == null) return;
         Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         Vector3 direction = player.transform.position - transform.position;
@@ -65,8 +74,13 @@ public class Enemy : MonoBehaviour
             {
 
 
-                Debug.Log(bulletPrefab);
+                //Debug.Log(bulletPrefab);
                 Vector3 Shotdirection = transform.up;
+
+                //GameObject bullet = EnemyPool.bulletInstanse.GetEnemyBullet();
+                //bullet.SetActive(true);
+                //bullet.transform.position = transform.position + (Shotdirection.normalized * bulletOffset);
+                //Debug.Log("posição da bala "+bullet.transform.position);
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
                 bulletShootTime = bulletCooldownTime;
                 bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
@@ -83,11 +97,16 @@ public class Enemy : MonoBehaviour
             shield += (totalShield / 10) * Time.deltaTime;
         }
         if (shield > totalShield) shield = totalShield;
+
+
+        
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            Debug.Log(gameObject);
 
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
@@ -104,6 +123,11 @@ public class Enemy : MonoBehaviour
             }
 
             Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
+            perEnemyLife = enemieHealth / enemieHealthTotal;
+            perEnemyShield = shield / totalShield;
+            lifebar.Setsize(perEnemyLife);
+            shieldbar.Setsize2(perEnemyShield);
+
 
             Destroy(collision.gameObject);
         }

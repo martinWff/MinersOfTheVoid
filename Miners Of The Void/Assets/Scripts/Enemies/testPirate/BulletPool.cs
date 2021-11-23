@@ -19,6 +19,7 @@ public class BulletPool : MonoBehaviour
     {
         
         bulletPoolInstanse = this;
+
     }
 
     // Start is called before the first frame update
@@ -57,6 +58,11 @@ public class BulletPool : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void ReturnBullet(GameObject bullet)
+    {
+        bullet.SetActive(false);
     }
 
    
