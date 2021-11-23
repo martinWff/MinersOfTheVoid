@@ -68,6 +68,28 @@ public class OreManager : MonoBehaviour
         }
         return null;
     }
+
+
+    public MaterialResourceObject GetOreMaterialByMaterialName(string materialName)
+    {
+        foreach (OreResourceObject oreResourceObject in ores)
+        {
+            if (oreResourceObject != null)
+            {
+
+                for (int i = 0; i < oreResourceObject.materialResourceObjects.Length; i++)
+                {
+                    if (oreResourceObject.materialResourceObjects[i].resourceName == materialName)
+                    {
+
+                        return oreResourceObject.materialResourceObjects[i];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
 }
 
 [System.Serializable]

@@ -20,7 +20,7 @@ public class MaterialResourceObject : ScriptableObject
         resourceId = asciiCode;
     }
 
-    public OreStack GetOreStack(int amount = 0)
+    public OreStack GetOreStack(int amount = 1)
     {
         return new OreStack(resourceName, amount, sprite);
     }
