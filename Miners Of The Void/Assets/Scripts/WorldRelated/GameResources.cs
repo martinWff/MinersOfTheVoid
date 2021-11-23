@@ -12,12 +12,12 @@ public class OreStack : IResourceEqual {
 
     public int amount;
 
-
     public OreStack(string oreName,int amount = 1)
     {
         this.oreName = oreName;
         this.amount = amount;
     }
+
     public OreStack(string oreName, int amount,Sprite sprite)
     {
         this.oreName = oreName;

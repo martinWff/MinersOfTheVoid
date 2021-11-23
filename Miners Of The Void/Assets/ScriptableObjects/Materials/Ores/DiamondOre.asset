@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DiamondOre
   m_EditorClassIdentifier: 
   resourceId: 994
-  resourceName: DiamondOre
+  resourceName: Diamond
   resourceType: 0
   sprite: {fileID: 0}
