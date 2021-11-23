@@ -711,6 +711,7 @@ MonoBehaviour:
   speed: 15
   lifebar: {fileID: 241279508}
   shieldbar: {fileID: 745953725}
+  alarm: {fileID: 2131773381}
   perEnemieHealthTotal: 1
   perEnemieShieldTotal: 1
   enemieHealthTotal: 20

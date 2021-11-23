@@ -174,10 +174,10 @@ public class SpaceshipMovement : MonoBehaviour
         //Pirate Explosion Damage
         if (collision.gameObject.tag == "PirateExplosion" && !dead && !immortality)
         {
-            if (shield >= 20) shield -= 20;
-            if (shield < 20)
+            if (shield >= 10) shield -= 10;
+            if (shield < 10)
             {
-                if (shield != 0) hp -= (20 - shield);
+                if (shield != 0) hp -= (10 - shield);
 
                 shield = 0;
             }
