@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CopperNugget
   m_EditorClassIdentifier: 
   resourceId: 429
-  resourceName: CopperNugget
+  resourceName: Copper Nugget
   resourceType: 1
   sprite: {fileID: 21300000, guid: 2051f9a32ba32c2449dfd4bc74948834, type: 3}

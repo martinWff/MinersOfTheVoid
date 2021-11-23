@@ -11,7 +11,5 @@ public class OreResourceObject : ScriptableObject
     public MaterialResourceObject[] materialResourceObjects;
     public Tile tile;
     public OreRarity oreBaseRarity;
-
-
   
 }

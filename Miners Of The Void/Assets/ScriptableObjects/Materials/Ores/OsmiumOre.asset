@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OsmiumOre
   m_EditorClassIdentifier: 
   resourceId: 928
-  resourceName: 
+  resourceName: Osmium
   resourceType: 0
   sprite: {fileID: 0}

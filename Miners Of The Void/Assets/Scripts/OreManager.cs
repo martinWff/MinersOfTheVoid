@@ -13,6 +13,7 @@ public class OreManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+       
     }
 
     public OreResourceObject GetOreResourceByName(string oreName)
@@ -39,6 +40,29 @@ public class OreManager : MonoBehaviour
                 if (oreResourceObject.tile == tile)
                 {
                     return oreResourceObject;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public MaterialResourceObject GetOreMaterialByMaterialName(string materialName,out int index)
+    {
+        index = -1;
+        foreach (OreResourceObject oreResourceObject in ores)
+        {
+            if (oreResourceObject != null)
+            {
+                
+                 for (int i = 0;i<oreResourceObject.materialResourceObjects.Length;i++)
+                 {
+                   if (oreResourceObject.materialResourceObjects[i].resourceName == materialName) {
+
+                        index = i;
+                        return oreResourceObject.materialResourceObjects[i];
+                   
+                    }
                 }
             }
         }
