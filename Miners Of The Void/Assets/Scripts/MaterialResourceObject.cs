@@ -10,7 +10,6 @@ public class MaterialResourceObject : ScriptableObject
     public ResourceType resourceType;
     public Sprite sprite;
 
-
     public void Init()
     {
         int asciiCode = 0;
