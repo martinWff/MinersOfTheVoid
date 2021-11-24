@@ -8,15 +8,15 @@ using UnityEngine.Events;
 public class Inventory
 {
     protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
-
+    public int CountDifferent { get { return oresStacks.Count; } }
 
     public delegate void InventoryChanged(Inventory inv, string oreName,int amountChanged);
     public static event InventoryChanged onInventoryChanged;
 
-    public void AddOre(OreStack ore)
+    public virtual bool AddOre(OreStack ore)
     {
-        if (ore == null) return;
-        if (ore.amount == 0) return;
+        if (ore == null) return false;
+        if (ore.amount == 0) return false;
 
         if (!oresStacks.ContainsKey(ore.oreName))
         {
@@ -27,7 +27,9 @@ public class Inventory
             OreStack oreStack = oresStacks[ore.oreName];
             oreStack.amount += ore.amount;
         }
+        
         onInventoryChanged?.Invoke(this, ore.oreName, ore.amount);
+        return true;
 
 
     }
@@ -36,7 +38,7 @@ public class Inventory
         return oresStacks.ContainsKey(oreName);
     }
 
-    public int GetOreAmount(string oreName)
+    public virtual int GetOreAmount(string oreName)
     {
         if (oresStacks.ContainsKey(oreName)) {
             return oresStacks[oreName].amount;
@@ -53,7 +55,7 @@ public class Inventory
     }
 
 
-      public int RetrieveAmount(string oreName,int amount)
+      public virtual int RetrieveAmount(string oreName,int amount)
     {
         if (amount == 0) return 0;
         int oreAmount = GetOreAmount(oreName);

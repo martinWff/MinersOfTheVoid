@@ -13,9 +13,6 @@ public class OreManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        int ind;
-        Debug.Log(GetOreMaterialByMaterialName("Iron Ingot", out ind));
-        Debug.Log(ind);
 
     }
 

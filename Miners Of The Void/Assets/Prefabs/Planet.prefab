@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3341750531408611370}
   - component: {fileID: 3341750531408611369}
   - component: {fileID: 3341750531408611348}
-  - component: {fileID: 215254816044097868}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -116,15 +115,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: 
   hasBlockade: 0
---- !u!114 &215254816044097868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3341750531408611368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9c48d78b2567f48bde1c673eec6488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
