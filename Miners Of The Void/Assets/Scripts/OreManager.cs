@@ -52,6 +52,7 @@ public class OreManager : MonoBehaviour
 
     public MaterialResourceObject GetOreMaterialByMaterialName(string materialName, out int index)
     {
+        
         index = -1;
         foreach (OreResourceObject oreResourceObject in ores)
         {
@@ -60,8 +61,11 @@ public class OreManager : MonoBehaviour
 
                 for (int i = 0; i < oreResourceObject.materialResourceObjects.Length; i++)
                 {
+                   
+
                     if (oreResourceObject.materialResourceObjects[i].resourceName == materialName)
                     {
+                        
                         Debug.Log(materialName);
                         index = i;
                         return oreResourceObject.materialResourceObjects[i];

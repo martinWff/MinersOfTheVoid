@@ -67,7 +67,7 @@ public class RefineryInventory : MonoBehaviour
             if(timer <= 0)
             {
 
-                inventory.AddOre(new OreStack(next.name, 1, next.sprite));
+                inventory.AddOre(new OreStack(next.resourceName, 1, next.sprite));
                 
                 inputItem.color = new Color(255, 255, 255, 0);
                 outputItem.color = new Color(255, 255, 255, 0);

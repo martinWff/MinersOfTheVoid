@@ -48,6 +48,7 @@ public class SpaceshipMovement : MonoBehaviour
     private Animator animator;
     
     private float deathTimer = 0;
+    public Transform reference;
     //DisablingUI
 
 
@@ -99,7 +100,7 @@ public class SpaceshipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Vector3.Distance(transform.position, reference.position) > 100)
         {
             SaveStats();
             SceneManager.LoadScene("TestBattleScene");

@@ -24,7 +24,7 @@ TagManager:
   - Structures
   - Water
   - UI
-  - 
+  - Entities
   - 
   - 
   - 
@@ -65,4 +65,7 @@ TagManager:
     locked: 0
   - name: Menu
     uniqueID: 1565080207
+    locked: 0
+  - name: Entities
+    uniqueID: 1747293633
     locked: 0
