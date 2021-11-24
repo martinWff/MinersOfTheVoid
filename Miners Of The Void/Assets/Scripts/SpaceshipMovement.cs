@@ -30,8 +30,9 @@ public class SpaceshipMovement : MonoBehaviour
     public float hp = 20;
     public GameObject statusDisplay;
     public Text statusDisplayText;
+
+
     public float playerDamage = 10;
-  
     public float speedLevel = 1;
     public float dmgLevel = 1;
     public float shieldLevel = 1;
@@ -52,12 +53,13 @@ public class SpaceshipMovement : MonoBehaviour
 
     void Start()
     {
+        LoadStats();
         rb = GetComponent<Rigidbody2D>();
-        statusDisplay = GameObject.Find("UiHpShield");
+        statusDisplay = GameObject.FindGameObjectWithTag("PlayerStats");
         statusDisplayText=statusDisplay.GetComponent<Text>();
         canvas = GameObject.Find("Canvas");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
-        camera2 = GameObject.Find("MainCamera").GetComponent<StaticCameraController>();
+        camera2 = Camera.main.GetComponent<StaticCameraController>();
         objectPool = FindObjectOfType<ObjectPool>();
         animator = GetComponent<Animator>();
 
@@ -99,14 +101,9 @@ public class SpaceshipMovement : MonoBehaviour
         else animator.SetFloat("isMoving", -1);
         if (Input.GetKeyDown(KeyCode.H))
         {
-            DontDestroyOnLoad(gameObject);
-            
+            SaveStats();
+            SceneManager.LoadScene("TestBattleScene");
         }
-        
-        
-           
-        
-
     }
 
     private void FixedUpdate()
@@ -136,7 +133,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BulletEnemie" && !dead && !immortality)
+        if ((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool") && !dead && !immortality)
         { 
             if (shield >= 10) shield -= 10;
             if (shield < 10)
@@ -150,51 +147,18 @@ public class SpaceshipMovement : MonoBehaviour
                 hp = 0;
                 shield = 0;
                 dead = true;
-                TransferPlayer();
+                SceneManager.LoadScene("Lobby");
             }
-            
-            //Destroy(collision.gameObject);
+            if(collision.gameObject.tag != "PirateExplosion")
+            Destroy(collision.gameObject);
+            else if(collision.gameObject.tag == "BulletEnemiePool")
+            {
+                collision.gameObject.GetComponent<BulletTest>().touchedPlayer = true;
+                objectPool.RetrieveBullet(collision.gameObject);
+            }
         }
 
-        if (collision.gameObject.tag == "BulletEnemiePool" && !dead && !immortality)
-        {
-            if (shield >= 10) shield -= 10;
-            if (shield < 10)
-            {
-                if (shield != 0) hp -= (10 - shield);
-
-                shield = 0;
-            }
-            if (hp <= 0)
-            {
-                hp = 0;
-                shield = 0;
-                dead = true;
-                TransferPlayer();
-            }
-            collision.gameObject.GetComponent<BulletTest>().touchedPlayer = true;
-            objectPool.RetrieveBullet(collision.gameObject);
-        }
-
-        //Pirate Explosion Damage
-        if (collision.gameObject.tag == "PirateExplosion" && !dead && !immortality)
-        {
-            if (shield >= 10) shield -= 10;
-            if (shield < 10)
-            {
-                if (shield != 0) hp -= (10 - shield);
-
-                shield = 0;
-            }
-            if (hp <= 0)
-            {
-                hp = 0;
-                shield = 0;
-                dead = true;
-                TransferPlayer();
-            }
-
-        }
+       
 
         if (collision.gameObject.tag == "Passage" || collision.gameObject.tag == "Structure")
         {
@@ -207,7 +171,8 @@ public class SpaceshipMovement : MonoBehaviour
     
     private void TransferPlayer()
     {
-        
+           
+            
             camera2.Human = true;
             camera2.ChangeCamera();
             PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
@@ -222,16 +187,46 @@ public class SpaceshipMovement : MonoBehaviour
                 enemy.GetComponent<Enemy>().enabled = false;
                 enemy.GetComponent<SpaceEnemyMove>().enabled = false;
             }
-            player2.deathTimer = 60;
             GetComponent<SpaceshipMovement>().enabled = false;
-        
-        
+           
+
+
+
     }
     public void Revive()
     {
         shield = totalShield;
         hp = 20 * healthLevel;
         dead = false;
+    }
+
+    public void SaveStats()
+    {
+        SavePlayerStats.moveForce = moveForce;
+        SavePlayerStats.playerDamage = playerDamage;
+        SavePlayerStats.shield = shield;
+        SavePlayerStats.totalShield = totalShield;
+        SavePlayerStats.hp = hp;
+        SavePlayerStats.backWeapon = backweaponMode;
+        SavePlayerStats.healthLevel = healthLevel;
+        SavePlayerStats.speedLevel = speedLevel;
+        SavePlayerStats.dmgLevel = dmgLevel;
+        SavePlayerStats.shieldLevel = shieldLevel;
+        SavePlayerStats.bulletSpeed = bulletSpeed;
+    }
+    public void LoadStats()
+    {
+        moveForce= SavePlayerStats.moveForce;
+        playerDamage =SavePlayerStats.playerDamage ;
+        shield = SavePlayerStats.shield;
+        totalShield = SavePlayerStats.totalShield;
+        hp = SavePlayerStats.hp;
+        backweaponMode = SavePlayerStats.backWeapon;
+        healthLevel = SavePlayerStats.healthLevel;
+        speedLevel = SavePlayerStats.speedLevel;
+        dmgLevel = SavePlayerStats.dmgLevel;
+        shieldLevel = SavePlayerStats.shieldLevel;
+        bulletSpeed = SavePlayerStats.bulletSpeed;
     }
 
 

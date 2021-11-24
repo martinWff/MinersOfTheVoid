@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4660734868855605739}
   m_Layer: 5
   m_Name: UiHpShield
-  m_TagString: Untagged
+  m_TagString: PlayerStats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

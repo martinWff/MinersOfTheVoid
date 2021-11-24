@@ -22,10 +22,10 @@ public class RefineryInventory : MonoBehaviour
     public Contract oreContract;
     InventoryController inventoryController;
 
-    
+
 
     //Gameobjects to select
-
+    public Image progress;
     public Image inputItem;
     public Image outputItem;
 
@@ -61,33 +61,35 @@ public class RefineryInventory : MonoBehaviour
     private void Update()
     {
 
-        if (ore !=null)
+        if (prev !=null)
         {
             
             if(timer <= 0)
             {
 
                 inventory.AddOre(new OreStack(next.name, 1, next.sprite));
-                ore = null;
+                
                 inputItem.color = new Color(255, 255, 255, 0);
                 outputItem.color = new Color(255, 255, 255, 0);
                 timer = 5;
+                prev = null;
+                progress.fillAmount = 0;
                 imageIsInSlot = false;
             }
             else
             {
                 timer -= Time.deltaTime;
+                progress.fillAmount += Time.deltaTime * 0.2f;  
+
             }
+            if (Input.GetKeyDown(KeyCode.P)) timer = 0;
         }
         if (!imageIsInSlot && !myQueue.IsEmpty())
         {
-            MaterialID id = myQueue.Dequeue().Data;
-            /*prev = ore.materialResourceObjects[id.index];*/
-            
+            MaterialID id = myQueue.Dequeue().Data;            
             prev = OreManager.instance.GetOreMaterialByMaterialName(id.name, out id.index);
-            next = ore.materialResourceObjects[id.index+1];
-
-
+            OreResourceObject oreResource = OreManager.instance.GetOreResourceFromMaterialName(id.name);
+            next = oreResource.materialResourceObjects[id.index + 1];
             imageIsInSlot = true;
             inputItem.sprite = prev.sprite;
             outputItem.sprite = next.sprite;

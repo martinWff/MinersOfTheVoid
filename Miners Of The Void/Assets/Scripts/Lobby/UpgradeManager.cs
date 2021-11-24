@@ -115,6 +115,7 @@ namespace MOV.Upgrades
 
 
               }
+                playerstats.SaveStats();
             }
             else
             {
@@ -148,9 +149,9 @@ namespace MOV.Upgrades
                     AddUpgrade(new Dmg("dmg"));
                     //mySlots.InsertAtEnd("backWeapon");
                 }
-
+                
             }
-
+            
         }
         public void UnSummon()
         {

@@ -14,9 +14,9 @@ public class OreManager : MonoBehaviour
     {
         instance = this;
         int ind;
-       Debug.Log(GetOreMaterialByMaterialName("Iron Ingot",out ind));
+        Debug.Log(GetOreMaterialByMaterialName("Iron Ingot", out ind));
         Debug.Log(ind);
-       
+
     }
 
     public OreResourceObject GetOreResourceByName(string oreName)
@@ -50,22 +50,22 @@ public class OreManager : MonoBehaviour
         return null;
     }
 
-    public MaterialResourceObject GetOreMaterialByMaterialName(string materialName,out int index)
+    public MaterialResourceObject GetOreMaterialByMaterialName(string materialName, out int index)
     {
         index = -1;
         foreach (OreResourceObject oreResourceObject in ores)
         {
             if (oreResourceObject != null)
             {
-                 for (int i = 0;i<oreResourceObject.materialResourceObjects.Length;i++)
-                 {
-                    Debug.Log("Hellooooo");
-                   if (oreResourceObject.materialResourceObjects[i].resourceName == materialName) {
+
+                for (int i = 0; i < oreResourceObject.materialResourceObjects.Length; i++)
+                {
+                    if (oreResourceObject.materialResourceObjects[i].resourceName == materialName)
+                    {
                         Debug.Log(materialName);
                         index = i;
-                        
                         return oreResourceObject.materialResourceObjects[i];
-                   
+
                     }
                 }
             }
@@ -85,7 +85,7 @@ public class OreManager : MonoBehaviour
                 {
                     if (oreResourceObject.materialResourceObjects[i].resourceName == materialName)
                     {
-                       
+
                         return oreResourceObject.materialResourceObjects[i];
                     }
                 }
@@ -93,7 +93,7 @@ public class OreManager : MonoBehaviour
         }
         return null;
     }
-    
+
     public OreResourceObject GetOreResourceFromMaterial(MaterialResourceObject mat)
     {
         if (mat != null)
