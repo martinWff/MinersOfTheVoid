@@ -20,6 +20,7 @@ public class TooltipController : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         textObject = GetComponentInChildren<Text>();
         instance = this;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame

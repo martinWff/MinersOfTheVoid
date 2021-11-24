@@ -43,7 +43,7 @@ public class SpacePlanetBehaviour : MonoBehaviour
     }
 
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
         TooltipController.Show(true);
         TooltipController.SetText($"planet: {planetName}\nOres:");

@@ -45,7 +45,6 @@ public class RefineryInventory : MonoBehaviour
     private void Awake()
     {
         inventoryController = GetComponent<InventoryController>();
-        Debug.Log(inventoryController.slotPrefab);
         inventory = new Inventory();
         InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
         myQueue = new Queue<MaterialID>();
