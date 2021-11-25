@@ -8,12 +8,14 @@ public class InventoryController : MonoBehaviour
 {
     public Inventory inventory;
     public GameObject slotPrefab;
-    public delegate void InventoryControllerCreated(InventoryController inventoryController);
-    public static event InventoryControllerCreated onInventoryControllerCreated;
+    /* public delegate void InventoryControllerCreated(InventoryController inventoryController);
+     public static event InventoryControllerCreated onInventoryControllerCreated;*/
+    public UnityEvent<InventoryController> onControllerInitialized;
 
     public Dictionary<string, GameObject> slotList = new Dictionary<string, GameObject>();
     public UnityEvent<SlotController> onSlotCreated;
     public UnityEvent<SlotController> onSlotRemoved;
+    public bool hasInventory { get; protected set;}
 
 
 
@@ -25,13 +27,19 @@ public class InventoryController : MonoBehaviour
         {
             Populate();
         }
-        onInventoryControllerCreated?.Invoke(this);
+        onControllerInitialized?.Invoke(this);
+        //onInventoryControllerCreated?.Invoke(this);
     }
 
     public void AttachInventory(Inventory inv)
     {
         inventory = inv;
-        Populate();
+        hasInventory = inventory != null;
+        if (hasInventory)
+        {
+            Populate();
+        }
+        
     }
 
   /*  private void OnEnable()
@@ -82,27 +90,31 @@ public class InventoryController : MonoBehaviour
 
     public void SpawnSlot(Inventory inv,string oreName,int amount)
     {
-        if (inv.GetOreAmount(oreName) > 0 && !slotList.ContainsKey(oreName)) {
-
-          GameObject obj = Instantiate(slotPrefab, transform);
-          Transform btn = obj.transform.Find("Button");
-            
-           OreStack oreStack = inv.GetOreStack(oreName);
-
-          SlotController slotController = obj.GetComponent<SlotController>();
-          slotController.SetContent(oreStack);
-         //     .oreStack = oreStack
-          btn.GetComponent<Image>().sprite = oreStack.sprite;
-        
-         slotList.Add(oreName,obj);
-          onSlotCreated?.Invoke(slotController);
-            
-
-        }
-        if (inv.GetOreAmount(oreName) <= 0 && slotList.ContainsKey(oreName))
+        if (inv.Equals(inventory))
         {
-            Destroy(slotList[oreName]);
-            slotList.Remove(oreName);
+            if (inv.GetOreAmount(oreName) > 0 && !slotList.ContainsKey(oreName))
+            {
+
+                GameObject obj = Instantiate(slotPrefab, transform);
+                Transform btn = obj.transform.Find("Button");
+
+                OreStack oreStack = inv.GetOreStack(oreName);
+
+                SlotController slotController = obj.GetComponent<SlotController>();
+                slotController.SetContent(oreStack);
+                //     .oreStack = oreStack
+                btn.GetComponent<Image>().sprite = oreStack.sprite;
+
+                slotList.Add(oreName, obj);
+                onSlotCreated?.Invoke(slotController);
+
+
+            }
+            if (inv.GetOreAmount(oreName) <= 0 && slotList.ContainsKey(oreName))
+            {
+                Destroy(slotList[oreName]);
+                slotList.Remove(oreName);
+            }
         }
         
     }

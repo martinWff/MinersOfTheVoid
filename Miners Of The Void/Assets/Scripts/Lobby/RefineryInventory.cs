@@ -21,7 +21,7 @@ public class RefineryInventory : MonoBehaviour
     public Inventory inventory;
     public Contract oreContract;
     InventoryController inventoryController;
-
+    PlayerInventory playerInventory;
 
 
     //Gameobjects to select
@@ -45,17 +45,29 @@ public class RefineryInventory : MonoBehaviour
     private void Awake()
     {
         inventoryController = GetComponent<InventoryController>();
-        inventory = new Inventory();
-        InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
+        playerInventory = FindObjectOfType<PlayerInventory>();//new Inventory();
+       // InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
         myQueue = new Queue<MaterialID>();
         
     }
-    void Start()
+
+    public void InitializeInventory(InventoryController invController)
     {
+        Inventory inventory = playerInventory.inventory;
+        invController.AttachInventory(inventory);
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(10));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(10));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(10));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(10));
+    }
+
+
+    void Start()
+    {
+     /*   inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(10));*/
     }
     private void Update()
     {
@@ -126,10 +138,13 @@ public class RefineryInventory : MonoBehaviour
 
     }
     
-    private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
+    /*private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
     {
-        inventoryController.AttachInventory(inventory);
-    }
+        if (!inventoryController.hasInventory)
+        {
+            inventoryController.AttachInventory(inventory);
+        }
+    }+*/
 
 }
 public class MaterialID

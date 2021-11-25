@@ -26,7 +26,7 @@ public class ContractTest : MonoBehaviour
     private void Awake()
     {
         inventory = new Inventory();
-        InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
+    //    InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
     }
 
 
@@ -46,11 +46,6 @@ public class ContractTest : MonoBehaviour
         ContractManager.AcceptContract(oreContract);
         oreContract.Start();
 
-    }
-
-    private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
-    {
-        inventoryController.AttachInventory(inventory);
     }
 
     // Update is called once per frame
