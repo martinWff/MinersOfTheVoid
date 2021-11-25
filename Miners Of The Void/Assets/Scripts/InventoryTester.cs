@@ -10,8 +10,8 @@ public class InventoryTester : MonoBehaviour
     public Contract c;
     void Start()
     {
-        FindObjectOfType<InventoryManager>().inventory = inventory;
-        
+      // FindObjectOfType<InventoryManager>().inventory = inventory;
+        Debug.Log("inv tester");
 
     }
 
@@ -20,6 +20,6 @@ public class InventoryTester : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace)) inventory.AddOre(new OreStack("Iron", 5, ironSprite));
+       // if(Input.GetKeyDown(KeyCode.Backspace)) inventory.AddOre(new OreStack("Iron", 5, ironSprite));
     }
 }

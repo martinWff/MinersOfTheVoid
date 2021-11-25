@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GoldIngot
   m_EditorClassIdentifier: 
   resourceId: 0
-  resourceName: 
+  resourceName: Gold Ingot
   resourceType: 0
   sprite: {fileID: 0}
