@@ -840,7 +840,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9.205335
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -975,7 +975,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: planetName
-      value: Aurelio
+      value: Lobby
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611368, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: m_Name
@@ -1034,6 +1034,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: sceneId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: planetName
       value: Anani'ha
@@ -1261,6 +1265,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 816371299}
     m_Modifications:
+    - target: {fileID: 6112712494419291308, guid: b97679132d98e4044b9b99861e087646, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112712494419291308, guid: b97679132d98e4044b9b99861e087646, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112712494419291308, guid: b97679132d98e4044b9b99861e087646, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6112712496346130224, guid: b97679132d98e4044b9b99861e087646, type: 3}
       propertyPath: m_Name
       value: Tooltip

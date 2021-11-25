@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
   m_Name: CopperIngot
   m_EditorClassIdentifier: 
-  resourceId: 0
-  resourceName: 
+  resourceId: 1130
+  resourceName: Copper Ingot
   resourceType: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 07603038be3f84943aed463e9aad5716, type: 3}

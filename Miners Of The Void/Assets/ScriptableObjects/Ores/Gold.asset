@@ -17,5 +17,6 @@ MonoBehaviour:
   materialResourceObjects:
   - {fileID: 11400000, guid: 08a87c6cc6b9dd047af8192cb0f7bdde, type: 2}
   - {fileID: 11400000, guid: 9578bd86c02be75439c2a6d48fbe299b, type: 2}
+  - {fileID: 11400000, guid: ba259375a35e4ef46b762b9339f23290, type: 2}
   tile: {fileID: 11400000, guid: 1a9bfaecd0e4dd54b899af8fb6644530, type: 2}
   oreBaseRarity: 1
