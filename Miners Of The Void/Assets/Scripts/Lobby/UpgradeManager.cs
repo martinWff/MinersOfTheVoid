@@ -25,6 +25,7 @@ namespace MOV.Upgrades
         public PlayerMovement humanStats;
         public UpgradeInv upinv;
         public Sprite speedSprite;
+        public UpgradeInv inventory;
 
 
         // Start is called before the first frame update
@@ -39,6 +40,9 @@ namespace MOV.Upgrades
             slot2 = GameObject.Find("Slot2");
             slot3 = GameObject.Find("Slot3");
             slot4 = GameObject.Find("Slot4");
+            inventory = FindObjectOfType<UpgradeInv>();
+            inventory.AddUpgradeVisual("speed", speedSprite);
+            
             
         }
 
@@ -46,7 +50,7 @@ namespace MOV.Upgrades
         public void ASummon()
         {
           if (!human) { 
-                if (!imageIn)
+              /*  if (!imageIn)
                 {
                     if (slot1.transform.childCount == 0)
                     {
@@ -75,9 +79,7 @@ namespace MOV.Upgrades
                         full = true;
                     }
                     imageIn = true;
-                    
-
-                }
+                }*/
             if (full == false)
             {
                 if (upgradeType == "SpeedButton")
@@ -116,8 +118,6 @@ namespace MOV.Upgrades
                     AddUpgrade(new Dmg("dmg"));
                     //mySlots.InsertAtEnd("backWeapon");
                 }
-
-
               }
                 playerstats.SaveStats();
             }

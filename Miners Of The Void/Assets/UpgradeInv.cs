@@ -15,4 +15,8 @@ public class UpgradeInv : MonoBehaviour
     {
         inventory.AddOre(new OreStack(upgradeName, 1, sprite));
     }
+    public void OnStart(InventoryController inv)
+    {
+        inv.AttachInventory(inventory);
+    }
 }
