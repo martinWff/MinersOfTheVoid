@@ -9,6 +9,8 @@ public class KeybindController : MonoBehaviour
     public Image imageRenderer;
     private Color defaultColor;
     public Color pressedColor = new Color(0,0,1);
+    public Camera mainCamera;
+    private Vector2 cachedPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,9 @@ public class KeybindController : MonoBehaviour
         imageRenderer = GetComponent<Image>();
         defaultColor = imageRenderer.color;
         InteractionArea.onShowKeyBind += Show;
+        InteractionArea.onUpdateKeybindPosition += SetPosition;
         gameObject.SetActive(false);
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -34,16 +38,20 @@ public class KeybindController : MonoBehaviour
 
     private void Show(bool state,Vector2 position)
     {
-        
-        transform.position = Camera.main.WorldToScreenPoint(position);
+        transform.position = mainCamera.WorldToScreenPoint(position);
         if (gameObject.activeSelf != state)
         {
             gameObject.SetActive(state);
         }
     }
 
-/*    public static void Show(Vector2 position)
+    private void SetPosition(Vector2 position)
     {
-        instance._Show(position);
-    }*/
+    //    if (Vector2.Distance(position, cachedPosition) > 0.05f)
+     //   {
+            transform.position = mainCamera.WorldToScreenPoint(position);
+            cachedPosition = position;
+      //  }
+    }
+
 }
