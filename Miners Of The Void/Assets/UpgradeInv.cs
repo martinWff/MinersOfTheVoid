@@ -6,7 +6,7 @@ public class UpgradeInv : MonoBehaviour
 {
     Inventory inventory;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         inventory = new UpgradeInventory();
     }
