@@ -28,6 +28,7 @@ public class SpaceshipMovement : MonoBehaviour
     public float totalShield = 20;
     public float shield = 20;
     public float hp = 20;
+    public float totalhp = 20;
     public GameObject statusDisplay;
     public Text statusDisplayText;
 
@@ -49,20 +50,26 @@ public class SpaceshipMovement : MonoBehaviour
     
     private float deathTimer = 0;
     public Transform reference;
-    //DisablingUI
+    //UI
+    public Image lifeBar;
+    public Image shieldBar;
+
 
 
     void Start()
     {
         LoadStats();
         rb = GetComponent<Rigidbody2D>();
-        statusDisplay = GameObject.FindGameObjectWithTag("PlayerStats");
-        statusDisplayText=statusDisplay.GetComponent<Text>();
+        // statusDisplay = GameObject.FindGameObjectWithTag("PlayerStats");
+        //statusDisplayText=statusDisplay.GetComponent<Text>();
+        lifeBar = GameObject.Find("Life").GetComponent<Image>();
+        shieldBar = GameObject.Find("Shield").GetComponent<Image>();
         canvas = GameObject.Find("Canvas");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         camera2 = Camera.main.GetComponent<StaticCameraController>();
         objectPool = FindObjectOfType<ObjectPool>();
         animator = GetComponent<Animator>();
+
 
 
     }
@@ -123,7 +130,11 @@ public class SpaceshipMovement : MonoBehaviour
         rb.velocity = (verticalInput * transform.right) * moveForce;
         
 
-        statusDisplayText.text = "Hp: " + Mathf.Floor(hp) + " / Shield: " + Mathf.Floor(shield);
+         
+         lifeBar.fillAmount = hp / totalhp;
+        shieldBar.fillAmount = shield / totalShield;
+
+         
         
 
 
@@ -197,7 +208,7 @@ public class SpaceshipMovement : MonoBehaviour
     public void Revive()
     {
         shield = totalShield;
-        hp = 20 * healthLevel;
+        hp = totalhp;
         dead = false;
     }
 

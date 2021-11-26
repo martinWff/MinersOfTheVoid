@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public float totalShield = 20;
     public float shield = 20;
     public float hp = 20;
-    public GameObject statusDisplay;
-    public Text statusDisplayText;
+    //public GameObject statusDisplay;
+    //public Text statusDisplayText;
 
     public float speedLevel = 1;
     public float dmgLevel = 1;
@@ -38,8 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         enemy = GameObject.FindGameObjectWithTag("Enemy");
-        statusDisplay = GameObject.Find("UiHpShield");
-        statusDisplayText = statusDisplay.GetComponent<Text>();
+        
 
     }
     private void Update()
@@ -67,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             shield += (totalShield / 10) * Time.deltaTime;
         }
         if (shield > totalShield) shield = totalShield;
-        statusDisplayText.text = "Hp: " + Mathf.Floor(hp) + " / Shield: " + Mathf.Floor(shield);
+        
         if (deathTimer > 0) deathTimer -= Time.deltaTime;
 
     }

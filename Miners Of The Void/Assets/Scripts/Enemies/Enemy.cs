@@ -119,6 +119,7 @@ public class Enemy : MonoBehaviour
             {
                 enemieHealth = 0;
                 shield = 0;
+                SavePlayerStats.bips += Random.Range(3,5);
                 Destroy(gameObject);
             }
 

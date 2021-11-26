@@ -23,13 +23,15 @@ namespace MOV.Upgrades
         private bool full = false;
         public bool human = false;
         public PlayerMovement humanStats;
-
+        public UpgradeInv upinv;
+        public Sprite speedSprite;
 
 
         // Start is called before the first frame update
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Spaceship");
+            upinv = GameObject.Find("Image").GetComponent<UpgradeInv>();
            // mySlots = new Array<string>(4);
             playerstats = player.GetComponent<SpaceshipMovement>();
             humanStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
@@ -73,6 +75,8 @@ namespace MOV.Upgrades
                         full = true;
                     }
                     imageIn = true;
+                    
+
                 }
             if (full == false)
             {
@@ -80,7 +84,7 @@ namespace MOV.Upgrades
                 {
                     level = playerstats.speedLevel;
                     AddUpgrade(new Speed("speed"));
-
+                   // upinv.AddUpgradeVisual("speed", speedSprite);
                     //  mySlots.InsertAtEnd("speed");
 
 
@@ -296,11 +300,13 @@ public class Hp : Upgrade
             {
 
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalhp = 20 * (level + 1);
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().healthLevel += 1;
             }
             else
             {
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * level;
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalhp = 20 * level;
                 Debug.Log("Max level reached!");
             }
         }
