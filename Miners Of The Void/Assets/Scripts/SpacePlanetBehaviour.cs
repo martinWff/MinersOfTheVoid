@@ -10,25 +10,48 @@ public class SpacePlanetBehaviour : MonoBehaviour
     public bool hasBlockade;
     public int sceneId;
     public InteractionArea interaction;
+    bool isPlayerInside;
+    GameObject spaceship;
     // Start is called before the first frame update
     void Awake()
     {
         interaction = GetComponent<InteractionArea>();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    /*  private void OnTriggerStay2D(Collider2D collision)
+      {
+          if (collision.gameObject.CompareTag("Spaceship"))
+          {
+              if (Input.GetButtonDown("Interaction"))
+              {
+                  if (!hasBlockade)
+                  {
+                      Debug.Log("Planet Interaction");
+                      collision.gameObject.GetComponent<Animator>().SetBool("isEnteringPlanet",true);
+                      StartCoroutine(GoToScene());
+
+                  } else
+                  {
+                      Debug.Log("PLANET IS UNDER A BLOCKADE");
+                  }
+              }
+          }
+      }*/
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Spaceship"))
+        if (isPlayerInside)
         {
             if (Input.GetButtonDown("Interaction"))
             {
                 if (!hasBlockade)
                 {
                     Debug.Log("Planet Interaction");
-                    collision.gameObject.GetComponent<Animator>().SetBool("isEnteringPlanet",true);
-                    StartCoroutine(GoToScene());
+                    Animator animator = spaceship.GetComponent<Animator>();
+                    animator.SetInteger("sceneId", sceneId);
+                    animator.SetTrigger("isEnteringPlanet");
 
-                } else
+                }
+                else
                 {
                     Debug.Log("PLANET IS UNDER A BLOCKADE");
                 }
@@ -36,14 +59,25 @@ public class SpacePlanetBehaviour : MonoBehaviour
         }
     }
 
-    private IEnumerator GoToScene()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(sceneId);
+        if (collision.gameObject.CompareTag("Spaceship"))
+        {
+            isPlayerInside = true;
+            spaceship = collision.gameObject;
+        }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spaceship"))
+        {
+            isPlayerInside = false;
+            spaceship = null;
+        }
+    }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
         TooltipController.Show(true);
         TooltipController.SetText($"planet: {planetName}\nOres:");

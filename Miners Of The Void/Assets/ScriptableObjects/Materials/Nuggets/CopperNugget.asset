@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
   m_Name: CopperNugget
   m_EditorClassIdentifier: 
-  resourceId: 429
-  resourceName: Copper Nugget
+  resourceId: 1235
+  resourceName: CopperNugget
   resourceType: 1
   sprite: {fileID: 21300000, guid: 2051f9a32ba32c2449dfd4bc74948834, type: 3}

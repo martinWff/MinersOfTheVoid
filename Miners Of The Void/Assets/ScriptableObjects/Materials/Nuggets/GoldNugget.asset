@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
   m_Name: GoldNugget
   m_EditorClassIdentifier: 
-  resourceId: 418
-  resourceName: Gold Nugget
+  resourceId: 1008
+  resourceName: GoldNugget
   resourceType: 1
   sprite: {fileID: 21300000, guid: 0d9175bfc2d3f8a43a3d32a5c255a123, type: 3}

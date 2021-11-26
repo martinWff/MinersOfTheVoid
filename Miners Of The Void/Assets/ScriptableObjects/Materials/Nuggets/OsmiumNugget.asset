@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OsmiumNugget
   m_EditorClassIdentifier: 
   resourceId: 1252
-  resourceName: Osmium Nugget
+  resourceName: OsmiumNugget
   resourceType: 0
   sprite: {fileID: 21300000, guid: 4775748f64e5456408d2ab7dac4de514, type: 3}
