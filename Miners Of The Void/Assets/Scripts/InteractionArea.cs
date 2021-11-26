@@ -13,8 +13,11 @@ public class InteractionArea : MonoBehaviour
     public delegate void ShowKeybind(bool state,Vector2 position);
     public static event ShowKeybind onShowKeyBind;
 
+    public delegate void UpdateKeybindPosition(Vector2 position);
+    public static event UpdateKeybindPosition onUpdateKeybindPosition;
 
 
+    private bool playerIsInside;
 
     public Vector3 uIKeyBindPosition;
 
@@ -26,11 +29,22 @@ public class InteractionArea : MonoBehaviour
       
     }
 
+    private void LateUpdate()
+    {
+        if (showKeyBind && playerIsInside)
+        {
+            if (onUpdateKeybindPosition != null)
+            {
+                onUpdateKeybindPosition.Invoke((transform.position + uIKeyBindPosition));
+            }
+        }
+    }
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         onAction?.Invoke();
-        
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,7 +54,9 @@ public class InteractionArea : MonoBehaviour
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
                 onShowKeyBind?.Invoke(true, (transform.position + uIKeyBindPosition));
+                playerIsInside = true;
             }
+            
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -50,6 +66,7 @@ public class InteractionArea : MonoBehaviour
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
                 onShowKeyBind?.Invoke(false, (transform.position + uIKeyBindPosition));
+                playerIsInside = false;
             }
           
         }

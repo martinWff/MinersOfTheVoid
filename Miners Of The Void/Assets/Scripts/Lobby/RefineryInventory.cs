@@ -53,7 +53,7 @@ public class RefineryInventory : MonoBehaviour
 
     public void InitializeInventory(InventoryController invController)
     {
-        Inventory inventory = playerInventory.inventory;
+        inventory = playerInventory.inventory;
         invController.AttachInventory(inventory);
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(10));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(10));
@@ -127,9 +127,7 @@ public class RefineryInventory : MonoBehaviour
         if (quantity >= 3)
         {
             int index = 0;
-            Debug.Log("Dentro da Queue: " + name);
             if (myQueue.IsEmpty()) timer = 5;
-            Debug.Log(name + index);
             MaterialResourceObject mat = OreManager.instance.GetOreMaterialByMaterialName(name, out index);
             myQueue.Enqueue(new MaterialID(name,index));
             inventory.RetrieveAmount(name, 3);

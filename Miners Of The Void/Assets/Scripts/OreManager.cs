@@ -62,8 +62,6 @@ public class OreManager : MonoBehaviour
 
                     if (oreResourceObject.materialResourceObjects[i].resourceName == materialName)
                     {
-                        
-                        Debug.Log(materialName);
                         index = i;
                         return oreResourceObject.materialResourceObjects[i];
 
