@@ -65,8 +65,14 @@ public class Inventory
         OreStack oreFound = oresStacks[oreName];
  
         oreFound.amount -= clampedAmount;
-        oresStacks[oreName] = oreFound;
-
+        if (oreFound.amount > 0)
+        {
+            oresStacks[oreName] = oreFound;
+        } else
+        {
+            oresStacks.Remove(oreName);
+        }
+        
         onInventoryChanged?.Invoke(this, oreName,-clampedAmount);
         
 
