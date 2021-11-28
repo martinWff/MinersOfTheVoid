@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     
 
     [SerializeField] public lifebar lifebar;
-    [SerializeField] public Bar2 shieldbar;
+    [SerializeField] public shieldbar shieldbar;
 
 
     //Enemy shoot
@@ -62,8 +62,8 @@ public class Enemy : MonoBehaviour
         if (player == null) return;
         Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         Vector3 direction = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        enemy.rotation = angle - 90;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //enemy.rotation = angle - 90;
 
         Distance = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.y - transform.position.y, 2));
         if (Distance < enemyRange)
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
 
-                Destroy(transform.parent);
+                //Destroy(transform.parent);
                 Destroy(gameObject);
             }
 
