@@ -6,9 +6,10 @@ public class Enemy : MonoBehaviour
 {
     private GameObject player;
     private float Distance;
+    
 
-    [SerializeField] private lifebar lifebar;
-    [SerializeField] private shieldbar shieldbar;
+    [SerializeField] public lifebar lifebar;
+    [SerializeField] public Bar2 shieldbar;
 
 
     //Enemy shoot
@@ -119,7 +120,9 @@ public class Enemy : MonoBehaviour
             {
                 enemieHealth = 0;
                 shield = 0;
-                SavePlayerStats.bips += Random.Range(3,5);
+                SavePlayerStats.bips += (int)Random.Range(3,5);
+
+                Destroy(transform.parent);
                 Destroy(gameObject);
             }
 

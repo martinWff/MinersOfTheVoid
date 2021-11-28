@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1747293633
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 2931946035405808079, guid: df116ccad61d7a54a8ddc4fcc867fba7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRotationDistance: 40
+  objectPool: {fileID: 0}
   bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
   bulletOffset: 2.5
   bulletSpeed: 20
@@ -108,6 +109,7 @@ MonoBehaviour:
   totalShield: 20
   shield: 10
   hp: 20
+  totalhp: 20
   statusDisplay: {fileID: 0}
   statusDisplayText: {fileID: 0}
   playerDamage: 10
@@ -121,6 +123,9 @@ MonoBehaviour:
   dead: 0
   immortality: 0
   enemy: {fileID: 5949036098304653809, guid: 775c287ec00e40343b54252b71ea03c6, type: 3}
+  reference: {fileID: 0}
+  lifeBar: {fileID: 0}
+  shieldBar: {fileID: 0}
 --- !u!50 &2724869212869716261
 Rigidbody2D:
   serializedVersion: 4

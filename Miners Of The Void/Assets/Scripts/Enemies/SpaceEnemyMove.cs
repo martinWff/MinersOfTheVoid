@@ -28,8 +28,8 @@ public class SpaceEnemyMove : MonoBehaviour
         Vector3 playerPosition = new Vector3(spaceship.transform.position.x, spaceship.transform.position.y, spaceship.transform.position.z);
         Vector3 direction = spaceship.transform.position - transform.position;
         targetPosition = playerPosition;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        enemy.rotation = angle - 90;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //enemy.rotation = angle - 90;
 
         distance = Mathf.Sqrt(Mathf.Pow(spaceship.transform.position.x - transform.position.x, 2) + Mathf.Pow(spaceship.transform.position.y - transform.position.y, 2));
         if (distance < enemyRange)
