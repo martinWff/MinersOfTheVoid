@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IronNugget
   m_EditorClassIdentifier: 
   resourceId: 1026
-  resourceName: IronNugget
+  resourceName: Iron Nugget
   resourceType: 1
   sprite: {fileID: 21300000, guid: 3f223f5a9d8fee54a8c666bb35c43b23, type: 3}

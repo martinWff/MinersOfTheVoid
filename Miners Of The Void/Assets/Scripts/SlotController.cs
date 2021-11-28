@@ -1,3 +1,4 @@
+using MOV.Upgrades;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class SlotController : MonoBehaviour
     [SerializeField]private Image image;
     [SerializeField]private Text quantityText;
 
-
+    
     public void SetContent(OreStack o)
     {
         oreStack = o;
@@ -34,5 +35,9 @@ public class SlotController : MonoBehaviour
     public void PrepareRefine()
     {
             transform.parent.GetComponent<RefineryInventory>().Refine(oreStack.oreName, oreStack.amount);   
+    }
+    public void RemoveUpgrade()
+    {
+        GameObject.Find("SpeedButton").GetComponent<UpgradeManager>().UnSummon(oreStack.oreName);
     }
 }

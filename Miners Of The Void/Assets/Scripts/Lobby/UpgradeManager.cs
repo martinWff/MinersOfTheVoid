@@ -18,14 +18,15 @@ namespace MOV.Upgrades
         public GameObject slot2;
         public GameObject slot3;
         public GameObject slot4;
-        public GameObject insertGO;
+        public Sprite insertGO;
         private bool imageIn = false;
         private bool full = false;
         public bool human = false;
         public PlayerMovement humanStats;
         public UpgradeInv upinv;
-        public Sprite speedSprite;
         public UpgradeInv inventory;
+        public PlayerInventory invPlayer;
+        
 
 
         // Start is called before the first frame update
@@ -41,11 +42,18 @@ namespace MOV.Upgrades
             slot3 = GameObject.Find("Slot3");
             slot4 = GameObject.Find("Slot4");
             inventory = FindObjectOfType<UpgradeInv>();
-            inventory.AddUpgradeVisual("speed", speedSprite);
+            invPlayer = GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<PlayerInventory>();
+            Debug.Log(invPlayer.inventory.GetOreAmount("Iron"));
+            playerstats.LoadStats();
+            
+            
             
             
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L)) Debug.Log(invPlayer.inventory.GetOreAmount("Iron"));
+        }
 
         public void ASummon()
         {
@@ -80,45 +88,113 @@ namespace MOV.Upgrades
                     }
                     imageIn = true;
                 }*/
-            if (full == false)
-            {
-                if (upgradeType == "SpeedButton")
+
+            
+                    if (upgradeType == "SpeedButton")
+                    {
+                        level = SavePlayerStats.speedLevel;
+                        Debug.Log(level);
+                        if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level ==0))
+                        {
+                            
+                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200,(int)level))
+                            {
+                                Debug.Log("Com custos");
+                                AddUpgrade(new Speed(upgradeType), false);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                            }
+                        }
+                        if(!inventory.ContainsOre(upgradeType) && level != 0)
+                        {
+                            Debug.Log("Sem custos");
+                            AddUpgrade(new Speed(upgradeType),true);
+                            inventory.AddUpgradeVisual(upgradeType, level -1, insertGO);
+                        }
+                       
+                    }
+                    if (upgradeType == "ShieldButton")
                 {
-                    level = playerstats.speedLevel;
-                    AddUpgrade(new Speed("speed"));
-                   // upinv.AddUpgradeVisual("speed", speedSprite);
-                    //  mySlots.InsertAtEnd("speed");
+                    level = SavePlayerStats.shieldLevel;
+                        if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
+                        {
+
+                            if (AddCost("Osmium", "Iron Nugget", "Copper Ingot", 200, (int)level))
+                            {
+                                Debug.Log("Com custos");
+                                AddUpgrade(new Shield(upgradeType), false);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                            }
+                        }
+                        if (!inventory.ContainsOre(upgradeType) && level != 0)
+                        {
+                            Debug.Log("Sem custos");
+                            AddUpgrade(new Shield(upgradeType), true);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                        };
 
 
-                }
-                if (upgradeType == "ShieldButton")
-                {
-                    level = playerstats.shieldLevel;
-                    AddUpgrade(new Shield("shield"));
-                    //  mySlots.InsertAtEnd("shield");
-
-
-                }
+                    }
                 if (upgradeType == "HealthButton")
                 {
-                    level = playerstats.healthLevel;
-                    AddUpgrade(new Hp("health"));
-                    // mySlots.InsertAtEnd("health");
-                    // mySlots.InsertAtEnd("shield");
-                }
+                    level = SavePlayerStats.healthLevel;
+                        if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
+                        {
+
+                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level))
+                            {
+                                Debug.Log("Com custos");
+                                AddUpgrade(new Hp(upgradeType), false);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                            }
+                        }
+                        if (!inventory.ContainsOre(upgradeType) && level != 0)
+                        {
+                            Debug.Log("Sem custos");
+                            AddUpgrade(new Hp(upgradeType), true);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                        }
+                    }
                 if (upgradeType == "BackWeapon")
                 {
 
-                    AddUpgrade(new BackWeapon("backweapon"));
+                    if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
+                    {
+
+                        if (AddCost("Gold", "Osmium Nugget", "Iron Ingot", 2000, 3))
+                        {
+                            Debug.Log("Com custos");
+                            AddUpgrade(new BackWeapon(upgradeType), false);
+                            inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                        }
+                    }
+                    if (!inventory.ContainsOre(upgradeType) && level != 0)
+                    {
+                        Debug.Log("Sem custos");
+                        AddUpgrade(new BackWeapon(upgradeType), true);
+                        inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                    }
                     //mySlots.InsertAtEnd("backWeapon");
                 }
-                if (upgradeType == "DmgButton")
+                /*if (upgradeType == "DmgButton")
                 {
-                    level = playerstats.dmgLevel;
-                    AddUpgrade(new Dmg("dmg"));
-                    //mySlots.InsertAtEnd("backWeapon");
-                }
-              }
+                    level = SavePlayerStats.dmgLevel;
+                        if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
+                        {
+
+                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level))
+                            {
+                                Debug.Log("Com custos");
+                                AddUpgrade(new Dmg(upgradeType), false);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                            }
+                        }
+                        if (!inventory.ContainsOre(upgradeType) && level != 0)
+                        {
+                            Debug.Log("Sem custos");
+                            AddUpgrade(new Dmg(upgradeType), true);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                        }
+                    }*/
                 playerstats.SaveStats();
             }
             else
@@ -126,7 +202,7 @@ namespace MOV.Upgrades
                 if (upgradeType == "SpeedButton")
                 {
                     level = humanStats.speedLevel;
-                    AddUpgrade(new Speed("speed"));
+                    AddUpgrade(new Speed("speed"),false);
 
                     //  mySlots.InsertAtEnd("speed");
 
@@ -135,7 +211,7 @@ namespace MOV.Upgrades
                 if (upgradeType == "ShieldButton")
                 {
                     level = humanStats.shieldLevel;
-                    AddUpgrade(new Shield("shield"));
+                    AddUpgrade(new Shield("shield"),false);
                     //  mySlots.InsertAtEnd("shield");
 
 
@@ -143,38 +219,39 @@ namespace MOV.Upgrades
                 if (upgradeType == "HealthButton")
                 {
                     level = humanStats.healthLevel;
-                    AddUpgrade(new Hp("health"));
+                    AddUpgrade(new Hp("health"),false);
                     // mySlots.InsertAtEnd("health");
                     // mySlots.InsertAtEnd("shield");
                 }
-                if (upgradeType == "DmgButton")
+              /*  if (upgradeType == "DmgButton")
                 {
                     level = humanStats.dmgLevel;
-                    AddUpgrade(new Dmg("dmg"));
+                    AddUpgrade(new Dmg("dmg"), false);
                     //mySlots.InsertAtEnd("backWeapon");
-                }
+                }*/
                 
             }
             
         }
-        public void UnSummon()
+        public void UnSummon(string upgradeType)
         {
             
             
             if (upgradeType == "SpeedButton")
             {
-                level = playerstats.speedLevel;
-                RemoveUpgrade(new Speed("speed"));
-                
-                
+                RemoveUpgrade(new Speed(upgradeType));
+                inventory.RemoveUpgrade(upgradeType);
+
+
                 //  mySlots.InsertAtEnd("speed");
             }
             if (upgradeType == "ShieldButton")
             {
                 level = playerstats.shieldLevel;
                 RemoveUpgrade(new Shield("shield"));
+                inventory.RemoveUpgrade(upgradeType);
                 //  mySlots.InsertAtEnd("shield");
-                
+
 
 
             }
@@ -182,9 +259,10 @@ namespace MOV.Upgrades
             {
                 level = playerstats.healthLevel;
                 RemoveUpgrade(new Hp("health"));
+                inventory.RemoveUpgrade(upgradeType);
                 // mySlots.InsertAtEnd("health");
                 // mySlots.InsertAtEnd("shield");
-                
+
             }
             if (upgradeType == "BackWeapon")
             {
@@ -192,28 +270,47 @@ namespace MOV.Upgrades
                 
                 //mySlots.InsertAtEnd("backWeapon");
             }
-            if (upgradeType == "DmgButton")
+          /*  if (upgradeType == "DmgButton")
             {
-                level = playerstats.dmgLevel;
+                
                 RemoveUpgrade(new Dmg("dmg"));
+                inventory.RemoveUpgrade(upgradeType);
                 //mySlots.InsertAtEnd("backWeapon");
             }
             Debug.Log(upgradeType);
             GameObject.Find(upgradeType).GetComponent<UpgradeManager>().imageIn = false;
             Debug.Log(GameObject.Find(upgradeType).GetComponent<UpgradeManager>().imageIn);
-            Destroy(gameObject);
+            */
             
+        }
+        public bool AddCost(string material1, string material2,string material3,int bips,int level)
+        {
+            if (invPlayer.inventory.GetOreAmount(material1) >= level + 1 && invPlayer.inventory.GetOreAmount(material2) >= level + 1 && invPlayer.inventory.GetOreAmount(material3) >= level + 1 && SavePlayerStats.bips >= (bips * ((int)level +1)))
+            {
+                Debug.Log("Level:" + level);
+                invPlayer.inventory.RetrieveAmount(material1, level + 1);
+                invPlayer.inventory.RetrieveAmount(material2, level + 1);
+                invPlayer.inventory.RetrieveAmount(material3, level + 1);
+                SavePlayerStats.bips -= (bips * (int)level);
+
+                return true;
+            }
+            else
+            {
+                Debug.Log("Not enough ore" + invPlayer.inventory.GetOreAmount(material1) + ":" + invPlayer.inventory.GetOreAmount(material2) + ":" + invPlayer.inventory.GetOreAmount(material3) + ":" + level);
+                return false;
+            }
         }
         public void RemoveUpgrade(Upgrade upg)
         {
             upg.OnRemove();
         }
-        public void AddUpgrade(Upgrade upg)
+        public void AddUpgrade(Upgrade upg, bool isBought)
         {
-
-            upg.OnPut(level, human);
-
+            upg.OnPut(level, human, isBought);
         }
+        
+        
         
     }
     
@@ -225,7 +322,7 @@ namespace MOV.Upgrades
         
        public string upgradeName;
 
-        public abstract void OnPut(float level,bool who);
+    public abstract void OnPut(float level, bool who, bool replacing);
 
         public abstract void OnUpdate();
 
@@ -244,14 +341,15 @@ namespace MOV.Upgrades
     {
     }
 
-    public override void OnPut(float level, bool who)
+    public override void OnPut(float level, bool who, bool bought)
     {
         if (!who)
         {
-            if (level < 6)
+            if (level < 6 && !bought)
             {
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield = 10 * (level + 1);
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().shieldLevel += 1;
+
             }
             else
             {
@@ -292,11 +390,11 @@ public class Hp : Upgrade
     {
     }
 
-    public override void OnPut(float level, bool who)
+    public override void OnPut(float level, bool who, bool bought)
     {
         if (!who)
         {
-            if (level < 6)
+            if (level < 6 && !bought)
             {
 
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20 * (level + 1);
@@ -342,11 +440,11 @@ public class Hp : Upgrade
     {
     }
 
-    public override void OnPut(float level, bool who)
+    public override void OnPut(float level, bool who, bool bought)
         {
         if (!who)
         {
-            if (level < 6)
+            if (level < 6 && !bought)
             {
 
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().playerDamage = 10 * (level + 1);
@@ -390,7 +488,7 @@ public class Hp : Upgrade
     {
     }
 
-    public override void OnPut(float level, bool who)
+    public override void OnPut(float level, bool who, bool bought)
         {
         if (!who)
         {
@@ -418,11 +516,11 @@ public class Hp : Upgrade
     {
     }
 
-    public override void OnPut(float level, bool who)
+    public override void OnPut(float level, bool who, bool bought)
         {
         if (!who)
         {
-            if (level < 6)
+            if (level < 6 && !bought)
             {
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
@@ -432,7 +530,7 @@ public class Hp : Upgrade
             {
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * level;
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * level);
-                Debug.Log("Limit reached");
+                
             }
         }
         else

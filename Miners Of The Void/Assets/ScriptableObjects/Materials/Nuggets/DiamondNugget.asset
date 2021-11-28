@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DiamondNugget
   m_EditorClassIdentifier: 
   resourceId: 1318
-  resourceName: DiamondNugget
+  resourceName: Diamond Nugget
   resourceType: 1
   sprite: {fileID: 0}
