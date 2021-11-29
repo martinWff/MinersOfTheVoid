@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public bool firepermission = true;
     public StaticCameraController camera;
     public GameObject enemy;
+    
 
     // Life
     public float playerDamage = 10;
@@ -55,6 +56,14 @@ public class PlayerMovement : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
             bulletShootTime = bulletCooldownTime;
             bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
+        }
+        Vector2 mouseDirection2 = Input.mousePosition -
+            Camera.main.WorldToScreenPoint(transform.position);
+        if (mouseDirection2.magnitude > minRotationDistance)
+        {
+            float angle = Mathf.Atan2(mouseDirection2.normalized.y,
+                                  mouseDirection2.normalized.x) * Mathf.Rad2Deg;
+            rb.SetRotation(angle);
         }
         if (bulletShootTime >= 0)
         {

@@ -12,10 +12,10 @@ public static class SavePlayerStats
     public static float moveForce = 4;
     public static float bulletSpeed = 14;
     public static bool backWeapon = false;
-    public static float speedLevel = 1;
-    public static float dmgLevel = 1;
-    public static float shieldLevel = 1;
-    public static float healthLevel = 1;
+    public static float speedLevel = 0;
+    public static float dmgLevel = 0;
+    public static float shieldLevel = 0;
+    public static float healthLevel = 0;
     //Money
-    public static int bips = 0;
+    public static int bips = 1000000000;
 }

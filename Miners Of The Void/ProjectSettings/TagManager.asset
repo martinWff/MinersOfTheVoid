@@ -18,6 +18,9 @@ TagManager:
   - Panel
   - PlayerStats
   - InventoryPanel
+  - Keybind
+  - PlayerInventory
+  - UpgradeButtons
   layers:
   - Default
   - TransparentFX
