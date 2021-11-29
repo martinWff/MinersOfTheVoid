@@ -143,6 +143,7 @@ MonoBehaviour:
   totalShield: 10
   shield: 10
   playerdmg: 0
+  enemyPlanet: 1
 --- !u!50 &3675611969424350208
 Rigidbody2D:
   serializedVersion: 4

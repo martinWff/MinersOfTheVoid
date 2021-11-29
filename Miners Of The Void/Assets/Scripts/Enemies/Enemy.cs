@@ -37,12 +37,22 @@ public class Enemy : MonoBehaviour
     //Enemy rotation
     private Rigidbody2D enemy;
 
+    //bool enemy Planet
+    public bool enemyPlanet = false;
 
 
     void Start()
     {
+        if(enemyPlanet == true)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            player = GameObject.FindGameObjectWithTag("Spaceship");
+        }
+        
 
-        player = GameObject.FindGameObjectWithTag("Player");
         //Debug.Log(player);
         enemy = this.GetComponent<Rigidbody2D>();
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
@@ -122,7 +132,11 @@ public class Enemy : MonoBehaviour
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
 
-                Destroy(transform.parent.gameObject);
+                if(enemyPlanet == true)
+                {
+                    Destroy(transform.parent.gameObject);
+                }
+
                 Destroy(gameObject);
             }
 

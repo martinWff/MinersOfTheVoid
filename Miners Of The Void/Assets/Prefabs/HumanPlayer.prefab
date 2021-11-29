@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2287369355767953860}
   m_Layer: 0
   m_Name: HumanPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRotationDistance: 40
+  objectPool: {fileID: 0}
   bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
   bulletOffset: 1.5
   bulletSpeed: 14
@@ -153,8 +154,8 @@ MonoBehaviour:
   moveForce: 4
   totalShield: 20
   shield: 20
-  regenRate: 2
   hp: 20
+  totalhp: 20
   statusDisplay: {fileID: 0}
   statusDisplayText: {fileID: 0}
   playerDamage: 10
@@ -163,3 +164,11 @@ MonoBehaviour:
   shieldLevel: 1
   healthLevel: 1
   backweaponMode: 0
+  upgradePrefab: {fileID: 0}
+  canvas: {fileID: 0}
+  dead: 0
+  immortality: 0
+  enemy: {fileID: 0}
+  reference: {fileID: 0}
+  lifeBar: {fileID: 0}
+  shieldBar: {fileID: 0}
