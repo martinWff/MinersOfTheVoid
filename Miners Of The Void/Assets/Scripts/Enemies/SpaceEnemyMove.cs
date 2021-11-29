@@ -16,7 +16,7 @@ public class SpaceEnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spaceship = GameObject.FindGameObjectWithTag("Spaceship");
+        spaceship = GameObject.FindGameObjectWithTag("Player");
         enemy = GetComponent<Rigidbody2D>();
         
     }
