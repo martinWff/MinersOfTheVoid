@@ -17,17 +17,24 @@ public class PlayerContracts : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(canvas);
-        instance = this;
-        ContractManager.onContractAccepted += AddContract;
-        ContractManager.onContractCancelled += OnCancelledContract;
-        ContractManager.onContractFinished += OnFinishedContract;
+
+        if (instance == null)
+        {
+            instance = this;
+            if (canvas != null)
+            {
+                DontDestroyOnLoad(canvas);
+            }
+
+            ContractManager.onContractAccepted += AddContract;
+            ContractManager.onContractCancelled += OnCancelledContract;
+            ContractManager.onContractFinished += OnFinishedContract;
+        }
 
     }
 
     public void AddContract(Contract c)
     {
-        Debug.Log("ADDED CONTRACT " + c);
         acceptedContract = c;
         acceptedPanel = Instantiate(contractPanelPrefab, canvas);
         Transform insertPanel = acceptedPanel.transform.Find("Content");
@@ -46,7 +53,6 @@ public class PlayerContracts : MonoBehaviour
 
     public void CancelContract()
     {
-        Debug.Log("trying to cancel contract");
         ContractManager.CancelContract(acceptedContract);
     }
 
@@ -56,6 +62,7 @@ public class PlayerContracts : MonoBehaviour
     }
     public void OnFinishedContract(Contract c)
     {
+        acceptedContract.GiveRewards();
         ProcessContractEnd();
 
     }
