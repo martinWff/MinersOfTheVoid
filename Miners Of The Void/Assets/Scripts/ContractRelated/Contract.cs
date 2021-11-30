@@ -104,6 +104,15 @@ public class GatheringGoal : Goal
                
     }
 
+    public GatheringGoal(OreStack oreStack)
+    {
+        this.oreName = oreStack.oreName;
+        this.sprite = oreStack.sprite;
+        this.requiredAmount = oreStack.amount;
+        this.description = $"mine {oreStack.amount} {oreStack.oreName}";
+
+    }
+
     public override void Init()
     {
         base.Init();
@@ -117,7 +126,7 @@ public class GatheringGoal : Goal
             {
 
                          
-               this.currentAmount = inv.GetOreAmount(updatedOreName);
+               this.currentAmount = Mathf.Clamp(inv.GetOreAmount(updatedOreName),0,requiredAmount);
                 Evaluate();
                 
             }

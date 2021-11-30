@@ -10,8 +10,9 @@ public class SpacePlanetBehaviour : MonoBehaviour
     public bool hasBlockade;
     public int sceneId;
     public InteractionArea interaction;
-    bool isPlayerInside;
+   [SerializeField] bool isPlayerInside;
     GameObject spaceship;
+    public KeybindController keybind;
     // Start is called before the first frame update
     void Awake()
     {
@@ -59,6 +60,7 @@ public class SpacePlanetBehaviour : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Spaceship"))
@@ -76,16 +78,20 @@ public class SpacePlanetBehaviour : MonoBehaviour
             spaceship = null;
         }
     }
-
-    private void OnMouseEnter()
+    public void PromptKeybind()
     {
-        TooltipController.Show(true);
-        TooltipController.SetText($"planet: {planetName}\nOres:");
+        if (keybind != null) {
+            keybind.SetDetail("Enter " + planetName);
+            keybind.SetPosition(transform.position + new Vector3(0.5f, 0.5f));
+            keybind.Show(true);
+        }
     }
-
-    private void OnMouseExit()
+    public void ClearPromptKeybind()
     {
-        TooltipController.Show(false);
+        if (keybind != null)
+        {
+            keybind.Show(false);
+        }
     }
 
 }

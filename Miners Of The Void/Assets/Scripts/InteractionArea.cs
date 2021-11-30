@@ -7,6 +7,9 @@ using Maths;
 public class InteractionArea : MonoBehaviour
 {
     public UnityEvent onAction;
+
+    public UnityEvent onInteractionAreaEnter;
+    public UnityEvent onInteractionAreaExit;
     public UnityEvent<bool> onMouseOverEvent;
     public bool showKeyBind = true;
 
@@ -53,7 +56,8 @@ public class InteractionArea : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
-                onShowKeyBind?.Invoke(true, (transform.position + uIKeyBindPosition));
+                // onShowKeyBind?.Invoke(true, (transform.position + uIKeyBindPosition));
+                onInteractionAreaEnter?.Invoke();
                 playerIsInside = true;
             }
             
@@ -65,7 +69,8 @@ public class InteractionArea : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
-                onShowKeyBind?.Invoke(false, (transform.position + uIKeyBindPosition));
+                //onShowKeyBind?.Invoke(false, (transform.position + uIKeyBindPosition));
+                onInteractionAreaExit?.Invoke();
                 playerIsInside = false;
             }
           
