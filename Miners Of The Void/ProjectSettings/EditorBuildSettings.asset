@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/DevelopmentScenes/MiguelScenes/TestBattleScene.unity
     guid: d3e842950a49ae04e8409c1f4b9633e8
   - enabled: 1
-    path: Assets/DevelopmentScenes/DanielScenes/PlanetScene.unity
+    path: Assets/Scenes/PlanetScene.unity
     guid: 45ebbba0c19cd38499caf9f86fa945c4
   m_configObjects: {}
