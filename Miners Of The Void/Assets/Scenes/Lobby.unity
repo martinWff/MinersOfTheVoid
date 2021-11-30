@@ -2920,6 +2920,12 @@ MonoBehaviour:
   onAction:
     m_PersistentCalls:
       m_Calls: []
+  onInteractionAreaEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractionAreaExit:
+    m_PersistentCalls:
+      m_Calls: []
   onMouseOverEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4740,6 +4746,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60a90b13188f2b4429cde4154f6526fc, type: 3}
+--- !u!4 &1144974773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1144974772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1149779949 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
@@ -5940,6 +5951,12 @@ MonoBehaviour:
   onAction:
     m_PersistentCalls:
       m_Calls: []
+  onInteractionAreaEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractionAreaExit:
+    m_PersistentCalls:
+      m_Calls: []
   onMouseOverEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6310,11 +6327,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
   m_PrefabInstance: {fileID: 860915526}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1689122294 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3592322951101095549, guid: 60a90b13188f2b4429cde4154f6526fc, type: 3}
-  m_PrefabInstance: {fileID: 1144974772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1690835983
 PrefabInstance:
@@ -7643,7 +7655,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1689122294}
+  - {fileID: 1144974773}
   - {fileID: 1844393334}
   - {fileID: 1069849561}
   - {fileID: 1703414664}
