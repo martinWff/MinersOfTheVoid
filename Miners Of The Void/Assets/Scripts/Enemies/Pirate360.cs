@@ -60,10 +60,8 @@ public class Pirate360 : MonoBehaviour
         startAngle = middleAngle - firstAngle;
         endAngle = middleAngle + secondAngle;
 
-        
 
 
-        
 
         Distance = Mathf.Sqrt(Mathf.Pow(spaceship.transform.position.x - transform.position.x, 2) + Mathf.Pow(spaceship.transform.position.y - transform.position.y, 2));
         if (Distance < enemyRange)

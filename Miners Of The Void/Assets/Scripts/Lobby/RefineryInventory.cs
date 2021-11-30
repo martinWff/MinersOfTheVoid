@@ -55,10 +55,10 @@ public class RefineryInventory : MonoBehaviour
     {
         inventory = playerInventory.inventory;
         invController.AttachInventory(inventory);
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(10));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(10));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(10));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(10));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Ingot").GetOreStack(60));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Nugget").GetOreStack(60));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(60));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(60));
     }
 
 

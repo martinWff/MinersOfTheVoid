@@ -233,6 +233,9 @@ MonoBehaviour:
   insertGO: {fileID: 6144886268618552423, guid: 3d09f83043576eb409a0502c7a8f53b9, type: 3}
   human: 1
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &314122035
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +506,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 615866608}
   m_HandleRect: {fileID: 615866607}
   m_Direction: 2
-  m_Value: 0.9999994
+  m_Value: 0.9999997
   m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -663,6 +666,9 @@ MonoBehaviour:
   insertGO: {fileID: 6656522256589509307, guid: 9d7b1120a89225d428792930b0c1274e, type: 3}
   human: 1
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &436727301
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +789,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825733355}
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
-  m_Value: 1.0000004
+  m_Value: 0.9999994
   m_Size: 0.6666666
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1486,9 +1492,12 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot3: {fileID: 0}
   slot4: {fileID: 0}
-  insertGO: {fileID: 5583041541709674819, guid: 808e1ae1441ca36468c19794f6043a58, type: 3}
+  insertGO: {fileID: 21300000, guid: a4a623d9817eb7545a8f16793ad56128, type: 3}
   human: 0
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &984887961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &984887962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1640,9 +1649,12 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot3: {fileID: 0}
   slot4: {fileID: 0}
-  insertGO: {fileID: 6888498094984018428, guid: a7adb6b697af21f4fbf6289f936b0367, type: 3}
+  insertGO: {fileID: 21300000, guid: 36ecce8d31547164a83e92dd0e60da95, type: 3}
   human: 0
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &1082098125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,9 +1896,12 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot3: {fileID: 0}
   slot4: {fileID: 0}
-  insertGO: {fileID: 6144886268618552423, guid: 3d09f83043576eb409a0502c7a8f53b9, type: 3}
+  insertGO: {fileID: 21300000, guid: ffb4718a5c267774ea473f472f64bbcd, type: 3}
   human: 0
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &1166258962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2056,9 @@ MonoBehaviour:
   insertGO: {fileID: 1763461740576112800, guid: 781604abc62c48142a1ed3c1d8aaf65b, type: 3}
   human: 1
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &1254315579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,7 +2149,7 @@ GameObject:
   - component: {fileID: 387035830}
   m_Layer: 5
   m_Name: SpeedButton
-  m_TagString: Untagged
+  m_TagString: UpgradeButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2267,9 +2285,12 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot3: {fileID: 0}
   slot4: {fileID: 0}
-  insertGO: {fileID: 6656522256589509307, guid: 9d7b1120a89225d428792930b0c1274e, type: 3}
+  insertGO: {fileID: 21300000, guid: efbf37c811a211b468659a63e120ee98, type: 3}
   human: 0
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &1302989954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,6 +2524,9 @@ MonoBehaviour:
   insertGO: {fileID: 6888498094984018428, guid: a7adb6b697af21f4fbf6289f936b0367, type: 3}
   human: 1
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &1473650496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3264,9 +3288,12 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot3: {fileID: 0}
   slot4: {fileID: 0}
-  insertGO: {fileID: 1763461740576112800, guid: 781604abc62c48142a1ed3c1d8aaf65b, type: 3}
+  insertGO: {fileID: 21300000, guid: bd4c68fd45f2c6b4c92cf752fc2954dc, type: 3}
   human: 0
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}
 --- !u!1 &2097630918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,6 +3448,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4312620014720369723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6846955775902508011}
+  - component: {fileID: 2944317183064985052}
+  - component: {fileID: 3416725578534092530}
+  m_Layer: 5
+  m_Name: Notices
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6846955775902508011
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312620014720369723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5096874292957243470}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 1.796, y: 54.4501}
+  m_SizeDelta: {x: 479.2533, y: 35.0999}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2944317183064985052
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312620014720369723}
+  m_CullTransparentMesh: 1
+--- !u!114 &3416725578534092530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312620014720369723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &4762950836005820652
 GameObject:
   m_ObjectHideFlags: 0
@@ -3721,6 +3827,8 @@ GameObject:
   - component: {fileID: 112424697508177920}
   - component: {fileID: 828488357012121874}
   - component: {fileID: 1619570773411156334}
+  - component: {fileID: 816865062}
+  - component: {fileID: 816865063}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3821,6 +3929,52 @@ MonoBehaviour:
   m_Spacing: {x: 150, y: 95}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &816865062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555227215092492145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f3a53303c79a94896251237f0ab3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &816865063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555227215092492145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97916e28cd6fe02458b6e52bb8f1e0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotPrefab: {fileID: 5098850695310928405, guid: 2d5ca2d5777608c4f822697add7b5043, type: 3}
+  onControllerInitialized:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 816865062}
+        m_TargetAssemblyTypeName: UpgradeInv, Assembly-CSharp
+        m_MethodName: OnStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 816865063}
+          m_ObjectArgumentAssemblyTypeName: InventoryController, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSlotCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onSlotRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8967736207942527770
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,6 +4016,7 @@ RectTransform:
   - {fileID: 1254315580}
   - {fileID: 514006029}
   - {fileID: 1036187213223458078}
+  - {fileID: 6846955775902508011}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3943,3 +4098,6 @@ MonoBehaviour:
   insertGO: {fileID: 0}
   human: 0
   humanStats: {fileID: 0}
+  upinv: {fileID: 0}
+  inventory: {fileID: 0}
+  invPlayer: {fileID: 0}

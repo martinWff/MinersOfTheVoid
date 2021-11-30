@@ -8,10 +8,11 @@ public class UpgradeInventory : Inventory
     {
         if (CountDifferent < 4)
         {
-            return base.AddOre(ore);
-        } else
-        {
-            return false;
-        }
+            if (GetOreAmount(ore.oreName) < 6)
+                return base.AddOre(ore);
+            else return false;
+        } else return false;
+        
     }
+ 
 }

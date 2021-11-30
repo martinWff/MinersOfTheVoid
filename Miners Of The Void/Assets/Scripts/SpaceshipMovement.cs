@@ -34,10 +34,10 @@ public class SpaceshipMovement : MonoBehaviour
 
 
     public float playerDamage = 10;
-    public float speedLevel = 1;
-    public float dmgLevel = 1;
-    public float shieldLevel = 1;
-    public float healthLevel = 1;
+    public float speedLevel = 0;
+    public float dmgLevel = 0;
+    public float shieldLevel = 0;
+    public float healthLevel = 0;
     public bool backweaponMode = false;
 
     public GameObject upgradePrefab;
@@ -53,6 +53,8 @@ public class SpaceshipMovement : MonoBehaviour
     //UI
     public Image lifeBar;
     public Image shieldBar;
+
+   
 
 
 
