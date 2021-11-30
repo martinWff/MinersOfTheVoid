@@ -41,7 +41,7 @@ public class PlayerInteraction : MonoBehaviour
             currentDirection = transform.rotation;
             reload = false;
 
-           RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + new Vector3(xOffset, 0), -transform.up,range,LayerMask.GetMask("Interactable"));
+           RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + new Vector3(xOffset, 0), transform.right,range,LayerMask.GetMask("Interactable"));
             
             if (raycastHit)
             {
