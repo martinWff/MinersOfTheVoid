@@ -6,9 +6,10 @@ public class Enemy : MonoBehaviour
 {
     private GameObject player;
     private float Distance;
+    
 
-    [SerializeField] private lifebar lifebar;
-    [SerializeField] private shieldbar shieldbar;
+    [SerializeField] public lifebar lifebar;
+    [SerializeField] public shieldbar shieldbar;
 
 
     //Enemy shoot
@@ -36,12 +37,22 @@ public class Enemy : MonoBehaviour
     //Enemy rotation
     private Rigidbody2D enemy;
 
+    //bool enemy Planet
+    public bool enemyPlanet = false;
 
 
     void Start()
     {
+        if(enemyPlanet == true)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            player = GameObject.FindGameObjectWithTag("Spaceship");
+        }
+        
 
-        player = GameObject.FindGameObjectWithTag("Spaceship");
         //Debug.Log(player);
         enemy = this.GetComponent<Rigidbody2D>();
         playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
@@ -119,7 +130,13 @@ public class Enemy : MonoBehaviour
             {
                 enemieHealth = 0;
                 shield = 0;
-                SavePlayerStats.bips += Random.Range(3,5);
+                SavePlayerStats.bips += (int)Random.Range(3,5);
+
+                if(enemyPlanet == true)
+                {
+                    Destroy(transform.parent.gameObject);
+                }
+
                 Destroy(gameObject);
             }
 

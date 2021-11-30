@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace MOV.Upgrades
@@ -26,7 +27,7 @@ namespace MOV.Upgrades
         public UpgradeInv upinv;
         public UpgradeInv inventory;
         public PlayerInventory invPlayer;
-        
+        public Text notices;
 
 
         // Start is called before the first frame update
@@ -45,6 +46,8 @@ namespace MOV.Upgrades
             invPlayer = GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<PlayerInventory>();
             Debug.Log(invPlayer.inventory.GetOreAmount("Iron"));
             playerstats.LoadStats();
+            notices = GameObject.Find("Notices").GetComponent<Text>();
+            notices.text = "Welcome to the upgrades!";
             
             
             
@@ -202,8 +205,13 @@ namespace MOV.Upgrades
                 if (upgradeType == "SpeedButton")
                 {
                     level = humanStats.speedLevel;
-                    AddUpgrade(new Speed("speed"),false);
+                   
 
+                    if (SavePlayerStats.bips >= 200 * level)
+                    {
+                        AddUpgrade(new Speed("speed"), false);
+                    }
+                    else Debug.Log("You can't afford to buy this upgrade, " + 200 * level+1 +" bips needed");
                     //  mySlots.InsertAtEnd("speed");
 
 
@@ -211,24 +219,36 @@ namespace MOV.Upgrades
                 if (upgradeType == "ShieldButton")
                 {
                     level = humanStats.shieldLevel;
-                    AddUpgrade(new Shield("shield"),false);
+
+                    
                     //  mySlots.InsertAtEnd("shield");
+                    if (SavePlayerStats.bips >= 200 * level)
+                    {
+                        AddUpgrade(new Shield("shield"), false);
+                    }
+                    else Debug.Log("You can't afford to buy this upgrade.");
 
 
                 }
                 if (upgradeType == "HealthButton")
                 {
                     level = humanStats.healthLevel;
-                    AddUpgrade(new Hp("health"),false);
+                    if (SavePlayerStats.bips >= 200 * level)
+                    {
+                        AddUpgrade(new Hp("health"), false);
+                    }
+                    else Debug.Log("You can't afford to buy this upgrade.");
+                    
                     // mySlots.InsertAtEnd("health");
                     // mySlots.InsertAtEnd("shield");
                 }
-              /*  if (upgradeType == "DmgButton")
-                {
-                    level = humanStats.dmgLevel;
-                    AddUpgrade(new Dmg("dmg"), false);
-                    //mySlots.InsertAtEnd("backWeapon");
-                }*/
+                /*  if (upgradeType == "DmgButton")
+                  {
+                      level = humanStats.dmgLevel;
+                      AddUpgrade(new Dmg("dmg"), false);
+                      //mySlots.InsertAtEnd("backWeapon");
+                  }*/
+              
                 
             }
             
@@ -292,16 +312,12 @@ namespace MOV.Upgrades
                 invPlayer.inventory.RetrieveAmount(material2, level + 1);
                 invPlayer.inventory.RetrieveAmount(material3, level + 1);
                 SavePlayerStats.bips -= (bips * (int)level);
-
+                notices.text = "Aquiered!";
                 return true;
             }
             else
             {
-<<<<<<< Updated upstream
-                Debug.Log("Not enough ore" + invPlayer.inventory.GetOreAmount(material1) + ":" + invPlayer.inventory.GetOreAmount(material2) + ":" + invPlayer.inventory.GetOreAmount(material3) + ":" + level);
-=======
-                notices.text = "Not enough ore: " + material1 + ":" + invPlayer.inventory.GetOreAmount(material1) + "; "+material2 + ":" + invPlayer.inventory.GetOreAmount(material2) +"; "+ material3 + ":" + invPlayer.inventory.GetOreAmount(material3)+", you need at least "+level + 1+" of each.";
->>>>>>> Stashed changes
+                notices.text = "Not enough ore: " + material1 + ":" + invPlayer.inventory.GetOreAmount(material1) + "; "+material2 + ":" + invPlayer.inventory.GetOreAmount(material2) + material3 + ":" + invPlayer.inventory.GetOreAmount(material3)+", you need at least "+level + 1+" of each.";
                 return false;
             }
         }
