@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            Debug.Log(gameObject);
+          
 
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
@@ -140,7 +140,7 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
+            
             perEnemyLife = enemieHealth / enemieHealthTotal;
             perEnemyShield = shield / totalShield;
             lifebar.Setsize(perEnemyLife);

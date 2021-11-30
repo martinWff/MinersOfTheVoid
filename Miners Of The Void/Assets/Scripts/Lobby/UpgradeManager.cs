@@ -44,7 +44,6 @@ namespace MOV.Upgrades
             slot4 = GameObject.Find("Slot4");
             inventory = FindObjectOfType<UpgradeInv>();
             invPlayer = GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<PlayerInventory>();
-            Debug.Log(invPlayer.inventory.GetOreAmount("Iron"));
             playerstats.LoadStats();
             notices = GameObject.Find("Notices").GetComponent<Text>();
             notices.text = "Welcome to the upgrades!";
@@ -99,19 +98,20 @@ namespace MOV.Upgrades
                         Debug.Log(level);
                         if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level ==0))
                         {
-                            
-                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200,(int)level))
+                        if (level < 6) {
+                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level))
                             {
                                 Debug.Log("Com custos");
                                 AddUpgrade(new Speed(upgradeType), false);
-                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO, false);
                             }
+                        }
                         }
                         if(!inventory.ContainsOre(upgradeType) && level != 0)
                         {
-                            Debug.Log("Sem custos");
+                            notices.text = "No cost for this operation";
                             AddUpgrade(new Speed(upgradeType),true);
-                            inventory.AddUpgradeVisual(upgradeType, level -1, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, level -1, insertGO,false);
                         }
                        
                     }
@@ -120,19 +120,21 @@ namespace MOV.Upgrades
                     level = SavePlayerStats.shieldLevel;
                         if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
                         {
-
+                        if (level < 6)
+                        {
                             if (AddCost("Osmium", "Iron Nugget", "Copper Ingot", 200, (int)level))
                             {
                                 Debug.Log("Com custos");
                                 AddUpgrade(new Shield(upgradeType), false);
-                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO, false);
                             }
+                        }
                         }
                         if (!inventory.ContainsOre(upgradeType) && level != 0)
                         {
-                            Debug.Log("Sem custos");
+                            notices.text = "No cost for this operation";
                             AddUpgrade(new Shield(upgradeType), true);
-                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO,false);
                         };
 
 
@@ -142,40 +144,40 @@ namespace MOV.Upgrades
                     level = SavePlayerStats.healthLevel;
                         if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
                         {
-
-                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level))
+                        if (level < 6)
+                        {
+                            if ((AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level)))
                             {
                                 Debug.Log("Com custos");
                                 AddUpgrade(new Hp(upgradeType), false);
-                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO, false);
                             }
                         }
-                        if (!inventory.ContainsOre(upgradeType) && level != 0)
+                        }
+                        if (!inventory.ContainsOre(upgradeType) && level != 0 )
                         {
-                            Debug.Log("Sem custos");
+                            notices.text = "No cost for this operation";
                             AddUpgrade(new Hp(upgradeType), true);
-                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO,false);
                         }
                     }
                 if (upgradeType == "BackWeapon")
                 {
 
-                    if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
+                    if ((!inventory.ContainsOre(upgradeType) && !SavePlayerStats.backWeaponAquired))
                     {
 
-                        if (AddCost("Gold", "Osmium Nugget", "Iron Ingot", 2000, 3))
+                        if (AddCost("Gold", "Osmium Nugget", "Iron Ingot", 2000, 3) && level < 6)
                         {
-                            Debug.Log("Com custos");
+
                             AddUpgrade(new BackWeapon(upgradeType), false);
-                            inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, 1, insertGO, true);
+                            SavePlayerStats.backWeaponAquired = true;
                         }
+
                     }
-                    if (!inventory.ContainsOre(upgradeType) && level != 0)
-                    {
-                        Debug.Log("Sem custos");
-                        AddUpgrade(new BackWeapon(upgradeType), true);
-                        inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
-                    }
+                    else { notices.text = "No costs"; inventory.AddUpgradeVisual(upgradeType, 1, insertGO, true); AddUpgrade(new BackWeapon(upgradeType), false); }
+                    
                     //mySlots.InsertAtEnd("backWeapon");
                 }
                 /*if (upgradeType == "DmgButton")
@@ -290,7 +292,8 @@ namespace MOV.Upgrades
             if (upgradeType == "BackWeapon")
             {
                 RemoveUpgrade(new BackWeapon("backweapon"));
-                
+                inventory.RemoveUpgrade(upgradeType);
+
                 //mySlots.InsertAtEnd("backWeapon");
             }
           /*  if (upgradeType == "DmgButton")
@@ -310,7 +313,7 @@ namespace MOV.Upgrades
         {
             if (invPlayer.inventory.GetOreAmount(material1) >= level + 1 && invPlayer.inventory.GetOreAmount(material2) >= level + 1 && invPlayer.inventory.GetOreAmount(material3) >= level + 1 && SavePlayerStats.bips >= (bips * ((int)level +1)))
             {
-                Debug.Log("Level:" + level);
+                
                 invPlayer.inventory.RetrieveAmount(material1, level + 1);
                 invPlayer.inventory.RetrieveAmount(material2, level + 1);
                 invPlayer.inventory.RetrieveAmount(material3, level + 1);

@@ -47,10 +47,6 @@ public class PlayerMovement : MonoBehaviour
         lifeBar = GameObject.Find("Life").GetComponent<Image>();
         shieldBar = GameObject.Find("Shield").GetComponent<Image>();
         
-        
-
-        
-
     }
     private void Update()
     {
@@ -89,9 +85,8 @@ public class PlayerMovement : MonoBehaviour
         lifeBar.fillAmount = hp / totalhp;
         shieldBar.fillAmount = shield / totalShield;
 
-
-        //if (deathTimer > 0) deathTimer -= Time.deltaTime;
-
+        
+        //if (deathTimer > 0) deathTimer -= Time.deltaTime
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

@@ -12,13 +12,23 @@ public class UpgradeInv : MonoBehaviour
         inventory = new UpgradeInventory();
     }
     
-    public void AddUpgradeVisual(string upgradeName, float level ,Sprite sprite)
+    public void AddUpgradeVisual(string upgradeName, float level ,Sprite sprite, bool isBool)
     {
-        if (!inventory.ContainsOre(upgradeName) || inventory.GetOreAmount(upgradeName) <= 0)
-           inventory.AddOre(new OreStack(upgradeName, (int)level + 1, sprite));
+        if (!isBool)
+        {
+            if (!inventory.ContainsOre(upgradeName) || inventory.GetOreAmount(upgradeName) <= 0)
+                inventory.AddOre(new OreStack(upgradeName, (int)level + 1, sprite));
+            else
+            {
+                inventory.AddOre(new OreStack(upgradeName, 1, sprite));
+            }
+        }
         else
         {
-            inventory.AddOre(new OreStack(upgradeName, 1, sprite));
+            if (!inventory.ContainsOre(upgradeName))
+            {
+                inventory.AddOre(new OreStack(upgradeName, 1, sprite));
+            }
         }
     }
     public void RemoveUpgrade(string upgradeName, float level)

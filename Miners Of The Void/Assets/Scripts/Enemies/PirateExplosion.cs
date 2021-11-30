@@ -131,7 +131,7 @@ public class PirateExplosion : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
+           
             perEnemieHealth = enemieHealth / enemieHealthTotal;
             perEnemieShield = shield / totalShield;
             lifebar.Setsize(perEnemieHealth);

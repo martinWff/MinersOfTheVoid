@@ -59,6 +59,9 @@ public class RefineryInventory : MonoBehaviour
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Nugget").GetOreStack(60));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(60));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(60));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(60));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Nugget").GetOreStack(60));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Nugget").GetOreStack(60));
     }
 
 

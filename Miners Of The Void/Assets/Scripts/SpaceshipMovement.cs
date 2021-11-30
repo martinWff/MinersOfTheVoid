@@ -49,7 +49,7 @@ public class SpaceshipMovement : MonoBehaviour
     private Animator animator;
     
     private float deathTimer = 0;
-    public Transform reference;
+    Vector3 reference = new Vector3(0,0,0);
     //UI
     public Image lifeBar;
     public Image shieldBar;
@@ -109,7 +109,7 @@ public class SpaceshipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
-        if (Vector3.Distance(transform.position, reference.position) > 100)
+        if (Vector3.Distance(transform.position, reference) > 100)
         {
             SaveStats();
             SceneManager.LoadScene("TestBattleScene");
@@ -170,6 +170,7 @@ public class SpaceshipMovement : MonoBehaviour
                 collision.gameObject.GetComponent<BulletTest>().touchedPlayer = true;
                 objectPool.RetrieveBullet(collision.gameObject);
             }
+           
         }
 
        
@@ -223,6 +224,7 @@ public class SpaceshipMovement : MonoBehaviour
         SavePlayerStats.shield = shield;
         SavePlayerStats.totalShield = totalShield;
         SavePlayerStats.hp = hp;
+        SavePlayerStats.totalhp = totalhp;
         SavePlayerStats.backWeapon = backweaponMode;
         SavePlayerStats.healthLevel = healthLevel;
         SavePlayerStats.speedLevel = speedLevel;
@@ -237,6 +239,7 @@ public class SpaceshipMovement : MonoBehaviour
         shield = SavePlayerStats.shield;
         totalShield = SavePlayerStats.totalShield;
         hp = SavePlayerStats.hp;
+        totalhp = SavePlayerStats.totalhp;
         backweaponMode = SavePlayerStats.backWeapon;
         healthLevel = SavePlayerStats.healthLevel;
         speedLevel = SavePlayerStats.speedLevel;
