@@ -29,9 +29,10 @@ public class ContractManager : MonoBehaviour
     private void _AcceptContract(Contract c)
     {
         GameObject panel = Instantiate(contractPanelPrefab,canvas);
+        Transform insertPanel = panel.transform.Find("Content");
         foreach (Goal g in c.goals)
         {
-            GameObject goalObject = Instantiate(goalPanelPrefab, panel.transform);
+            GameObject goalObject = Instantiate(goalPanelPrefab, insertPanel);
             ContractUIController goalController = goalObject.GetComponent<ContractUIController>();
             goalController.SetGoal(g);
 
