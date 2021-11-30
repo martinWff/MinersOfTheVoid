@@ -33,14 +33,14 @@ public class Contract : System.IDisposable {
         }
     }
 
-    public void GiveRewards()
+  /*  public void GiveRewards()
     {
         if (!isCompleted)
         {
             CheckGoals();
         }
 
-    }
+    }*/
 
     public void Start()
     {
