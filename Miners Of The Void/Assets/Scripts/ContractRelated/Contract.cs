@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Contract { 
+public class Contract : System.IDisposable { 
     public enum ContractType
     {
         mining,
@@ -50,6 +50,15 @@ public class Contract {
         }
     }
 
+   public void Dispose()
+    {
+        foreach (Goal g in goals)
+        {
+            g.Dispose();
+        }
+    }
+
+
     public Contract(ContractType type,Array<Goal> goals)
     {
         contractType = type;
@@ -60,7 +69,7 @@ public class Contract {
 }
 
 
-public class Goal
+public class Goal : System.IDisposable
 {
     public bool completed;
 
@@ -74,7 +83,6 @@ public class Goal
 
     }
 
-
     public void Evaluate()
     {
         if (currentAmount >= requiredAmount)
@@ -86,7 +94,12 @@ public class Goal
     protected void Complete()
     {
         completed = true;
-    } 
+    }
+
+    public virtual void Dispose()
+    {
+        
+    }
 }
 
 
@@ -117,6 +130,11 @@ public class GatheringGoal : Goal
     {
         base.Init();
         Inventory.onInventoryChanged += OnGathered;
+    }
+
+    public override void Dispose()
+    {
+        Inventory.onInventoryChanged -= OnGathered;
     }
 
     void OnGathered(Inventory inv,string updatedOreName,int amount)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContractManager : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class ContractManager : MonoBehaviour
     public delegate void ContractFinished(Contract contract);
     public static event ContractFinished onContractFinished;
 
+
+    public delegate void ContractCancelled(Contract contract);
+    public static event ContractCancelled onContractCancelled;
+
     public static int contractsLeftUntilBoss;
 
 
@@ -28,22 +33,24 @@ public class ContractManager : MonoBehaviour
  
     private void _AcceptContract(Contract c)
     {
-        GameObject panel = Instantiate(contractPanelPrefab,canvas);
-        Transform insertPanel = panel.transform.Find("Content");
-        foreach (Goal g in c.goals)
-        {
-            GameObject goalObject = Instantiate(goalPanelPrefab, insertPanel);
-            ContractUIController goalController = goalObject.GetComponent<ContractUIController>();
-            goalController.SetGoal(g);
-
-        }
         onContractAccepted?.Invoke(c);
+    }
+
+    private void _CancelContract(Contract c)
+    {
+        onContractCancelled?.Invoke(c);
+    }
+
+    public static void CancelContract(Contract c)
+    {
+        instance._CancelContract(c);
     }
 
     public static void AcceptContract(Contract c)
     {
         instance._AcceptContract(c);
     }
+
 
     public static void CompleteContract(Contract c)
     {
