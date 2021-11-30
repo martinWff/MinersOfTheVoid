@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public static Inventory staticInventory;
     public Inventory inventory;
     // Start is called before the first frame update
     void Awake()
     {
-        inventory = new Inventory();
-
+        if (staticInventory == null)
+        {
+            staticInventory = new Inventory();
+        }
+        inventory = staticInventory;
     }
 
     public void OnInventoryControllerInitialized(InventoryController ic)

@@ -18,6 +18,7 @@ TagManager:
   - Panel
   - PlayerStats
   - InventoryPanel
+  - Keybind
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Water
   - UI
   - Entities
-  - 
+  - Interactable
   - 
   - 
   - 
