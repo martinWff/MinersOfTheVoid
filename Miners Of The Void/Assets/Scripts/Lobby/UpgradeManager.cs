@@ -297,7 +297,11 @@ namespace MOV.Upgrades
             }
             else
             {
+<<<<<<< Updated upstream
                 Debug.Log("Not enough ore" + invPlayer.inventory.GetOreAmount(material1) + ":" + invPlayer.inventory.GetOreAmount(material2) + ":" + invPlayer.inventory.GetOreAmount(material3) + ":" + level);
+=======
+                notices.text = "Not enough ore: " + material1 + ":" + invPlayer.inventory.GetOreAmount(material1) + "; "+material2 + ":" + invPlayer.inventory.GetOreAmount(material2) +"; "+ material3 + ":" + invPlayer.inventory.GetOreAmount(material3)+", you need at least "+level + 1+" of each.";
+>>>>>>> Stashed changes
                 return false;
             }
         }
