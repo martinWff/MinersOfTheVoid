@@ -12,7 +12,6 @@ public class PlayerInteraction : MonoBehaviour
     public int range;
     public Vector3 offset;
     public Tilemap colliderMap;
-    private BoxCollider2D boxCollider;
     private float xOffset;
     private float holdTime = 0;
     public float defaultHoldTime;
@@ -27,26 +26,27 @@ public class PlayerInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        xOffset = boxCollider.size.x / 2;
+        xOffset = transform.localScale.x;
         holdTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(transform.position + (transform.right * xOffset), transform.right, new Color(1, 1, 0));
         if (currentPosition != transform.position || currentDirection != transform.rotation || reload)
         {
             currentPosition = transform.position;
             currentDirection = transform.rotation;
             reload = false;
 
-           RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + new Vector3(xOffset, 0), -transform.up,range,LayerMask.GetMask("Interactable"));
+           RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.right * xOffset), transform.right,range,LayerMask.GetMask("Interactable"));
+            
             
             if (raycastHit)
             {
 
-                targetedVector = colliderMap.WorldToCell(transform.position-new Vector3(0, raycastHit.distance+0.5f));
+                targetedVector = colliderMap.WorldToCell(transform.position+(transform.right* (raycastHit.distance+0.5f)));
                    
                     Vector3 vec = colliderMap.CellToWorld(targetedVector);
                     Tile targetTile = colliderMap.GetTile<Tile>(targetedVector);
@@ -118,7 +118,6 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetButtonUp("Interaction"))
         {
-            Debug.Log("time reseted");
             holdTime = 0;
             controller.ResetCounter();
         }

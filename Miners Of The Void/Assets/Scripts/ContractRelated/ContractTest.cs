@@ -54,10 +54,7 @@ public class ContractTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            inventory.AddOre(new OreStack("Iron",1,ironSprite));
-        }
+        
     }
 
 }
