@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
                 enemy.GetComponent<Enemy>().enabled = true;
                 enemy.GetComponent<SpaceEnemyMove>().enabled = true;
             }
+            GetComponent<SpriteRenderer>().enabled = false;
             SaveStats();
             GetComponent<PlayerMovement>().enabled = false;
         }

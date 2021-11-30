@@ -210,8 +210,9 @@ namespace MOV.Upgrades
                     if (SavePlayerStats.bips >= 200 * level)
                     {
                         AddUpgrade(new Speed("speed"), false);
+                        notices.text = ("Aquiered!");
                     }
-                    else Debug.Log("You can't afford to buy this upgrade, " + 200 * level+1 +" bips needed");
+                    else notices.text = ("You can't afford to buy this upgrade, " + 200 * level+1 +" bips needed");
                     //  mySlots.InsertAtEnd("speed");
 
 
@@ -225,8 +226,9 @@ namespace MOV.Upgrades
                     if (SavePlayerStats.bips >= 200 * level)
                     {
                         AddUpgrade(new Shield("shield"), false);
+                        notices.text = ("Aquiered!");
                     }
-                    else Debug.Log("You can't afford to buy this upgrade.");
+                    else notices.text =("You can't afford to buy this upgrade.");
 
 
                 }
@@ -236,8 +238,9 @@ namespace MOV.Upgrades
                     if (SavePlayerStats.bips >= 200 * level)
                     {
                         AddUpgrade(new Hp("health"), false);
+                        notices.text = ("Aquiered!");
                     }
-                    else Debug.Log("You can't afford to buy this upgrade.");
+                    else notices.text =("You can't afford to buy this upgrade.");
                     
                     // mySlots.InsertAtEnd("health");
                     // mySlots.InsertAtEnd("shield");
@@ -542,7 +545,7 @@ public class Hp : Upgrade
         {
             if (level < 6 && !bought)
             {
-                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 8 +( 4 * (level + 1));
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
             }

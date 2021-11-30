@@ -15,14 +15,14 @@ public class SpaceshipMovement : MonoBehaviour
     //Shot
     public GameObject bulletPrefab;
     public float bulletOffset = 1.5f;
-    public float bulletSpeed = 14;
+    public float bulletSpeed = 18;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
     
     //movement
     float verticalInput;
     float horizontalInput;
-    public float moveForce = 4;
+    public float moveForce = 8;
     private Vector3 test;
     //status
     public float totalShield = 20;
@@ -189,9 +189,11 @@ public class SpaceshipMovement : MonoBehaviour
             
             camera2.Human = true;
             camera2.ChangeCamera();
-            PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
-            player2.transform.position = new Vector3(8, 0, 0);
-            player2.enabled = true;
+            GameObject player2 = GameObject.Find("HumanPlayer");
+            player2.GetComponent<PlayerMovement>().transform.position = new Vector3(8, 0, 0);
+            player2.GetComponent<PlayerMovement>().enabled = true;
+            player2.GetComponent<SpriteRenderer>().enabled = true;
+        
             rb.velocity = new Vector2(0, 0);
             transform.position = new Vector3(-16.84f, 0.11f, 0);
             rb.rotation = 0;

@@ -10,8 +10,8 @@ public static class SavePlayerStats
     public static float shield = 10;
     public static float hp = 20;
     public static float totalhp = 20;
-    public static float moveForce = 4;
-    public static float bulletSpeed = 14;
+    public static float moveForce = 8;
+    public static float bulletSpeed = 18;
     public static bool backWeapon = false;
     public static float speedLevel = 0;
     public static float dmgLevel = 0;
