@@ -28,6 +28,7 @@ namespace MOV.Upgrades
         public UpgradeInv inventory;
         public PlayerInventory invPlayer;
         public Text notices;
+        public Text bipText;
 
 
         // Start is called before the first frame update
@@ -44,9 +45,9 @@ namespace MOV.Upgrades
             slot4 = GameObject.Find("Slot4");
             inventory = FindObjectOfType<UpgradeInv>();
             invPlayer = GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<PlayerInventory>();
-            Debug.Log(invPlayer.inventory.GetOreAmount("Iron"));
             playerstats.LoadStats();
             notices = GameObject.Find("Notices").GetComponent<Text>();
+            bipText = GameObject.Find("Bips").GetComponent<Text>();
             notices.text = "Welcome to the upgrades!";
             
             
@@ -99,19 +100,20 @@ namespace MOV.Upgrades
                         Debug.Log(level);
                         if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level ==0))
                         {
-                            
-                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200,(int)level))
+                        if (level < 6) {
+                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level))
                             {
                                 Debug.Log("Com custos");
                                 AddUpgrade(new Speed(upgradeType), false);
-                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO, false);
                             }
+                        }
                         }
                         if(!inventory.ContainsOre(upgradeType) && level != 0)
                         {
-                            Debug.Log("Sem custos");
+                            notices.text = "No cost for this operation";
                             AddUpgrade(new Speed(upgradeType),true);
-                            inventory.AddUpgradeVisual(upgradeType, level -1, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, level -1, insertGO,false);
                         }
                        
                     }
@@ -120,19 +122,21 @@ namespace MOV.Upgrades
                     level = SavePlayerStats.shieldLevel;
                         if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
                         {
-
+                        if (level < 6)
+                        {
                             if (AddCost("Osmium", "Iron Nugget", "Copper Ingot", 200, (int)level))
                             {
                                 Debug.Log("Com custos");
                                 AddUpgrade(new Shield(upgradeType), false);
-                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO, false);
                             }
+                        }
                         }
                         if (!inventory.ContainsOre(upgradeType) && level != 0)
                         {
-                            Debug.Log("Sem custos");
+                            notices.text = "No cost for this operation";
                             AddUpgrade(new Shield(upgradeType), true);
-                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO,false);
                         };
 
 
@@ -142,40 +146,40 @@ namespace MOV.Upgrades
                     level = SavePlayerStats.healthLevel;
                         if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
                         {
-
-                            if (AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level))
+                        if (level < 6)
+                        {
+                            if ((AddCost("Gold", "Copper Nugget", "Iron Ingot", 200, (int)level)))
                             {
                                 Debug.Log("Com custos");
                                 AddUpgrade(new Hp(upgradeType), false);
-                                inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                                inventory.AddUpgradeVisual(upgradeType, level, insertGO, false);
                             }
                         }
-                        if (!inventory.ContainsOre(upgradeType) && level != 0)
+                        }
+                        if (!inventory.ContainsOre(upgradeType) && level != 0 )
                         {
-                            Debug.Log("Sem custos");
+                            notices.text = "No cost for this operation";
                             AddUpgrade(new Hp(upgradeType), true);
-                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO,false);
                         }
                     }
                 if (upgradeType == "BackWeapon")
                 {
 
-                    if (inventory.ContainsOre(upgradeType) || (!inventory.ContainsOre(upgradeType) && level == 0))
+                    if ((!inventory.ContainsOre(upgradeType) && !SavePlayerStats.backWeaponAquired))
                     {
 
-                        if (AddCost("Gold", "Osmium Nugget", "Iron Ingot", 2000, 3))
+                        if (AddCost("Gold", "Osmium Nugget", "Iron Ingot", 2000, 3) && level < 6)
                         {
-                            Debug.Log("Com custos");
+
                             AddUpgrade(new BackWeapon(upgradeType), false);
-                            inventory.AddUpgradeVisual(upgradeType, level, insertGO);
+                            inventory.AddUpgradeVisual(upgradeType, 1, insertGO, true);
+                            SavePlayerStats.backWeaponAquired = true;
                         }
+
                     }
-                    if (!inventory.ContainsOre(upgradeType) && level != 0)
-                    {
-                        Debug.Log("Sem custos");
-                        AddUpgrade(new BackWeapon(upgradeType), true);
-                        inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
-                    }
+                    else { notices.text = "No costs"; inventory.AddUpgradeVisual(upgradeType, 1, insertGO, true); AddUpgrade(new BackWeapon(upgradeType), false); }
+                    
                     //mySlots.InsertAtEnd("backWeapon");
                 }
                 /*if (upgradeType == "DmgButton")
@@ -198,7 +202,8 @@ namespace MOV.Upgrades
                             inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
                         }
                     }*/
-                playerstats.SaveStats();
+                
+                
             }
             else
             {
@@ -210,8 +215,9 @@ namespace MOV.Upgrades
                     if (SavePlayerStats.bips >= 200 * level)
                     {
                         AddUpgrade(new Speed("speed"), false);
+                        notices.text = ("Aquiered!");
                     }
-                    else Debug.Log("You can't afford to buy this upgrade, " + 200 * level+1 +" bips needed");
+                    else notices.text = ("You can't afford to buy this upgrade, " + 200 * level+1 +" bips needed");
                     //  mySlots.InsertAtEnd("speed");
 
 
@@ -225,8 +231,9 @@ namespace MOV.Upgrades
                     if (SavePlayerStats.bips >= 200 * level)
                     {
                         AddUpgrade(new Shield("shield"), false);
+                        notices.text = ("Aquiered!");
                     }
-                    else Debug.Log("You can't afford to buy this upgrade.");
+                    else notices.text =("You can't afford to buy this upgrade.");
 
 
                 }
@@ -236,8 +243,9 @@ namespace MOV.Upgrades
                     if (SavePlayerStats.bips >= 200 * level)
                     {
                         AddUpgrade(new Hp("health"), false);
+                        notices.text = ("Aquiered!");
                     }
-                    else Debug.Log("You can't afford to buy this upgrade.");
+                    else notices.text =("You can't afford to buy this upgrade.");
                     
                     // mySlots.InsertAtEnd("health");
                     // mySlots.InsertAtEnd("shield");
@@ -251,7 +259,9 @@ namespace MOV.Upgrades
               
                 
             }
-            
+            playerstats.SaveStats();
+            bipText.text = "Bips: " + SavePlayerStats.bips;
+
         }
         public void UnSummon(string upgradeType)
         {
@@ -287,7 +297,8 @@ namespace MOV.Upgrades
             if (upgradeType == "BackWeapon")
             {
                 RemoveUpgrade(new BackWeapon("backweapon"));
-                
+                inventory.RemoveUpgrade(upgradeType);
+
                 //mySlots.InsertAtEnd("backWeapon");
             }
           /*  if (upgradeType == "DmgButton")
@@ -307,7 +318,7 @@ namespace MOV.Upgrades
         {
             if (invPlayer.inventory.GetOreAmount(material1) >= level + 1 && invPlayer.inventory.GetOreAmount(material2) >= level + 1 && invPlayer.inventory.GetOreAmount(material3) >= level + 1 && SavePlayerStats.bips >= (bips * ((int)level +1)))
             {
-                Debug.Log("Level:" + level);
+                
                 invPlayer.inventory.RetrieveAmount(material1, level + 1);
                 invPlayer.inventory.RetrieveAmount(material2, level + 1);
                 invPlayer.inventory.RetrieveAmount(material3, level + 1);
@@ -542,7 +553,7 @@ public class Hp : Upgrade
         {
             if (level < 6 && !bought)
             {
-                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 4 * (level + 1);
+                GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().moveForce = 8 +( 4 * (level + 1));
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20 + (3 * (level + 1));
                 GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().speedLevel += 1;
             }

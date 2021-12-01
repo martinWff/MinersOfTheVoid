@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CheatsController : MonoBehaviour
 {
-
+    public bool human = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,17 +19,22 @@ public class CheatsController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        
     }
 
-    public void OnImortalityToggled(bool imortality)
+    /*public void OnImortalityToggled(bool immortality)
     {
+        
+        Debug.Log(immortality);
+        SavePlayerStats.immortality = immortality;
+        if (human)
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().immortality = immortality; 
+        else
+            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().immortality = immortality;
 
-    }
+    }*/
 
-    public void OnFastRefineryToggled(bool fastRefinery)
-    {
-
-    }
+    
     public void OnClickOres()
     {
         foreach (OreResourceObject oreResourceObject in OreManager.instance.ores)
@@ -43,6 +48,9 @@ public class CheatsController : MonoBehaviour
 
     public void OnBipsInputSubmited(string bips)
     {
-
+        int money;
+        int.TryParse(bips, out money);
+        SavePlayerStats.bips = money;
+        Debug.Log(SavePlayerStats.bips);
     }
 }

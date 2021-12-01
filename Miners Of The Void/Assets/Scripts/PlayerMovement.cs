@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     public float hp = 20;
     public Image lifeBar;
     public Image shieldBar;
+    public Text bipText;
+    public bool immortality = false;
     //public GameObject statusDisplay;
     //public Text statusDisplayText;
 
@@ -41,16 +44,13 @@ public class PlayerMovement : MonoBehaviour
     public float deathTimer = 0;
     void Start()
     {
+        bipText = GameObject.Find("Bips").GetComponent<Text>();
+        bipText.text = "Bips: " + SavePlayerStats.bips;
         LoadStats();
         rb = GetComponent<Rigidbody2D>();
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         lifeBar = GameObject.Find("Life").GetComponent<Image>();
         shieldBar = GameObject.Find("Shield").GetComponent<Image>();
-        
-        
-
-        
-
     }
     private void Update()
     {
@@ -88,10 +88,16 @@ public class PlayerMovement : MonoBehaviour
 
         lifeBar.fillAmount = hp / totalhp;
         shieldBar.fillAmount = shield / totalShield;
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (immortality) immortality = false;
+            else immortality = true;
+            Debug.Log(immortality);
+        }
+        
 
-
-        //if (deathTimer > 0) deathTimer -= Time.deltaTime;
-
+        
+        //if (deathTimer > 0) deathTimer -= Time.deltaTime
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -109,8 +115,37 @@ public class PlayerMovement : MonoBehaviour
                 enemy.GetComponent<Enemy>().enabled = true;
                 enemy.GetComponent<SpaceEnemyMove>().enabled = true;
             }
+            GetComponent<SpriteRenderer>().enabled = false;
             SaveStats();
             GetComponent<PlayerMovement>().enabled = false;
+        }
+        if (((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool")))
+        {
+            Debug.Log(immortality);
+            if (!immortality)
+            {
+                if (shield >= 10) shield -= 10;
+                if (shield < 10)
+                {
+                    if (shield != 0) hp -= (10 - shield);
+
+                    shield = 0;
+                }
+                if (hp <= 0)
+                {
+                    hp = 0;
+                    shield = 0;
+                    SceneManager.LoadScene("Lobby");
+                }
+                if (collision.gameObject.tag != "PirateExplosion")
+                    Destroy(collision.gameObject);
+                else if (collision.gameObject.tag == "BulletEnemiePool")
+                {
+                    collision.gameObject.GetComponent<BulletTest>().touchedPlayer = true;
+                    //objectPool.RetrieveBullet(collision.gameObject);
+                }
+            }
+
         }
     }
 
@@ -146,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
         dmgLevel = SavePlayerStats.dmgLevelH;
         shieldLevel = SavePlayerStats.shieldLevelH;
         bulletSpeed = SavePlayerStats.bulletSpeedH;
+        immortality = SavePlayerStats.immortality;
     }
 
 

@@ -15,14 +15,14 @@ public class SpaceshipMovement : MonoBehaviour
     //Shot
     public GameObject bulletPrefab;
     public float bulletOffset = 1.5f;
-    public float bulletSpeed = 14;
+    public float bulletSpeed = 18;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
     
     //movement
     float verticalInput;
     float horizontalInput;
-    public float moveForce = 4;
+    public float moveForce = 8;
     private Vector3 test;
     //status
     public float totalShield = 20;
@@ -49,10 +49,11 @@ public class SpaceshipMovement : MonoBehaviour
     private Animator animator;
     
     private float deathTimer = 0;
-    public Transform reference;
+    Vector3 reference = new Vector3(0,0,0);
     //UI
     public Image lifeBar;
     public Image shieldBar;
+    public Text bipText;
 
    
 
@@ -60,6 +61,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     void Start()
     {
+        
         LoadStats();
         rb = GetComponent<Rigidbody2D>();
         // statusDisplay = GameObject.FindGameObjectWithTag("PlayerStats");
@@ -69,8 +71,10 @@ public class SpaceshipMovement : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         camera2 = Camera.main.GetComponent<StaticCameraController>();
-        objectPool = FindObjectOfType<ObjectPool>();
+        //objectPool = FindObjectOfType<ObjectPool>();
         animator = GetComponent<Animator>();
+        bipText = GameObject.Find("Bips").GetComponent<Text>();
+        bipText.text = "Bips: " + SavePlayerStats.bips;
 
 
 
@@ -109,7 +113,7 @@ public class SpaceshipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
-        if (Vector3.Distance(transform.position, reference.position) > 100)
+        if (Vector3.Distance(transform.position, reference) > 50)
         {
             SaveStats();
             SceneManager.LoadScene("TestBattleScene");
@@ -170,6 +174,7 @@ public class SpaceshipMovement : MonoBehaviour
                 collision.gameObject.GetComponent<BulletTest>().touchedPlayer = true;
                 objectPool.RetrieveBullet(collision.gameObject);
             }
+           
         }
 
        
@@ -189,9 +194,11 @@ public class SpaceshipMovement : MonoBehaviour
             
             camera2.Human = true;
             camera2.ChangeCamera();
-            PlayerMovement player2 = GameObject.Find("HumanPlayer").GetComponent<PlayerMovement>();
-            player2.transform.position = new Vector3(8, 0, 0);
-            player2.enabled = true;
+            GameObject player2 = GameObject.Find("HumanPlayer");
+            player2.GetComponent<PlayerMovement>().transform.position = new Vector3(8, 0, 0);
+            player2.GetComponent<PlayerMovement>().enabled = true;
+            player2.GetComponent<SpriteRenderer>().enabled = true;
+        
             rb.velocity = new Vector2(0, 0);
             transform.position = new Vector3(-16.84f, 0.11f, 0);
             rb.rotation = 0;
@@ -221,6 +228,7 @@ public class SpaceshipMovement : MonoBehaviour
         SavePlayerStats.shield = shield;
         SavePlayerStats.totalShield = totalShield;
         SavePlayerStats.hp = hp;
+        SavePlayerStats.totalhp = totalhp;
         SavePlayerStats.backWeapon = backweaponMode;
         SavePlayerStats.healthLevel = healthLevel;
         SavePlayerStats.speedLevel = speedLevel;
@@ -235,12 +243,14 @@ public class SpaceshipMovement : MonoBehaviour
         shield = SavePlayerStats.shield;
         totalShield = SavePlayerStats.totalShield;
         hp = SavePlayerStats.hp;
+        totalhp = SavePlayerStats.totalhp;
         backweaponMode = SavePlayerStats.backWeapon;
         healthLevel = SavePlayerStats.healthLevel;
         speedLevel = SavePlayerStats.speedLevel;
         dmgLevel = SavePlayerStats.dmgLevel;
         shieldLevel = SavePlayerStats.shieldLevel;
         bulletSpeed = SavePlayerStats.bulletSpeed;
+        immortality = SavePlayerStats.immortality;
     }
 
 
