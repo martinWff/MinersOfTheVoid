@@ -4,16 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(InteractionArea))]
-public class SpacePlanetBehaviour : MonoBehaviour
+public class PortalBehaviour : MonoBehaviour
 {
-    public string planetName;
-    public bool hasBlockade;
+    public string action;
     public int sceneId;
     public InteractionArea interaction;
-   [SerializeField] bool isPlayerInside;
+    [SerializeField] bool isPlayerInside;
     GameObject spaceship;
     public KeybindController keybind;
-    string playerTag = "Spaceship";
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,18 +43,7 @@ public class SpacePlanetBehaviour : MonoBehaviour
         {
             if (Input.GetButtonDown("Interaction"))
             {
-                if (!hasBlockade)
-                {
-                    Debug.Log("Planet Interaction");
-                    Animator animator = spaceship.GetComponent<Animator>();
-                    animator.SetInteger("sceneId", sceneId);
-                    animator.SetTrigger("isEnteringPlanet");
-
-                }
-                else
-                {
-                    Debug.Log("PLANET IS UNDER A BLOCKADE");
-                }
+                SceneManager.LoadScene(sceneId);
             }
         }
     }
@@ -64,7 +51,7 @@ public class SpacePlanetBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isPlayerInside = true;
             spaceship = collision.gameObject;
@@ -73,7 +60,7 @@ public class SpacePlanetBehaviour : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isPlayerInside = false;
             spaceship = null;
@@ -81,8 +68,9 @@ public class SpacePlanetBehaviour : MonoBehaviour
     }
     public void PromptKeybind()
     {
-        if (keybind != null) {
-            keybind.SetDetail("Enter " + planetName);
+        if (keybind != null)
+        {
+            keybind.SetDetail(action);
             keybind.SetPosition(transform.position + new Vector3(0.5f, 0.5f));
             keybind.Show(true);
         }
