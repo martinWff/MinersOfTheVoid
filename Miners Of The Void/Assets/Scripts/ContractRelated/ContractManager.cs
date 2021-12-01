@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class ContractManager : MonoBehaviour
 {
-    public Transform canvas;
-    public GameObject contractPanelPrefab;
-    public GameObject goalPanelPrefab;
-
     private static ContractManager instance;
 
     public delegate void ContractAccepted(Contract contract);

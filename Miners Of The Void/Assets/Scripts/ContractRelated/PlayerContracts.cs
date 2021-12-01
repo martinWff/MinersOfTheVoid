@@ -62,7 +62,9 @@ public class PlayerContracts : MonoBehaviour
     }
     public void OnFinishedContract(Contract c)
     {
-        acceptedContract.GiveRewards();
+        //  acceptedContract.GiveRewards();
+
+        SavePlayerStats.bips += c.bips;
         ProcessContractEnd();
 
     }
