@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 8074817251714402960}
   - component: {fileID: 8074817251714402967}
   - component: {fileID: 9048392561751260379}
-  - component: {fileID: 1995631300}
   m_Layer: 0
   m_Name: ContractManager
   m_TagString: Untagged
@@ -153,18 +152,6 @@ MonoBehaviour:
   canvas: {fileID: 0}
   contractPanelPrefab: {fileID: 7588050861693406347, guid: 5c002f50638a7184da266cd04aa793c2, type: 3}
   goalPanelPrefab: {fileID: 2613404136743976235, guid: e2c8cea13123f4c45897afbcb87b1daa, type: 3}
---- !u!114 &1995631300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074817251714402961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997365df2d6a46d4b9fc6e13d0e5b005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8074817253125504180
 GameObject:
   m_ObjectHideFlags: 0
