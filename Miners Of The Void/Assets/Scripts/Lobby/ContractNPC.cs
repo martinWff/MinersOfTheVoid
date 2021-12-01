@@ -12,9 +12,11 @@ public class ContractNPC : MonoBehaviour
     public InteractionArea interaction;
     [HideInInspector]public bool disabled;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        
+         ContractCreator.onContractGenerated += prefab.GetComponent<ContractBoardController>().ContractCreator_onContractGenerated;
+        
     }
 
     // Update is called once per frame

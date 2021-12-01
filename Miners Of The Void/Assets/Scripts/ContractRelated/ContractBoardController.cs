@@ -13,10 +13,11 @@ public class ContractBoardController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        ContractCreator.onContractGenerated += ContractCreator_onContractGenerated;
+        //ContractCreator.onContractGenerated += ContractCreator_onContractGenerated;
+        
     }
 
-    private void ContractCreator_onContractGenerated(Contract contract)
+    public void ContractCreator_onContractGenerated(Contract contract)
     {
         //      GameObject copy = Instantiate(contractUI, transform);
         uniqueContract = contract;
