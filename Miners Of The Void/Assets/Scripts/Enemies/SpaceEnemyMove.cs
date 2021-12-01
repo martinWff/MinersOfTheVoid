@@ -10,13 +10,15 @@ public class SpaceEnemyMove : MonoBehaviour
     public float enemyRange = 30;
     public float speed = 3;
     private Vector3 targetPosition;
+    public bool human = true; 
 
     public float nearPlayer = 15;
 
     // Start is called before the first frame update
     void Start()
     {
-        spaceship = GameObject.FindGameObjectWithTag("Player");
+
+        if(human)spaceship = GameObject.FindGameObjectWithTag("Player"); else spaceship = GameObject.FindGameObjectWithTag("Spaceship");
         enemy = GetComponent<Rigidbody2D>();
         
     }
