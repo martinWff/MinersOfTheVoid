@@ -39,12 +39,12 @@ public class SpaceshipMovement : MonoBehaviour
     public float shieldLevel = 0;
     public float healthLevel = 0;
     public bool backweaponMode = false;
+    public bool dead = false;
+    public bool immortality = false;
 
     public GameObject upgradePrefab;
     public GameObject canvas;
     private StaticCameraController camera2;
-    public bool dead = false;
-    public bool immortality = false;
     public GameObject enemy;
     private Animator animator;
     
@@ -110,7 +110,7 @@ public class SpaceshipMovement : MonoBehaviour
         }
         if (shield > totalShield) shield = totalShield;
 
-        if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
+        if (Input.GetKeyDown(KeyCode.I)) if (immortality) immortality = false; else immortality = true;
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
         if (Vector3.Distance(transform.position, reference) > 50)
