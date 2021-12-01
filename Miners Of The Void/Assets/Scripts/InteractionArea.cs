@@ -32,16 +32,16 @@ public class InteractionArea : MonoBehaviour
       
     }
 
-    private void LateUpdate()
+  /*  private void LateUpdate()
     {
         if (showKeyBind && playerIsInside)
         {
             if (onUpdateKeybindPosition != null)
             {
-                onUpdateKeybindPosition.Invoke((transform.position + uIKeyBindPosition));
+               onUpdateKeybindPosition?.Invoke((transform.position + uIKeyBindPosition));
             }
         }
-    }
+    }*/
 
 
     private void OnTriggerStay2D(Collider2D collision)
