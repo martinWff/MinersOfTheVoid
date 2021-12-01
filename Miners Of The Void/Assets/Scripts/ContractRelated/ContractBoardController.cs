@@ -21,11 +21,15 @@ public class ContractBoardController : MonoBehaviour
     {
         //      GameObject copy = Instantiate(contractUI, transform);
         uniqueContract = contract;
-        for (int i = 0; i < contract.goals.Count; i++) {
-            GameObject goalObj = Instantiate(goalUI, contractUI.transform);
-            goalObj.GetComponent<GoalControllerBoard>().SetGoal(contract.goals.Get(i));
-         }
-        accept.onClick.AddListener(ButtonPressed);
+        if (contractUI != null)
+        {
+            for (int i = 0; i < contract.goals.Count; i++)
+            {
+                GameObject goalObj = Instantiate(goalUI, contractUI.transform);
+                goalObj.GetComponent<GoalControllerBoard>().SetGoal(contract.goals.Get(i));
+            }
+            accept.onClick.AddListener(ButtonPressed);
+        }
 
     }
 
@@ -35,14 +39,20 @@ public class ContractBoardController : MonoBehaviour
         {
            ContractManager.AcceptContract(uniqueContract);
         }
+        gameObject.SetActive(false);
     }
 
     public void Close()
     {
-        contractNPC.disabled = false;
+        
         gameObject.SetActive(false);
         
     }
 
-  
+    private void OnDisable()
+    {
+        contractNPC.disabled = false;
+    }
+
+
 }

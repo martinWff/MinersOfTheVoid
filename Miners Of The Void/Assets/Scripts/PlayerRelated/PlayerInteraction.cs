@@ -33,7 +33,8 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position + (transform.right * xOffset), transform.right, new Color(1, 1, 0));
+      
+      //  Debug.DrawRay(transform.position + (transform.right * xOffset), transform.right, new Color(1, 1, 0));
         if (currentPosition != transform.position || currentDirection != transform.rotation || reload)
         {
             currentPosition = transform.position;

@@ -30,6 +30,7 @@ public class ContractNPC : MonoBehaviour
      
             prefab.GetComponent<ContractBoardController>().contractNPC = this;
             prefab.SetActive(true);
+            keybind.Show(false);
             
         }
     }
@@ -37,12 +38,16 @@ public class ContractNPC : MonoBehaviour
     public void OnEnterArea()
     {
         isPlayerInside = true;
-        keybind.SetPosition(interaction.uIKeyBindPosition);
+        keybind.SetPosition(transform.position+interaction.uIKeyBindPosition);
         keybind.Show(true);
     }
     public void OnExitArea()
     {
         isPlayerInside = false;
         keybind.Show(false);
+    }
+    public void OnStayArea()
+    {
+        keybind.SetPosition(transform.position + interaction.uIKeyBindPosition);
     }
 }
