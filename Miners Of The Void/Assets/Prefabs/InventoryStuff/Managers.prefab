@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 1983507263}
   m_Layer: 0
   m_Name: PlayerInventoryManager
-  m_TagString: Untagged
+  m_TagString: PlayerInventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,9 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c952698c94acf438c85e53b62e5964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  contractPanelPrefab: {fileID: 7588050861693406347, guid: 5c002f50638a7184da266cd04aa793c2, type: 3}
-  goalPanelPrefab: {fileID: 2613404136743976235, guid: e2c8cea13123f4c45897afbcb87b1daa, type: 3}
 --- !u!114 &9048392561751260379
 MonoBehaviour:
   m_ObjectHideFlags: 0
