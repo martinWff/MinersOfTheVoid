@@ -61,7 +61,7 @@ public class RefineryInventory : MonoBehaviour
 
     void Start()
     {
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(64));
+      /*  inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(64));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(64));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(64));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(64));
@@ -72,7 +72,7 @@ public class RefineryInventory : MonoBehaviour
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Ingot").GetOreStack(64));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Ingot").GetOreStack(64));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Ingot").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Ingot").GetOreStack(64));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Ingot").GetOreStack(64));*/
     }
     private void Update()
     {
