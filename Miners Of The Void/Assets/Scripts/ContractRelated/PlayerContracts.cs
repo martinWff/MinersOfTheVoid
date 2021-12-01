@@ -62,7 +62,7 @@ public class PlayerContracts : MonoBehaviour
     }
     public void OnFinishedContract(Contract c)
     {
-        acceptedContract.GiveRewards();
+        //acceptedContract.GiveRewards();
         ProcessContractEnd();
 
     }

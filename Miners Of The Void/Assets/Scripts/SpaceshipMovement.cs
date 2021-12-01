@@ -53,6 +53,7 @@ public class SpaceshipMovement : MonoBehaviour
     //UI
     public Image lifeBar;
     public Image shieldBar;
+    public Text bipText;
 
    
 
@@ -60,6 +61,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     void Start()
     {
+        
         LoadStats();
         rb = GetComponent<Rigidbody2D>();
         // statusDisplay = GameObject.FindGameObjectWithTag("PlayerStats");
@@ -69,8 +71,10 @@ public class SpaceshipMovement : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         camera2 = Camera.main.GetComponent<StaticCameraController>();
-        objectPool = FindObjectOfType<ObjectPool>();
+        //objectPool = FindObjectOfType<ObjectPool>();
         animator = GetComponent<Animator>();
+        bipText = GameObject.Find("Bips").GetComponent<Text>();
+        bipText.text = "Bips: " + SavePlayerStats.bips;
 
 
 
@@ -109,7 +113,7 @@ public class SpaceshipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) Instantiate(upgradePrefab, canvas.transform);
         if (verticalInput != 0) animator.SetFloat("isMoving", 1);
         else animator.SetFloat("isMoving", -1);
-        if (Vector3.Distance(transform.position, reference) > 100)
+        if (Vector3.Distance(transform.position, reference) > 50)
         {
             SaveStats();
             SceneManager.LoadScene("TestBattleScene");
@@ -246,6 +250,7 @@ public class SpaceshipMovement : MonoBehaviour
         dmgLevel = SavePlayerStats.dmgLevel;
         shieldLevel = SavePlayerStats.shieldLevel;
         bulletSpeed = SavePlayerStats.bulletSpeed;
+        immortality = SavePlayerStats.immortality;
     }
 
 

@@ -33,6 +33,8 @@ public static class SavePlayerStats
     public static float shieldLevelH = 0;
     public static float healthLevelH = 0;
 
+    //cheats
+    public static bool immortality = false;
 
 
     //Money

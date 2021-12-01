@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6612837595655447796}
   - component: {fileID: 2080799885}
   - component: {fileID: 2080799884}
+  - component: {fileID: 1114001062}
+  - component: {fileID: 1114001064}
   m_Layer: 0
   m_Name: HumanPlayer
   m_TagString: Player
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6479248026894717176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: -0.63, z: 0}
-  m_LocalScale: {x: 0.3363, y: 0.328, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1747293633
-  m_SortingLayer: 5
+  m_SortingLayerID: -847447069
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eacb12ea3093c954d892f03ab37c9610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRotationDistance: 40
   moveForce: 8
-  bulletPrefab: {fileID: 9068906604437571471, guid: 7d7571cbca5234041b52214aab336b62, type: 3}
+  bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
   bulletOffset: 1.5
   bulletSpeed: 14
   bulletCooldownTime: 0.5
@@ -161,8 +163,63 @@ MonoBehaviour:
   hp: 20
   lifeBar: {fileID: 0}
   shieldBar: {fileID: 0}
+  bipText: {fileID: 0}
+  immortality: 0
   speedLevel: 1
   dmgLevel: 1
   shieldLevel: 1
   healthLevel: 1
   deathTimer: 0
+--- !u!114 &1114001062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d0e487f1806e0499f53c0fe72cde05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotationDistance: 40
+  moveForce: 4
+  bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
+  bulletOffset: 1.5
+  bulletSpeed: 14
+  bulletCooldownTime: 0.5
+  firepermission: 0
+  camera: {fileID: 0}
+  enemy: {fileID: 0}
+  playerDamage: 10
+  totalShield: 20
+  shield: 20
+  totalhp: 20
+  hp: 20
+  lifeBar: {fileID: 0}
+  shieldBar: {fileID: 0}
+  bipText: {fileID: 0}
+  immortality: 0
+  speedLevel: 1
+  dmgLevel: 1
+  shieldLevel: 1
+  healthLevel: 1
+  deathTimer: 0
+--- !u!114 &1114001064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58d931e9886bfc4f9b286801712afa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  range: 2
+  offset: {x: 1, y: 1, z: 0}
+  colliderMap: {fileID: 0}
+  defaultHoldTime: 1
+  dropAmount: 2

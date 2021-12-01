@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PirateExplosion : MonoBehaviour
 {
     private GameObject player;
@@ -45,6 +45,8 @@ public class PirateExplosion : MonoBehaviour
     private float perEnemieShield;
     private float perEnemieHealth;
 
+    //UI
+    public Text bipText;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,7 @@ public class PirateExplosion : MonoBehaviour
 
         lifebar.Setsize(perEnemieHealthTotal);
         shieldbar.Setsize2(perEnemieShieldTotal);
+        bipText = GameObject.Find("Bips").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -128,6 +131,8 @@ public class PirateExplosion : MonoBehaviour
             {
                 enemieHealth = 0;
                 shield = 0;
+                SavePlayerStats.bips += Random.Range(3, 5);
+                bipText.text = "Bips: " + SavePlayerStats.bips;
                 Destroy(gameObject);
             }
 

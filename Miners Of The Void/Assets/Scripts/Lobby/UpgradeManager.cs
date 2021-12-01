@@ -28,6 +28,7 @@ namespace MOV.Upgrades
         public UpgradeInv inventory;
         public PlayerInventory invPlayer;
         public Text notices;
+        public Text bipText;
 
 
         // Start is called before the first frame update
@@ -46,6 +47,7 @@ namespace MOV.Upgrades
             invPlayer = GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<PlayerInventory>();
             playerstats.LoadStats();
             notices = GameObject.Find("Notices").GetComponent<Text>();
+            bipText = GameObject.Find("Bips").GetComponent<Text>();
             notices.text = "Welcome to the upgrades!";
             
             
@@ -200,7 +202,8 @@ namespace MOV.Upgrades
                             inventory.AddUpgradeVisual(upgradeType, level - 1, insertGO);
                         }
                     }*/
-                playerstats.SaveStats();
+                
+                
             }
             else
             {
@@ -256,7 +259,9 @@ namespace MOV.Upgrades
               
                 
             }
-            
+            playerstats.SaveStats();
+            bipText.text = "Bips: " + SavePlayerStats.bips;
+
         }
         public void UnSummon(string upgradeType)
         {
