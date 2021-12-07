@@ -22,6 +22,9 @@ public class PlayerInteraction : MonoBehaviour
     private bool reload = true;
 
     public int dropAmount = 2;
+
+    public CharacterStat precision;
+    public CharacterStat miningSpeed;
     
     // Start is called before the first frame update
     void Start()
@@ -120,7 +123,7 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetButtonUp("Interaction"))
         {
             holdTime = 0;
-            controller.ResetCounter();
+            controller.ResetProgress();
         }
     }
 }

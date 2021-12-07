@@ -348,24 +348,40 @@ namespace MOV.Upgrades
 }
 
 
-    public abstract class Upgrade
-    {
-        
-       public string upgradeName;
+public abstract class Upgrade
+{
+
+    public string upgradeName;
+
+    public int level;
 
     public abstract void OnPut(float level, bool who, bool replacing);
 
-        public abstract void OnUpdate();
+    public abstract void OnPut(GameObject controller);
 
-        public abstract void OnRemove();
+    public abstract void OnUpdate();
+
+    public abstract void OnRemove();
 
 
-        public Upgrade(string upName)
-        {
-            upgradeName = upName;
-        }
-
+    public Upgrade(string upName)
+    {
+        upgradeName = upName;
     }
+
+
+
+    public static Upgrade operator +(Upgrade up1, Upgrade up2)
+    {
+        if (up1.upgradeName == up2.upgradeName)
+        {
+            up1.level += up2.level;
+        }
+    
+
+        return up1;
+    }
+}
     public class Shield : Upgrade
     {
     public Shield(string upName) : base(upName)
@@ -413,8 +429,13 @@ namespace MOV.Upgrades
         {
         GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().totalShield = 10;
     }
-        
+
+    public override void OnPut(GameObject controller)
+    {
+
     }
+
+}
 public class Hp : Upgrade
 {
     public Hp(string upName) : base(upName)
@@ -462,11 +483,17 @@ public class Hp : Upgrade
     {
         GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().hp = 20;
     }
+
+    public override void OnPut(GameObject controller)
+    {
+         
+    }
 }
 
     
     public class Dmg : Upgrade
     {
+
     public Dmg(string upName) : base(upName)
     {
     }
@@ -512,7 +539,15 @@ public class Hp : Upgrade
         GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().playerDamage = 10;
     }
 
+    public override void OnPut(GameObject controller)
+    {
+        throw new System.NotImplementedException();
     }
+}
+
+
+
+
     public class BackWeapon : Upgrade
     {
     public BackWeapon(string upName) : base(upName)
@@ -540,9 +575,15 @@ public class Hp : Upgrade
        
     }
 
+    public override void OnPut(GameObject controller)
+    {
+        throw new System.NotImplementedException();
     }
+}
     public class Speed : Upgrade
     {
+    private CharacterMovement characterMovement;
+
     public Speed(string upName) : base(upName)
     {
     }
@@ -591,5 +632,11 @@ public class Hp : Upgrade
         GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().bulletSpeed = 20;
     }
 
+    public override void OnPut(GameObject controller)
+    {
+        //hucontroller.GetComponent<ScriptDOsAttributos>().speed = 5f ;
+        characterMovement = controller.GetComponent<CharacterMovement>();
+        
     }
+}
 

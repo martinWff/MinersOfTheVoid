@@ -82,7 +82,7 @@ public class KeybindController : MonoBehaviour
         backgroundImage.fillAmount = (v / max);
     }
 
-    public void ResetCounter()
+    public void ResetProgress()
     {
         backgroundImage.fillAmount = 0;
     }
