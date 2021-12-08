@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
         else
         {
             player = GameObject.FindGameObjectWithTag("Spaceship");
+            Debug.Log("sapceship");
             playerdmg = SavePlayerStats.playerDamage;
         }
         
@@ -142,12 +143,11 @@ public class Enemy : MonoBehaviour
                 
                 bipText.text = "Bips: " + SavePlayerStats.bips;
 
-                if (enemyPlanet == true)
-                {
-                    Destroy(transform.parent.gameObject);
-                }
+                
+                Destroy(transform.parent.gameObject);
+                
 
-                Destroy(gameObject);
+            
             }
 
             Debug.Log(enemieHealth);
