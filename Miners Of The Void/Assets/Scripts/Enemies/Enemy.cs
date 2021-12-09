@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -40,22 +41,30 @@ public class Enemy : MonoBehaviour
     //bool enemy Planet
     public bool enemyPlanet = false;
 
+    //UI
+    public Text bipText;
+
 
     void Start()
     {
-        if(enemyPlanet == true)
+        bipText = GameObject.Find("Bips").GetComponent<Text>();
+        bipText.text = "Bips: " + SavePlayerStats.bips;
+        if (enemyPlanet == true)
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            playerdmg = SavePlayerStats.playerDamageH;
         }
         else
         {
             player = GameObject.FindGameObjectWithTag("Spaceship");
+            Debug.Log("sapceship");
+            playerdmg = SavePlayerStats.playerDamage;
         }
         
 
         //Debug.Log(player);
         enemy = this.GetComponent<Rigidbody2D>();
-        playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
+        
         //Debug.Log(playerdmg);
         bullet = bulletPrefab.GetComponent<Bullet>();
         lifebar.Setsize(perEnemieHealthTotal);
@@ -117,7 +126,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            Debug.Log(gameObject);
+          
 
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
@@ -131,21 +140,24 @@ public class Enemy : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
+                
+                bipText.text = "Bips: " + SavePlayerStats.bips;
 
-                if(enemyPlanet == true)
-                {
-                    Destroy(transform.parent.gameObject);
-                }
+                
+                Destroy(transform.parent.gameObject);
+                
 
-                Destroy(gameObject);
+            
             }
 
-            Debug.Log("health: " + enemieHealth + "\nshield: " + shield);
+            Debug.Log(enemieHealth);
             perEnemyLife = enemieHealth / enemieHealthTotal;
             perEnemyShield = shield / totalShield;
             lifebar.Setsize(perEnemyLife);
             shieldbar.Setsize2(perEnemyShield);
 
+            Debug.Log(enemieHealth);
+            Debug.Log(shield);
 
             Destroy(collision.gameObject);
         }

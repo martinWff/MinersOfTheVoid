@@ -94,11 +94,14 @@ public class Array<T>
     public bool TrueForAll(System.Predicate<T> predicate)
     {
         bool isTrue = true;
-        for (int i = 0; i < count || isTrue; i++)
+        for (int i = 0; i < count; i++)
         {
             if (isTrue)
             {
                 isTrue = predicate.Invoke(data[i]);
+            } else
+            {
+                return false;
             }
          
         }

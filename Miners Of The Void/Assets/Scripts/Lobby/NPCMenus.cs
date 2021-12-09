@@ -44,7 +44,7 @@ public class NPCMenus : MonoBehaviour
             menuPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 500);
             if (inventoryCon) GameObject.Find("Managers").GetComponent<ContractTest>().enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
-            GameObject.FindGameObjectWithTag("Panel").GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 500, 0);
+            GameObject.FindGameObjectWithTag("Panel").GetComponent<RectTransform>().anchoredPosition = new Vector3(2000,2000, 0);
             openMenu = false;
         }
         

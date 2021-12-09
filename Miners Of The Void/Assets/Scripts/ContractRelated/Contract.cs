@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Contract { 
+public class Contract : System.IDisposable { 
     public enum ContractType
     {
         mining,
@@ -33,14 +33,14 @@ public class Contract {
         }
     }
 
-    public void GiveRewards()
+  /*  public void GiveRewards()
     {
         if (!isCompleted)
         {
             CheckGoals();
         }
 
-    }
+    }*/
 
     public void Start()
     {
@@ -49,6 +49,15 @@ public class Contract {
             g.Init();
         }
     }
+
+   public void Dispose()
+    {
+        foreach (Goal g in goals)
+        {
+            g.Dispose();
+        }
+    }
+
 
     public Contract(ContractType type,Array<Goal> goals)
     {
@@ -60,7 +69,7 @@ public class Contract {
 }
 
 
-public class Goal
+public class Goal : System.IDisposable
 {
     public bool completed;
 
@@ -74,7 +83,6 @@ public class Goal
 
     }
 
-
     public void Evaluate()
     {
         if (currentAmount >= requiredAmount)
@@ -86,7 +94,12 @@ public class Goal
     protected void Complete()
     {
         completed = true;
-    } 
+    }
+
+    public virtual void Dispose()
+    {
+        
+    }
 }
 
 
@@ -104,10 +117,24 @@ public class GatheringGoal : Goal
                
     }
 
+    public GatheringGoal(OreStack oreStack)
+    {
+        this.oreName = oreStack.oreName;
+        this.sprite = oreStack.sprite;
+        this.requiredAmount = oreStack.amount;
+        this.description = $"mine {oreStack.amount} {oreStack.oreName}";
+
+    }
+
     public override void Init()
     {
         base.Init();
         Inventory.onInventoryChanged += OnGathered;
+    }
+
+    public override void Dispose()
+    {
+        Inventory.onInventoryChanged -= OnGathered;
     }
 
     void OnGathered(Inventory inv,string updatedOreName,int amount)
@@ -117,7 +144,7 @@ public class GatheringGoal : Goal
             {
 
                          
-               this.currentAmount = inv.GetOreAmount(updatedOreName);
+               this.currentAmount = Mathf.Clamp(inv.GetOreAmount(updatedOreName),0,requiredAmount);
                 Evaluate();
                 
             }

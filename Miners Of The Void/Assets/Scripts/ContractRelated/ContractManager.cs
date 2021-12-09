@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContractManager : MonoBehaviour
 {
-    public Transform canvas;
-    public GameObject contractPanelPrefab;
-    public GameObject goalPanelPrefab;
-
     private static ContractManager instance;
 
     public delegate void ContractAccepted(Contract contract);
@@ -16,33 +13,43 @@ public class ContractManager : MonoBehaviour
     public delegate void ContractFinished(Contract contract);
     public static event ContractFinished onContractFinished;
 
+
+    public delegate void ContractCancelled(Contract contract);
+    public static event ContractCancelled onContractCancelled;
+
     public static int contractsLeftUntilBoss;
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
  
     private void _AcceptContract(Contract c)
     {
-        GameObject panel = Instantiate(contractPanelPrefab,canvas);
-        foreach (Goal g in c.goals)
-        {
-            GameObject goalObject = Instantiate(goalPanelPrefab, panel.transform);
-            ContractUIController goalController = goalObject.GetComponent<ContractUIController>();
-            goalController.SetGoal(g);
-
-        }
         onContractAccepted?.Invoke(c);
+    }
+
+    private void _CancelContract(Contract c)
+    {
+        onContractCancelled?.Invoke(c);
+    }
+
+    public static void CancelContract(Contract c)
+    {
+        instance._CancelContract(c);
     }
 
     public static void AcceptContract(Contract c)
     {
         instance._AcceptContract(c);
     }
+
 
     public static void CompleteContract(Contract c)
     {

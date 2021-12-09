@@ -38,7 +38,10 @@ public class ContractTest : MonoBehaviour
         //controller.inventory = new Inventory();
         inventory.AddOre(new OreStack("Coal", 1, copperSprite));
         Array<Goal> g = new Array<Goal>(1);
-        g.InsertAtEnd(new GatheringGoal("Iron", "mine 1 iron", 1,ironSprite));
+
+        OreStack oreStack = OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(2);
+
+        g.InsertAtEnd(new GatheringGoal(oreStack));
         oreContract = new Contract(Contract.ContractType.mining, g);
         oreContract.goals = g;
       
@@ -51,10 +54,7 @@ public class ContractTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            inventory.AddOre(new OreStack("Iron",1,ironSprite));
-        }
+        
     }
 
 }

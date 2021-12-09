@@ -23,6 +23,6 @@ public class Refinery : MonoBehaviour
     {
         NPC.GetComponent<NPCMenus>().openMenu = false;
         player.GetComponent<PlayerMovement>().enabled = true;
-        menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 500);
+        menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(2000, 2000);
     }
 }

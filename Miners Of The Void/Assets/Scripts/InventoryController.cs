@@ -53,7 +53,7 @@ public class InventoryController : MonoBehaviour
 
     public void Populate()
     {
-        
+        Debug.Log("should pop");
         foreach (KeyValuePair<string, OreStack> o in inventory.GetOres()) {
             if (inventory.GetOreAmount(o.Key) > 0 && !slotList.ContainsKey(o.Key))
             {
