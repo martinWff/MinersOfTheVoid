@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 2679198282225938733}
   m_Layer: 0
   m_Name: PirateExplosion
-  m_TagString: PirateExplosion
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,3 +719,4 @@ MonoBehaviour:
   totalShield: 10
   shield: 10
   playerdmg: 0
+  bipText: {fileID: 0}
