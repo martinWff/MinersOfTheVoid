@@ -10,10 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2724869212869716280}
   - component: {fileID: 2724869212869716263}
-  - component: {fileID: 2724869212869716262}
   - component: {fileID: 2724869212869716261}
   - component: {fileID: 2724869212869716260}
   - component: {fileID: 265170836}
+  - component: {fileID: 488194358}
+  - component: {fileID: 488194359}
+  - component: {fileID: 488194360}
+  - component: {fileID: 488194364}
+  - component: {fileID: 488194367}
   m_Layer: 0
   m_Name: PlayerSpaceship
   m_TagString: Spaceship
@@ -87,45 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2724869212869716262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7805b27c7ad80c64ca1f5c45fa5f59ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRotationDistance: 40
-  objectPool: {fileID: 0}
-  bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
-  bulletOffset: 2.5
-  bulletSpeed: 20
-  bulletCooldownTime: 0.4
-  moveForce: 8
-  totalShield: 20
-  shield: 10
-  hp: 20
-  totalhp: 20
-  statusDisplay: {fileID: 0}
-  statusDisplayText: {fileID: 0}
-  playerDamage: 10
-  speedLevel: 1
-  dmgLevel: 1
-  shieldLevel: 1
-  healthLevel: 1
-  backweaponMode: 0
-  upgradePrefab: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-  canvas: {fileID: 0}
-  dead: 0
-  immortality: 0
-  enemy: {fileID: 5949036098304653809, guid: 775c287ec00e40343b54252b71ea03c6, type: 3}
-  reference: {fileID: 0}
-  lifeBar: {fileID: 0}
-  shieldBar: {fileID: 0}
 --- !u!50 &2724869212869716261
 Rigidbody2D:
   serializedVersion: 4
@@ -182,3 +147,94 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &488194358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c475b3f2d76ed48a62451620ffc9a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDamage: 10
+  totalShield: 20
+  shield: 20
+  totalhp: 20
+  hp: 20
+  immortality: 0
+--- !u!114 &488194359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e33f67af05c72b40877fd6958949900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
+  bulletOffset: 1.5
+  bulletSpeed: 18
+  bulletCooldownTime: 0.5
+  backweaponMode: 0
+  firePermission: 1
+  dmg:
+    baseValue: 10
+--- !u!114 &488194360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaed2980123b0824f82170cef558b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed:
+    baseValue: 4
+  rb: {fileID: 0}
+  animated: 0
+--- !u!114 &488194364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a341f547e1a7fc343bd5422d046e5c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpgradePut:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpgradeRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &488194367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798510a662e32bf4f8312a3535ac5815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: 0
+  weapon: 0
+  life: 0
+  movementScript: {fileID: 0}
+  weaponScript: {fileID: 0}
+  lifeScript: {fileID: 0}
+  spriteRenderer: {fileID: 0}

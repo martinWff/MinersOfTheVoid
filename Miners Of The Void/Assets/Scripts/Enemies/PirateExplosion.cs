@@ -55,7 +55,7 @@ public class PirateExplosion : MonoBehaviour
         //alarm = GameObject.FindGameObjectWithTag("Alarm").GetComponent<SpriteRenderer>();
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Spaceship");
-        playerdmg = player.GetComponent<SpaceshipMovement>().playerDamage;
+        playerdmg = 10;
 
         pirate_spriterender = GetComponent<SpriteRenderer>();
 

@@ -151,7 +151,7 @@ public class SpaceshipMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool") && !dead && !immortality)
+        if ((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "BulletEnemiePool") && !dead && !immortality)
         { 
             if (shield >= 10) shield -= 10;
             if (shield < 10)
@@ -167,7 +167,7 @@ public class SpaceshipMovement : MonoBehaviour
                 dead = true;
                 SceneManager.LoadScene("Lobby");
             }
-            if(collision.gameObject.tag != "PirateExplosion")
+            if(collision.gameObject.tag != "Enemy")
             Destroy(collision.gameObject);
             else if(collision.gameObject.tag == "BulletEnemiePool")
             {

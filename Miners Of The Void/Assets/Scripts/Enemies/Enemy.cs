@@ -52,12 +52,12 @@ public class Enemy : MonoBehaviour
         if (enemyPlanet == true)
         {
             player = GameObject.FindGameObjectWithTag("Player");
-            playerdmg = SavePlayerStats.playerDamageH;
+            playerdmg = 10;
         }
         else
         {
             player = GameObject.FindGameObjectWithTag("Spaceship");
-            playerdmg = SavePlayerStats.playerDamage;
+            playerdmg = 10;
         }
         
 
