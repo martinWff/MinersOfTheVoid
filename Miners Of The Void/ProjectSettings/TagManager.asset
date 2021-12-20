@@ -21,7 +21,7 @@ TagManager:
   - Keybind
   - PlayerInventory
   - UpgradeButtons
-  - ShockWave
+  - SceneLoader
   layers:
   - Default
   - TransparentFX
