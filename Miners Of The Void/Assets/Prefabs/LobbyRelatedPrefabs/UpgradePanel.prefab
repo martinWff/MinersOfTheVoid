@@ -225,17 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: HealthButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 6144886268618552423, guid: 3d09f83043576eb409a0502c7a8f53b9, type: 3}
-  human: 1
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &314122035
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +495,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 615866608}
   m_HandleRect: {fileID: 615866607}
   m_Direction: 2
-  m_Value: 0.9999997
+  m_Value: 1
   m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -658,17 +647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: SpeedButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 6656522256589509307, guid: 9d7b1120a89225d428792930b0c1274e, type: 3}
-  human: 1
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &436727301
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,8 +767,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825733355}
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
-  m_Value: 0.9999994
-  m_Size: 0.6666666
+  m_Value: 1
+  m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1487,17 +1465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: BackWeapon
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 21300000, guid: a4a623d9817eb7545a8f16793ad56128, type: 3}
-  human: 0
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &984887961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,17 +1611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: DmgButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 21300000, guid: 36ecce8d31547164a83e92dd0e60da95, type: 3}
-  human: 0
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &1082098125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,17 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: HealthButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 21300000, guid: ffb4718a5c267774ea473f472f64bbcd, type: 3}
-  human: 0
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &1166258962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,17 +1993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: ShieldButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 1763461740576112800, guid: 781604abc62c48142a1ed3c1d8aaf65b, type: 3}
-  human: 1
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &1254315579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2080,7 @@ GameObject:
   - component: {fileID: 1295570703}
   - component: {fileID: 1295570702}
   - component: {fileID: 1295570701}
-  - component: {fileID: 387035830}
+  - component: {fileID: 8594165798189349793}
   m_Layer: 5
   m_Name: SpeedButton
   m_TagString: UpgradeButtons
@@ -2256,9 +2190,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 387035830}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
+      - m_Target: {fileID: 8594165798189349793}
+        m_TargetAssemblyTypeName: SpeedUpgradeButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2268,7 +2202,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &387035830
+--- !u!114 &8594165798189349793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2277,20 +2211,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295570699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b1ba0396a1592548981bddb1e1db372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: SpeedButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 21300000, guid: efbf37c811a211b468659a63e120ee98, type: 3}
-  human: 0
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
+  upgradeControllerUI: {fileID: 7501354405973232793}
 --- !u!1 &1302989954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,17 +2440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: DmgButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 6888498094984018428, guid: a7adb6b697af21f4fbf6289f936b0367, type: 3}
-  human: 1
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &1473650496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,17 +3196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: ShieldButton
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 21300000, guid: bd4c68fd45f2c6b4c92cf752fc2954dc, type: 3}
-  human: 0
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}
 --- !u!1 &2097630918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3827,8 +3729,7 @@ GameObject:
   - component: {fileID: 112424697508177920}
   - component: {fileID: 828488357012121874}
   - component: {fileID: 1619570773411156334}
-  - component: {fileID: 816865062}
-  - component: {fileID: 816865063}
+  - component: {fileID: 7501354405973232793}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3929,7 +3830,7 @@ MonoBehaviour:
   m_Spacing: {x: 150, y: 95}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &816865062
+--- !u!114 &7501354405973232793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3938,43 +3839,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7555227215092492145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11f3a53303c79a94896251237f0ab3a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0afe282d52997104cb82c8fd301d6706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &816865063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555227215092492145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97916e28cd6fe02458b6e52bb8f1e0cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 5098850695310928405, guid: 2d5ca2d5777608c4f822697add7b5043, type: 3}
-  onControllerInitialized:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 816865062}
-        m_TargetAssemblyTypeName: UpgradeInv, Assembly-CSharp
-        m_MethodName: OnStart
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 816865063}
-          m_ObjectArgumentAssemblyTypeName: InventoryController, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSlotCreated:
-    m_PersistentCalls:
-      m_Calls: []
-  onSlotRemoved:
-    m_PersistentCalls:
-      m_Calls: []
+  upgradeUI: []
+  controller: {fileID: 0}
 --- !u!1 &8967736207942527770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,14 +3959,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeType: 
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
-  slot4: {fileID: 0}
-  insertGO: {fileID: 0}
-  human: 0
-  humanStats: {fileID: 0}
-  upinv: {fileID: 0}
-  inventory: {fileID: 0}
-  invPlayer: {fileID: 0}

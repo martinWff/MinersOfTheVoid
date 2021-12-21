@@ -25,7 +25,7 @@ public class Upgrades : MonoBehaviour
     // Update is called once per frame
     public void CloseMenu()
     {
-        player.GetComponent<PlayerMovement>().enabled = true;
+      //  player.GetComponent<PlayerMovement>().enabled = true;
         NPC.GetComponent<NPCMenus>().openMenu = false;
         menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(2000, 2000);    
     }

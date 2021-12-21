@@ -307,6 +307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e572648a75f41c488df77ed84925046, type: 3}
+--- !u!1 &99345278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 352004003, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  m_PrefabInstance: {fileID: 1795004949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &109360238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
@@ -377,6 +382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b04d270b9f381db40a11513b53bef367, type: 3}
+--- !u!1 &131012990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1754523752, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  m_PrefabInstance: {fileID: 1795004949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &135955284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
@@ -1136,21 +1146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e596223276c0fb2479741d0d54ae0742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAction:
+  onInteractionAreaStay:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 302764152}
-        m_TargetAssemblyTypeName: ContractNPC, Assembly-CSharp
-        m_MethodName: OnStayArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onInteractionAreaEnter:
     m_PersistentCalls:
       m_Calls:
@@ -3357,21 +3355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e596223276c0fb2479741d0d54ae0742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAction:
+  onInteractionAreaStay:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 821645620}
-        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
-        m_MethodName: OnStayArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onInteractionAreaEnter:
     m_PersistentCalls:
       m_Calls:
@@ -6918,6 +6904,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4373045603281658320, guid: 5afdbb2474300ee409c7ee2ffed25011, type: 3}
   m_PrefabInstance: {fileID: 2137412514}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1191307754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7501354405973232793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  m_PrefabInstance: {fileID: 1795004949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afe282d52997104cb82c8fd301d6706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1193409292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 314122035, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  m_PrefabInstance: {fileID: 1795004949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1202722624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
@@ -7414,8 +7416,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290812404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.63, y: -3.25, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8581836, y: -4.440924, z: -7.0847845}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8453,13 +8455,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e596223276c0fb2479741d0d54ae0742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAction:
+  onInteractionAreaStay:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1527364674}
-        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
-        m_MethodName: OnStayArea
-        m_Mode: 1
+      - m_Target: {fileID: 1527364675}
+        m_TargetAssemblyTypeName: UpgradeNPC, Assembly-CSharp
+        m_MethodName: OnInteractionAreaStay
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8470,34 +8472,10 @@ MonoBehaviour:
         m_CallState: 2
   onInteractionAreaEnter:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1527364674}
-        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
-        m_MethodName: OnEnterArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onInteractionAreaExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1527364674}
-        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
-        m_MethodName: OnExitArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onMouseOverEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -8517,6 +8495,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionArea: {fileID: 1527364673}
   keybind: {fileID: 1303766037}
+--- !u!114 &1527364675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527364671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744b536990e3c834e850454612c5a900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  canvas: {fileID: 1166462590}
 --- !u!1001 &1530150582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9193,6 +9185,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b04d270b9f381db40a11513b53bef367, type: 3}
+--- !u!1 &1764984358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1254315579, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  m_PrefabInstance: {fileID: 1795004949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1766828662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9528,6 +9525,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 34.753
       objectReference: {fileID: 0}
+    - target: {fileID: 7501354405973232793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: upgradeUI.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501354405973232793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: upgradeUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 131012990}
+    - target: {fileID: 7501354405973232793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: upgradeUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1764984358}
+    - target: {fileID: 7501354405973232793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: upgradeUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 1193409292}
+    - target: {fileID: 7501354405973232793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: upgradeUI.Array.data[3]
+      value: 
+      objectReference: {fileID: 99345278}
+    - target: {fileID: 8594165798189349793, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: upgradeControllerUI
+      value: 
+      objectReference: {fileID: 1191307754}
     - target: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_Name
       value: UpgradePanel
@@ -13043,6 +13064,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
   m_PrefabInstance: {fileID: 156514235}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1991176870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6479248026894717176, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+  m_PrefabInstance: {fileID: 6091295736085832282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1991176871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991176870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a341f547e1a7fc343bd5422d046e5c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpgradePut:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpgradeRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2001531775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13846,6 +13890,10 @@ PrefabInstance:
     - target: {fileID: 3017990723904586822, guid: bd8cabab47a758240988a824f73963b8, type: 3}
       propertyPath: canvas
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017990723904586822, guid: bd8cabab47a758240988a824f73963b8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3017990723904586822, guid: bd8cabab47a758240988a824f73963b8, type: 3}
       propertyPath: menuPrefab

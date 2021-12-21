@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class UpgradeController : MonoBehaviour
 {
     public Array<Upgrade> upgradeHolder = new Array<Upgrade>(4);
-    public UnityEvent<Upgrade> onUpgradePut;
-    public UnityEvent<Upgrade> onUpgradeRemoved;
+    public UnityEvent<Upgrade,int> onUpgradePut;
+    public UnityEvent<Upgrade,int> onUpgradeRemoved;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,7 @@ public class UpgradeController : MonoBehaviour
         if (wasPlaces)
         {
             OnUpgradeAdded(upgrade);
-            
+                
         }
 
         return wasPlaces;
@@ -56,13 +56,13 @@ public class UpgradeController : MonoBehaviour
        Upgrade upgrade = upgradeHolder.Get(slot);
         upgrade.OnRemove();
         upgradeHolder.RemoveAt(slot);
-        onUpgradeRemoved?.Invoke(upgrade);
+        onUpgradeRemoved?.Invoke(upgrade,slot);
 
     }
 
     private void OnUpgradeAdded(Upgrade upgrade)
     {
         upgrade.OnPut(gameObject);
-        onUpgradePut.Invoke(upgrade);
+        onUpgradePut.Invoke(upgrade,-1);
     }
 }
