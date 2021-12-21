@@ -38,6 +38,6 @@ public class SlotController : MonoBehaviour
     }
     public void RemoveUpgrade()
     {
-        GameObject.Find("SpeedButton").GetComponent<UpgradeManager>().UnSummon(oreStack.oreName);
+   //     GameObject.Find("SpeedButton").GetComponent<UpgradeManager>().UnSummon(oreStack.oreName);
     }
 }

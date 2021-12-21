@@ -31,7 +31,7 @@ public class NPCMenus : MonoBehaviour
         {
             menuPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
-            player.GetComponent<PlayerMovement>().enabled = false;
+           // player.GetComponent<PlayerMovement>().enabled = false;
             openMenu = true;
             if (inventoryCon) 
             {
