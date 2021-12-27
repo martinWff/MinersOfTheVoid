@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EntityController : MonoBehaviour
+public class EntityManager : MonoBehaviour
 {
     public bool movement = true;
     public bool weapon = true;

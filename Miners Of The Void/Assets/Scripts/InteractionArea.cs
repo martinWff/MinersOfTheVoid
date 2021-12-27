@@ -6,10 +6,10 @@ using Maths;
 
 public class InteractionArea : MonoBehaviour
 {
-    public UnityEvent onAction;
+    public UnityEvent<GameObject> onInteractionAreaStay;
 
-    public UnityEvent onInteractionAreaEnter;
-    public UnityEvent onInteractionAreaExit;
+    public UnityEvent<GameObject> onInteractionAreaEnter;
+    public UnityEvent<GameObject> onInteractionAreaExit;
     public UnityEvent<bool> onMouseOverEvent;
     public bool showKeyBind = true;
 
@@ -44,9 +44,12 @@ public class InteractionArea : MonoBehaviour
     }*/
 
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        onAction?.Invoke();
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
+        {
+            onInteractionAreaStay?.Invoke(other.gameObject);
+        }
        
     }
 
@@ -57,7 +60,7 @@ public class InteractionArea : MonoBehaviour
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
                 // onShowKeyBind?.Invoke(true, (transform.position + uIKeyBindPosition));
-                onInteractionAreaEnter?.Invoke();
+                onInteractionAreaEnter?.Invoke(other.gameObject);
                 playerIsInside = true;
             }
             
@@ -70,7 +73,7 @@ public class InteractionArea : MonoBehaviour
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
                 //onShowKeyBind?.Invoke(false, (transform.position + uIKeyBindPosition));
-                onInteractionAreaExit?.Invoke();
+                onInteractionAreaExit?.Invoke(other.gameObject);
                 playerIsInside = false;
             }
           
