@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 inicialPos;
     public bool animated = false;
     public bool thereIsNoHumansInSpace = false;
+    public EntityController player2;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
         }
+        if (Input.GetKeyDown(KeyCode.L)) Debug.Log(movementSpeed.value);
        
     }
 
@@ -73,20 +76,17 @@ public class CharacterMovement : MonoBehaviour
     {         
             if (gameObject.tag == "Player")
             {
-                EntityManager player2 = GameObject.Find("PlayerSpaceship").GetComponent<EntityManager>();
-
                 if (collision.gameObject.tag == "Passage") {
                     camera.Human = false;
                     camera.ChangeCamera();
                     player2.enableEntity(false);
                     rb.velocity = new Vector2(0, 0);
                     player2.animationRun(true);
-                    GetComponent<EntityManager>().disableEntity(true);
+                    GetComponent<EntityController>().disableEntity(true);
                 }
             }
             if (gameObject.tag == "Spaceship")
             {
-                EntityManager player2 = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityManager>();
                 if (collision.gameObject.tag == "Passage")
                 {
                     camera.ChangeCamera();
@@ -94,7 +94,7 @@ public class CharacterMovement : MonoBehaviour
                     rb.velocity = new Vector2(0, 0);
                     rb.SetRotation(0);
                     transform.position = inicialPos;
-                    GetComponent<EntityManager>().disableEntity(false);
+                    GetComponent<EntityController>().disableEntity(false);
                 }
             if (collision.gameObject.tag == "SceneLoader") player2.SceneChanger(1);
 
