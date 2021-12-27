@@ -232,3 +232,4 @@ MonoBehaviour:
     baseValue: 4
   rb: {fileID: 0}
   animated: 0
+  thereIsNoHumansInSpace: 0

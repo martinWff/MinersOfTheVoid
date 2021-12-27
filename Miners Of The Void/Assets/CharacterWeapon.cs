@@ -21,6 +21,14 @@ public class CharacterWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject beautifulEnemiesThatWontDieAndWeWantToTestThisGame in enemies)
+            {
+                Destroy(beautifulEnemiesThatWontDieAndWeWantToTestThisGame);
+            }
+        }
         float fireInput = Input.GetAxis("Fire1");
         if (fireInput > 0 && (bulletShootTime <= 0) && firePermission)
         {

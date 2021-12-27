@@ -154,7 +154,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c475b3f2d76ed48a62451620ffc9a7, type: 3}
   m_Name: 
@@ -201,6 +201,7 @@ MonoBehaviour:
     baseValue: 4
   rb: {fileID: 0}
   animated: 0
+  thereIsNoHumansInSpace: 0
 --- !u!114 &488194364
 MonoBehaviour:
   m_ObjectHideFlags: 0
