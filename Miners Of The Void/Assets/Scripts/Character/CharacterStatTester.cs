@@ -9,12 +9,12 @@ public class CharacterStatTester : MonoBehaviour
     void Start()
     {
         movementSpeed = new CharacterStat(5);
-        Debug.Log(movementSpeed.value);
+        
         movementSpeed.AddModifier(new StatModifier(5, this));
         movementSpeed.AddModifier(new StatModifier(15, this));
-        Debug.Log(movementSpeed.value);
+        
         movementSpeed.RemoveAllFromSource(this);
-        Debug.Log(movementSpeed.value);
+        
     }
 
     // Update is called once per frame

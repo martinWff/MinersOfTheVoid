@@ -93,7 +93,7 @@ public class CharacterMovement : MonoBehaviour
                     player2.enableEntity(true);
                     rb.velocity = new Vector2(0, 0);
                     rb.SetRotation(0);
-                    transform.position = inicialPos;
+                    //transform.position = inicialPos;
                     GetComponent<EntityController>().disableEntity(false);
                 }
             if (collision.gameObject.tag == "SceneLoader") player2.SceneChanger(1);

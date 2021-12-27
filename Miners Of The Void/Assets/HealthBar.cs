@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     public float totalhp = 20;
     public float hp = 20;
     public bool immortality = false;
-    private EntityManager entity;
+    private EntityController entity;
     Image lifeBar;
     Image shieldBar;
     
@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        entity = gameObject.GetComponent<EntityManager>();
+        entity = gameObject.GetComponent<EntityController>();
         lifeBar = GameObject.Find("Life").GetComponent<Image>();
         shieldBar = GameObject.Find("Shield").GetComponent<Image>();
     }
@@ -63,8 +63,7 @@ public class HealthBar : MonoBehaviour
             }
 
         }
-        Debug.Log(shield);
-        Debug.Log(hp);
+        
     }
     
     
