@@ -49,7 +49,7 @@ public class ServerMOV : MonoBehaviour
         //Debug.Log(url);
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
         yield return webRequest.SendWebRequest();
-        if(webRequest.result == UnityWebRequest.Result.ConnectionError)
+        if (webRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.Log("Request Error!!");
         }
@@ -61,13 +61,13 @@ public class ServerMOV : MonoBehaviour
 
         PlayerList playerList = JsonUtility.FromJson<PlayerList>(webRequest.downloadHandler.text);
 
-        foreach(PlayerInfo player in playerList.players)
+        foreach (PlayerInfo player in playerList.players)
         {
             Debug.Log(player.username);
             Debug.Log(player.score);
         }
     }
-    IEnumerator PostRequest(string url,string jsondata)
+    IEnumerator PostRequest(string url, string jsondata)
     {
         UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
         byte[] jsonConverted = new System.Text.UTF8Encoding().GetBytes(jsondata);
@@ -83,10 +83,21 @@ public class ServerMOV : MonoBehaviour
         {
             Debug.Log(webRequest.downloadHandler.text);
         }
-
     }
     // Start is called before the first frame update
     void Start()
+    {
+       /* RegisterPlayerInfo info = new RegisterPlayerInfo("nelio", "god");
+        string json = JsonUtility.ToJson(info);
+        Debug.Log(json);
+        //StartCoroutine(GetPlayersRequest(BaseAPI + "/player/list"));
+        //StartCoroutine(PostRequest(BaseAPI + "/player/new", json));
+        UpdatePlayerInfo scoreinfo = new UpdatePlayerInfo(3, 666);
+        string json2 = JsonUtility.ToJson(scoreinfo);
+        StartCoroutine(PostRequest(BaseAPI + "/player/updatescore", json2));*/
+    }
+
+    public void RegisterPlayer()
     {
         RegisterPlayerInfo info = new RegisterPlayerInfo("nelio", "god");
         string json = JsonUtility.ToJson(info);
@@ -98,9 +109,4 @@ public class ServerMOV : MonoBehaviour
         StartCoroutine(PostRequest(BaseAPI + "/player/updatescore", json2));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
