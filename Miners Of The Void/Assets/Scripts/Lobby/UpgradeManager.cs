@@ -46,6 +46,11 @@ namespace MOV.Upgrades
 
         public abstract void OnRemove();
 
+        public virtual void OnLevelUp()
+        {
+
+        }
+
 
         public Upgrade(string upName,int _level = 1)
         {
@@ -157,7 +162,16 @@ public class Hp : Upgrade
         characterMovement = controller.GetComponent<CharacterMovement>();
         characterMovement.movementSpeed.AddModifier(modifier);
      }
-        public override void OnUpdate()
+
+    public override void OnLevelUp()
+    {
+        base.OnLevelUp();
+        characterMovement.movementSpeed.RemoveAllFromSource(this);
+        modifier = new StatModifier(4 * level, this);
+        characterMovement.movementSpeed.AddModifier(modifier);
+
+    }
+    public override void OnUpdate()
         {
             throw new System.NotImplementedException();
     }
