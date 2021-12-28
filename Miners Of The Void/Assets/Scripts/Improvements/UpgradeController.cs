@@ -15,17 +15,7 @@ public class UpgradeController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        foreach (Upgrade upgrade in upgradeHolder)
-        {
-            if (upgrade != null)
-            {
-                upgrade.OnUpdate();
-            }
-        }
-    }
+    
 
     public bool PlaceUpgrade(Upgrade upgrade)
     {

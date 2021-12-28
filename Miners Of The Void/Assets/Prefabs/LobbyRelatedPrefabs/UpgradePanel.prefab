@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 275887791}
   - component: {fileID: 275887790}
   - component: {fileID: 275887789}
-  - component: {fileID: 275887788}
   m_Layer: 5
   m_Name: HealthButton
   m_TagString: Untagged
@@ -200,31 +199,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 275887790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 275887788}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &275887788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275887786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &314122035
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +471,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 615866607}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6666667
+  m_Size: 0.66666675
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -513,7 +488,6 @@ GameObject:
   - component: {fileID: 435003225}
   - component: {fileID: 435003224}
   - component: {fileID: 435003223}
-  - component: {fileID: 435003222}
   m_Layer: 5
   m_Name: SpeedButton
   m_TagString: Untagged
@@ -622,31 +596,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 435003224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 435003222}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &435003222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435003220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &436727301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1281,6 @@ GameObject:
   - component: {fileID: 873408397}
   - component: {fileID: 873408396}
   - component: {fileID: 873408395}
-  - component: {fileID: 6134094636567448263}
   m_Layer: 5
   m_Name: BackWeapon
   m_TagString: Untagged
@@ -1440,31 +1389,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 873408396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6134094636567448263}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6134094636567448263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873408393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &984887961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,14 +1402,14 @@ GameObject:
   - component: {fileID: 984887966}
   - component: {fileID: 984887965}
   - component: {fileID: 984887964}
-  - component: {fileID: 984887963}
+  - component: {fileID: 2844866334536549491}
   m_Layer: 5
   m_Name: DmgButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &984887962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1587,9 +1512,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 984887963}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
+      - m_Target: {fileID: 2844866334536549491}
+        m_TargetAssemblyTypeName: DmgButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1599,7 +1524,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &984887963
+--- !u!114 &2844866334536549491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1608,9 +1533,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 984887961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f40d4ad2c237e48b6eba8d569f22c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeControllerUI: {fileID: 7501354405973232793}
 --- !u!1 &1082098125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1639,6 @@ GameObject:
   - component: {fileID: 1152739549}
   - component: {fileID: 1152739548}
   - component: {fileID: 1152739547}
-  - component: {fileID: 1152739550}
   m_Layer: 5
   m_Name: HealthButton
   m_TagString: Untagged
@@ -1822,31 +1747,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1152739548}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1152739550}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1152739550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152739545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &1166258962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,7 +1760,6 @@ GameObject:
   - component: {fileID: 1166258967}
   - component: {fileID: 1166258966}
   - component: {fileID: 1166258965}
-  - component: {fileID: 1166258964}
   m_Layer: 5
   m_Name: ShieldButton
   m_TagString: Untagged
@@ -1968,31 +1868,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1166258966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1166258964}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1166258964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166258962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &1254315579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2182,6 @@ GameObject:
   - component: {fileID: 1401480535}
   - component: {fileID: 1401480534}
   - component: {fileID: 1401480533}
-  - component: {fileID: 1401480532}
   m_Layer: 5
   m_Name: DmgButton
   m_TagString: Untagged
@@ -2415,31 +2290,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1401480534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1401480532}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1401480532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401480530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &1473650496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,7 +2913,6 @@ GameObject:
   - component: {fileID: 2028633595}
   - component: {fileID: 2028633594}
   - component: {fileID: 2028633593}
-  - component: {fileID: 2028633596}
   m_Layer: 5
   m_Name: ShieldButton
   m_TagString: Untagged
@@ -3171,31 +3021,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2028633594}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2028633596}
-        m_TargetAssemblyTypeName: MOV.Upgrades.UpgradeManager, Assembly-CSharp
-        m_MethodName: ASummon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2028633596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028633591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &2097630918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3384,7 +3210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 1.796, y: 54.4501}
+  m_AnchoredPosition: {x: 1.2859, y: 34.753}
   m_SizeDelta: {x: 479.2533, y: 35.0999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2944317183064985052
@@ -3842,7 +3668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afe282d52997104cb82c8fd301d6706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeUI: []
+  upgradeUI:
+  - {fileID: 1754523752}
+  - {fileID: 1254315579}
+  - {fileID: 314122035}
+  - {fileID: 352004003}
   controller: {fileID: 0}
 --- !u!1 &8967736207942527770
 GameObject:
@@ -3856,7 +3686,6 @@ GameObject:
   - component: {fileID: 1520288583922384328}
   - component: {fileID: 2657915382593728604}
   - component: {fileID: 1681113790}
-  - component: {fileID: 7477701698470245034}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -3873,7 +3702,7 @@ RectTransform:
   m_GameObject: {fileID: 8967736207942527770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_Children:
   - {fileID: 547055597079302118}
   - {fileID: 6366571448434721052}
@@ -3947,15 +3776,3 @@ MonoBehaviour:
   imagem: {fileID: 8457879741258061651, guid: 19d780beba0b4f841ad1f72e8380b120, type: 3}
   upgradeplaced: 0
   menu: {fileID: 8967736207942527770}
---- !u!114 &7477701698470245034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8967736207942527770}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d3e58c434fe7f459d40a11c936891a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradeButton : MonoBehaviour
 {
+    public bool isHumanoid;
     public UpgradeUIController upgradeControllerUI;
     public virtual Upgrade GetUpgrade(int level)
     {

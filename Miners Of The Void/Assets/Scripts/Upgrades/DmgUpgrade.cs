@@ -20,10 +20,7 @@ public class DamageUpgrade : Upgrade
         weapon.dmg.RemoveAllFromSource(this);
     }
 
-    public override void OnUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
+    
 
     
 }
