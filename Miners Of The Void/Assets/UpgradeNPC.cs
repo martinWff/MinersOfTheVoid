@@ -7,13 +7,22 @@ public class UpgradeNPC : MonoBehaviour
 {
     public GameObject panel;
     public Transform canvas;
+    public InteractionArea interactionArea;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
-   
+    private void Update()
+    {
+        if (interactionArea.playerInside && Input.GetButtonDown("Interaction"))
+        {
+            Interact(interactionArea.playerInside);
+        }
+    }
+
+
     private void Interact(GameObject player)
     {
         GameObject tab = Instantiate(panel, canvas);
@@ -22,23 +31,4 @@ public class UpgradeNPC : MonoBehaviour
         Debug.Log(controller);
         controller.onUpgradePut.AddListener(uiController.OnUpgradePut);
     }
-
-   
-
-    // Update is called once per frame
-    public void OnInteractionAreaStay(GameObject player)
-    {
-        if (Input.GetButtonDown("Interaction"))
-        {
-            Interact(player);
-        }
-    }
-/*    private void OnTriggerStay2D(Collider2D player)
-    {
-        Debug.Log("staying");
-        if (Input.GetButtonDown("Interaction"))
-        {
-            Interact(player.gameObject);
-        }
-    }*/
 }

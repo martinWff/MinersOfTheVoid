@@ -117,6 +117,11 @@ public class OreManager : MonoBehaviour
         return null;
     }
 
+    public OreResourceObject[] GetOreResourcesObjets()
+    {
+        return ores;
+    }
+
 }
 
 [System.Serializable]

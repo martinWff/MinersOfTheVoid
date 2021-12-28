@@ -14,7 +14,7 @@ public class PlayerInventoryObserver : MonoBehaviour
 
     public void InventoryControllerInitialized(InventoryController ic)
     {
-
+        Debug.Log("inventory controller initialized");
         ic.AttachInventory(playerInventory.inventory);
     }
 }

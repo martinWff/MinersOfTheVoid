@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 188.4, y: -203.7}
+  m_AnchoredPosition: {x: 371, y: -383}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1158775249534531070
@@ -368,6 +368,7 @@ MonoBehaviour:
   contractNPC: {fileID: 0}
   contractUI: {fileID: 7798870907070807444}
   goalUI: {fileID: 6252116287359661710, guid: d6045b70d6752ff428d18f1396a98758, type: 3}
+  accept: {fileID: 0}
 --- !u!114 &332283988180350320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,8 +425,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130.81068, y: -95}
-  m_SizeDelta: {x: 261.6214, y: 190}
+  m_AnchoredPosition: {x: 274, y: -175.27}
+  m_SizeDelta: {x: 439.9945, y: 350.5357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7798870907070807529
 CanvasRenderer:
@@ -524,8 +525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 2.1294, y: 162.22736}
-  m_SizeDelta: {x: 715.8248, y: 264.3953}
+  m_AnchoredPosition: {x: -9.7868, y: 234.51}
+  m_SizeDelta: {x: 1082.4, y: 408.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8308022410013795747
 GameObject:

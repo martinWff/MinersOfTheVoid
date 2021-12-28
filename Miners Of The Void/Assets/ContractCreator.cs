@@ -13,6 +13,7 @@ public class ContractCreator : MonoBehaviour
     void Start()
     {
         Array<Goal> contractGoals = new Array<Goal>(3);
+       
         contractGoals.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(6)));
         contractGoals.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(6)));
         Contract contract = new Contract(Contract.ContractType.mining, contractGoals);

@@ -20,7 +20,7 @@ public class InteractionArea : MonoBehaviour
     public static event UpdateKeybindPosition onUpdateKeybindPosition;
 
 
-    private bool playerIsInside;
+    public GameObject playerInside { get; protected set; }
 
     public Vector3 uIKeyBindPosition;
 
@@ -48,7 +48,9 @@ public class InteractionArea : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
         {
+            playerInside = other.gameObject;
             onInteractionAreaStay?.Invoke(other.gameObject);
+            
         }
        
     }
@@ -60,8 +62,8 @@ public class InteractionArea : MonoBehaviour
             if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
                 // onShowKeyBind?.Invoke(true, (transform.position + uIKeyBindPosition));
+                playerInside = other.gameObject;
                 onInteractionAreaEnter?.Invoke(other.gameObject);
-                playerIsInside = true;
             }
             
         }
@@ -74,7 +76,7 @@ public class InteractionArea : MonoBehaviour
             {
                 //onShowKeyBind?.Invoke(false, (transform.position + uIKeyBindPosition));
                 onInteractionAreaExit?.Invoke(other.gameObject);
-                playerIsInside = false;
+                playerInside = null;
             }
           
         }

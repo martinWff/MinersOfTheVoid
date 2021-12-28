@@ -35,14 +35,14 @@ public class NPCMenus : MonoBehaviour
             openMenu = true;
             if (inventoryCon) 
             {
-                GameObject.Find("Managers").GetComponent<ContractTest>().enabled = true;
+            //    GameObject.Find("Managers").GetComponent<ContractTest>().enabled = true;
                 GameObject.FindGameObjectWithTag("Panel").GetComponent<RectTransform>().anchoredPosition = new Vector3(-173.6333f, 0, 0);
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape) && inventoryCon)
         {
             menuPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 500);
-            if (inventoryCon) GameObject.Find("Managers").GetComponent<ContractTest>().enabled = false;
+           // if (inventoryCon) GameObject.Find("Managers").GetComponent<ContractTest>().enabled = false;
             player.GetComponent<PlayerMovement>().enabled = true;
             GameObject.FindGameObjectWithTag("Panel").GetComponent<RectTransform>().anchoredPosition = new Vector3(2000,2000, 0);
             openMenu = false;
