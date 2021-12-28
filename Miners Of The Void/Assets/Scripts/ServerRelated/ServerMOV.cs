@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class ServerMOV : MonoBehaviour
 {
-    private string BaseAPI = "http://10.72.7.249:3434";
+    private string BaseAPI = "http://144.64.135.215:3434";
 
     [System.Serializable]
     public class PlayerInfo

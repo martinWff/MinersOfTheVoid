@@ -4,33 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace MOV.Upgrades
-{
-    public class UpgradeManager : MonoBehaviour
-    {
-   
-
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-            
-            
-            
-            
-        }
-        private void Update()
-        {
-            
-        }
-
-        
-        
-        
-    }
-    
-}
 
 
     public abstract class Upgrade
@@ -54,7 +27,7 @@ namespace MOV.Upgrades
         }
 
     }
-    public class Shield : Upgrade
+    /*public class Shield : Upgrade
     {
     public Shield(string upName) : base(upName)
     {
@@ -141,7 +114,7 @@ public class Hp : Upgrade
        
     }
 
-    }
+    }*/
     public class SpeedUpgrade : Upgrade
     {
         CharacterMovement characterMovement;
