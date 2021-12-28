@@ -82,6 +82,12 @@ public class InventoryController : MonoBehaviour
     {
         Inventory.onInventoryChanged -= SpawnSlot;
     }
+
+    private void OnEnable()
+    {
+        Inventory.onInventoryChanged += SpawnSlot;
+    }
+
     private void OnDestroy()
     {
         Inventory.onInventoryChanged -= SpawnSlot;

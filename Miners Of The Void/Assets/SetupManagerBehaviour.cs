@@ -14,7 +14,7 @@ public class SetupManagerBehaviour : MonoBehaviour
             instance = this;
         } else if (instance != this)
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
     }
 }

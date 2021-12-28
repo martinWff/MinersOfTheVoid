@@ -2285,8 +2285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2de33c8ad90cc44597fde73298a32e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed:
-    baseValue: 0
 --- !u!4 &575923343
 Transform:
   m_ObjectHideFlags: 0
@@ -8536,6 +8534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
   canvas: {fileID: 1166462590}
+  interactionArea: {fileID: 1527364673}
 --- !u!1001 &1530150582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9850,6 +9849,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8074817253125504186, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
+      propertyPath: inventoryPanelTransform
+      value: 
+      objectReference: {fileID: 422313037}
     - target: {fileID: 8074817253318101790, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
       propertyPath: m_RootOrder
       value: 0
