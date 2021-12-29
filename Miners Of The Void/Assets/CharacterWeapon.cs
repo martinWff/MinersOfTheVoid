@@ -48,7 +48,7 @@ public class CharacterWeapon : MonoBehaviour
         {
             bulletShootTime -= Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.M)) Debug.Log(dmg.value);
+        if (Input.GetKeyDown(KeyCode.M)) Debug.Log(dmg.value+ " on game object "+gameObject.name);
         
 
         

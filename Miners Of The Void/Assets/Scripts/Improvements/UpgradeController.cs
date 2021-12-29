@@ -19,14 +19,46 @@ public class UpgradeController : MonoBehaviour
 
     public bool PlaceUpgrade(Upgrade upgrade)
     {
-        bool wasPlaces = upgradeHolder.InsertAtEnd(upgrade);
-        if (wasPlaces)
+        bool wasPlaced = false;
+        if (!HasUpgradeByName(upgrade.upgradeName))
         {
-            OnUpgradeAdded(upgrade);
-                
+            int cIndex = upgradeHolder.Count;
+            wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
+            if (wasPlaced)
+            {
+                OnUpgradeAdded(upgrade, cIndex);
+
+            }
+        } else
+        {
+            for (int i = 0;i<upgradeHolder.Count;i++)
+            {
+                Upgrade upg = upgradeHolder.Get(i);
+                if (upg != null && upg.upgradeName.Equals(upgrade.upgradeName))
+                {
+                    if (upg.level + upgrade.level <= upgrade.maxLevel) {
+                        upg.level += upgrade.level;
+                        OnUpgradeAdded(upg, i);
+                        wasPlaced = true;
+                    }
+                }
+            }
         }
 
-        return wasPlaces;
+        return wasPlaced;
+    }
+
+    public bool HasUpgradeByName(string upgradeName)
+    {
+        foreach (Upgrade upg in upgradeHolder)
+        {
+            if (upg.upgradeName == upgradeName)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void TakeOfUpgrade(Upgrade upgrade)
@@ -51,9 +83,9 @@ public class UpgradeController : MonoBehaviour
 
     }
 
-    private void OnUpgradeAdded(Upgrade upgrade)
+    private void OnUpgradeAdded(Upgrade upgrade,int index)
     {
         upgrade.OnPut(gameObject);
-        onUpgradePut.Invoke(upgrade,-1);
+        onUpgradePut.Invoke(upgrade,index);
     }
 }

@@ -6,6 +6,7 @@ public class DmgButton : UpgradeButton
 {
     private void Start()
     {
+        isHumanoid = true;
         if(upgradeControllerUI.controller == null)
         {
             if (isHumanoid) upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeController>();

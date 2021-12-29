@@ -109,6 +109,19 @@ public class Array<T>
         return isTrue;
     }
 
+    public bool Contains(T value)
+    {
+        foreach (T v in data)
+        {
+            if (v.Equals(value))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static explicit operator T[](Array<T> arr)
     {
         return arr.data;
@@ -119,7 +132,6 @@ public class Array<T>
         Array<T> newArray = new Array<T>(arr.Length);
         for (int i = 0; i < arr.Length; i++) {
             newArray.InsertAt(arr[i],i);
-            Debug.Log("teste");
         }
         return newArray;
     }

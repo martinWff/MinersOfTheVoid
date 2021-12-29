@@ -12,6 +12,7 @@ using UnityEngine.UI;
         public string upgradeName;
         public Sprite sprite;
         public int level;
+    public int maxLevel;
 
         public abstract void OnPut(GameObject controller);
 
@@ -26,7 +27,15 @@ using UnityEngine.UI;
         {
             upgradeName = upName;
             level = _level;
+            maxLevel = 6;
         }
+
+        public Upgrade(string upName,int level = 1,int maxLevel = 6)
+    {
+        upgradeName = upName;
+        this.level = level;
+        this.maxLevel = maxLevel;
+    }
 
     }
     /*public class Shield : Upgrade

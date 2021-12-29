@@ -13,7 +13,9 @@ public class UpgradeUIController : MonoBehaviour
         GameObject upgObject = upgradeUI[slot];
         if (slot >= 0)
         {
-            upgObject.GetComponentInChildren<Image>().sprite = upg.sprite;
+            Image img = upgObject.GetComponentInChildren<Image>();
+            img.sprite = upg.sprite;
+            img.color = Color.white;
             upgObject.GetComponentInChildren<Text>().text = upg.level.ToString();
         }
     }
