@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class PlayerInventoryObserver : MonoBehaviour
 {
-    private PlayerInventory playerInventory;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        playerInventory = FindObjectOfType<PlayerInventory>();
- 
-    }
+
+   
 
     public void InventoryControllerInitialized(InventoryController ic)
     {
         Debug.Log("inventory controller initialized");
-        ic.AttachInventory(playerInventory.inventory);
+        ic.AttachInventory(PlayerInventory.staticInventory);
     }
+
 }

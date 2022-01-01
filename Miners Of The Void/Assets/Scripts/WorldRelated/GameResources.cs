@@ -8,7 +8,7 @@ public class OreStack : IResourceEqual {
 
     public string oreName;
 
-    public Sprite sprite;
+    [System.NonSerialized]public Sprite sprite;
 
     public int amount;
 

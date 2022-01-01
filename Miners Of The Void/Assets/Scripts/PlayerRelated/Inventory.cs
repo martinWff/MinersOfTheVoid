@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-
+[System.Serializable]
 public class Inventory
 {
     protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
