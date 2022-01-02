@@ -31,11 +31,29 @@ public class PlayerInventory : MonoBehaviour
 
     public void OnSaved(SavedData saveData)
     {
-        saveData.inventory = staticInventory;
+
+       Dictionary<string,OreStack> inventoryTable = staticInventory.GetOres();
+        saveData.inventory = new Dictionary<string, int>();
+       foreach (KeyValuePair<string,OreStack> ores in inventoryTable)
+        {
+            saveData.inventory.Add(ores.Key,ores.Value.amount);
+        }
+     
     }
     public void OnLoaded(SavedData saveData)
     {
-        staticInventory = saveData.inventory;
+        Dictionary<string, int> inventoryTable = saveData.inventory;
+        staticInventory.Reset();
+
+        foreach (KeyValuePair<string,int> inv in inventoryTable)
+        {
+           staticInventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName(inv.Key).GetOreStack(inv.Value));
+        }
+
     }
+
+
+
+
 
 }

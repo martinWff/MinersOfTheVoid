@@ -54,6 +54,11 @@ public class Inventory
         return oresStacks[oreName];
     }
 
+    public void Reset()
+    {
+        oresStacks.Clear();
+    }
+
 
       public virtual int RetrieveAmount(string oreName,int amount)
     {
