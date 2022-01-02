@@ -38,5 +38,6 @@ public static class SavePlayerStats
 
 
     //Money
-    public static int bips = 10000000;
+    public static int bips = 
+        0;
 }

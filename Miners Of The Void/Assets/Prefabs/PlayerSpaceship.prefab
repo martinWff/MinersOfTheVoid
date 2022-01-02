@@ -154,15 +154,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c475b3f2d76ed48a62451620ffc9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 10
-  totalShield: 20
   shield: 20
-  totalhp: 20
+  totalShield:
+    baseValue: 10
+  totalhp:
+    baseValue: 20
   hp: 20
   immortality: 0
 --- !u!114 &488194359
@@ -172,7 +174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e33f67af05c72b40877fd6958949900, type: 3}
   m_Name: 
@@ -192,7 +194,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaed2980123b0824f82170cef558b56c, type: 3}
   m_Name: 
@@ -202,6 +204,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   animated: 0
   thereIsNoHumansInSpace: 0
+  player2: {fileID: 0}
 --- !u!114 &488194364
 MonoBehaviour:
   m_ObjectHideFlags: 0

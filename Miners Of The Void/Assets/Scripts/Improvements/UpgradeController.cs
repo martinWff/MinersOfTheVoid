@@ -6,12 +6,27 @@ using UnityEngine.Events;
 
 public class UpgradeController : MonoBehaviour
 {
-    public Array<Upgrade> upgradeHolder = new Array<Upgrade>(4);
+    public Array<Upgrade> upgradeHolder;
     public UnityEvent<Upgrade,int> onUpgradePut;
     public UnityEvent<Upgrade,int> onUpgradeRemoved;
     // Start is called before the first frame update
     void Start()
     {
+        upgradeHolder = new Array<Upgrade>(4);
+        if (gameObject.tag == "Player") 
+        {
+            foreach (Upgrade up in UpgradeTransporter.humanPlayer) {
+                PlaceUpgrade(up);
+                Debug.Log(up.upgradeName);
+            }
+        }
+        if (gameObject.tag == "Spaceship")
+        {
+            foreach (Upgrade up in UpgradeTransporter.spaceship)
+                PlaceUpgrade(up);
+        }
+
+       
         
     }
 
@@ -74,6 +89,24 @@ public class UpgradeController : MonoBehaviour
         upgrade.OnRemove();
     }
 
+    public void TakeOfUpgrade(string upgradeName)
+    {
+        Upgrade temp = null;
+        for (int i = 0; i < upgradeHolder.Count; i++)
+        {
+            if (upgradeHolder.Get(i) != null)
+            {
+                if (upgradeHolder.Get(i).upgradeName.Equals(upgradeName))
+                {
+                    temp = upgradeHolder.Get(i);
+                    upgradeHolder.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+        if (temp != null) temp.OnRemove();
+    }
+
     public void TakeOfUpgrade(int slot)
     {
        Upgrade upgrade = upgradeHolder.Get(slot);
@@ -87,5 +120,15 @@ public class UpgradeController : MonoBehaviour
     {
         upgrade.OnPut(gameObject);
         onUpgradePut.Invoke(upgrade,index);
+
+        if(gameObject.tag == "Player") UpgradeTransporter.humanPlayer = upgradeHolder;
+        if (gameObject.tag == "Spaceship") UpgradeTransporter.spaceship = upgradeHolder;
+        
+        int i = -1;
+        foreach (Upgrade up in upgradeHolder)
+        {
+            i++;
+            Debug.Log(upgradeHolder.Get(i));
+        }
     }
 }

@@ -41,8 +41,9 @@ public class DmgButton : UpgradeButton
 
         if (upgradeControllerUI.controller != null)
         {
-            Debug.Log("Preciso mesmo de café");
-            upgradeControllerUI.controller.TakeOfUpgrade(GetUpgrade());
+
+            Debug.Log(GetUpgrade().upgradeName);
+            upgradeControllerUI.controller.TakeOfUpgrade(GetUpgrade().upgradeName);
         }
     }
 }
