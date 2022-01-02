@@ -21,13 +21,50 @@ public class phaseI : MonoBehaviour
 
     //shockWave
 
-    
-    
+    //Safe Area
+    private float safeAreaSize;
+    private float safeAreaRadius;
+    private int ramdomNumberX;
+    private int ramdomNumberY;
+
+    // rect1 spawn safe area
+    private float rect1moreX;
+    private float rect1lessX;
+    private float rect1moreY;
+    private float rect1lessY;
+
+
+    //Camera Componets
+    private Camera cam;
+    private float camHeigth;
+    private float camWidth;
+    private float camdiv3;
+    private float camPosX;
+    private float camPosY;
+    private float camPosXCurent;
+    private float camPosYCurent;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = Camera.main;
+        camPosX = cam.transform.position.x;
+        camPosY = cam.transform.position.y;
+        camHeigth = 2f * cam.orthographicSize;
+        camWidth = camHeigth * cam.aspect;
+        camdiv3 = camWidth / 3;
+        //Debug.Log(camHeigth);
+        //Debug.Log(camWidth);
+        //Debug.Log(camdiv3);
+
+        safeAreaSize = safeArea.transform.localScale.x;
+        safeAreaRadius = safeAreaSize / 2;
+        //Debug.Log(safeAreaSize);
+        //Debug.Log(safeAreaRadius);
+        SafeAreaSpawn();
     }
 
     // Update is called once per frame
@@ -37,14 +74,14 @@ public class phaseI : MonoBehaviour
         {
             shootTimer = shootTimer + Time.deltaTime;
             phaseITimer = 0;
-            Debug.Log(shootTimer);
+            //Debug.Log(shootTimer);
         }
         
 
         if (shootTimer >= 5)
         {
             phaseION = true;
-            ShotShockWave();
+            //ShotShockWave();
         }
         
     }
@@ -74,6 +111,15 @@ public class phaseI : MonoBehaviour
 
     private void SafeAreaSpawn()
     {
+        rect1moreX = camdiv3 - safeAreaRadius;
+        Debug.Log(rect1moreX);
+        Instantiate(safeArea, new Vector3(rect1moreX, 0, 0), Quaternion.identity);
+    }
+
+    private void RandomNumberGenerator()
+    {
 
     }
+
+    
 }
