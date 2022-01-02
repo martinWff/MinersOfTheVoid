@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public float playerDamage = 10;
-    public float totalShield = 20;
-    public float shield = 20;
-    public float totalhp = 20;
+    public float shield = 10;
+    public CharacterStat totalShield = new CharacterStat(10);
+    public CharacterStat totalhp = new CharacterStat(20);
     public float hp = 20;
     public bool immortality = false;
     private EntityController entity;
@@ -25,13 +25,14 @@ public class HealthBar : MonoBehaviour
     }
     private void Update()
     {
-        lifeBar.fillAmount = hp / totalhp;
-        shieldBar.fillAmount = shield / totalShield;
-        if (shield < totalShield)
+        lifeBar.fillAmount = hp / totalhp.value;
+        shieldBar.fillAmount = shield / totalShield.value;
+        if (shield < totalShield.value)
         {
-            shield += (totalShield / 10) * Time.deltaTime;
+            shield += (totalShield.value / 10) * Time.deltaTime;
         }
-        if (shield > totalShield) shield = totalShield;
+        if (shield > totalShield.value) shield = totalShield.value;
+        if (Input.GetKeyDown(KeyCode.L)) Debug.Log(totalShield.value + "\n" + totalhp.value);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

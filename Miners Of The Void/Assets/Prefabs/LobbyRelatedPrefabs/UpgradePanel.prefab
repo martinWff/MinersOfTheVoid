@@ -475,7 +475,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 615866607}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.66666675
+  m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -722,7 +722,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6666667
+  m_Size: 0.66666675
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1644,6 +1644,7 @@ GameObject:
   - component: {fileID: 1152739549}
   - component: {fileID: 1152739548}
   - component: {fileID: 1152739547}
+  - component: {fileID: 966790400}
   m_Layer: 5
   m_Name: HealthButton
   m_TagString: Untagged
@@ -1752,7 +1753,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1152739548}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 966790400}
+        m_TargetAssemblyTypeName: HealthButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &966790400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152739545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4460dde8efd97374c9667523205e762b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHumanoid: 0
+  upgradeControllerUI: {fileID: 7501354405973232793}
 --- !u!1 &1166258962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,6 +2950,7 @@ GameObject:
   - component: {fileID: 2028633595}
   - component: {fileID: 2028633594}
   - component: {fileID: 2028633593}
+  - component: {fileID: 1695810939}
   m_Layer: 5
   m_Name: ShieldButton
   m_TagString: Untagged
@@ -3031,7 +3059,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2028633594}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1695810939}
+        m_TargetAssemblyTypeName: ShieldButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1695810939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028633591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a5d57c66d238e479b5fececb199eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHumanoid: 0
+  upgradeControllerUI: {fileID: 7501354405973232793}
 --- !u!1 &2097630918
 GameObject:
   m_ObjectHideFlags: 0
