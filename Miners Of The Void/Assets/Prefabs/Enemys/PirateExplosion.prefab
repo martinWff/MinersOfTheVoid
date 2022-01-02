@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269a9c620c77ea44d8fcafc434aadeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRange: 20
+  enemyRange: 15
   speed: 15
   lifebar: {fileID: 241279508}
   shieldbar: {fileID: 745953725}

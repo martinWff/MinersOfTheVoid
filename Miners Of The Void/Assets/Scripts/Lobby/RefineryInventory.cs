@@ -21,7 +21,6 @@ public class RefineryInventory : MonoBehaviour
     public Inventory inventory;
     public Contract oreContract;
     InventoryController inventoryController;
-    PlayerInventory playerInventory;
 
 
     //Gameobjects to select
@@ -45,7 +44,6 @@ public class RefineryInventory : MonoBehaviour
     private void Awake()
     {
         inventoryController = GetComponent<InventoryController>();
-        playerInventory = FindObjectOfType<PlayerInventory>();//new Inventory();
        // InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
         myQueue = new Queue<MaterialID>();
         
@@ -53,7 +51,7 @@ public class RefineryInventory : MonoBehaviour
 
     public void InitializeInventory(InventoryController invController)
     {
-        inventory = playerInventory.inventory;
+        inventory = PlayerInventory.staticInventory;
         invController.AttachInventory(inventory);
         
     }

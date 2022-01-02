@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 
 
-
+[System.Serializable]
     public abstract class Upgrade
     {
         
         public string upgradeName;
-        public Sprite sprite;
+        [System.NonSerialized]public Sprite sprite;
         public int level;
-    public int maxLevel;
+        public int maxLevel;
 
         public abstract void OnPut(GameObject controller);
 
