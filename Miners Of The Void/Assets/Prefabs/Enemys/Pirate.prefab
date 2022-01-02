@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f683ae7e8997bd84a8119e667eda4f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRange: 30
+  enemyRange: 15
   speed: 3
   human: 0
   nearPlayer: 15
