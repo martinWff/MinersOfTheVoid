@@ -19,6 +19,11 @@ public struct Vector2Serializable
         return new Vector2Serializable(vec.x, vec.y);
     }
 
+    public static implicit operator Vector2Serializable(Vector3 vec)
+    {
+        return new Vector2Serializable(vec.x, vec.y);
+    }
+
     public Vector2Serializable(float x, float y)
     {
         this.x = x;
