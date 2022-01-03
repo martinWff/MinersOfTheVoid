@@ -10,11 +10,18 @@ public class UpgradeUIController : MonoBehaviour
 
     private void Start()
     {
-        int i = -1;
-        foreach(Upgrade up in controller.upgradeHolder)
+        if (controller != null)
         {
-            i++;
-            OnUpgradePut(up, i);
+            if (controller.upgradeHolder != null)
+            {
+                for (int i = 0; i < controller.upgradeHolder.Length; i++)
+                {
+                    if (controller.upgradeHolder[i] != null)
+                    {
+                        OnUpgradePut(controller.upgradeHolder[i], i);
+                    }
+                }
+            }
         }
     }
 
@@ -24,10 +31,23 @@ public class UpgradeUIController : MonoBehaviour
         
         if (slot >= 0)
         {
-            Image img = upgObject.GetComponentInChildren<Image>();
+            Image img = upgObject.transform.Find("Button").GetComponent<Image>();
             img.sprite = upg.sprite;
             img.color = Color.white;
             upgObject.GetComponentInChildren<Text>().text = upg.level.ToString();
+        }
+    }
+
+    public void OnUpgradeRemoved(Upgrade upg,int slot)
+    {
+        GameObject upgObject = upgradeUI[slot];
+
+        if (slot >= 0)
+        {
+            Image img = upgObject.transform.Find("Button").GetComponent<Image>();
+            img.sprite = null;
+            img.color = new Color(0,0,0,0);
+            upgObject.GetComponentInChildren<Text>().text = string.Empty;
         }
     }
 }
