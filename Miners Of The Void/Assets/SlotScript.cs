@@ -18,8 +18,8 @@ public class SlotScript : MonoBehaviour
     }
     public void RemoveUpgrade() 
     {
-       
         upgradeUIController.controller.TakeOfUpgrade(slotIndex);
+        
     }
         
 }

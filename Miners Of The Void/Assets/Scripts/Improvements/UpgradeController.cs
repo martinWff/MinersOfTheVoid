@@ -118,6 +118,7 @@ public class UpgradeController : MonoBehaviour
        Upgrade upgrade = upgradeHolder[slot];
         if (upgrade != null)
         {
+            UpgradeTransporter.upgradeSaver(upgrade.upgradeName, upgrade.level);
             upgrade.OnRemove();
             upgradeHolder[slot] = null;
             onUpgradeRemoved?.Invoke(upgrade, slot);

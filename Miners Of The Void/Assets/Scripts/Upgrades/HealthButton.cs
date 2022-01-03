@@ -21,7 +21,10 @@ public class HealthButton : UpgradeButton
     public override Upgrade GetUpgrade(int level = 1)
     {
         Debug.Log("Preciso de café");
+        if (!UpgradeTransporter.levels.ContainsKey("hp"))
         return new HealthUpgrade("hp", level);
+        else return new HealthUpgrade("hp", (int)UpgradeTransporter.levels["hp"]);
+
 
     }
     public void OnClick()
@@ -32,6 +35,7 @@ public class HealthButton : UpgradeButton
         {
             
             upgradeControllerUI.controller.PlaceUpgrade(GetUpgrade());
+            
         }
     }
 }
