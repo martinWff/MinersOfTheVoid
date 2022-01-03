@@ -44,7 +44,7 @@ public class HumanPirate : MonoBehaviour
 
 
                 Debug.Log("player position: "+ player.transform.position);
-                Vector3 Shotdirection = transform.up;
+                Vector3 Shotdirection = Maths.TransformUp(gameObject);
 
 
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);

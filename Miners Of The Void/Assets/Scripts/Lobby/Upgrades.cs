@@ -28,7 +28,7 @@ public class Upgrades : MonoBehaviour
       //  player.GetComponent<PlayerMovement>().enabled = true;
         NPC.GetComponent<NPCMenus>().openMenu = false;
         menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(2000, 2000);
-        Destroy(gameObject);
+        player.GetComponent<CharacterMovement>().enabled = true;
     }
    
     
