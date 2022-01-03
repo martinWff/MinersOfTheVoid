@@ -30,5 +30,6 @@ public class UpgradeNPC : MonoBehaviour
         UpgradeController controller = player.GetComponent<UpgradeController>();
         Debug.Log(controller);
         controller.onUpgradePut.AddListener(uiController.OnUpgradePut);
+        controller.onUpgradeRemoved.AddListener(uiController.OnUpgradeRemoved);
     }
 }

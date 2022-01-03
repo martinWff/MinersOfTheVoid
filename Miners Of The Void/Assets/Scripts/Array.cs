@@ -42,11 +42,9 @@ public class Array<T>
         }
         return false;
     }
-
-
     public bool InsertAt(T value, int index)
     {
-        if ((index < 0) || (index >= count)) return false;
+        if ((index < 0) || (index >= Length)) return false;
         else if (index == count) {
             data[count] = value;
             count++;
@@ -55,8 +53,8 @@ public class Array<T>
 
             count++;
 
-            for (int i = count; i >= index; i++) {
-                data[i + 1] = data[i];
+            for (int i = count; i >= index; i--) {
+                 data[i + 1] = data[i];
             }
             data[index] = value;
             return true;
@@ -69,10 +67,12 @@ public class Array<T>
         else
         {
 
-            for (int i = index; i < count - 1; i++)
+            for (int i = index; i < count; i++)
             {
-
+                if (i + 1 < Length) { 
                 data[i] = data[i + 1];
+                } 
+                
 
 
             }
@@ -116,6 +116,51 @@ public class Array<T>
             if (v.Equals(value))
             {
                 return true;
+            }
+        }
+
+        return false;
+    }
+
+    public int Find(T value)
+    {
+        for (int i = 0;i<Length;i++)
+        {
+            if (data[i].Equals(value))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public int Find(System.Predicate<T> predicate)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            if (data[i] != null)
+            {
+                if (predicate.Invoke(data[i]))
+                {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public bool Exists(System.Predicate<T> predicate)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            if (data[i] != null)
+            {
+                if (predicate.Invoke(data[i]))
+                {
+                    return true;
+                }
             }
         }
 

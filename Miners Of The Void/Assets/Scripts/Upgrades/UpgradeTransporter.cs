@@ -4,6 +4,6 @@ using UnityEngine;
 
 public static class UpgradeTransporter
 {
-    public static Array<Upgrade> spaceship = new Array<Upgrade>(4);
-    public static Array<Upgrade> humanPlayer = new Array<Upgrade>(4);
+    public static Upgrade[] spaceship = new Upgrade[4];
+    public static Upgrade[] humanPlayer = new Upgrade[4];
 }

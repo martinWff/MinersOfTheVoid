@@ -18,7 +18,6 @@ public class SlotScript : MonoBehaviour
     }
     public void RemoveUpgrade() 
     {
-        Debug.Log("Marvel é melhor que Dc");
        
         upgradeUIController.controller.TakeOfUpgrade(slotIndex);
     }
