@@ -8,6 +8,7 @@ public class UpgradeNPC : MonoBehaviour
     public GameObject panel;
     public Transform canvas;
     public InteractionArea interactionArea;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class UpgradeNPC : MonoBehaviour
         GameObject tab = Instantiate(panel, canvas);
         UpgradeUIController uiController = tab.GetComponentInChildren<UpgradeUIController>();
         UpgradeController controller = player.GetComponent<UpgradeController>();
+        player.GetComponent<CharacterMovement>().enabled = false;
         Debug.Log(controller);
         controller.onUpgradePut.AddListener(uiController.OnUpgradePut);
     }

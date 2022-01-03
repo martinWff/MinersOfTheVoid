@@ -47,7 +47,7 @@ public class CharacterMovement : MonoBehaviour
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
         }
-        if (Input.GetKeyDown(KeyCode.L)) Debug.Log(movementSpeed.value);
+        if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
        
     }
 
@@ -99,6 +99,7 @@ public class CharacterMovement : MonoBehaviour
             if (collision.gameObject.tag == "SceneLoader") player2.SceneChanger(1);
 
             }
+            
             
         
     }
