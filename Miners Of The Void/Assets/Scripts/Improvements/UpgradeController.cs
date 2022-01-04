@@ -35,7 +35,8 @@ public class UpgradeController : MonoBehaviour
     public bool PlaceUpgrade(Upgrade upgrade)
     {
         bool wasPlaced = false;
-    //    if (upgrade == null) return  false;
+        
+        //    if (upgrade == null) return  false;
         int index = FindUpgradeByName(upgrade?.upgradeName);
         if (index < 0)
         {
@@ -54,10 +55,12 @@ public class UpgradeController : MonoBehaviour
             int last = ArrayUtils.Find<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg == null; });
             int cIndex = last;
             upgradeHolder[last] = upgrade;
+            
             wasPlaced = true;
           //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
             if (wasPlaced)
-            {  
+            {
+                Debug.Log("Shenhe is life" + upgrade);
                 OnUpgradeAdded(upgrade, cIndex);
             }
         } else
@@ -128,6 +131,7 @@ public class UpgradeController : MonoBehaviour
 
     private void OnUpgradeAdded(Upgrade upgrade,int index)
     {
+        
         upgrade.OnPut(gameObject);
         onUpgradePut.Invoke(upgrade,index);
 

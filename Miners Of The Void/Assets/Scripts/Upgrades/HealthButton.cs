@@ -6,7 +6,7 @@ public class HealthButton : UpgradeButton
 {
     private void Start()
     {
-        isHumanoid = true;
+        
         if (upgradeControllerUI.controller == null)
         {
             if (isHumanoid) upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeController>();
@@ -19,8 +19,7 @@ public class HealthButton : UpgradeButton
     }
 
     public override Upgrade GetUpgrade(int level = 1)
-    {
-        Debug.Log("Preciso de café");
+    { 
         if (!UpgradeTransporter.levels.ContainsKey("hp"))
         return new HealthUpgrade("hp", level);
         else return new HealthUpgrade("hp", (int)UpgradeTransporter.levels["hp"]);

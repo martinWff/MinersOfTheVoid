@@ -31,10 +31,12 @@ public class UpgradeUIController : MonoBehaviour
         
         if (slot >= 0)
         {
+            
             Image img = upgObject.transform.Find("Button").GetComponent<Image>();
             img.sprite = upg.sprite;
             img.color = Color.white;
             upgObject.GetComponentInChildren<Text>().text = upg.level.ToString();
+           
         }
     }
 

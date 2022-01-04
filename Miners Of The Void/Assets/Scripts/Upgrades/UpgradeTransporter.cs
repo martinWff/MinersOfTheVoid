@@ -11,6 +11,12 @@ public static class UpgradeTransporter
 
     public static void upgradeSaver(string upname, int level)
     {
-        levels.Add(upname, level);
+        if(levels.ContainsKey(upname))
+        {
+            levels.Remove(upname);
+            levels.Add(upname, level);
+        }
+        else levels.Add(upname, level);
+
     }
 }
