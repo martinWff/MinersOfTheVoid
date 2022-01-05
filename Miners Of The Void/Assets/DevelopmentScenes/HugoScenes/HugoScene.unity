@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 488194359, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 488194360, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -212,6 +216,22 @@ MonoBehaviour:
   bulletCooldownTime: 1.5
   bulletShootTime: 1.5
   enemyHelpSpeed: 5
+--- !u!114 &511966408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511966406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4628d48c1b5834ea10be6df12b2751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pirate: {fileID: 2650102425109889620, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
+  pirateexplosion: {fileID: 3479204000134808011, guid: e646e54c84cf1824884519a41130a362, type: 3}
+  safeArea: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
+  boss: {fileID: 511966406}
 --- !u!1 &804788990
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
     - target: {fileID: 643600271919104168, guid: 1425efea4089e814f97d4327836785c2, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 643600271919104168, guid: 1425efea4089e814f97d4327836785c2, type: 3}
       propertyPath: bulletShootTime

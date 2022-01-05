@@ -23,8 +23,6 @@ public class phaseI : MonoBehaviour
     public float bulletCooldownTime = 1.5f;
     public float bulletSpeed = 14;
 
-    //shockWave
-
     //Safe Area
     private float safeAreaSize;
     private float safeAreaRadius;
@@ -33,16 +31,8 @@ public class phaseI : MonoBehaviour
     
 
     // rect1 spawn safe area
-    private float rect1moreX;
     private float rect1lessX;
-    private float rect1moreY;
     private float rect1lessY;
-
-    // rect2 spawn safe area
-    private float rect2moreX;
-    private float rect2lessX;
-    private float rect2moreY;
-    private float rect2lessY;
 
     // rect3 spawn safe area
     private float rect3moreX;
@@ -143,9 +133,7 @@ public class phaseI : MonoBehaviour
         {
             
             //rect1
-            rect1moreX = camPosXCurent + camdiv3 - safeAreaRadius;
             rect1lessX = camPosXCurent + safeAreaRadius;
-            rect1moreY = camPosYCurent - camHeigth + safeAreaRadius;
             rect1lessY = camPosYCurent - bossSize - 2 - safeAreaRadius;
        
             //rect3
