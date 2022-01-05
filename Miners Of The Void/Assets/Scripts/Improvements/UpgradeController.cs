@@ -61,7 +61,7 @@ public class UpgradeController : MonoBehaviour
           //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
             if (wasPlaced)
             {
-                Debug.Log("Shenhe is life" + upgrade);
+                
                 OnUpgradeAdded(upgrade, cIndex);
             }
         } else
@@ -132,7 +132,7 @@ public class UpgradeController : MonoBehaviour
 
     private void OnUpgradeAdded(Upgrade upgrade,int index)
     {
-        
+        Debug.Log("here"+ upgrade + index);
         upgrade.OnPut(gameObject);
         onUpgradePut?.Invoke(this, upgrade,index);
 

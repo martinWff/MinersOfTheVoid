@@ -24,10 +24,15 @@ public class HealthButton : UpgradeButton
     }*/
 
     public override Upgrade GetUpgrade(int level = 1)
-    { 
+    {
         if (!UpgradeTransporter.levels.ContainsKey("hp"))
         return new HealthUpgrade("hp", level);
-        else return new HealthUpgrade("hp", (int)UpgradeTransporter.levels["hp"]);
+        else
+        {
+            int temp = (int)UpgradeTransporter.levels["hp"];
+            UpgradeTransporter.levels.Remove("hp");
+            return new HealthUpgrade("hp",temp );
+        }
 
 
     }

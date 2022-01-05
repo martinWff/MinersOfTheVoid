@@ -23,9 +23,15 @@ public class DmgButton : UpgradeButton
 
     public override Upgrade GetUpgrade(int level = 1)
     {
-        
-        return new DamageUpgrade("dmg", level);
-      
+        if (!UpgradeTransporter.levels.ContainsKey("dmg"))
+            return new DamageUpgrade("dmg", level);
+        else
+        {
+            int temp = (int)UpgradeTransporter.levels["dmg"];
+            UpgradeTransporter.levels.Remove("dmg");
+            return new DamageUpgrade("dmg", temp);
+        }
+
     }
     public void OnClick()
     {

@@ -20,9 +20,15 @@ public class ShieldButton : UpgradeButton
 
     public override Upgrade GetUpgrade(int level = 1)
     {
-        
-        return new ShieldUpgrade("shield", level);
 
+        if (!UpgradeTransporter.levels.ContainsKey("shield"))
+            return new ShieldUpgrade("shield", level);
+        else
+        {
+            int temp = (int)UpgradeTransporter.levels["shield"];
+            UpgradeTransporter.levels.Remove("shield");
+            return new ShieldUpgrade("shield", temp);
+        }
     }
     public void OnClick()
     {
