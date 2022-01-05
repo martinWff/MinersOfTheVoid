@@ -38,7 +38,6 @@ public class UpgradeController : MonoBehaviour
         
         //    if (upgrade == null) return  false;
         int index = FindUpgradeByName(upgrade?.upgradeName);
-        
         if (index < 0)
         {
          //   int cIndex = upgradeHolder.Length;
@@ -61,7 +60,6 @@ public class UpgradeController : MonoBehaviour
           //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
             if (wasPlaced)
             {
-                
                 OnUpgradeAdded(upgrade, cIndex);
             }
         } else
@@ -132,7 +130,7 @@ public class UpgradeController : MonoBehaviour
 
     private void OnUpgradeAdded(Upgrade upgrade,int index)
     {
-        Debug.Log("here"+ upgrade + index);
+        
         upgrade.OnPut(gameObject);
         onUpgradePut?.Invoke(this, upgrade,index);
 

@@ -11,6 +11,9 @@ public class enemyhelp : MonoBehaviour
     //boss
     private float bossPosY;
 
+    //player
+    private HealthBar player;
+
     //Camera Componets
     private Camera cam;
     private float camHeigth;
@@ -25,6 +28,8 @@ public class enemyhelp : MonoBehaviour
     private float enemyHelpSize;
     private float enemyHelpRadius;
     public float enemyHelpSpeed = 3;
+    private SpriteRenderer enemyHelp;
+
 
     //Enemy Lazer
     private bool lazerOn = false;
@@ -87,6 +92,7 @@ public class enemyhelp : MonoBehaviour
 
 
         lazer = transform.Find("Lazer").GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<HealthBar>();
         
     }
 
@@ -215,11 +221,14 @@ public class enemyhelp : MonoBehaviour
 
 
                 lazer.color = lazer_NewColor;
+                player.lazerCharge = true;
+
             }
         }
 
         if(lazerOn == true)
         {
+            player.lazerCharge = false;
             timerAttack -= Time.deltaTime;
             lazer_NewColor = new Color32(226, 52, 10, 225);
             lazer.color = lazer_NewColor;

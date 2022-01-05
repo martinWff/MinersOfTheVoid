@@ -31,7 +31,6 @@ public class ContractElementUIBoard : MonoBehaviour
             SetGoalData(contract.goals.Get(i), goalsUIList[i]);
         }
 
-        Debug.Log(PlayerContracts.instance.acceptedContract);
         if (PlayerContracts.instance.acceptedContract != contract)
         {
             button.interactable = true;
