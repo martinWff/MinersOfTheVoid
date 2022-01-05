@@ -1155,13 +1155,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3341750531408611369, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611371, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611371, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341750531408611371, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341750531408611371, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.93
+      value: 18.24
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611371, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1219,70 +1231,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: uIKeyBindPosition.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: uIKeyBindPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1348869429}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1348869429}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClearPromptKeybind
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PromptKeybind
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SpacePlanetBehaviour, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SpacePlanetBehaviour, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: -5893575007280131507, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-      propertyPath: onInteractionAreaEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: keybind
       value: 
@@ -1371,19 +1319,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7447902633235992442, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: keybind
+      value: 
+      objectReference: {fileID: 1143883089}
+    - target: {fileID: 7447902633235992442, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: interactionArea
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
---- !u!114 &1348869429 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
-  m_PrefabInstance: {fileID: 1348869428}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f9c0489b6193644b8c5f533d6e4e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1732612750
 GameObject:
   m_ObjectHideFlags: 0

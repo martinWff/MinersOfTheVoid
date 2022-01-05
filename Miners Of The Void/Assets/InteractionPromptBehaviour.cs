@@ -5,23 +5,28 @@ using UnityEngine;
 [RequireComponent(typeof(InteractionArea))]
 public class InteractionPromptBehaviour : MonoBehaviour
 {
-    public InteractionArea interactionArea;
+    [SerializeField]private InteractionArea interactionArea;
     public KeybindController keybind;
-    private bool isPlayerInside;
-    
-    public void OnEnterArea()
+
+
+    private void Awake()
     {
-        isPlayerInside = true;
+        interactionArea = GetComponent<InteractionArea>();
+    }
+
+    public void OnEnterArea(GameObject player)
+    {
         keybind.SetPosition(transform.position + interactionArea.uIKeyBindPosition);
         keybind.Show(true);
     }
-    public void OnExitArea()
+    public void OnExitArea(GameObject player)
     {
-        isPlayerInside = false;
         keybind.Show(false);
     }
-    public void OnStayArea()
+    public void OnStayArea(GameObject player)
     {
+        Debug.Log("SET POS");
+ 
         keybind.SetPosition(transform.position + interactionArea.uIKeyBindPosition);
     }
 }

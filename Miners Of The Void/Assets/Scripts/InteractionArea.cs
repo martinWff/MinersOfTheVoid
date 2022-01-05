@@ -57,29 +57,27 @@ public class InteractionArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (showKeyBind)
-        {
-            if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
-            {
+     
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
+         {
                 // onShowKeyBind?.Invoke(true, (transform.position + uIKeyBindPosition));
                 playerInside = other.gameObject;
                 onInteractionAreaEnter?.Invoke(other.gameObject);
-            }
+         }
             
-        }
+     
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (showKeyBind)
-        {
-            if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
+        
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))
             {
                 //onShowKeyBind?.Invoke(false, (transform.position + uIKeyBindPosition));
-                onInteractionAreaExit?.Invoke(other.gameObject);
-                playerInside = null;
-            }
+             onInteractionAreaExit?.Invoke(other.gameObject);
+             playerInside = null;
+         }
           
-        }
+        
     }
 
     private void OnMouseEnter()

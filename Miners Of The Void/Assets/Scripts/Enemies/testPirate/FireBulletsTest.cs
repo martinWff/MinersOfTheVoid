@@ -41,7 +41,7 @@ public class FireBulletsTest : MonoBehaviour
     {
         
         enemy = this.GetComponent<Rigidbody2D>();
-        playerdmg = GameObject.Find("PlayerSpaceship").GetComponent<SpaceshipMovement>().playerDamage;
+       // playerdmg = GameObject.Find("PlayerSpaceship").GetComponent<SpaceshipMovement>().playerDamage;
         objectPool = FindObjectOfType<ObjectPool>();
         player = GameObject.FindGameObjectWithTag("Spaceship");
     }
