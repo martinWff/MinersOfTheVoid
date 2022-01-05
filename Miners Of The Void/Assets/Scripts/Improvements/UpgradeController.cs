@@ -60,7 +60,6 @@ public class UpgradeController : MonoBehaviour
           //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
             if (wasPlaced)
             {
-                Debug.Log("Shenhe is life" + upgrade);
                 OnUpgradeAdded(upgrade, cIndex);
             }
         } else
