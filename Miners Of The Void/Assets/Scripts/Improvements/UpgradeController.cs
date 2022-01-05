@@ -37,6 +37,7 @@ public class UpgradeController : MonoBehaviour
         bool wasPlaced = false;
     //    if (upgrade == null) return  false;
         int index = FindUpgradeByName(upgrade?.upgradeName);
+        
         if (index < 0)
         {
          //   int cIndex = upgradeHolder.Length;

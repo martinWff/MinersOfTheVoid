@@ -6,13 +6,13 @@ public class ShieldButton : UpgradeButton
 {
     private void Start()
     {
-        isHumanoid = true;
+        
         if (upgradeControllerUI.controller == null)
         {
-            if (isHumanoid) upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeController>();
+            if (isHumanoid)upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeController>();
             else upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
         }
-
+        
 
 
 
