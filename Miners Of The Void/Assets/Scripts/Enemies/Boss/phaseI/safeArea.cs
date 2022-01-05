@@ -10,4 +10,9 @@ public class safeArea : MonoBehaviour
         Destroy(gameObject, safeAreaLifeTime);
     }
 
+    private void Update()
+    {
+        //Maths.Vectors
+    }
+
 }

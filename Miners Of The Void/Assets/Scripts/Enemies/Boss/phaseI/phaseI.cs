@@ -11,6 +11,7 @@ public class phaseI : MonoBehaviour
     private Rigidbody2D boss;
     private GameObject bossG;
     private float bossSize;
+    
 
     //shoot
     public float shootTimer = 0;
@@ -27,8 +28,6 @@ public class phaseI : MonoBehaviour
     //Safe Area
     private float safeAreaSize;
     private float safeAreaRadius;
-    private int ramdomNumberX;
-    private int ramdomNumberY;
     private bool spawnAreaBool = false;
     
 
