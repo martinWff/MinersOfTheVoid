@@ -223,15 +223,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511966406}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f4628d48c1b5834ea10be6df12b2751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pirate: {fileID: 2650102425109889620, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
   pirateexplosion: {fileID: 3479204000134808011, guid: e646e54c84cf1824884519a41130a362, type: 3}
-  safeArea: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
   boss: {fileID: 511966406}
+  levelComplete: 0
 --- !u!1 &804788990
 GameObject:
   m_ObjectHideFlags: 0

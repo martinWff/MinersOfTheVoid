@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public lifebar lifebar;
     [SerializeField] public shieldbar shieldbar;
 
+    public System.Action<GameObject> boss;
+
 
     //Enemy shoot
     public GameObject bulletPrefab;
@@ -146,9 +148,9 @@ public class Enemy : MonoBehaviour
 
                 
                 Destroy(transform.parent.gameObject);
-                
 
-            
+                boss?.Invoke(transform.parent.gameObject);
+
             }
 
             Debug.Log(enemieHealth);

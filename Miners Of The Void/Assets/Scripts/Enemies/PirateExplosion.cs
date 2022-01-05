@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PirateExplosion : MonoBehaviour
 {
     private GameObject player;
@@ -17,8 +18,8 @@ public class PirateExplosion : MonoBehaviour
 
     private Vector3 targetPosition;
 
-    
-   
+
+    public System.Action<GameObject> boss;
 
     //stop the alarm 
     private bool attack = false;
@@ -135,6 +136,8 @@ public class PirateExplosion : MonoBehaviour
                 SavePlayerStats.bips += Random.Range(3, 5);
                 bipText.text = "Bips: " + SavePlayerStats.bips;
                 Destroy(gameObject);
+
+                boss?.Invoke(gameObject);
             }
 
            
