@@ -19,7 +19,7 @@ public class OreDistributtor : MonoBehaviour
     public int numberOfRocks;
 
 
-    private List<OreGenerator> oreSpawners = new List<OreGenerator>();
+//    private List<OreGenerator> oreSpawners = new List<OreGenerator>();
     // Start is called before the first frame update
 
     public void SetNumberOfRocks(int n)

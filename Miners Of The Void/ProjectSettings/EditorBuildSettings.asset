@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: de9d3b49558329041afe56416b9741b8
   - enabled: 1
-    path: Assets/Scenes/TestBattleScene.unity
+    path: Assets/Scenes/Space.unity
     guid: d3e842950a49ae04e8409c1f4b9633e8
   - enabled: 1
     path: Assets/Scenes/PlanetScene.unity

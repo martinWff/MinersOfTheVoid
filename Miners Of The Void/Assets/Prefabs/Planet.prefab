@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3341750531408611370}
   - component: {fileID: 3341750531408611369}
   - component: {fileID: 3341750531408611348}
+  - component: {fileID: 7447902633235992442}
+  - component: {fileID: 3625711013946818563}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -115,3 +117,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: 
   hasBlockade: 0
+  sceneId: 0
+  interaction: {fileID: 0}
+  isPlayerInside: 0
+  keybind: {fileID: 0}
+--- !u!114 &7447902633235992442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341750531408611368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1853b44c3932794e8d74996cf52c7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionArea: {fileID: 3625711013946818563}
+  keybind: {fileID: 0}
+--- !u!114 &3625711013946818563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341750531408611368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e596223276c0fb2479741d0d54ae0742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteractionAreaStay:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractionAreaEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractionAreaExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMouseOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  showKeyBind: 1
+  uIKeyBindPosition: {x: 0, y: 0, z: 0}
