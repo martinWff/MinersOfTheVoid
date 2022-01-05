@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public float shield = 10;
     public CharacterStat totalShield = new CharacterStat(10);
     public CharacterStat totalhp = new CharacterStat(20);
-    public float hp = 20;
+    public float hp = new CharacterStat(20).value;
     public bool immortality = false;
     private EntityController entity;
     Image lifeBar;

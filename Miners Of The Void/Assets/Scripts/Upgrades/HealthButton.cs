@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthButton : UpgradeButton
 {
-    private void OnEnable()
+
+    
+    private void Start()
     {
         
         if (upgradeControllerUI.controller == null)
@@ -26,12 +29,12 @@ public class HealthButton : UpgradeButton
     public override Upgrade GetUpgrade(int level = 1)
     {
         if (!UpgradeTransporter.levels.ContainsKey("hp"))
-        return new HealthUpgrade("hp", level);
+        return new HealthUpgrade("hp", level) { sprite = spriteUpgrade };
         else
         {
             int temp = (int)UpgradeTransporter.levels["hp"];
             UpgradeTransporter.levels.Remove("hp");
-            return new HealthUpgrade("hp",temp );
+            return new HealthUpgrade("hp",temp ) { sprite = spriteUpgrade };
         }
 
 
@@ -39,12 +42,19 @@ public class HealthButton : UpgradeButton
     public void OnClick()
     {
 
-
-        if (upgradeControllerUI.controller != null)
+        if (!isClicked)
         {
-            
+            costs.SetActive(true);
+            isClicked = true;
+            text.text = "Bips:200\nOre:1";
+            return;
+        }
+        if (upgradeControllerUI.controller != null && isClicked)
+        {
+            costs.SetActive(false);
+
             upgradeControllerUI.controller.PlaceUpgrade(GetUpgrade());
-            
+            isClicked = false;
         }
     }
 }

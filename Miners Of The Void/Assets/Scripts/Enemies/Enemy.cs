@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -52,13 +53,12 @@ public class Enemy : MonoBehaviour
         if (enemyPlanet == true)
         {
             player = GameObject.FindGameObjectWithTag("Player");
-            playerdmg = SavePlayerStats.playerDamageH;
+            playerdmg = player.GetComponent<CharacterWeapon>().dmg.value;
         }
         else
         {
             player = GameObject.FindGameObjectWithTag("Spaceship");
-            Debug.Log("sapceship");
-            playerdmg = SavePlayerStats.playerDamage;
+            playerdmg = player.GetComponent<CharacterWeapon>().dmg.value;
         }
         
 
@@ -131,12 +131,13 @@ public class Enemy : MonoBehaviour
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
             {
-                if (shield != 0) enemieHealth -= (10 - shield);
+                if (shield != 0) enemieHealth -= (playerdmg - shield);
 
                 shield = 0;
             }
             if (enemieHealth <= 0)
             {
+                //Death
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
