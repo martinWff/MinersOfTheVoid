@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class UpgradeController : MonoBehaviour
 {
     public Upgrade[] upgradeHolder;
-    public UnityEvent<Upgrade,int> onUpgradePut;
-    public UnityEvent<Upgrade,int> onUpgradeRemoved;
+    public static System.Action<UpgradeController,Upgrade,int> onUpgradePut;
+    public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemoved;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +35,8 @@ public class UpgradeController : MonoBehaviour
     public bool PlaceUpgrade(Upgrade upgrade)
     {
         bool wasPlaced = false;
-    //    if (upgrade == null) return  false;
+        
+        //    if (upgrade == null) return  false;
         int index = FindUpgradeByName(upgrade?.upgradeName);
         
         if (index < 0)
@@ -55,10 +56,12 @@ public class UpgradeController : MonoBehaviour
             int last = ArrayUtils.Find<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg == null; });
             int cIndex = last;
             upgradeHolder[last] = upgrade;
+            
             wasPlaced = true;
           //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
             if (wasPlaced)
-            {  
+            {
+                Debug.Log("Shenhe is life" + upgrade);
                 OnUpgradeAdded(upgrade, cIndex);
             }
         } else
@@ -122,15 +125,16 @@ public class UpgradeController : MonoBehaviour
             UpgradeTransporter.upgradeSaver(upgrade.upgradeName, upgrade.level);
             upgrade.OnRemove();
             upgradeHolder[slot] = null;
-            onUpgradeRemoved?.Invoke(upgrade, slot);
+            onUpgradeRemoved?.Invoke(this,upgrade, slot);
         }
 
     }
 
     private void OnUpgradeAdded(Upgrade upgrade,int index)
     {
+        
         upgrade.OnPut(gameObject);
-        onUpgradePut.Invoke(upgrade,index);
+        onUpgradePut?.Invoke(this, upgrade,index);
 
         if(gameObject.tag == "Player") UpgradeTransporter.humanPlayer = upgradeHolder;
         if (gameObject.tag == "Spaceship") UpgradeTransporter.spaceship = upgradeHolder;

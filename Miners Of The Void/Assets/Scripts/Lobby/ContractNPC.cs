@@ -15,7 +15,6 @@ public class ContractNPC : MonoBehaviour
     void Awake()
     {
         
-         ContractCreator.onContractGenerated += prefab.GetComponent<ContractBoardController>().ContractCreator_onContractGenerated;
         
     }
 
@@ -26,8 +25,7 @@ public class ContractNPC : MonoBehaviour
         {
 
             disabled = true;
-            
-     
+
             prefab.GetComponent<ContractBoardController>().contractNPC = this;
             prefab.SetActive(true);
             keybind.Show(false);

@@ -7,7 +7,6 @@ public class ContractDeliver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PlayerContracts.instance.acceptedContract);
         if (PlayerContracts.instance.acceptedContract != null)
         {
             ContractManager.CompleteContract(PlayerContracts.instance.acceptedContract);

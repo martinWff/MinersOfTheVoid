@@ -28,10 +28,10 @@ public class UpgradeNPC : MonoBehaviour
     {
         GameObject tab = Instantiate(panel, canvas);
         UpgradeUIController uiController = tab.GetComponentInChildren<UpgradeUIController>();
-        UpgradeController controller = player.GetComponent<UpgradeController>();
+        //  GameObject.FindGameObjectsWithTag("Spaceship");
+        //  UpgradeController controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
         player.GetComponent<CharacterMovement>().enabled = false;
-        Debug.Log(controller);
-        controller.onUpgradePut.AddListener(uiController.OnUpgradePut);
-        controller.onUpgradeRemoved.AddListener(uiController.OnUpgradeRemoved);
+        UpgradeController.onUpgradePut += uiController.OnUpgradePut;
+        UpgradeController.onUpgradeRemoved += uiController.OnUpgradeRemoved;        
     }
 }
