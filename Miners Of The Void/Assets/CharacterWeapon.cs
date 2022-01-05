@@ -6,7 +6,7 @@ public class CharacterWeapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public float bulletOffset = 1.5f;
-    public float bulletSpeed = 18;
+    public float bulletSpeed;
     public float bulletCooldownTime = 0.5f;
     private float bulletShootTime = 0.5f;
     public bool backweaponMode = false;
@@ -16,6 +16,7 @@ public class CharacterWeapon : MonoBehaviour
 
     private void Start()
     {
+        bulletSpeed = gameObject.GetComponent<CharacterMovement>().movementSpeed.value + 20;
         Debug.Log(bulletPrefab);
     }
     // Update is called once per frame
