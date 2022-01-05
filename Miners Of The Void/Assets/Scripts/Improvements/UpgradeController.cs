@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class UpgradeController : MonoBehaviour
 {
     public Upgrade[] upgradeHolder;
-    public UnityEvent<Upgrade,int> onUpgradePut;
-    public UnityEvent<Upgrade,int> onUpgradeRemoved;
+    public static System.Action<UpgradeController,Upgrade,int> onUpgradePut;
+    public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemoved;
     // Start is called before the first frame update
     void Start()
     {
@@ -124,7 +124,7 @@ public class UpgradeController : MonoBehaviour
             UpgradeTransporter.upgradeSaver(upgrade.upgradeName, upgrade.level);
             upgrade.OnRemove();
             upgradeHolder[slot] = null;
-            onUpgradeRemoved?.Invoke(upgrade, slot);
+            onUpgradeRemoved?.Invoke(this,upgrade, slot);
         }
 
     }
@@ -133,7 +133,7 @@ public class UpgradeController : MonoBehaviour
     {
         
         upgrade.OnPut(gameObject);
-        onUpgradePut.Invoke(upgrade,index);
+        onUpgradePut.Invoke(this, upgrade,index);
 
         if(gameObject.tag == "Player") UpgradeTransporter.humanPlayer = upgradeHolder;
         if (gameObject.tag == "Spaceship") UpgradeTransporter.spaceship = upgradeHolder;

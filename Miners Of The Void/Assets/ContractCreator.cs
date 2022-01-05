@@ -12,14 +12,14 @@ public class ContractCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Array<Goal> contractGoals = new Array<Goal>(3);
+      /*  Array<Goal> contractGoals = new Array<Goal>(3);
        
         contractGoals.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(6)));
         contractGoals.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(6)));
         Contract contract = new Contract(Contract.ContractType.mining, contractGoals);
         contract.bips = 250;
         contracts.InsertAt(new Contract(Contract.ContractType.mining,contractGoals),0);
-        onContractGenerated?.Invoke(contract);
+        onContractGenerated?.Invoke(contract);*/
     }
 
     // Update is called once per frame

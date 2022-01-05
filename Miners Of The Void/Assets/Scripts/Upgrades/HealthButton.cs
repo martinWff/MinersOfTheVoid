@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthButton : UpgradeButton
 {
-    private void Start()
+    private void OnEnable()
     {
         
         if (upgradeControllerUI.controller == null)
@@ -17,6 +17,11 @@ public class HealthButton : UpgradeButton
 
 
     }
+
+  /*  private IEnumerator LateEnable()
+    {
+        yield return new WaitForEndOfFrame(2),
+    }*/
 
     public override Upgrade GetUpgrade(int level = 1)
     { 

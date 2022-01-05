@@ -18,17 +18,17 @@ public class UpgradeUIController : MonoBehaviour
                 {
                     if (controller.upgradeHolder[i] != null)
                     {
-                        OnUpgradePut(controller.upgradeHolder[i], i);
+                        OnUpgradePut(controller,controller.upgradeHolder[i], i);
                     }
                 }
             }
         }
     }
 
-    public void OnUpgradePut(Upgrade upg,int slot)
+    public void OnUpgradePut(UpgradeController uc,Upgrade upg,int slot)
     {
         GameObject upgObject = upgradeUI[slot];
-        
+
         if (slot >= 0)
         {
             
@@ -40,7 +40,7 @@ public class UpgradeUIController : MonoBehaviour
         }
     }
 
-    public void OnUpgradeRemoved(Upgrade upg,int slot)
+    public void OnUpgradeRemoved(UpgradeController uc,Upgrade upg,int slot)
     {
         GameObject upgObject = upgradeUI[slot];
 
