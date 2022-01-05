@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour
 
 
                 //Debug.Log(bulletPrefab);
-                Vector3 Shotdirection = transform.up;
+                Vector3 Shotdirection = Maths.TransformUp(gameObject);
 
                 //GameObject bullet = EnemyPool.bulletInstanse.GetEnemyBullet();
                 //bullet.SetActive(true);

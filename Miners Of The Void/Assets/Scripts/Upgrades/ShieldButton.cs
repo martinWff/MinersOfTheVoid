@@ -6,7 +6,7 @@ public class ShieldButton : UpgradeButton
 {
     private void Start()
     {
-        isHumanoid = true;
+        
         if (upgradeControllerUI.controller == null)
         {
             if (isHumanoid) upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeController>();
@@ -20,7 +20,7 @@ public class ShieldButton : UpgradeButton
 
     public override Upgrade GetUpgrade(int level = 1)
     {
-        Debug.Log("Preciso de café");
+        
         return new ShieldUpgrade("shield", level);
 
     }
@@ -30,7 +30,7 @@ public class ShieldButton : UpgradeButton
 
         if (upgradeControllerUI.controller != null)
         {
-            Debug.Log("Preciso mesmo de café");
+            
             upgradeControllerUI.controller.PlaceUpgrade(GetUpgrade());
         }
     }

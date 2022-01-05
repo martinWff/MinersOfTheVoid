@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class ContractGenerator : MonoBehaviour
 {
+    public Array<Contract> contracts = new Array<Contract>(4);
+    public delegate void ContractGenerated(Contract contract);
+    public static event ContractGenerated onContractGenerated;
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGatherContract();
+
+        for (int i = 0; i < contracts.Length; i++)
+        {
+            contracts.InsertAtEnd(GenerateGatherContract());
+        }
     }
 
     // Update is called once per frame
@@ -50,22 +57,37 @@ public class ContractGenerator : MonoBehaviour
 
     public Contract GenerateGatherContract()
     {
-        Array<Goal> arr = new Array<Goal>(2);
+        int numberOfGoals = Random.Range(1, 4);
+        Array<Goal> arr = new Array<Goal>(numberOfGoals);
 
-        OreResourceObject[] ores = OreManager.instance.GetOreResourcesObjets();
-        OreResourceObject rs = ores[Random.Range(0, ores.Length-1)];
-        Debug.Log(rs);
 
-        arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack()));
+        List<string> oresToUse = new List<string>(OreManager.instance.ores.Length);
+        foreach (OreResourceObject element in OreManager.instance.GetOreResourcesObjets())
+        {
+            oresToUse.Add(element.oreName);
+        }
+        
+
+
+
+        
+        for (int i = 0; i < numberOfGoals; i++)
+        {
+
+
+           int oreIndex = Random.Range(0, oresToUse.Count-1);
+            
+            OreResourceObject rs = OreManager.instance.GetOreResourceByName(oresToUse[oreIndex]);
+            oresToUse.RemoveAt(oreIndex);
+ 
+            int quantity = Random.Range(1, 6);
+
+            arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack(quantity)));
+        }
         Contract c = new Contract(Contract.ContractType.mining, arr);
 
         return c;
 
-    }
-
-    private void PickGatherGoal()
-    {
-       // GatheringGoal g = new GatheringGoal("iron", "mine 3 gold", Random.Range(0, 5));
     }
 
 }

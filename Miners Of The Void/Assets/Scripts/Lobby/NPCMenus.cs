@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCMenus : MonoBehaviour
 {
     private float distance;
-    private Transform player;
+    private GameObject player;
     private float interaction;
     public GameObject menuPrefab;
     public GameObject canvas;
@@ -17,7 +17,7 @@ public class NPCMenus : MonoBehaviour
 
     void Start()
     { 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         canvas = GameObject.Find("Canvas");
 
     }
@@ -26,11 +26,12 @@ public class NPCMenus : MonoBehaviour
     void Update()
     {
         interaction = Input.GetAxis("Interaction");
-        distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.position.x, 2) + Mathf.Pow(transform.position.y - player.position.y, 2));
+        distance = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.transform.position.x, 2) + Mathf.Pow(transform.position.y - player.transform.position.y, 2));
         if (distance < 3 && Input.GetKeyDown("f") && openMenu == false)
         {
             menuPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
+            player.GetComponent<CharacterMovement>().enabled = false;
            // player.GetComponent<PlayerMovement>().enabled = false;
             openMenu = true;
             if (inventoryCon) 

@@ -6,18 +6,18 @@ using UnityEngine.Events;
 
 public class UpgradeController : MonoBehaviour
 {
-    public Array<Upgrade> upgradeHolder;
-    public UnityEvent<Upgrade,int> onUpgradePut;
-    public UnityEvent<Upgrade,int> onUpgradeRemoved;
+    public Upgrade[] upgradeHolder;
+    public static System.Action<UpgradeController,Upgrade,int> onUpgradePut;
+    public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemoved;
     // Start is called before the first frame update
     void Start()
     {
-        upgradeHolder = new Array<Upgrade>(4);
+        upgradeHolder = new Upgrade[4];
         if (gameObject.tag == "Player") 
         {
             foreach (Upgrade up in UpgradeTransporter.humanPlayer) {
                 PlaceUpgrade(up);
-                Debug.Log(up.upgradeName);
+             //   Debug.Log(up.upgradeName);
             }
         }
         if (gameObject.tag == "Spaceship")
@@ -35,27 +35,50 @@ public class UpgradeController : MonoBehaviour
     public bool PlaceUpgrade(Upgrade upgrade)
     {
         bool wasPlaced = false;
-        if (!HasUpgradeByName(upgrade.upgradeName))
+        
+        //    if (upgrade == null) return  false;
+        int index = FindUpgradeByName(upgrade?.upgradeName);
+        if (index < 0)
         {
-            int cIndex = upgradeHolder.Count;
-            wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
+         //   int cIndex = upgradeHolder.Length;
+            /* for (int i = 0;i<upgradeHolder.Length;i++)
+             {
+                 Debug.Log(upgradeHolder.Get(i)+" "+i );
+                 if (upgradeHolder.Get(i) == null)
+                 {
+                     Debug.Log("Empty "+i);
+                     wasPlaced = upgradeHolder.InsertAt(upgrade, i);
+                     cIndex = i;
+                     break;
+                 }
+             }*/
+            int last = ArrayUtils.Find<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg == null; });
+            int cIndex = last;
+            upgradeHolder[last] = upgrade;
+            
+            wasPlaced = true;
+          //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
             if (wasPlaced)
             {
+                Debug.Log("Shenhe is life" + upgrade);
                 OnUpgradeAdded(upgrade, cIndex);
-
             }
         } else
         {
-            for (int i = 0;i<upgradeHolder.Count;i++)
+            Upgrade upg = upgradeHolder[index];
+
+            if (upg != null)
             {
-                Upgrade upg = upgradeHolder.Get(i);
-                if (upg != null && upg.upgradeName.Equals(upgrade.upgradeName))
+               if (upg.level + upgrade.level < upgrade.maxLevel)
                 {
-                    if (upg.level + upgrade.level <= upgrade.maxLevel) {
-                        upg.level += upgrade.level;
-                        OnUpgradeAdded(upg, i);
-                        wasPlaced = true;
-                    }
+                    upg.level += upgrade.level;
+                    OnUpgradeAdded(upg, index);
+                    wasPlaced = true;
+                } else
+                {
+                    upg.level = upgrade.maxLevel;
+                    OnUpgradeAdded(upg, index);
+                    wasPlaced = true;
                 }
             }
         }
@@ -63,72 +86,57 @@ public class UpgradeController : MonoBehaviour
         return wasPlaced;
     }
 
+
+
     public bool HasUpgradeByName(string upgradeName)
     {
-        foreach (Upgrade upg in upgradeHolder)
-        {
-            if (upg.upgradeName == upgradeName)
-            {
-                return true;
-            }
-        }
+        return ArrayUtils.Exist<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg?.upgradeName == upgradeName; });
+    }
 
-        return false;
+    public int FindUpgradeByName(string upgradeName)
+    {
+        return ArrayUtils.Find<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg?.upgradeName == upgradeName; }); 
     }
 
     public void TakeOfUpgrade(Upgrade upgrade)
     {
-        for (int i = 0;i< upgradeHolder.Count;i++)
-        {
-            if (upgradeHolder.Get(i).Equals(upgrade))
-            {
-                upgradeHolder.RemoveAt(i);
-                break;
-            }
-        }
+        int index = FindUpgradeByName(upgrade.upgradeName);
         upgrade.OnRemove();
+        upgradeHolder[index] = null;
     }
 
     public void TakeOfUpgrade(string upgradeName)
     {
-        Upgrade temp = null;
-        for (int i = 0; i < upgradeHolder.Count; i++)
+        int index = FindUpgradeByName(upgradeName);
+        if (index >= 0)
         {
-            if (upgradeHolder.Get(i) != null)
-            {
-                if (upgradeHolder.Get(i).upgradeName.Equals(upgradeName))
-                {
-                    temp = upgradeHolder.Get(i);
-                    upgradeHolder.RemoveAt(i);
-                    break;
-                }
-            }
+            Upgrade value = upgradeHolder[index];
+            value.OnRemove();
+            upgradeHolder[index] = null;
         }
-        if (temp != null) temp.OnRemove();
     }
 
     public void TakeOfUpgrade(int slot)
     {
-       Upgrade upgrade = upgradeHolder.Get(slot);
-        upgrade.OnRemove();
-        upgradeHolder.RemoveAt(slot);
-        onUpgradeRemoved?.Invoke(upgrade,slot);
+       Upgrade upgrade = upgradeHolder[slot];
+        if (upgrade != null)
+        {
+            UpgradeTransporter.upgradeSaver(upgrade.upgradeName, upgrade.level);
+            upgrade.OnRemove();
+            upgradeHolder[slot] = null;
+            onUpgradeRemoved?.Invoke(this,upgrade, slot);
+        }
 
     }
 
     private void OnUpgradeAdded(Upgrade upgrade,int index)
     {
+        
         upgrade.OnPut(gameObject);
-        onUpgradePut.Invoke(upgrade,index);
+        onUpgradePut?.Invoke(this, upgrade,index);
 
         if(gameObject.tag == "Player") UpgradeTransporter.humanPlayer = upgradeHolder;
         if (gameObject.tag == "Spaceship") UpgradeTransporter.spaceship = upgradeHolder;
-        
-        int i = -1;
-        foreach (Upgrade up in upgradeHolder)
-        {
-            i++;
-            Debug.Log(upgradeHolder.Get(i));
-        }
+   
     }
 }

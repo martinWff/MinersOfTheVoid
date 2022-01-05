@@ -10,11 +10,30 @@ public class ContractBoardController : MonoBehaviour
     public GameObject goalUI;
     public Contract uniqueContract;
     public Button accept;
+    public ContractGenerator contractGenerator;
+    public GameObject contractPanelBoard;
+    public Transform contractPanelList;
+
+    private List<GameObject> contractPanels = new List<GameObject>();
     // Start is called before the first frame update
     void Awake()
     {
         //ContractCreator.onContractGenerated += ContractCreator_onContractGenerated;
-        
+       /* ContractGenerator.onContractGenerated += ContractCreator_onContractGenerated;
+        foreach (Contract contract in contractGenerator.contracts)
+        {
+            CreateContractLabel(contract);
+        }*/
+
+    }
+
+
+    private void OnEnable()
+    {
+        foreach (Contract contract in contractGenerator.contracts)
+        {
+            CreateContractLabel(contract);
+        }
     }
 
     public void ContractCreator_onContractGenerated(Contract contract)
@@ -28,19 +47,40 @@ public class ContractBoardController : MonoBehaviour
                 GameObject goalObj = Instantiate(goalUI, contractUI.transform);
                 goalObj.GetComponent<GoalControllerBoard>().SetGoal(contract.goals.Get(i));
             }
-            accept.onClick.AddListener(ButtonPressed);
+           
         }
 
     }
 
-    public void ButtonPressed()
+    private void CreateContractLabel(Contract contract)
     {
-        if (PlayerContracts.instance.acceptedContract != uniqueContract)
+        GameObject newContractPanel = Instantiate(contractPanelBoard, contractPanelList);
+        ContractElementUIBoard contractElementUI = newContractPanel.GetComponent<ContractElementUIBoard>();
+        contractElementUI.board = gameObject;
+        for (int i = 0; i < contract.goals.Count; i++)
+        {
+            GameObject goalObj = Instantiate(goalUI, newContractPanel.transform);
+       //     goalObj.GetComponent<GoalControllerBoard>().SetGoal(contract.goals.Get(i));
+            contractElementUI.goalsUIList.Add(goalObj);
+            
+
+
+        }
+        
+        contractElementUI.SetContractData(contract);
+        contractPanels.Add(newContractPanel);
+
+    }
+
+
+   /* public void ButtonPressed()
+    {
+        if (PlayerContracts.instance.acceptedContract == null)
         {
            ContractManager.AcceptContract(uniqueContract);
         }
         gameObject.SetActive(false);
-    }
+    }*/
 
     public void Close()
     {
@@ -52,6 +92,9 @@ public class ContractBoardController : MonoBehaviour
     private void OnDisable()
     {
         contractNPC.disabled = false;
+        for (int i = contractPanels.Count-1; i >= 0; i--) {
+            Destroy(contractPanels[i]);
+        }
     }
 
 
