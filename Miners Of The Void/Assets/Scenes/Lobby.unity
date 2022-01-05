@@ -1224,6 +1224,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166462590}
     m_Modifications:
+    - target: {fileID: 76266894, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: NPC
+      value: 
+      objectReference: {fileID: 821645619}
+    - target: {fileID: 76266894, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 190096029}
     - target: {fileID: 1298657787, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
