@@ -86,6 +86,9 @@ public class ContractGenerator : MonoBehaviour
         }
         Contract c = new Contract(Contract.ContractType.mining, arr);
 
+        c.bips = Random.Range(30, 51);
+        c.famePoints = Random.Range(30,41);
+
         return c;
 
     }
