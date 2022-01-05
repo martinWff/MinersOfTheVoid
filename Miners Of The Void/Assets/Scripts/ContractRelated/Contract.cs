@@ -13,7 +13,9 @@ public class Contract : System.IDisposable {
     public ContractType contractType;
 
    public Array<Goal> goals;
-    
+
+    //public System.Action<Contract> onContractCompleted;
+
 
     //rewards //
     public int famePoints;
@@ -33,7 +35,7 @@ public class Contract : System.IDisposable {
         }
     }
 
-  /*  public void GiveRewards()
+  /* public void GiveRewards()
     {
         if (!isCompleted)
         {
@@ -106,9 +108,10 @@ public class Goal : System.IDisposable
 public class GatheringGoal : Goal
 {
     public string oreName;
-    public GatheringGoal(string oreName,string description,int requiredAmount,Sprite sprite)
+    public Inventory checkInInventory;
+    public GatheringGoal(string oreName,string description,int requiredAmount,Sprite sprite,Inventory inventory)
     {
-
+        this.checkInInventory = inventory;
         this.oreName = oreName;
         this.description = description;
         this.requiredAmount = requiredAmount;
@@ -117,8 +120,9 @@ public class GatheringGoal : Goal
                
     }
 
-    public GatheringGoal(OreStack oreStack)
+    public GatheringGoal(OreStack oreStack, Inventory inventory)
     {
+        this.checkInInventory = inventory;
         this.oreName = oreStack.oreName;
         this.sprite = oreStack.sprite;
         this.requiredAmount = oreStack.amount;
@@ -129,18 +133,34 @@ public class GatheringGoal : Goal
     public override void Init()
     {
         base.Init();
-        Inventory.onInventoryChanged += OnGathered;
+
+        if (checkInInventory != null)
+        {
+            this.currentAmount = Mathf.Clamp(checkInInventory.GetOreAmount(this.oreName), 0, requiredAmount);
+            Evaluate();
+        }
+        if (!completed)
+        {
+
+            Inventory.onInventoryChanged += OnGathered;
+        }
+
     }
 
     public override void Dispose()
     {
         Inventory.onInventoryChanged -= OnGathered;
+
+        if (completed)
+        {
+            checkInInventory.RetrieveAmount(this.oreName, this.requiredAmount);
+        }
+
+
     }
 
     void OnGathered(Inventory inv,string updatedOreName,int amount)
-    {
-        Debug.Log("gathered");
-        
+    {        
             if (oreName == updatedOreName)
             {
 

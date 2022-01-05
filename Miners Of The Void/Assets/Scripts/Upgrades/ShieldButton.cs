@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ShieldButton : UpgradeButton
 {
+    
     private void Start()
     {
         
@@ -22,22 +23,31 @@ public class ShieldButton : UpgradeButton
     {
 
         if (!UpgradeTransporter.levels.ContainsKey("shield"))
-            return new ShieldUpgrade("shield", level);
+            return new ShieldUpgrade("shield", level) { sprite = spriteUpgrade};
         else
         {
             int temp = (int)UpgradeTransporter.levels["shield"];
             UpgradeTransporter.levels.Remove("shield");
-            return new ShieldUpgrade("shield", temp);
+            return new ShieldUpgrade("shield", temp) { sprite = spriteUpgrade };
         }
     }
     public void OnClick()
     {
 
 
-        if (upgradeControllerUI.controller != null)
+        if (!isClicked)
         {
-            
+            costs.SetActive(true);
+            isClicked = true;
+            text.text = "Bips:200\nOre:1";
+            return;
+        }
+        if (upgradeControllerUI.controller != null && isClicked)
+        {
+            costs.SetActive(false);
+
             upgradeControllerUI.controller.PlaceUpgrade(GetUpgrade());
+            isClicked = false;
         }
     }
 }

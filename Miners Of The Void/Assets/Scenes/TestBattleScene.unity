@@ -174,14 +174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3479204000134808009, guid: e646e54c84cf1824884519a41130a362, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3479204000134808009, guid: e646e54c84cf1824884519a41130a362, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1747293633
-      objectReference: {fileID: 0}
     - target: {fileID: 3479204000134808011, guid: e646e54c84cf1824884519a41130a362, type: 3}
       propertyPath: m_Name
       value: PirateExplosion
@@ -1553,6 +1545,10 @@ PrefabInstance:
     - target: {fileID: 3479204000134808011, guid: e646e54c84cf1824884519a41130a362, type: 3}
       propertyPath: m_Name
       value: PirateExplosion (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479204000134808011, guid: e646e54c84cf1824884519a41130a362, type: 3}
+      propertyPath: m_TagString
+      value: PirateExplosion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e646e54c84cf1824884519a41130a362, type: 3}

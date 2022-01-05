@@ -54,8 +54,9 @@ public class PirateExplosion : MonoBehaviour
         spaceship = GameObject.FindGameObjectWithTag("Spaceship");
         //alarm = GameObject.FindGameObjectWithTag("Alarm").GetComponent<SpriteRenderer>();
         enemy = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Spaceship");
-        playerdmg = 10;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerdmg = spaceship.GetComponent<CharacterWeapon>().dmg.value;
+        Debug.Log(playerdmg);
 
         pirate_spriterender = GetComponent<SpriteRenderer>();
 
@@ -123,7 +124,7 @@ public class PirateExplosion : MonoBehaviour
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
             {
-                if (shield != 0) enemieHealth -= (10 - shield);
+                if (shield != 0) enemieHealth -= (playerdmg - shield);
 
                 shield = 0;
             }

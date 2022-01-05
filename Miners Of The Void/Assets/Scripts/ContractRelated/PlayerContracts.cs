@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerContracts : MonoBehaviour
 {
     public static PlayerContracts instance;
-    public Contract acceptedContract;
+    public Contract acceptedContract { get; private set; }
 
 
     public Transform canvas;
@@ -26,26 +26,36 @@ public class PlayerContracts : MonoBehaviour
                 DontDestroyOnLoad(canvas);
             }
 
-            ContractManager.onContractAccepted += AddContract;
+            ContractManager.onContractAccepted += OnContractAccepted;
             ContractManager.onContractCancelled += OnCancelledContract;
             ContractManager.onContractFinished += OnFinishedContract;
         }
 
     }
 
-    public void AddContract(Contract c)
+
+    private void OnContractAccepted(Contract c)
     {
-        acceptedContract = c;
-        acceptedPanel = Instantiate(contractPanelPrefab, canvas);
-        Transform insertPanel = acceptedPanel.transform.Find("Content");
-        Transform buttonTransform = acceptedPanel.transform.Find("CancelButton");
-        Button button = buttonTransform.GetComponent<Button>();
-        button.onClick.AddListener(CancelContract);
-        foreach (Goal g in c.goals)
+        if (acceptedContract == null)
         {
-            GameObject goalObject = Instantiate(goalPanelPrefab, insertPanel);
-            ContractUIController goalController = goalObject.GetComponent<ContractUIController>();
-            goalController.SetGoal(g);
+            acceptedContract = c;
+            acceptedPanel = Instantiate(contractPanelPrefab, canvas);
+            Transform insertPanel = acceptedPanel.transform.Find("Content");
+            Transform buttonTransform = acceptedPanel.transform.Find("CancelButton");
+            Button button = buttonTransform.GetComponent<Button>();
+            button.onClick.AddListener(CancelContract);
+            foreach (Goal g in c.goals)
+            {
+                GameObject goalObject = Instantiate(goalPanelPrefab, insertPanel);
+                ContractUIController goalController = goalObject.GetComponent<ContractUIController>();
+                goalController.SetGoal(g);
+
+            }
+
+            c.Start();
+
+            c.CheckGoals();
+
 
         }
 

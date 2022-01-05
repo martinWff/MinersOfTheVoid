@@ -82,7 +82,7 @@ public class ContractGenerator : MonoBehaviour
  
             int quantity = Random.Range(1, 6);
 
-            arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack(quantity)));
+            arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack(quantity),PlayerInventory.staticInventory));
         }
         Contract c = new Contract(Contract.ContractType.mining, arr);
 

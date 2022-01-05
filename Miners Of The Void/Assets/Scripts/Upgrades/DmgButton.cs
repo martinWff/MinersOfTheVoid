@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class DmgButton : UpgradeButton
 {
-    public bool isClicked = false;
-    public Text text;
-    public GameObject costs;
+    
     private void Start()
     {
         if(upgradeControllerUI.controller == null)
@@ -24,12 +22,12 @@ public class DmgButton : UpgradeButton
     public override Upgrade GetUpgrade(int level = 1)
     {
         if (!UpgradeTransporter.levels.ContainsKey("dmg"))
-            return new DamageUpgrade("dmg", level);
+            return new DamageUpgrade("dmg", level) { sprite = spriteUpgrade };
         else
         {
             int temp = (int)UpgradeTransporter.levels["dmg"];
             UpgradeTransporter.levels.Remove("dmg");
-            return new DamageUpgrade("dmg", temp);
+            return new DamageUpgrade("dmg", temp) { sprite = spriteUpgrade };
         }
 
     }
