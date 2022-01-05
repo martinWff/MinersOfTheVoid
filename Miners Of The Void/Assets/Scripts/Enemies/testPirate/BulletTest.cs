@@ -11,7 +11,7 @@ public class BulletTest : MonoBehaviour
     //player colision
   
     GameObject player;
-    SpaceshipMovement sM;
+    //SpaceshipMovement sM;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class BulletTest : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PlayerSpaceship");
-        sM = player.GetComponent<SpaceshipMovement>();
+        //sM = player.GetComponent<SpaceshipMovement>();
     }
 
     // Update is called once per frame
