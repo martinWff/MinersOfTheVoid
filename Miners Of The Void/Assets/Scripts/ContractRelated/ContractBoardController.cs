@@ -19,12 +19,11 @@ public class ContractBoardController : MonoBehaviour
     void Awake()
     {
         //ContractCreator.onContractGenerated += ContractCreator_onContractGenerated;
-        ContractGenerator.onContractGenerated += ContractCreator_onContractGenerated;
-        Debug.Log("wake only once");
+       /* ContractGenerator.onContractGenerated += ContractCreator_onContractGenerated;
         foreach (Contract contract in contractGenerator.contracts)
         {
             CreateContractLabel(contract);
-        }
+        }*/
 
     }
 

@@ -139,6 +139,7 @@ public class GatheringGoal : Goal
 
     void OnGathered(Inventory inv,string updatedOreName,int amount)
     {
+        Debug.Log("gathered");
         
             if (oreName == updatedOreName)
             {

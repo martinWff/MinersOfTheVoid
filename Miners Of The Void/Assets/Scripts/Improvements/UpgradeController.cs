@@ -133,7 +133,7 @@ public class UpgradeController : MonoBehaviour
     {
         
         upgrade.OnPut(gameObject);
-        onUpgradePut.Invoke(this, upgrade,index);
+        onUpgradePut?.Invoke(this, upgrade,index);
 
         if(gameObject.tag == "Player") UpgradeTransporter.humanPlayer = upgradeHolder;
         if (gameObject.tag == "Spaceship") UpgradeTransporter.spaceship = upgradeHolder;

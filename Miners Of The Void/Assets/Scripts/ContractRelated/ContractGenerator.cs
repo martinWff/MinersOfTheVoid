@@ -90,10 +90,4 @@ public class ContractGenerator : MonoBehaviour
 
     }
 
-
-    private void PickGatherGoal()
-    {
-       // GatheringGoal g = new GatheringGoal("iron", "mine 3 gold", Random.Range(0, 5));
-    }
-
 }

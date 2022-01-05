@@ -52,4 +52,11 @@ public class UpgradeUIController : MonoBehaviour
             upgObject.GetComponentInChildren<Text>().text = string.Empty;
         }
     }
+
+    private void OnDisable()
+    {
+        UpgradeController.onUpgradePut -= OnUpgradePut;
+        UpgradeController.onUpgradeRemoved -= OnUpgradeRemoved;
+
+    }
 }

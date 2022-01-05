@@ -637,6 +637,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1114001064, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114001064, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1275226028}
+    - target: {fileID: 1114001064, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: colliderMap
+      value: 
+      objectReference: {fileID: 1072032101}
     - target: {fileID: 1479208917, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
       propertyPath: firePermission
       value: 1

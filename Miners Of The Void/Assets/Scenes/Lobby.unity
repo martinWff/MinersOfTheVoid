@@ -585,6 +585,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193399555}
   m_CullTransparentMesh: 1
+--- !u!1 &201646264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798870907370724220, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+  m_PrefabInstance: {fileID: 1766828662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &201646265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201646264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!4 &204881722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
@@ -1169,17 +1200,6 @@ MonoBehaviour:
       m_Calls: []
   showKeyBind: 1
   uIKeyBindPosition: {x: 0.8, y: -0.8, z: 0}
---- !u!114 &320346102 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2350760879830593464, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
-  m_PrefabInstance: {fileID: 1766828662}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &344772730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7727,7 +7747,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1332775954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997365df2d6a46d4b9fc6e13d0e5b005, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ed328cac49476b499b8f2a44267aa94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1375303594
@@ -7849,6 +7869,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5afdbb2474300ee409c7ee2ffed25011, type: 3}
+--- !u!224 &1419572563 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7798870907370724211, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+  m_PrefabInstance: {fileID: 1766828662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1421307908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 488194367, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
@@ -9157,7 +9182,27 @@ PrefabInstance:
     - target: {fileID: 3240634540106825365, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
       propertyPath: accept
       value: 
-      objectReference: {fileID: 320346102}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240634540106825365, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: contractUI
+      value: 
+      objectReference: {fileID: 7588050861693406347, guid: 5c002f50638a7184da266cd04aa793c2, type: 3}
+    - target: {fileID: 3240634540106825365, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: contractNPC
+      value: 
+      objectReference: {fileID: 302764152}
+    - target: {fileID: 3240634540106825365, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: contractGenerator
+      value: 
+      objectReference: {fileID: 1332775958}
+    - target: {fileID: 3240634540106825365, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: contractPanelList
+      value: 
+      objectReference: {fileID: 1419572563}
+    - target: {fileID: 3240634540106825365, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: contractPanelBoard
+      value: 
+      objectReference: {fileID: 816652432479653195, guid: 7a55168b9fba5144a859433923297830, type: 3}
     - target: {fileID: 7798870906931065171, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
