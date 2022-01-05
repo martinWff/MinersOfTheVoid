@@ -22,6 +22,8 @@ TagManager:
   - PlayerInventory
   - UpgradeButtons
   - SceneLoader
+  - ShockWave
+  - Lazer
   layers:
   - Default
   - TransparentFX

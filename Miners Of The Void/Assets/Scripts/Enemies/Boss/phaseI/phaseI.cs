@@ -29,6 +29,7 @@ public class phaseI : MonoBehaviour
     private float safeAreaSize;
     private float safeAreaRadius;
     private bool spawnAreaBool = false;
+    private int safeAreaCount = 0;
     
 
     // rect1 spawn safe area
@@ -94,12 +95,17 @@ public class phaseI : MonoBehaviour
         {
             shootTimer = shootTimer + Time.deltaTime;
             phaseITimer = 0;
+            safeAreaCount = 0;
             //Debug.Log(shootTimer);
         }
         
 
         if (shootTimer >= 5)
         {
+            if(safeAreaCount == 0)
+            {
+                spawnAreaBool = false;
+            }
             phaseION = true;
             ShotShockWave();
         }
@@ -141,25 +147,13 @@ public class phaseI : MonoBehaviour
             rect1lessX = camPosXCurent + safeAreaRadius;
             rect1moreY = camPosYCurent - camHeigth + safeAreaRadius;
             rect1lessY = camPosYCurent - bossSize - 2 - safeAreaRadius;
-            //Debug.Log(rect1moreX);
-            Instantiate(safeArea, new Vector3(Random.Range(rect1moreX, rect1lessX), Random.Range(rect1moreY, rect1lessY), 0), Quaternion.identity);
-            //Instantiate(safeArea, new Vector3(rect1moreX, 0, 0), Quaternion.identity);
-
-
-            //rect2
-            rect2moreX = camPosXCurent + camdiv3 * 2 - safeAreaRadius;
-            rect2lessX = camPosXCurent + camdiv3 + safeAreaRadius;
-            rect2moreY = camPosYCurent - camHeigth + safeAreaRadius;
-            rect2lessY = camPosYCurent - bossSize - 2 - safeAreaRadius;
-            Instantiate(safeArea, new Vector3(Random.Range(rect2moreX, rect2lessX), Random.Range(rect2moreY, rect2lessY), 0), Quaternion.identity);
-
+       
             //rect3
             rect3moreX = camPosXCurent + camdiv3 * 3 - safeAreaRadius;
-            rect3lessX = camPosXCurent + camdiv3 * 2 + safeAreaRadius;
             rect3moreY = camPosYCurent - camHeigth + safeAreaRadius;
-            rect3lessY = camPosYCurent - bossSize - 2 - safeAreaRadius;
-            Instantiate(safeArea, new Vector3(Random.Range(rect3moreX, rect3lessX), Random.Range(rect3moreY, rect3lessY), 0), Quaternion.identity);
+            Instantiate(safeArea, new Vector3(Random.Range(rect3moreX, rect1lessX), Random.Range(rect3moreY, rect1lessY), 0), Quaternion.identity);
             spawnAreaBool = true;
+            safeAreaCount = safeAreaCount + 1;
         }
         
 
