@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour
     public float hp = 20;
     public bool immortality = false;
     private EntityController entity;
+    public bool lazerCharge = false;
     Image lifeBar;
     Image shieldBar;
     
@@ -36,7 +37,7 @@ public class HealthBar : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool")))
+        if (((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool" || (collision.gameObject.tag == "Lazer" && lazerCharge == false))))
         {
             Debug.Log(immortality);
             
@@ -54,7 +55,7 @@ public class HealthBar : MonoBehaviour
                     if (gameObject.tag == "Player" || gameObject.tag == "Spaceship") entity.SceneChanger(0);
                     
                 }
-                if (collision.gameObject.tag != "PirateExplosion")
+                if (collision.gameObject.tag != "PirateExplosion" && collision.gameObject.tag != "Lazer")
                     Destroy(collision.gameObject);
                 else if (collision.gameObject.tag == "BulletEnemiePool")
                 {
