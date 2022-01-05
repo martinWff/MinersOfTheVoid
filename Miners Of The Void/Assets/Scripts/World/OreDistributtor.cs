@@ -21,17 +21,18 @@ public class OreDistributtor : MonoBehaviour
 
     private List<OreGenerator> oreSpawners = new List<OreGenerator>();
     // Start is called before the first frame update
-    void Awake()
-    {
-       GenerateDistributionPool();
 
+    public void SetNumberOfRocks(int n)
+    {
+        numberOfRocks = n;
+
+        GenerateDistributionPool();
         for (int i = 0; i < table.Length; i++)
         {
             amountOfRocksToGenerate -= table[i];
 
         }
         distributions.Add(new OreDistributionElement("Rock", (int)(amountOfRocksToGenerate * numberOfRocks)));
-
     }
 
     // Update is called once per frame

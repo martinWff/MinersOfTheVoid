@@ -132,21 +132,18 @@ public class Hp : Upgrade
         StatModifier modifier;
     public SpeedUpgrade(string upName,int _level = 1) : base(upName,_level)
     {
-
         modifier = new StatModifier(4*level,this);
     }
 
 
      public override void OnPut(GameObject controller)
       {
-        Debug.Log("I'm here");
         characterMovement = controller.GetComponent<CharacterMovement>();
         characterMovement.movementSpeed.AddModifier(modifier);
         characterMovement.movementSpeed.RemoveAllFromSource(this);
         modifier = new StatModifier(4 * level, this);
         characterMovement.movementSpeed.AddModifier(modifier);
-       
-    }
+     }
 
     
     

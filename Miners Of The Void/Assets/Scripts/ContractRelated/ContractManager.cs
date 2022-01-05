@@ -55,7 +55,7 @@ public class ContractManager : MonoBehaviour
     {
         c.CheckGoals();
         if (c.isCompleted)
-        {
+        {           
             onContractFinished?.Invoke(c);
             if (contractsLeftUntilBoss > 0)
             {
