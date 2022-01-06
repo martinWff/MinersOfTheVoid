@@ -86,7 +86,6 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         enemy.rotation = angle - 90;
 
-        Debug.Log("Enemy rotation "+enemy.rotation);
 
         Distance = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.y - transform.position.y, 2));
         if (Distance < enemyRange)

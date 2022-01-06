@@ -344,7 +344,7 @@ MonoBehaviour:
   lifebar: {fileID: 2650102424477798831}
   shieldbar: {fileID: 2650102425571651707}
   bulletPrefab: {fileID: 9068906604437571471, guid: 7d7571cbca5234041b52214aab336b62, type: 3}
-  bulletOffset: 4
+  bulletOffset: 1
   bulletSpeed: 14
   bulletCooldownTime: 1.5
   enemyRange: 20
