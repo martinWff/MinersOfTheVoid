@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 435003225}
   - component: {fileID: 435003224}
   - component: {fileID: 435003223}
+  - component: {fileID: 2174882523535304591}
   m_Layer: 5
   m_Name: SpeedButton
   m_TagString: Untagged
@@ -395,7 +396,38 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 435003224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2174882523535304591}
+        m_TargetAssemblyTypeName: SpeedUpgradeButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2174882523535304591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435003220}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1ba0396a1592548981bddb1e1db372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHumanoid: 1
+  isClicked: 0
+  text: {fileID: 335460011560888838}
+  costs: {fileID: 5536737435441390111}
+  spriteUpgrade: {fileID: 0}
+  upgradeControllerUI: {fileID: 7501354405973232793}
+  player: {fileID: 0}
 --- !u!1 &436727301
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,8 +548,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825733355}
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
+<<<<<<< Updated upstream
   m_Value: -0.00000045776366
   m_Size: 0.66560936
+=======
+  m_Value: 0.00000015258789
+  m_Size: 0.6666667
+>>>>>>> Stashed changes
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1269,7 +1306,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -0.0008464705, y: 100.00007}
+=======
+  m_AnchoredPosition: {x: -0.0008464705, y: 100.00002}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1730842876
@@ -2082,6 +2123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHumanoid: 0
   upgradeControllerUI: {fileID: 7501354405973232793}
+  player: {fileID: 0}
 --- !u!1 &1394739326063157703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,8 +2561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000038147, y: -139.08}
-  m_SizeDelta: {x: 1494.7167, y: 576.15}
+  m_AnchoredPosition: {x: -27, y: -130}
+  m_SizeDelta: {x: 512.7679, y: 601.7708}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2932093029232660365
 CanvasRenderer:
@@ -2715,6 +2757,12 @@ MonoBehaviour:
   isClicked: 0
   text: {fileID: 335460011560888838}
   costs: {fileID: 5536737435441390111}
+<<<<<<< Updated upstream
+=======
+  spriteUpgrade: {fileID: 21300000, guid: 36ecce8d31547164a83e92dd0e60da95, type: 3}
+  upgradeControllerUI: {fileID: 7501354405973232793}
+  player: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1 &3850250135304627867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,9 +2799,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 652, y: 387}
-  m_SizeDelta: {x: 320, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 455.27, y: 453.72}
+  m_SizeDelta: {x: 320, y: 55.6079}
+  m_Pivot: {x: 0.70588803, y: 0.50000006}
 --- !u!222 &3005575311327385281
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3150,6 +3198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHumanoid: 0
   upgradeControllerUI: {fileID: 7501354405973232793}
+  player: {fileID: 0}
 --- !u!1 &4277814287816247210
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,8 +3725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 372.7076, y: 1.3472977}
-  m_SizeDelta: {x: 1416.6946, y: 817.9395}
+  m_AnchoredPosition: {x: 245.1779, y: -5.2408}
+  m_SizeDelta: {x: 660.6257, y: 763.0383}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6033689117115645882
 CanvasRenderer:
@@ -3865,6 +3914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHumanoid: 0
   upgradeControllerUI: {fileID: 7501354405973232793}
+  player: {fileID: 0}
 --- !u!1 &6711376106766354191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,7 +3949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45, y: 1135.5797}
+  m_AnchoredPosition: {x: 38, y: 1117}
   m_SizeDelta: {x: 317.3413, y: 65.6688}
   m_Pivot: {x: 0.54194593, y: 5.4008646}
 --- !u!222 &1368666630341764195

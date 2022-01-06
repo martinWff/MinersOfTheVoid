@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UpgradeController : MonoBehaviour
 {
@@ -10,27 +11,28 @@ public class UpgradeController : MonoBehaviour
     public static System.Action<UpgradeController,Upgrade,int> onUpgradePut;
     public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemoved;
     // Start is called before the first frame update
-    void Start()
+    
+    public void PlaceUpgradesAtStart()
     {
         upgradeHolder = new Upgrade[4];
-        if (gameObject.tag == "Player") 
+        if (gameObject.tag == "Player")
         {
-            foreach (Upgrade up in UpgradeTransporter.humanPlayer) {
+            foreach (Upgrade up in UpgradeTransporter.humanPlayer)
+            {
                 PlaceUpgrade(up);
-             //   Debug.Log(up.upgradeName);
             }
         }
-        if (gameObject.tag == "Spaceship")
+        if (gameObject.tag == "Spaceship" || SceneManager.GetActiveScene().name == "Lobby")
         {
             foreach (Upgrade up in UpgradeTransporter.spaceship)
                 PlaceUpgrade(up);
+
         }
-
-       
-        
     }
-
-    
+    void Start()
+    {
+        PlaceUpgradesAtStart();
+    }
 
     public bool PlaceUpgrade(Upgrade upgrade)
     {

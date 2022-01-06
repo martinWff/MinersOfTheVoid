@@ -1152,6 +1152,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1143883089}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
+      propertyPath: sceneId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: planetName
       value: Lobby
       objectReference: {fileID: 0}
@@ -1297,7 +1301,7 @@ PrefabInstance:
       objectReference: {fileID: 1143883089}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: sceneId
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: planetName

@@ -4342,7 +4342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: Return to Space
-  sceneId: 1
+  sceneId: 3
   interaction: {fileID: 1846688880}
   isPlayerInside: 0
   keybind: {fileID: 1275226028}
