@@ -14,4 +14,9 @@ public class Oscars : MonoBehaviour
         SavePlayerStats.rp += contract.famePoints;
 
     }
+
+    private void OnDestroy()
+    {
+        ContractManager.onContractFinished -= GetAwards;
+    }
 }

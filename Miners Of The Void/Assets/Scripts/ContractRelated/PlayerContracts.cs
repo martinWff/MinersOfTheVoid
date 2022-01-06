@@ -7,7 +7,6 @@ public class PlayerContracts : MonoBehaviour
     public static PlayerContracts instance;
     public Contract acceptedContract { get; private set; }
 
-
     public Transform canvas;
     public GameObject contractPanelPrefab;
     public GameObject goalPanelPrefab;
@@ -29,14 +28,41 @@ public class PlayerContracts : MonoBehaviour
             ContractManager.onContractAccepted += OnContractAccepted;
             ContractManager.onContractCancelled += OnCancelledContract;
             ContractManager.onContractFinished += OnFinishedContract;
+            SaveManager.saveStarted += OnSaveContracts;
+            SaveManager.saveLoaded += OnLoadContracts;
         }
 
     }
+    
+    private void OnSaveContracts(SavedData saveData)
+    {
+        saveData.currentContract = acceptedContract;
+        saveData.contracts = (Contract[])ContractGenerator.contracts;
+    }
 
+    private void OnLoadContracts(SavedData saveData)
+    {
+       
+        ContractGenerator.contracts = (Array<Contract>)saveData.contracts;
+
+        foreach (Contract c in ContractGenerator.contracts)
+        {
+            foreach (Goal g in c.goals)
+            {
+                g.OnLoaded();
+            }
+        }
+        if (acceptedContract == null)
+        {
+            ContractManager.AcceptContract(saveData.currentContract);
+        }
+
+
+    }
 
     private void OnContractAccepted(Contract c)
     {
-        if (acceptedContract == null)
+        if (acceptedContract == null && c != null)
         {
             acceptedContract = c;
             acceptedPanel = Instantiate(contractPanelPrefab, canvas);

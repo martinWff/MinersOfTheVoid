@@ -10,7 +10,6 @@ public class ContractBoardController : MonoBehaviour
     public GameObject goalUI;
     public Contract uniqueContract;
     public Button accept;
-    public ContractGenerator contractGenerator;
     public GameObject contractPanelBoard;
     public Transform contractPanelList;
 
@@ -30,7 +29,7 @@ public class ContractBoardController : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (Contract contract in contractGenerator.contracts)
+        foreach (Contract contract in ContractGenerator.contracts)
         {
             CreateContractLabel(contract);
         }
@@ -59,7 +58,7 @@ public class ContractBoardController : MonoBehaviour
         contractElementUI.board = gameObject;
         for (int i = 0; i < contract.goals.Count; i++)
         {
-            GameObject goalObj = Instantiate(goalUI, newContractPanel.transform);
+            GameObject goalObj = Instantiate(goalUI, contractElementUI.requirements);
        //     goalObj.GetComponent<GoalControllerBoard>().SetGoal(contract.goals.Get(i));
             contractElementUI.goalsUIList.Add(goalObj);
             

@@ -9,7 +9,13 @@ public class ContractElementUIBoard : MonoBehaviour
     public Contract contract;
     public GameObject board;
     public Button button;
- //   public List<System.Tuple<Text, Text, Image>> goalsData = new List<System.Tuple<Text, Text, Image>>();
+
+    public Transform requirements;
+    public Transform prizes;
+
+    public Text prizeBipsText;
+    public Text prizeXPText;
+    //   public List<System.Tuple<Text, Text, Image>> goalsData = new List<System.Tuple<Text, Text, Image>>();
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +41,9 @@ public class ContractElementUIBoard : MonoBehaviour
         {
             button.interactable = true;
         }
+
+        prizeBipsText.text = "+" + contract.bips + " <color=yellow>bips</color>";
+        prizeXPText.text = "+" + contract.famePoints + " <color=purple>XP</color>";
     }
 
     private void SetGoalData(Goal goalData,GameObject target)

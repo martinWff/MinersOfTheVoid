@@ -31,6 +31,7 @@ public class UpgradeNPC : MonoBehaviour
         //  GameObject.FindGameObjectsWithTag("Spaceship");
         //  UpgradeController controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
         player.GetComponent<CharacterMovement>().enabled = false;
+        player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         UpgradeController.onUpgradePut += uiController.OnUpgradePut;
         UpgradeController.onUpgradeRemoved += uiController.OnUpgradeRemoved;        
     }
