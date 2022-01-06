@@ -31,6 +31,8 @@ public class Upgrades : MonoBehaviour
         player.GetComponent<CharacterMovement>().enabled = true;
         Destroy(gameObject);
     }
+
+   
    
     
     

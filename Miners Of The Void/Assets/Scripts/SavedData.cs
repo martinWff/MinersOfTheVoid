@@ -18,6 +18,8 @@ public class SavedData
 
     public int currentSceneId;
 
+    public Contract[] contracts;
 
+    public Contract currentContract;
 
 }

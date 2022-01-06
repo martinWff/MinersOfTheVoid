@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public lifebar lifebar;
     [SerializeField] public shieldbar shieldbar;
 
+    public System.Action<GameObject> boss;
+
 
     //Enemy shoot
     public GameObject bulletPrefab;
@@ -84,6 +86,8 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         enemy.rotation = angle - 90;
 
+        Debug.Log("Enemy rotation "+enemy.rotation);
+
         Distance = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.y - transform.position.y, 2));
         if (Distance < enemyRange)
         {
@@ -146,9 +150,9 @@ public class Enemy : MonoBehaviour
 
                 
                 Destroy(transform.parent.gameObject);
-                
 
-            
+                boss?.Invoke(transform.parent.gameObject);
+
             }
 
             Debug.Log(enemieHealth);

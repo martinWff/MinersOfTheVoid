@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class PirateExplosion : MonoBehaviour
+public class PirateExploosion : MonoBehaviour
 {
+
     private GameObject player;
     private GameObject spaceship;
     private float distance;
@@ -17,13 +17,13 @@ public class PirateExplosion : MonoBehaviour
     [SerializeField] private shieldbar shieldbar;
     [SerializeField] private SpriteRenderer alarm;
 
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
 
 
     public System.Action<GameObject> boss;
 
     //stop the alarm 
-    private bool attack = false;
+    public bool attack = false;
     private int change = 0;
 
     //alpha switch
@@ -39,7 +39,7 @@ public class PirateExplosion : MonoBehaviour
     //enemy stats
     public float perEnemieHealthTotal = 1;
     public float perEnemieShieldTotal = 1;
-    public float enemieHealthTotal= 20;
+    public float enemieHealthTotal = 20;
     public float enemieHealth = 20;
     public float totalShield = 10;
     public float shield = 10;
@@ -50,33 +50,34 @@ public class PirateExplosion : MonoBehaviour
     //UI
     public Text bipText;
 
+
     // Start is called before the first frame update
     void Start()
     {
         spaceship = GameObject.FindGameObjectWithTag("Spaceship");
-        //alarm = GameObject.FindGameObjectWithTag("Alarm").GetComponent<SpriteRenderer>();
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerdmg = spaceship.GetComponent<CharacterWeapon>().dmg.value;
-        Debug.Log(playerdmg);
+        //Debug.Log(playerdmg);
 
         pirate_spriterender = GetComponent<SpriteRenderer>();
 
         lifebar.Setsize(perEnemieHealthTotal);
         shieldbar.Setsize2(perEnemieShieldTotal);
         bipText = GameObject.Find("Bips").GetComponent<Text>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (spaceship == null) return;
-        
+
 
         distance = Mathf.Sqrt(Mathf.Pow(spaceship.transform.position.x - transform.position.x, 2) + Mathf.Pow(spaceship.transform.position.y - transform.position.y, 2));
         if (distance < enemyRange)
         {
-            
+
 
             Warning();
 
@@ -89,22 +90,24 @@ public class PirateExplosion : MonoBehaviour
 
 
 
-        if (attack == true)
+        /*if (attack == true)
         {
             //Debug.Log("attack true");
             //Debug.Log(targetPosition);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        }
-
+        }*/
+        Debug.Log(transform.position);
+        Debug.Log(targetPosition);
+        Debug.Log(attack);
         if (transform.position == targetPosition && attack == true)
         {
 
-            
-            attack = false;
-           
 
-            
+            attack = false;
+
+
+
         }
 
 
@@ -118,6 +121,7 @@ public class PirateExplosion : MonoBehaviour
         }
         if (shield > totalShield) shield = totalShield;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -136,12 +140,13 @@ public class PirateExplosion : MonoBehaviour
                 shield = 0;
                 SavePlayerStats.bips += Random.Range(3, 5);
                 bipText.text = "Bips: " + SavePlayerStats.bips;
-                Destroy(gameObject);
+
+                Destroy(transform.parent.gameObject);
 
                 boss?.Invoke(gameObject);
             }
 
-           
+
             perEnemieHealth = enemieHealth / enemieHealthTotal;
             perEnemieShield = shield / totalShield;
             lifebar.Setsize(perEnemieHealth);
@@ -150,7 +155,7 @@ public class PirateExplosion : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-    
+
     public void Warning()
     {
 
@@ -188,15 +193,11 @@ public class PirateExplosion : MonoBehaviour
             {
                 attack = true;
                 change = 0;
-                
+
             }
 
 
             alarm.color = alarm_NewColor;
         }
     }
-
-    
-        
-    
 }

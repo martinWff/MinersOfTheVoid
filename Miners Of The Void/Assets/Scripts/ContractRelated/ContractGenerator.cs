@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class ContractGenerator : MonoBehaviour
 {
-    public Array<Contract> contracts = new Array<Contract>(4);
+    public static Array<Contract> contracts = new Array<Contract>(4);
     public delegate void ContractGenerated(Contract contract);
     public static event ContractGenerated onContractGenerated;
     // Start is called before the first frame update
     void Start()
     {
-
-        for (int i = 0; i < contracts.Length; i++)
+        if (contracts.Count < contracts.Length)
         {
-            contracts.InsertAtEnd(GenerateGatherContract());
+            for (int i = 0; i < contracts.Length; i++)
+            {
+
+                contracts.InsertAtEnd(GenerateGatherContract());
+            }
         }
     }
 
@@ -22,7 +25,7 @@ public class ContractGenerator : MonoBehaviour
     {
         
     }
-
+    
     public void CreateContract()
     {
         if (ContractManager.contractsLeftUntilBoss < 0)
@@ -85,6 +88,9 @@ public class ContractGenerator : MonoBehaviour
             arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack(quantity),PlayerInventory.staticInventory));
         }
         Contract c = new Contract(Contract.ContractType.mining, arr);
+
+        c.bips = Random.Range(30, 51);
+        c.famePoints = Random.Range(30,41);
 
         return c;
 

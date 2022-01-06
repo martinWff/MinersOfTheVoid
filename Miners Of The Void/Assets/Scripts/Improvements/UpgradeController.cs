@@ -12,9 +12,10 @@ public class UpgradeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        upgradeHolder = new Upgrade[4];
+        
         if (gameObject.tag == "Player") 
         {
+            upgradeHolder = new Upgrade[6];
             foreach (Upgrade up in UpgradeTransporter.humanPlayer) {
                 PlaceUpgrade(up);
              //   Debug.Log(up.upgradeName);
@@ -22,6 +23,7 @@ public class UpgradeController : MonoBehaviour
         }
         if (gameObject.tag == "Spaceship")
         {
+            upgradeHolder = new Upgrade[4];
             foreach (Upgrade up in UpgradeTransporter.spaceship)
                 PlaceUpgrade(up);
         }

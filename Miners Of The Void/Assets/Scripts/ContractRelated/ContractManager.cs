@@ -32,7 +32,10 @@ public class ContractManager : MonoBehaviour
  
     private void _AcceptContract(Contract c)
     {
-        onContractAccepted?.Invoke(c);
+        if (c != null)
+        {
+            onContractAccepted?.Invoke(c);
+        }
     }
 
     private void _CancelContract(Contract c)

@@ -5,19 +5,6 @@ using UnityEngine.UI;
 public class ShieldButton : UpgradeButton
 {
     
-    private void Start()
-    {
-        
-        if (upgradeControllerUI.controller == null)
-        {
-            if (isHumanoid)upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeController>();
-            else upgradeControllerUI.controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
-        }
-        
-
-
-
-    }
 
     public override Upgrade GetUpgrade(int level = 1)
     {
@@ -34,20 +21,12 @@ public class ShieldButton : UpgradeButton
     public void OnClick()
     {
 
-
-        if (!isClicked)
+        if (upgradeControllerUI.controller != null)
         {
             costs.SetActive(true);
-            isClicked = true;
-            text.text = "Bips:200\nOre:1";
-            return;
+            upgradeControllerUI.upgrade = GetUpgrade();
+            upgradeControllerUI.currentController = currentUpgradeController;
         }
-        if (upgradeControllerUI.controller != null && isClicked)
-        {
-            costs.SetActive(false);
 
-            upgradeControllerUI.controller.PlaceUpgrade(GetUpgrade());
-            isClicked = false;
-        }
     }
 }

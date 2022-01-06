@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Contract : System.IDisposable { 
     public enum ContractType
     {
@@ -70,7 +71,7 @@ public class Contract : System.IDisposable {
 
 }
 
-
+[System.Serializable]
 public class Goal : System.IDisposable
 {
     public bool completed;
@@ -78,7 +79,7 @@ public class Goal : System.IDisposable
     public int currentAmount;
     public int requiredAmount;
     public string description;
-    public Sprite sprite;
+    [System.NonSerialized]public Sprite sprite;
 
     public virtual void Init()
     {
@@ -102,9 +103,13 @@ public class Goal : System.IDisposable
     {
         
     }
+    public virtual void OnLoaded()
+    {
+
+    }
 }
 
-
+[System.Serializable]
 public class GatheringGoal : Goal
 {
     public string oreName;
@@ -157,6 +162,11 @@ public class GatheringGoal : Goal
         }
 
 
+    }
+
+    public override void OnLoaded()
+    {
+        this.sprite = OreManager.instance.GetOreMaterialByMaterialName(oreName).sprite;
     }
 
     void OnGathered(Inventory inv,string updatedOreName,int amount)
