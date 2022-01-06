@@ -28,6 +28,7 @@ public class UpgradeNPC : MonoBehaviour
     {
         GameObject tab = Instantiate(panel, canvas);
         UpgradeUIController uiController = tab.GetComponentInChildren<UpgradeUIController>();
+        uiController.humanoidController = player.GetComponent<UpgradeController>();
         //  GameObject.FindGameObjectsWithTag("Spaceship");
         //  UpgradeController controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
         player.GetComponent<CharacterMovement>().enabled = false;
