@@ -42,10 +42,7 @@ public class PlayerContracts : MonoBehaviour
 
     private void OnLoadContracts(SavedData saveData)
     {
-        if (acceptedContract == null)
-        {
-            ContractManager.AcceptContract(saveData.currentContract);
-        }
+       
         ContractGenerator.contracts = (Array<Contract>)saveData.contracts;
 
         foreach (Contract c in ContractGenerator.contracts)
@@ -54,6 +51,10 @@ public class PlayerContracts : MonoBehaviour
             {
                 g.OnLoaded();
             }
+        }
+        if (acceptedContract == null)
+        {
+            ContractManager.AcceptContract(saveData.currentContract);
         }
 
 

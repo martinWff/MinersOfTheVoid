@@ -58,7 +58,7 @@ public class ContractBoardController : MonoBehaviour
         contractElementUI.board = gameObject;
         for (int i = 0; i < contract.goals.Count; i++)
         {
-            GameObject goalObj = Instantiate(goalUI, newContractPanel.transform);
+            GameObject goalObj = Instantiate(goalUI, contractElementUI.requirements);
        //     goalObj.GetComponent<GoalControllerBoard>().SetGoal(contract.goals.Get(i));
             contractElementUI.goalsUIList.Add(goalObj);
             
