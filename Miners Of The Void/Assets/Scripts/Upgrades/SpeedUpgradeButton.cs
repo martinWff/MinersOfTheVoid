@@ -17,19 +17,12 @@ public class SpeedUpgradeButton : UpgradeButton
     }
     public void OnClick()
     {
-        if (!isClicked)
+        if (upgradeControllerUI.controller != null)
         {
             costs.SetActive(true);
-            isClicked = true;
-            text.text = "Bips:200\nOre:1";
-            return;
+            upgradeControllerUI.upgrade = GetUpgrade();
+            upgradeControllerUI.currentController = currentUpgradeController;
         }
-        if (upgradeControllerUI.controller != null && isClicked)
-        {
-            costs.SetActive(false);
 
-            upgradeControllerUI.controller.PlaceUpgrade(GetUpgrade());
-            isClicked = false;
-        }
     }
 }

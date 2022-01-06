@@ -11,8 +11,24 @@ public class UpgradeButton : MonoBehaviour
     public GameObject costs;
     public Sprite spriteUpgrade;
     public UpgradeUIController upgradeControllerUI;
+    protected UpgradeController currentUpgradeController;
     public virtual Upgrade GetUpgrade(int level)
     {
         return null;
     }
+
+    private void Start()
+    {
+
+        if (isHumanoid)
+        {
+            currentUpgradeController = upgradeControllerUI.humanoidController;
+        } else
+        {
+            currentUpgradeController = upgradeControllerUI.controller;
+        }
+    }
+
+
+
 }

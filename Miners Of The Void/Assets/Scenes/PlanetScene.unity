@@ -23566,6 +23566,7 @@ GameObject:
   - component: {fileID: 1846688880}
   - component: {fileID: 1846688883}
   - component: {fileID: 1846688879}
+  - component: {fileID: 1846688884}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -23586,7 +23587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: Return to Space
-  sceneId: 1
+  sceneId: 3
   interaction: {fileID: 1846688880}
   isPlayerInside: 0
   keybind: {fileID: 1275226028}
@@ -23604,14 +23605,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onInteractionAreaStay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1846688884}
+        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
+        m_MethodName: OnStayArea
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onInteractionAreaEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpacePlanetBehaviour, Assembly-CSharp
-        m_MethodName: ClearPromptKeybind
-        m_Mode: 1
+      - m_Target: {fileID: 1846688884}
+        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
+        m_MethodName: OnEnterArea
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -23623,10 +23636,10 @@ MonoBehaviour:
   onInteractionAreaExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpacePlanetBehaviour, Assembly-CSharp
-        m_MethodName: ClearPromptKeybind
-        m_Mode: 1
+      - m_Target: {fileID: 1846688884}
+        m_TargetAssemblyTypeName: InteractionPromptBehaviour, Assembly-CSharp
+        m_MethodName: OnExitArea
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -23722,6 +23735,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &1846688884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846688878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1853b44c3932794e8d74996cf52c7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionArea: {fileID: 1846688880}
+  keybind: {fileID: 1275226028}
 --- !u!224 &1926481830 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6112712496346130227, guid: b97679132d98e4044b9b99861e087646, type: 3}

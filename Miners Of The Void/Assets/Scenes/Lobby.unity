@@ -9242,6 +9242,14 @@ PrefabInstance:
       propertyPath: contractPanelBoard
       value: 
       objectReference: {fileID: 816652432479653195, guid: 7a55168b9fba5144a859433923297830, type: 3}
+    - target: {fileID: 6813300661172646671, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813300661172646671, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 7798870906931065171, guid: 9bee2c0b5b7d23c46807d1fbbac04d83, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
