@@ -25,8 +25,6 @@ public class InteractionPromptBehaviour : MonoBehaviour
     }
     public void OnStayArea(GameObject player)
     {
-        Debug.Log("SET POS");
- 
         keybind.SetPosition(transform.position + interactionArea.uIKeyBindPosition);
     }
 }
