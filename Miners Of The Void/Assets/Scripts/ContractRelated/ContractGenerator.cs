@@ -7,9 +7,11 @@ public class ContractGenerator : MonoBehaviour
     public static Array<Contract> contracts = new Array<Contract>(4);
     public delegate void ContractGenerated(Contract contract);
     public static event ContractGenerated onContractGenerated;
+    private bool bossContractGenerated = false;
     // Start is called before the first frame update
     void Awake()
     {
+        SavePlayerStats.rp = 60;
         ContractManager.onContractFinished += ContractManager_onContractFinished;
         
     }
@@ -129,29 +131,39 @@ public class ContractGenerator : MonoBehaviour
     {
        
 
-        return GenerateBossContract();
-
         if (SavePlayerStats.rp < 5)
         {
-            int choice = Random.Range(0, 5);
-
-            if (choice < 3)
-            {
-                return GenerateGatherContract();
-            }
-            else
-            {
-                return GenerateCombatContract();
-            }
+            return GenerateCommonContracts();
         }
         else
         {
-            return GenerateBossContract();
+            if (!bossContractGenerated)
+            {
+                bossContractGenerated = true;
+                return GenerateBossContract();
+            } else
+            {
+                return GenerateCommonContracts();
+            }
         }
 
 
 
       
+    }
+
+    public Contract GenerateCommonContracts()
+    {
+        int choice = Random.Range(0, 5);
+
+        if (choice < 3)
+        {
+            return GenerateGatherContract();
+        }
+        else
+        {
+            return GenerateCombatContract();
+        }
     }
 
 }

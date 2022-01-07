@@ -314,6 +314,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 552992930}
     - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: tpPlayer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
       propertyPath: phaseController
       value: 
       objectReference: {fileID: 552992929}
