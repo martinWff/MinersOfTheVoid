@@ -26,20 +26,6 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         inicialPos = transform.position;
-
-      /*  if (SavePlayerStats.spawning)
-        {
-            if (gameObject.CompareTag("Spaceship"))
-            {
-                transform.position = SavePlayerStats.spawnSpaceShipAtPosition;
-            } else if (gameObject.CompareTag("Player"))
-            {
-                transform.position = SavePlayerStats.spawnHumanoidAtPosition;
-
-            }
-            SavePlayerStats.spawning = false;
-        }*/
-
     }
 
     // Update is called once per frame

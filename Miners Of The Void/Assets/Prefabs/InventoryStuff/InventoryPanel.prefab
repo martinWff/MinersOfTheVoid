@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9137380297744941699}
   - component: {fileID: 1119737650}
   - component: {fileID: 781245069}
+  - component: {fileID: 5418321551401109295}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: InventoryPanel
@@ -148,3 +149,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cf77965407bdc4d89ae7603a9dedb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5418321551401109295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9137380297744941725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfe42b3fca999a4e9baf70b2107c0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 9137380297744941724}
+  group: {fileID: 9137380297744941699}
+  factor: 10
