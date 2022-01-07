@@ -159,6 +159,11 @@ MonoBehaviour:
     upgradeSprite: {fileID: 21300000, guid: 36ecce8d31547164a83e92dd0e60da95, type: 3}
   - upgradeName: speed
     upgradeSprite: {fileID: 21300000, guid: efbf37c811a211b468659a63e120ee98, type: 3}
+  enemies:
+  - enemyName: Shooter
+    sprite: {fileID: 21300000, guid: b6ec79de13b39334f81d764d20af8583, type: 3}
+  - enemyName: Shooter
+    sprite: {fileID: 21300000, guid: f59d1392f3ff6254a86e5076110e5e10, type: 3}
 --- !u!1 &1983507261
 GameObject:
   m_ObjectHideFlags: 0

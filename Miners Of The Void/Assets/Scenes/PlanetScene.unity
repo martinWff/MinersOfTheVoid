@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bipsText: {fileID: 1835961384}
+  experienceText: {fileID: 0}
 --- !u!224 &64156495 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9137380297744941724, guid: 61ba532e9a2696d4d90ca4b0131a6ef4, type: 3}
@@ -619,9 +620,41 @@ PrefabInstance:
       propertyPath: firePermission
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2080799885, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.614854
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080799885, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6341107
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080799885, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.13480121
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080799885, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.009628594
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080799885, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.78125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080799885, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.5625
+      objectReference: {fileID: 0}
     - target: {fileID: 734181481169697246, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 734181481169697246, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 734181481169697246, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 734181481169697246, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,6 +700,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6908643661827950554, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908643661827950554, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908643661827950554, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5220657049897069556, guid: 1d48ccf4093fdab41a463d05cf615932, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
 --- !u!1 &1072032098
@@ -2418,6 +2463,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3675611969424350210, guid: a5882a29340cf354f887413684d07548, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 1898889869}
+    - target: {fileID: 3675611969424350236, guid: a5882a29340cf354f887413684d07548, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675611969424350236, guid: a5882a29340cf354f887413684d07548, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3675611969606721460, guid: a5882a29340cf354f887413684d07548, type: 3}
       propertyPath: m_Name
       value: EnemyPlanet
@@ -2465,6 +2522,14 @@ PrefabInstance:
     - target: {fileID: 3675611969606721466, guid: a5882a29340cf354f887413684d07548, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675611969606721467, guid: a5882a29340cf354f887413684d07548, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675611969606721467, guid: a5882a29340cf354f887413684d07548, type: 3}
+      propertyPath: m_FlipY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3675611970555704053, guid: a5882a29340cf354f887413684d07548, type: 3}
       propertyPath: m_SortingLayer
@@ -23715,6 +23780,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionArea: {fileID: 1846688880}
   keybind: {fileID: 1275226028}
+--- !u!1 &1898889868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3675611969424350237, guid: a5882a29340cf354f887413684d07548, type: 3}
+  m_PrefabInstance: {fileID: 1318060565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1898889869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898889868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3fb80e422e7174abc4730a978747f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlanetary: 1
+  enemyName: Shooter
 --- !u!224 &1926481830 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6112712496346130227, guid: b97679132d98e4044b9b99861e087646, type: 3}
