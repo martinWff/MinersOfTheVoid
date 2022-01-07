@@ -298,9 +298,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: phaseI
+      value: 
+      objectReference: {fileID: 552992928}
+    - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
       propertyPath: lifebar
       value: 
       objectReference: {fileID: 1205946903}
+    - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: phaseII
+      value: 
+      objectReference: {fileID: 552992931}
+    - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: phaseIII
+      value: 
+      objectReference: {fileID: 552992930}
+    - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: phaseController
+      value: 
+      objectReference: {fileID: 552992929}
+    - target: {fileID: 511966408, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: pirateexplosion
+      value: 
+      objectReference: {fileID: 5508214930983710229, guid: e646e54c84cf1824884519a41130a362, type: 3}
+    - target: {fileID: 643600271919104168, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: phaseController
+      value: 
+      objectReference: {fileID: 552992929}
     - target: {fileID: 643600271919104169, guid: 1425efea4089e814f97d4327836785c2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -349,8 +373,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 511966407, guid: 1425efea4089e814f97d4327836785c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+--- !u!1 &552992927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 643600271919104175, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+  m_PrefabInstance: {fileID: 552992926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &552992928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 643600271919104168, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+  m_PrefabInstance: {fileID: 552992926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552992927}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7f870eb4082404997b5c888bbf870f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &552992929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552992927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e4929d6434a9d4884ec18c9d0881e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseI: {fileID: 552992928}
+  phaseII: {fileID: 552992931}
+  phaseIII: {fileID: 552992930}
+--- !u!114 &552992930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 511966408, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+  m_PrefabInstance: {fileID: 552992926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552992927}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4628d48c1b5834ea10be6df12b2751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &552992931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552992927}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f382813916a696c4099077b8ec8d5549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHelp: {fileID: 8393208275591319378, guid: b8fb33471c1e39e41964a10582604572, type: 3}
+  bulletPrefab: {fileID: 9068906604437571471, guid: 7d7571cbca5234041b52214aab336b62, type: 3}
+  bulletOffset: 4
+  bulletSpeed: 14
+  bulletCooldownTime: 1.5
+  bulletShootTime: 0.5
+  enemyHelpSpeed: 3
 --- !u!1001 &1205946902
 PrefabInstance:
   m_ObjectHideFlags: 0

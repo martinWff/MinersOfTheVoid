@@ -11,6 +11,16 @@ public class BossHealth : MonoBehaviour
     public float bossHealthTotal = 100;
     private float bossHealth;
     private float perBossLife;
+    private int phaseChanger = 3;
+
+    //phases
+    public PhaseI phaseI;
+    public PhaseII phaseII;
+    public PhaseIII phaseIII;
+
+
+    //phase controller
+    public PhaseManager phaseController;
 
     [SerializeField] public lifebar lifebar;
 
@@ -42,9 +52,10 @@ public class BossHealth : MonoBehaviour
 
 
             bossHealth -= playerdmg;
+            perBossLife = bossHealth / bossHealthTotal;
+            lifebar.Setsize(perBossLife);
 
-                
-            
+
             if (bossHealth <= 0)
             {
                 //Death
@@ -62,9 +73,27 @@ public class BossHealth : MonoBehaviour
 
             }
 
+
+
+            Debug.Log(perBossLife);
+
+            if(perBossLife < 0.666 && phaseChanger == 3)
+            {
+                Debug.Log("Itto is alot better than hu tao");
+                phaseController.RandomNumber();
+                phaseChanger = 2;
+            }
+
+            if (perBossLife < 0.333 && phaseChanger == 2)
+            {
+
+                Debug.Log("Hu tao");
+                phaseController.RandomNumber();
+                phaseChanger = 1;
+            }
+
             //Debug.Log(bossHealth);
-            perBossLife = bossHealth / bossHealthTotal;
-            lifebar.Setsize(perBossLife);
+           
 
 
             //Debug.Log(bossHealth);

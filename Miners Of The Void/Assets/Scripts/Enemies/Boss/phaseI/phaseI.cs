@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class phaseI : MonoBehaviour
+public class PhaseI : MonoBehaviour
 {
     [SerializeField] public GameObject shockWave;
     [SerializeField] public GameObject safeArea;
+
+
+    private GameObject miniom2;
+    private GameObject shockwave;
 
     //Boss
     private Rigidbody2D boss;
@@ -55,7 +59,7 @@ public class phaseI : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         bossG = this.GetComponent<GameObject>();
         cam = Camera.main;
@@ -105,12 +109,12 @@ public class phaseI : MonoBehaviour
     private void ShotShockWave()
     {
         phaseITimer = phaseITimer + Time.deltaTime;
-        Debug.Log(phaseITimer);
+        //Debug.Log(phaseITimer);
         SafeAreaSpawn();
         Vector3 Shotdirection = new Vector3(0, -1, 0);
         if ((bulletShootTime <= 0))
         {
-            GameObject shockwave = Instantiate(shockWave, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
+            shockwave = Instantiate(shockWave, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
             bulletShootTime = bulletCooldownTime;
             shockwave.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
         }
@@ -139,12 +143,21 @@ public class phaseI : MonoBehaviour
             //rect3
             rect3moreX = camPosXCurent + camdiv3 * 3 - safeAreaRadius;
             rect3moreY = camPosYCurent - camHeigth + safeAreaRadius;
-            Instantiate(safeArea, new Vector3(Random.Range(rect3moreX, rect1lessX), Random.Range(rect3moreY, rect1lessY), 0), Quaternion.identity);
+            miniom2 = Instantiate(safeArea, new Vector3(Random.Range(rect3moreX, rect1lessX), Random.Range(rect3moreY, rect1lessY), 0), Quaternion.identity);
             spawnAreaBool = true;
             safeAreaCount = safeAreaCount + 1;
         }
         
 
+    }
+
+    public void PhaseEnd()
+    {
+        Destroy(shockwave);
+        miniom2.GetComponent<safeArea>().player.GetComponent<HealthBar>().immortality = false;
+        Destroy(miniom2);
+        spawnAreaBool = false;
+        enabled = false;
     }
 
     

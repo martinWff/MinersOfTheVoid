@@ -81,7 +81,7 @@ public class HealthBar : MonoBehaviour
     {
         if (((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool" || (collision.gameObject.tag == "Lazer" && lazerCharge == false))))
         {
-            Debug.Log(immortality);
+            //Debug.Log(immortality);
             
             if (!immortality)
             {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class safeArea : MonoBehaviour
 {
     public float safeAreaLifeTime = 9;
-    private GameObject player;
+    public GameObject player;
     private HealthBar immortality;
     void Start()
     {
