@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeInventory : Inventory
+namespace MOV.deprecated
 {
-    public override bool AddOre(OreStack ore)
+    public class UpgradeInventory : Inventory
     {
-        if (CountDifferent < 4)
+        public override bool AddOre(OreStack ore)
         {
-            if (GetOreAmount(ore.oreName) < 6)
-                return base.AddOre(ore);
+            if (CountDifferent < 4)
+            {
+                if (GetOreAmount(ore.oreName) < 6)
+                    return base.AddOre(ore);
+                else return false;
+            }
             else return false;
-        } else return false;
-        
+
+        }
+
     }
- 
 }

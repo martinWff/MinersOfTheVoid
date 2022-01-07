@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ShieldUpgrade : Upgrade
 {
-    private HealthBar hpShield;
+    [System.NonSerialized]private HealthBar hpShield;
     private StatModifier shieldUp;
     public ShieldUpgrade(string upName, int level) : base(upName, level) { }
     public override void OnPut(GameObject controller)

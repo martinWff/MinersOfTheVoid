@@ -21,12 +21,24 @@ public class CharacterMovement : MonoBehaviour
         main = Camera.main;
         camera = main.GetComponent<StaticCameraController>();
         rb = GetComponent<Rigidbody2D>();
-        
+    }  
 
-    }
     private void Start()
     {
         inicialPos = transform.position;
+
+      /*  if (SavePlayerStats.spawning)
+        {
+            if (gameObject.CompareTag("Spaceship"))
+            {
+                transform.position = SavePlayerStats.spawnSpaceShipAtPosition;
+            } else if (gameObject.CompareTag("Player"))
+            {
+                transform.position = SavePlayerStats.spawnHumanoidAtPosition;
+
+            }
+            SavePlayerStats.spawning = false;
+        }*/
 
     }
 
