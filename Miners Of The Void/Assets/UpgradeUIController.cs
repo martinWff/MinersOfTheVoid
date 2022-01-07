@@ -13,6 +13,7 @@ public class UpgradeUIController : MonoBehaviour
     public Upgrade upgrade;
 
     public GameObject purchaseWindow;
+    public Text purchaseText;
 
     private void Start()
     {
@@ -72,10 +73,22 @@ public class UpgradeUIController : MonoBehaviour
 
         if (currentController != null && upgrade != null)
         {
+            
             currentController.PlaceUpgrade(upgrade);
             currentController = null;
             upgrade = null;
             ClosePurchaseWindow();
+
+        }
+    }
+
+    public void ApplyData()
+    {
+        if (currentController != null && upgrade != null)
+        {
+            string ptext = purchaseText.text;
+
+            purchaseText.text = ptext.Replace("{upgrade}", upgrade.upgradeName).Replace("{cost}", "(undefined)");
 
         }
     }
