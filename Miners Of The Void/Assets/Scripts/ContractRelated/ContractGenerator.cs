@@ -8,16 +8,38 @@ public class ContractGenerator : MonoBehaviour
     public delegate void ContractGenerated(Contract contract);
     public static event ContractGenerated onContractGenerated;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
+    {
+        ContractManager.onContractFinished += ContractManager_onContractFinished;
+        
+    }
+    private void Start()
+    {
+        ProcessContractGeneration();
+    }
+
+    private void ContractManager_onContractFinished(Contract contract)
+    {
+        if (contracts.Contains(contract))
+        {
+            bool wasRemoved = contracts.Remove(contract);
+        }
+        ProcessContractGeneration();
+    }
+
+    private void ProcessContractGeneration()
     {
         if (contracts.Count < contracts.Length)
         {
-            for (int i = 0; i < contracts.Length; i++)
-            {
-
-                contracts.InsertAtEnd(GenerateGatherContract());
-            }
+           
+           contracts.InsertAtEnd(GenerateGatherContract());
+            ProcessContractGeneration();
+            
         }
+    }
+    private void OnDestroy()
+    {
+        ContractManager.onContractFinished -= ContractManager_onContractFinished;
     }
 
     // Update is called once per frame
@@ -70,10 +92,6 @@ public class ContractGenerator : MonoBehaviour
             oresToUse.Add(element.oreName);
         }
         
-
-
-
-        
         for (int i = 0; i < numberOfGoals; i++)
         {
 
@@ -91,6 +109,30 @@ public class ContractGenerator : MonoBehaviour
 
         c.bips = Random.Range(30, 51);
         c.famePoints = Random.Range(30,41);
+
+        return c;
+
+    }
+
+
+    public Contract GenerateFightContract()
+    {
+        int numberOfGoals = Random.Range(1, 3);
+        Array<Goal> arr = new Array<Goal>(numberOfGoals);
+
+
+        for (int i = 0; i < numberOfGoals; i++)
+        {
+            int quantity = Random.Range(1, 5);
+
+           
+
+            arr.InsertAtEnd(new KillGoal("Drone",$"Kill {quantity} Drones",quantity));
+        }
+        Contract c = new Contract(Contract.ContractType.combat, arr);
+
+        c.bips = Random.Range(30, 51);
+        c.famePoints = Random.Range(30, 41);
 
         return c;
 

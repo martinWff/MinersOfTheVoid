@@ -47,9 +47,6 @@ public class PirateExploosion : MonoBehaviour
     private float perEnemieShield;
     private float perEnemieHealth;
 
-    //UI
-    public Text bipText;
-
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +61,6 @@ public class PirateExploosion : MonoBehaviour
 
         lifebar.Setsize(perEnemieHealthTotal);
         shieldbar.Setsize2(perEnemieShieldTotal);
-        bipText = GameObject.Find("Bips").GetComponent<Text>();
 
     }
 
@@ -97,9 +93,7 @@ public class PirateExploosion : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
         }*/
-        Debug.Log(transform.position);
-        Debug.Log(targetPosition);
-        Debug.Log(attack);
+
         if (transform.position == targetPosition && attack == true)
         {
 
@@ -139,7 +133,7 @@ public class PirateExploosion : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += Random.Range(3, 5);
-                bipText.text = "Bips: " + SavePlayerStats.bips;
+                CombatSystem.onDied?.Invoke("Drone");
 
                 Destroy(transform.parent.gameObject);
 

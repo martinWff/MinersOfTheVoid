@@ -6,44 +6,49 @@ using UnityEngine.UI;
 
 public class ContractFeedBackBehaviour : MonoBehaviour
 {
-    public Image panel;
-    public Text textObject;
+    private static ContractFeedBackBehaviour instance;
+    public GameObject panel;
+    public Text statusText;
+    public Text rewardText;
     // Start is called before the first frame update
     void Awake()
     {
-        ContractManager.onContractAccepted += OnContractAccepted;
-        ContractManager.onContractFinished += OnContractFinished;
-        panel.enabled = true;
-        textObject.gameObject.SetActive(true);
-        gameObject.SetActive(false);
+        if (instance == null)
+        {
+            ContractManager.onContractAccepted += OnContractAccepted;
+            ContractManager.onContractFinished += OnContractFinished;
+            instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    
     public void OnContractAccepted(Contract contract)
     {
-        // textObject.text = "New contract accepted";
-
         Show("New contract accepted");
     }
     public void OnContractFinished(Contract contract)
     {
-        //   textObject.text = "You sucessfully finished the contract";
-        Show("You sucessfully finished the contract");
+        string contractReward = $"Reward: <color=red> +{contract.bips} Bips </color>  <color=purple>+{contract.famePoints} XP </color>";
+        ShowWithReward("You sucessfully finished the contract",contractReward);
 
 
     }
 
     public void Show(string text)
     {
-        gameObject.SetActive(true);
-        textObject.text = text;
+        panel.SetActive(true);
+        statusText.text = text;
         StartCoroutine(HideAfter(5));
+
+    }
+
+    public void ShowWithReward(string text,string reward)
+    {
+        rewardText.gameObject.SetActive(true);
+        rewardText.text = reward;
+        Debug.Log(reward);
+        Show(text);
+        
 
     }
 
@@ -51,6 +56,10 @@ public class ContractFeedBackBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
 
-        gameObject.SetActive(false);
+        panel.SetActive(false);
+        if (rewardText.gameObject.activeSelf)
+        {
+            rewardText.gameObject.SetActive(false);
+        }
     }
 }

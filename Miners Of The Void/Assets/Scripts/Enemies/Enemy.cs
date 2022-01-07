@@ -44,14 +44,11 @@ public class Enemy : MonoBehaviour
     //bool enemy Planet
     public bool enemyPlanet = false;
 
-    //UI
-    public Text bipText;
+
 
 
     void Start()
     {
-        bipText = GameObject.Find("Bips").GetComponent<Text>();
-        bipText.text = "Bips: " + SavePlayerStats.bips;
         if (enemyPlanet == true)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -144,24 +141,19 @@ public class Enemy : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
-                
-                bipText.text = "Bips: " + SavePlayerStats.bips;
 
-                
+
+                CombatSystem.onDied?.Invoke("Shooter");
                 Destroy(transform.parent.gameObject);
 
                 boss?.Invoke(transform.parent.gameObject);
 
             }
 
-            Debug.Log(enemieHealth);
             perEnemyLife = enemieHealth / enemieHealthTotal;
             perEnemyShield = shield / totalShield;
             lifebar.Setsize(perEnemyLife);
             shieldbar.Setsize2(perEnemyShield);
-
-            Debug.Log(enemieHealth);
-            Debug.Log(shield);
 
             Destroy(collision.gameObject);
         }
