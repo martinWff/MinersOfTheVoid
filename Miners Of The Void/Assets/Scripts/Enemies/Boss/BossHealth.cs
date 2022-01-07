@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
+
+    public EntityController tpPlayer;
 
 
     //boss stats
@@ -69,7 +72,7 @@ public class BossHealth : MonoBehaviour
                 Destroy(lifebar.gameObject);
 
                 Debug.Log("Boss is Dead!!");
-                
+                SceneManager.LoadScene(2);
 
             }
 
@@ -79,7 +82,7 @@ public class BossHealth : MonoBehaviour
 
             if(perBossLife < 0.666 && phaseChanger == 3)
             {
-                Debug.Log("Itto is alot better than hu tao");
+
                 phaseController.RandomNumber();
                 phaseChanger = 2;
             }
@@ -87,26 +90,14 @@ public class BossHealth : MonoBehaviour
             if (perBossLife < 0.333 && phaseChanger == 2)
             {
 
-                Debug.Log("Hu tao");
+
                 phaseController.RandomNumber();
                 phaseChanger = 1;
             }
 
-            //Debug.Log(bossHealth);
-           
-
-
-            //Debug.Log(bossHealth);
-            //Debug.Log(shield);
 
             Destroy(collision.gameObject);
         }
-    }
-
-
-    private void WinBoss()
-    {
-
     }
 
 

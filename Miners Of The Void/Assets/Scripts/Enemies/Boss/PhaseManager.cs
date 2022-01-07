@@ -6,7 +6,7 @@ public class PhaseManager : MonoBehaviour
 {
     //number
     private int randomNumber = 0;
-    private int previousPhase;
+    private int previousPhase = 0;
 
     //phases
     public PhaseI phaseI;

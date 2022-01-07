@@ -154,7 +154,7 @@ public class PhaseI : MonoBehaviour
     public void PhaseEnd()
     {
         Destroy(shockwave);
-        miniom2.GetComponent<safeArea>().player.GetComponent<HealthBar>().immortality = false;
+        //miniom2.GetComponent<safeArea>().player.GetComponent<HealthBar>().immortality = false;
         Destroy(miniom2);
         spawnAreaBool = false;
         enabled = false;
