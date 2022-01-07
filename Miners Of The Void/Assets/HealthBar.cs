@@ -94,7 +94,7 @@ public class HealthBar : MonoBehaviour
                 }
                 if (hp <= 0)
                 {
-                    if (gameObject.tag == "Player" || gameObject.tag == "Spaceship") entity.SceneChanger(0);
+                    if (gameObject.tag == "Player" || gameObject.tag == "Spaceship") entity.SceneChanger(2);
                     
                 }
                 if (collision.gameObject.tag != "PirateExplosion" && collision.gameObject.tag != "Lazer")

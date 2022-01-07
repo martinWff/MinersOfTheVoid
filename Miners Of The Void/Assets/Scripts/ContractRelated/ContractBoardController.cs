@@ -8,7 +8,6 @@ public class ContractBoardController : MonoBehaviour
     public ContractNPC contractNPC;
     public GameObject contractUI;
     public GameObject goalUI;
-    public Contract uniqueContract;
     public Button accept;
     public GameObject contractPanelBoard;
     public Transform contractPanelList;
@@ -35,7 +34,7 @@ public class ContractBoardController : MonoBehaviour
         }
     }
 
-    public void ContractCreator_onContractGenerated(Contract contract)
+  /*  public void ContractCreator_onContractGenerated(Contract contract)
     {
         //      GameObject copy = Instantiate(contractUI, transform);
         uniqueContract = contract;
@@ -49,7 +48,7 @@ public class ContractBoardController : MonoBehaviour
            
         }
 
-    }
+    }*/
 
     private void CreateContractLabel(Contract contract)
     {

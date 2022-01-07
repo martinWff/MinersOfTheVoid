@@ -5,7 +5,7 @@ using System;
 
 public static class CombatSystem
 {
-    public static Action<string> onDied;
+    public static Action<string,bool> onDied;
 
-    public static Action<int> onDamageDealt;
+    public static Action<float,string,bool> onDamageDealt;
 }

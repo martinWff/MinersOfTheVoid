@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class BipsUIController : MonoBehaviour
 {
     public Text bipsText;
+    public Text experienceText;
     private int currentBips = -1;
+    private int currentXP;
 
     private void Update()
     {
@@ -14,6 +16,13 @@ public class BipsUIController : MonoBehaviour
         {
             currentBips = SavePlayerStats.bips;
             bipsText.text = "Bips: " + currentBips;
+        }
+        if (experienceText != null)
+        {
+            if (currentXP != SavePlayerStats.rp)
+            {
+                experienceText.text = "XP: "+SavePlayerStats.rp;
+            }
         }
     }
 }

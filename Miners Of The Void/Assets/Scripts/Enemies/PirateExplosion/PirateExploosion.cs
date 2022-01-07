@@ -12,6 +12,8 @@ public class PirateExploosion : MonoBehaviour
     private Rigidbody2D enemy;
     public float enemyRange = 20;
     public float speed = 15;
+    bool died;
+    public EnemyData enemyData;
 
     [SerializeField] private lifebar lifebar;
     [SerializeField] private shieldbar shieldbar;
@@ -47,9 +49,6 @@ public class PirateExploosion : MonoBehaviour
     private float perEnemieShield;
     private float perEnemieHealth;
 
-    //UI
-    public Text bipText;
-
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +63,6 @@ public class PirateExploosion : MonoBehaviour
 
         lifebar.Setsize(perEnemieHealthTotal);
         shieldbar.Setsize2(perEnemieShieldTotal);
-        bipText = GameObject.Find("Bips").GetComponent<Text>();
 
     }
 
@@ -97,9 +95,7 @@ public class PirateExploosion : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
         }*/
-        Debug.Log(transform.position);
-        Debug.Log(targetPosition);
-        Debug.Log(attack);
+
         if (transform.position == targetPosition && attack == true)
         {
 
@@ -130,8 +126,13 @@ public class PirateExploosion : MonoBehaviour
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
             {
-                if (shield != 0) enemieHealth -= (playerdmg - shield);
-
+                float enemyHealthSubtraction = (playerdmg - shield);
+                if (shield != 0)
+                {
+                    enemieHealth -= enemyHealthSubtraction;
+                    enemyData.OnDamageReceived(enemyHealthSubtraction);
+                }
+                
                 shield = 0;
             }
             if (enemieHealth <= 0)
@@ -139,9 +140,14 @@ public class PirateExploosion : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += Random.Range(3, 5);
-                bipText.text = "Bips: " + SavePlayerStats.bips;
+                if (!died) {
+                    // CombatSystem.onDied?.Invoke("Drone");
+                    //    Debug.Log("destroyed");
+                    died = true;
+                    enemyData.OnKilled();
 
                 Destroy(transform.parent.gameObject);
+                    }
 
                 boss?.Invoke(gameObject);
             }

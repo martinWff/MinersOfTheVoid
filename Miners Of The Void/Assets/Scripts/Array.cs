@@ -82,7 +82,16 @@ public class Array<T>
         }
 
     }
-
+    public bool Remove(T value)
+    {
+       for (int i = 0;i<data.Length;i++)
+        {
+           if (Get(i).Equals(value)) {
+                return RemoveAt(i);
+            }
+        }
+        return false;
+    }
 
     public IEnumerator<T> GetEnumerator()
     {

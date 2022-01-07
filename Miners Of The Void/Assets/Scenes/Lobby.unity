@@ -5038,6 +5038,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4373045603281658320, guid: 5afdbb2474300ee409c7ee2ffed25011, type: 3}
   m_PrefabInstance: {fileID: 1315208817}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1111701690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111701691}
+  - component: {fileID: 1111701693}
+  - component: {fileID: 1111701692}
+  m_Layer: 5
+  m_Name: Experience
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1111701691
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111701690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1166462590}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 868, y: 458}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1111701692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111701690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'XP: '
+--- !u!222 &1111701693
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111701690}
+  m_CullTransparentMesh: 1
 --- !u!1 &1129632575
 GameObject:
   m_ObjectHideFlags: 0
@@ -6877,6 +6956,7 @@ RectTransform:
   - {fileID: 1703414664}
   - {fileID: 422313037}
   - {fileID: 1766828663}
+  - {fileID: 1111701691}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6898,6 +6978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bipsText: {fileID: 193399557}
+  experienceText: {fileID: 1111701692}
 --- !u!4 &1174589719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
@@ -9648,6 +9729,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1041434089, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
+      propertyPath: enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041434089, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
+      propertyPath: enemies.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ec79de13b39334f81d764d20af8583, type: 3}
+    - target: {fileID: 1041434089, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
+      propertyPath: enemies.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f59d1392f3ff6254a86e5076110e5e10, type: 3}
+    - target: {fileID: 1041434089, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
+      propertyPath: enemies.Array.data[0].enemyName
+      value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041434089, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
+      propertyPath: enemies.Array.data[1].enemyName
+      value: Drone
+      objectReference: {fileID: 0}
     - target: {fileID: 8074817253125504186, guid: f3d97fb9f78e50340af4b57dedc53951, type: 3}
       propertyPath: inventoryPanelTransform
       value: 

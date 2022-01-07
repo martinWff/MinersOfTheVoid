@@ -15,6 +15,8 @@ public class ContractElementUIBoard : MonoBehaviour
 
     public Text prizeBipsText;
     public Text prizeXPText;
+
+    public Text contractTypeText;
     //   public List<System.Tuple<Text, Text, Image>> goalsData = new List<System.Tuple<Text, Text, Image>>();
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class ContractElementUIBoard : MonoBehaviour
 
         prizeBipsText.text = "+" + contract.bips + " <color=yellow>bips</color>";
         prizeXPText.text = "+" + contract.famePoints + " <color=purple>XP</color>";
+        contractTypeText.text = contract.contractType.ToString();
     }
 
     private void SetGoalData(Goal goalData,GameObject target)
