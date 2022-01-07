@@ -15,7 +15,7 @@ public class PhaseI : MonoBehaviour
     private Rigidbody2D boss;
     private GameObject bossG;
     private float bossSize;
-    
+
 
     //shoot
     public float shootTimer = 0;
@@ -32,7 +32,7 @@ public class PhaseI : MonoBehaviour
     private float safeAreaRadius;
     private bool spawnAreaBool = false;
     private int safeAreaCount = 0;
-    
+
 
     // rect1 spawn safe area
     private float rect1lessX;
@@ -85,25 +85,25 @@ public class PhaseI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(phaseION == false)
+        if (phaseION == false)
         {
             shootTimer = shootTimer + Time.deltaTime;
             phaseITimer = 0;
             safeAreaCount = 0;
             //Debug.Log(shootTimer);
         }
-        
+
 
         if (shootTimer >= 5)
         {
-            if(safeAreaCount == 0)
+            if (safeAreaCount == 0)
             {
                 spawnAreaBool = false;
             }
             phaseION = true;
             ShotShockWave();
         }
-        
+
     }
 
     private void ShotShockWave()
@@ -123,7 +123,7 @@ public class PhaseI : MonoBehaviour
             bulletShootTime -= Time.deltaTime;
         }
 
-        if(phaseITimer >= 8)
+        if (phaseITimer >= 8)
         {
             shootTimer = 0;
             phaseION = false;
@@ -132,14 +132,14 @@ public class PhaseI : MonoBehaviour
 
     private void SafeAreaSpawn()
     {
-        
+
         if (spawnAreaBool == false)
         {
-            
+
             //rect1
             rect1lessX = camPosXCurent + safeAreaRadius;
             rect1lessY = camPosYCurent - bossSize - 2 - safeAreaRadius;
-       
+
             //rect3
             rect3moreX = camPosXCurent + camdiv3 * 3 - safeAreaRadius;
             rect3moreY = camPosYCurent - camHeigth + safeAreaRadius;
@@ -147,7 +147,7 @@ public class PhaseI : MonoBehaviour
             spawnAreaBool = true;
             safeAreaCount = safeAreaCount + 1;
         }
-        
+
 
     }
 
@@ -160,7 +160,6 @@ public class PhaseI : MonoBehaviour
         enabled = false;
     }
 
-    
 
-    
+
 }
