@@ -32,7 +32,7 @@ public class ContractGenerator : MonoBehaviour
         if (contracts.Count < contracts.Length)
         {
            
-           contracts.InsertAtEnd(GenerateCombatContract());
+           contracts.InsertAtEnd(GenerateRandomContract());
             ProcessContractGeneration();
             
         }
@@ -48,34 +48,15 @@ public class ContractGenerator : MonoBehaviour
         
     }
     
-    public void CreateContract()
-    {
-        if (ContractManager.contractsLeftUntilBoss < 0)
-        {
-        
-        } 
-    }
-
-    public Contract GenerateContract()
-    {
-
-
-        if (ContractManager.contractsLeftUntilBoss < 0)
-        {
-            return GenerateBossContract();
-        }
-
-        return null;
-       
-    }
 
     public Contract GenerateBossContract()
     {
+        
         Array<Goal> arr = new Array<Goal>(1);
         arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,null));
 
         Contract c = new Contract(Contract.ContractType.position, arr);
-
+        Debug.Log("something");
         return c;
 
     }
@@ -146,15 +127,30 @@ public class ContractGenerator : MonoBehaviour
 
     public Contract GenerateRandomContract()
     {
-        int choice = Random.Range(0, 5);
+       
 
-        if (choice < 3)
+        return GenerateBossContract();
+
+        if (SavePlayerStats.rp < 5)
         {
-           return GenerateGatherContract();
-        } else
-        {
-          return GenerateCombatContract();
+            int choice = Random.Range(0, 5);
+
+            if (choice < 3)
+            {
+                return GenerateGatherContract();
+            }
+            else
+            {
+                return GenerateCombatContract();
+            }
         }
+        else
+        {
+            return GenerateBossContract();
+        }
+
+
+
       
     }
 

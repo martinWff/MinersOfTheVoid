@@ -95,7 +95,20 @@ public class CharacterMovement : MonoBehaviour
                     //transform.position = inicialPos;
                     GetComponent<EntityController>().disableEntity(false);
                 }
-            if (collision.gameObject.tag == "SceneLoader") player2.SceneChanger(3);
+
+                if (collision.gameObject.tag == "SceneLoader")
+                {
+                    if(PlayerContracts.instance.acceptedContract?.contractType == Contract.ContractType.position)
+                    {
+                        player2.SceneChanger(5);
+                    }
+                    else
+                    {
+                        player2.SceneChanger(3);
+                    }
+                            
+
+                }
 
             }
             
