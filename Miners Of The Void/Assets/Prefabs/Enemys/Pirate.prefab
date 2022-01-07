@@ -343,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifebar: {fileID: 2650102424477798831}
   shieldbar: {fileID: 2650102425571651707}
+  enemyData: {fileID: 4370854283594097988}
   bulletPrefab: {fileID: 9068906604437571471, guid: 7d7571cbca5234041b52214aab336b62, type: 3}
   bulletOffset: 1
   bulletSpeed: 14
@@ -356,7 +357,6 @@ MonoBehaviour:
   shield: 10
   playerdmg: 0
   enemyPlanet: 0
-  bipText: {fileID: 0}
 --- !u!50 &2650102424578223493
 Rigidbody2D:
   serializedVersion: 4
@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 2650102425109889625}
   - component: {fileID: 2650102425109889622}
   - component: {fileID: 2650102425109889623}
+  - component: {fileID: 4370854283594097988}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Enemy
@@ -663,6 +664,20 @@ MonoBehaviour:
   speed: 3
   human: 0
   nearPlayer: 15
+--- !u!114 &4370854283594097988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650102425109889620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3fb80e422e7174abc4730a978747f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlanetary: 0
+  enemyName: Shooter
 --- !u!1 &2650102425571651705
 GameObject:
   m_ObjectHideFlags: 0

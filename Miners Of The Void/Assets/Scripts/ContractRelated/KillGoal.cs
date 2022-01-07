@@ -5,12 +5,14 @@ using UnityEngine;
 public class KillGoal : Goal
 {
     public string enemyId;
-    public KillGoal(string enemyId, string description, int requiredAmount)
+    public KillGoal(string enemyId, string description, int requiredAmount,Sprite sprite)
     {
 
         this.enemyId = enemyId;
-        this.description = description;
+        string fdescription = description.Replace("{name}", enemyId);
+        this.description = fdescription.Replace("{quantity}", requiredAmount.ToString());
         this.requiredAmount = requiredAmount;
+        this.sprite = sprite;
 
 
     }
@@ -19,7 +21,6 @@ public class KillGoal : Goal
     {
         base.Init();
         CombatSystem.onDied += OnKilled;
-        //  Inventory.onInventoryChanged += OnGathered;
     }
 
     public override void Dispose()
@@ -29,7 +30,7 @@ public class KillGoal : Goal
     }
 
 
-    void OnKilled(string killedEntity)
+    void OnKilled(string killedEntity,bool isPlanetary)
     {
         if (enemyId == killedEntity)
             {

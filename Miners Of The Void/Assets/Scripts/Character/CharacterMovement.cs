@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
         }
-        if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
+     //   if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
        
     }
 
@@ -61,8 +61,9 @@ public class CharacterMovement : MonoBehaviour
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
                 rb.SetRotation(angle);
             }
-            if (gameObject.tag == "Spaceship") rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
-            else rb.velocity = (verticalInput * Vector2.up * movementSpeed.value) + (horizontalInput * Vector2.right * movementSpeed.value);
+            rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
+          /*  if (gameObject.tag == "Spaceship") rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
+            else rb.velocity = (verticalInput * Vector2.up * movementSpeed.value) + (horizontalInput * Vector2.right * movementSpeed.value);*/
         }
         else
         {

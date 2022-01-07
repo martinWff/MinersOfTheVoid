@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public shieldbar shieldbar;
 
     public System.Action<GameObject> boss;
-
+    private bool died;
+    public EnemyData enemyData;
 
     //Enemy shoot
     public GameObject bulletPrefab;
@@ -126,12 +127,16 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-          
+         
 
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
             {
-                if (shield != 0) enemieHealth -= (playerdmg - shield);
+                float dmgReduction = (playerdmg - shield);
+                if (shield != 0) { 
+                    enemieHealth -= dmgReduction;
+                    enemyData.OnDamageReceived(dmgReduction);
+                }
 
                 shield = 0;
             }
@@ -142,8 +147,12 @@ public class Enemy : MonoBehaviour
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
 
-
-                CombatSystem.onDied?.Invoke("Shooter");
+                if (!died)
+                {
+                 //   CombatSystem.onDied?.Invoke("Shooter");
+                    died = true;
+                    enemyData.OnKilled();
+                }
                 Destroy(transform.parent.gameObject);
 
                 boss?.Invoke(transform.parent.gameObject);

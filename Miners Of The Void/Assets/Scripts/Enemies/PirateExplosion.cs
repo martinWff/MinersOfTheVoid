@@ -135,7 +135,7 @@ public class PirateExplosion : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += Random.Range(3, 5);
-                bipText.text = "Bips: " + SavePlayerStats.bips;
+                
                 Destroy(gameObject);
 
                 boss?.Invoke(gameObject);

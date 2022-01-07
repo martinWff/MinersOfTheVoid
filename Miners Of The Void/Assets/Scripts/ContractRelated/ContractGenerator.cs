@@ -22,7 +22,7 @@ public class ContractGenerator : MonoBehaviour
     {
         if (contracts.Contains(contract))
         {
-            bool wasRemoved = contracts.Remove(contract);
+            contracts.Remove(contract);
         }
         ProcessContractGeneration();
     }
@@ -32,7 +32,7 @@ public class ContractGenerator : MonoBehaviour
         if (contracts.Count < contracts.Length)
         {
            
-           contracts.InsertAtEnd(GenerateGatherContract());
+           contracts.InsertAtEnd(GenerateCombatContract());
             ProcessContractGeneration();
             
         }
@@ -72,7 +72,7 @@ public class ContractGenerator : MonoBehaviour
     public Contract GenerateBossContract()
     {
         Array<Goal> arr = new Array<Goal>(1);
-        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1));
+        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,null));
 
         Contract c = new Contract(Contract.ContractType.position, arr);
 
@@ -115,7 +115,7 @@ public class ContractGenerator : MonoBehaviour
     }
 
 
-    public Contract GenerateFightContract()
+    public Contract GenerateCombatContract()
     {
         int numberOfGoals = Random.Range(1, 3);
         Array<Goal> arr = new Array<Goal>(numberOfGoals);
@@ -124,10 +124,16 @@ public class ContractGenerator : MonoBehaviour
         for (int i = 0; i < numberOfGoals; i++)
         {
             int quantity = Random.Range(1, 5);
+            int goalType = Random.Range(0, 3);
 
-           
+            EnemyElement enemyElement = UpgradeLoader.instance.enemies[Random.Range(0, UpgradeLoader.instance.enemies.Length)];
+            if (goalType <= 1) {
+                arr.InsertAtEnd(new KillGoal(enemyElement.enemyName, "Kill {quantity} {name}(s)", quantity, enemyElement.sprite));
+            } else {
 
-            arr.InsertAtEnd(new KillGoal("Drone",$"Kill {quantity} Drones",quantity));
+                int quantityOffset = Random.Range(80, 200);
+                arr.InsertAtEnd(new DamageGoal(enemyElement.enemyName, "Deal {quantity} damage to {name}",quantity + quantityOffset, enemyElement.sprite));
+            }
         }
         Contract c = new Contract(Contract.ContractType.combat, arr);
 
@@ -136,6 +142,20 @@ public class ContractGenerator : MonoBehaviour
 
         return c;
 
+    }
+
+    public Contract GenerateRandomContract()
+    {
+        int choice = Random.Range(0, 5);
+
+        if (choice < 3)
+        {
+           return GenerateGatherContract();
+        } else
+        {
+          return GenerateCombatContract();
+        }
+      
     }
 
 }

@@ -5,11 +5,18 @@ using UnityEngine;
 public class UpgradeLoader : MonoBehaviour
 {
     public UpgradeElement[] upgrades;
+    public EnemyElement[] enemies;
+    public static UpgradeLoader instance;
     // Start is called before the first frame update
     void Awake()
     {
-        SaveManager.saveStarted += OnSaveUpgrades;
-        SaveManager.saveLoaded += OnLoadUpgrades;
+        if (instance == null)
+        {
+            SaveManager.saveStarted += OnSaveUpgrades;
+            SaveManager.saveLoaded += OnLoadUpgrades;
+        
+            instance = this;
+        }
     }
 
     void OnSaveUpgrades(SavedData sv)
@@ -39,4 +46,10 @@ public struct UpgradeElement
 {
     public string upgradeName;
     public Sprite upgradeSprite;
+}
+[System.Serializable]
+public struct EnemyElement
+{
+    public string enemyName;
+    public Sprite sprite;
 }

@@ -12,6 +12,8 @@ public class PirateExploosion : MonoBehaviour
     private Rigidbody2D enemy;
     public float enemyRange = 20;
     public float speed = 15;
+    bool died;
+    public EnemyData enemyData;
 
     [SerializeField] private lifebar lifebar;
     [SerializeField] private shieldbar shieldbar;
@@ -124,8 +126,13 @@ public class PirateExploosion : MonoBehaviour
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
             {
-                if (shield != 0) enemieHealth -= (playerdmg - shield);
-
+                float enemyHealthSubtraction = (playerdmg - shield);
+                if (shield != 0)
+                {
+                    enemieHealth -= enemyHealthSubtraction;
+                    enemyData.OnDamageReceived(enemyHealthSubtraction);
+                }
+                
                 shield = 0;
             }
             if (enemieHealth <= 0)
@@ -133,9 +140,14 @@ public class PirateExploosion : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += Random.Range(3, 5);
-                CombatSystem.onDied?.Invoke("Drone");
+                if (!died) {
+                    // CombatSystem.onDied?.Invoke("Drone");
+                    //    Debug.Log("destroyed");
+                    died = true;
+                    enemyData.OnKilled();
 
                 Destroy(transform.parent.gameObject);
+                    }
 
                 boss?.Invoke(gameObject);
             }
