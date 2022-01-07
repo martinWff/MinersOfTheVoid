@@ -56,7 +56,7 @@ public class ContractGenerator : MonoBehaviour
         arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,null));
 
         Contract c = new Contract(Contract.ContractType.position, arr);
-        Debug.Log("something");
+        //Debug.Log("something");
         return c;
 
     }
