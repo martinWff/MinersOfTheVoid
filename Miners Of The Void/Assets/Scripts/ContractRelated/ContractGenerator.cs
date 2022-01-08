@@ -58,11 +58,14 @@ public class ContractGenerator : MonoBehaviour
     {
         
         Array<Goal> arr = new Array<Goal>(1);
-        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,null));
+
+        EnemyElement value;
+        ArrayUtils.FindAndGet<EnemyElement>(UpgradeLoader.instance.enemies, (EnemyElement e) => { return e.enemyName == "boss"; },out value);
+
+        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,value.sprite));
 
         Contract c = new Contract(Contract.ContractType.position, arr);
         c.bips = 120;
-        //Debug.Log("something");
         return c;
 
     }
@@ -141,8 +144,6 @@ public class ContractGenerator : MonoBehaviour
 
     public Contract GenerateRandomContract()
     {
-        return GenerateBossContract();
-
         if (SavePlayerStats.rp < 5)
         {
             return GenerateCommonContracts();

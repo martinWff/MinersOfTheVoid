@@ -15,4 +15,13 @@ public static class SavePlayerStats
     //Money
     public static int bips = 
         0;
+    
+    public static float GetWorldLevelValue(float baseValue,int worldLevel)
+    {
+        return baseValue * (Mathf.Pow(1.4f,worldLevel));
+    }
+    public static int GetWorldLevelValueINT(float baseValue, int worldLevel)
+    {
+        return Mathf.CeilToInt(GetWorldLevelValue(baseValue, worldLevel));
+    }
 }

@@ -38,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour
     {
 
         //   Debug.DrawLine((transform.position + transform.up), (transform.position + transform.up)+offset);
-        Debug.DrawLine(transform.position, transform.position + (transform.right*2));
+     //   Debug.DrawLine(transform.position, transform.position + (transform.right*2));
         if (currentPosition != transform.position || currentDirection != transform.rotation || reload)
         {
             currentPosition = transform.position;
