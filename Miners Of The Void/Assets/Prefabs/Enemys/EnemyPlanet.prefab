@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3675611969424350210}
   - component: {fileID: 3675611969424350208}
   - component: {fileID: 3675611969424350209}
+  - component: {fileID: 1445522720}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -131,11 +132,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifebar: {fileID: 3675611970599788769}
   shieldbar: {fileID: 3675611970314843022}
+  enemyData: {fileID: 1445522720}
   bulletPrefab: {fileID: 9068906604437571471, guid: 7d7571cbca5234041b52214aab336b62, type: 3}
   bulletOffset: 2
   bulletSpeed: 14
   bulletCooldownTime: 1.5
-  enemyRange: 20
+  enemyRange: 15
   perEnemieHealthTotal: 1
   perEnemieShieldTotal: 1
   enemieHealthTotal: 20
@@ -144,7 +146,6 @@ MonoBehaviour:
   shield: 10
   playerdmg: 0
   enemyPlanet: 1
-  bipText: {fileID: 0}
 --- !u!50 &3675611969424350208
 Rigidbody2D:
   serializedVersion: 4
@@ -182,6 +183,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!114 &1445522720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675611969424350237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3fb80e422e7174abc4730a978747f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlanetary: 1
+  enemyName: Shooter
 --- !u!1 &3675611969606721460
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +211,7 @@ GameObject:
   - component: {fileID: 3675611969606721471}
   m_Layer: 0
   m_Name: EnemyPlanet
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,8 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f683ae7e8997bd84a8119e667eda4f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRange: 6
-  speed: 3
+  enemyRange: 15
+  speed: 2
   human: 1
   nearPlayer: 15
 --- !u!50 &3675611969606721471
