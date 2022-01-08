@@ -10,42 +10,26 @@ public class ContractNPC : MonoBehaviour
     bool isPlayerInside;
     public KeybindController keybind;
     public InteractionArea interaction;
-    [HideInInspector]public bool disabled;
+    [HideInInspector] public bool disabled;
     // Start is called before the first frame update
     void Awake()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerInside && !disabled && Input.GetButtonDown("Interaction"))
+        if (interaction.playerInside != null && !disabled && Input.GetButtonDown("Interaction"))
         {
 
             disabled = true;
 
             prefab.GetComponent<ContractBoardController>().contractNPC = this;
             prefab.SetActive(true);
-            keybind.Show(false);
-            
-        }
-    }
 
-    public void OnEnterArea()
-    {
-        isPlayerInside = true;
-        keybind.SetPosition(transform.position+interaction.uIKeyBindPosition);
-        keybind.Show(true);
-    }
-    public void OnExitArea()
-    {
-        isPlayerInside = false;
-        keybind.Show(false);
-    }
-    public void OnStayArea()
-    {
-        keybind.SetPosition(transform.position + interaction.uIKeyBindPosition);
+
+        }
     }
 }
