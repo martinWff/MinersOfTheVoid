@@ -32,18 +32,6 @@ public class InteractionArea : MonoBehaviour
       
     }
 
-  /*  private void LateUpdate()
-    {
-        if (showKeyBind && playerIsInside)
-        {
-            if (onUpdateKeybindPosition != null)
-            {
-               onUpdateKeybindPosition?.Invoke((transform.position + uIKeyBindPosition));
-            }
-        }
-    }*/
-
-
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Spaceship"))

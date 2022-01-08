@@ -15,5 +15,5 @@ MonoBehaviour:
   oreName: Rock
   oreSprite: {fileID: 21300000, guid: 42f857ac97eaf384cb344f6a98d048fb, type: 3}
   materialResourceObjects: []
-  tile: {fileID: 11400000, guid: 06b34be8c828ffb449e8e67f42eb85d0, type: 2}
+  tile: {fileID: 11400000, guid: 4df587b78e0372c4696a48b850b75ca7, type: 2}
   oreBaseRarity: 0

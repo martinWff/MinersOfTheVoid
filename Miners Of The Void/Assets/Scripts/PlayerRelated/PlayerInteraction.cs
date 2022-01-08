@@ -19,13 +19,12 @@ public class PlayerInteraction : MonoBehaviour
     private Vector3Int targetedVector;
     private Vector3Int previousVector;
     private RaycastHit2D previousHit;
-    private bool reload = true;
-
     public int dropAmount = 2;
 
     public CharacterStat precision;
     public CharacterStat miningSpeed;
-    
+
+    private bool keybindDebounce;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +36,12 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
 
-        //   Debug.DrawLine((transform.position + transform.up), (transform.position + transform.up)+offset);
+       //   Debug.DrawLine((transform.position + transform.up), (transform.position + transform.up)+offset);
      //   Debug.DrawLine(transform.position, transform.position + (transform.right*2));
-        if (currentPosition != transform.position || currentDirection != transform.rotation || reload)
+        if (currentPosition != transform.position || currentDirection != transform.rotation)
         {
             currentPosition = transform.position;
             currentDirection = transform.rotation;
-            reload = false;
 
             //    RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.right * xOffset), transform.right,range,LayerMask.GetMask("Interactable"));
             //RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.up), transform.right, range, LayerMask.GetMask("Interactable"));
@@ -57,7 +55,7 @@ public class PlayerInteraction : MonoBehaviour
                 //    targetedVector = colliderMap.WorldToCell(transform.position + (transform.right * (raycastHit.distance)));
                 targetedVector = colliderMap.WorldToCell(transform.position + (transform.right * (raycastHit.distance+1f)));
 
-
+           //     Debug.Log(raycastHit.distance);
                 Vector3 vec = colliderMap.CellToWorld(targetedVector);
                     Tile targetTile = colliderMap.GetTile<Tile>(targetedVector);
                 if (targetTile != null)
@@ -74,7 +72,9 @@ public class PlayerInteraction : MonoBehaviour
                         //    oreTilemap.SetTile(vec, null);
                     }
                     previousHit = raycastHit;
+                    
                     controller.Show(true, vec+offset);
+                    keybindDebounce = true;
                     
                     if (targetedVector != previousVector)
                     {
@@ -93,7 +93,11 @@ public class PlayerInteraction : MonoBehaviour
                } else
                  {
                 interactableTargeted = null;
-                controller.Show(false, Vector2.zero);
+                if (keybindDebounce)
+                {
+                    controller.Show(false, Vector2.zero);
+                    keybindDebounce = false;
+                }
                   }
         }
 
@@ -105,11 +109,14 @@ public class PlayerInteraction : MonoBehaviour
                 {
                   //  TooltipController.SetText($"Ore: {interactableTargeted}");
                     colliderMap.SetTile(targetedVector, null);
-                    reload = true;
+               //     reload = true;
                     MaterialResourceObject mat = OreManager.instance.GetOreMaterialByMaterialName(interactableTargeted);
                     if (mat != null)
                     {
-                        PlayerInventory.staticInventory.AddOre(mat.GetOreStack(2));
+                        Debug.Log("drop ammount");
+                        PlayerInventory.staticInventory.AddOre(mat.GetOreStack(dropAmount));
+                        holdTime = 0;
+                        keybindDebounce = true;
                     }
                     
                     //    oreTilemap.SetTile(vec, null);

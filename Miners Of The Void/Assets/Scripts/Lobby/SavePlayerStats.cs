@@ -10,8 +10,24 @@ public static class SavePlayerStats
     public static bool immortality = false;
     public static int level = 1;
     public static int rp = 0;
-    public static int requireRp;
-
+    
+    
+    //used to cache the required rp for level up
+    private static int requiredRp;
+    private static int dirtyLevel;
+  
+    public static int GetRequiredRP()
+    {
+        if (dirtyLevel == level)
+        {
+            return requiredRp;
+        }else
+        {
+            requiredRp = GetWorldLevelValueINT(150,level);
+            dirtyLevel = level;
+            return requiredRp;
+        }
+    }
 
     //Money
     public static int bips = 

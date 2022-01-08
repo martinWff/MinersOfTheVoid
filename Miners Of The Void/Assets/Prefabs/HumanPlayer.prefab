@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6908643661827950554}
   - component: {fileID: 6612837595655447796}
   - component: {fileID: 2080799885}
-  - component: {fileID: 1114001064}
   - component: {fileID: 1479208916}
   - component: {fileID: 1479208917}
   - component: {fileID: 1479208922}
@@ -138,28 +137,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.614854, y: 0.6341107}
   m_EdgeRadius: 0
---- !u!114 &1114001064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6479248026894717176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58d931e9886bfc4f9b286801712afa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  range: 2
-  offset: {x: 0.5, y: 0.5, z: 0}
-  colliderMap: {fileID: 0}
-  defaultHoldTime: 1
-  dropAmount: 2
-  precision:
-    baseValue: 0
-  miningSpeed:
-    baseValue: 0
 --- !u!114 &1479208916
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class BipsUIController : MonoBehaviour
     public Text bipsText;
     public Text experienceText;
     private int currentBips = -1;
-    private int currentXP;
+    private int currentXP = -1;
 
     private void Update()
     {
@@ -21,7 +21,7 @@ public class BipsUIController : MonoBehaviour
         {
             if (currentXP != SavePlayerStats.rp)
             {
-                experienceText.text = "XP: "+SavePlayerStats.rp;
+                experienceText.text = "XP: "+SavePlayerStats.rp+"/"+SavePlayerStats.GetRequiredRP();
             }
         }
     }
