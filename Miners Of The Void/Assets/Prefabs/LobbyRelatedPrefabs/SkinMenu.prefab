@@ -868,6 +868,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinID: 0
   skin0: {fileID: 21300000, guid: 837748e5b0ec62349b91cbe607cf4f19, type: 3}
+  skin1: {fileID: 0}
+  skin2: {fileID: 0}
+  anim0: {fileID: 0}
+  anim1: {fileID: 0}
+  anim2: {fileID: 0}
 --- !u!1 &2486808496770430282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2486808496894360621}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2486808496755152112}
+        m_TargetAssemblyTypeName: SkinShop, Assembly-CSharp
+        m_MethodName: ChooseSkin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2722829285291964573
 GameObject:
   m_ObjectHideFlags: 0

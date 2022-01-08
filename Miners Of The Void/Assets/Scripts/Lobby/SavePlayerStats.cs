@@ -7,20 +7,21 @@ public static class SavePlayerStats
     //Skin
     public static Sprite currentSkin;
     public static int skinId;
-    public static Animation anim;
+    public static Animator anim;
 
     //cheats
     public static bool immortality = false;
     public static int level = 1;
     public static int rp = 0;
     public static int requieredRp = 200;
+    
 
 
     //used to cache the required rp for level up
 
 
     //Money
-    public static int coins = 0;
+    public static int coins = 50;
     public static int bips = 200;
     
     public static bool UpgradeLevel()

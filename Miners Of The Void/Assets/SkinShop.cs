@@ -8,7 +8,10 @@ public class SkinShop : MonoBehaviour
     public Sprite skin0;
     public Sprite skin1;
     public Sprite skin2;
-    public Sprite skin3;
+    public Animator anim0;
+    public Animator anim1;
+    public Animator anim2;
+
     private GameObject player;
     private GameObject human;
     private int idSkin;
@@ -26,22 +29,26 @@ public class SkinShop : MonoBehaviour
         {
             player.GetComponent<SpriteRenderer>().sprite = skin0;
             SavePlayerStats.currentSkin = skin0;
+            SavePlayerStats.anim = anim0;
+            SavePlayerStats.skinId = id;
         }
         if(id == 1 && CheckSkinInv(id))
         {
-            player.GetComponent<SpriteRenderer>().sprite = skin1;
+            /*player.GetComponent<SpriteRenderer>().sprite = skin1;
             SavePlayerStats.currentSkin = skin1;
+            SavePlayerStats.anim = anim1;
+            SavePlayerStats.skinId = id;*/
+            Debug.Log("I think this shit works: " + SavePlayerStats.coins);
+
         }
         if (id == 2 && CheckSkinInv(id))
         {
             player.GetComponent<SpriteRenderer>().sprite = skin2;
             SavePlayerStats.currentSkin = skin2;
+            SavePlayerStats.anim = anim2;
+            SavePlayerStats.skinId = id;
         }
-        if (id == 3 && CheckSkinInv(id))
-        {
-            player.GetComponent<SpriteRenderer>().sprite = skin3;
-            SavePlayerStats.currentSkin = skin3;
-        }
+        
     }
     public bool CheckSkinInv(int id)
     {

@@ -55,7 +55,7 @@ public class ServerMOV : MonoBehaviour
             email = e;
         }
     }
-    IEnumerator GetPlayersRequest(string url, string user, string pass)
+    IEnumerator GetPlayersRequest(string url, System.Action<string> function)
     {
         //Debug.Log(url);
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
@@ -67,18 +67,19 @@ public class ServerMOV : MonoBehaviour
         else
         {
             Debug.Log(webRequest.downloadHandler.text);
+            function(webRequest.downloadHandler.text);
         }
         Debug.Log(webRequest.downloadHandler.text);
 
         PlayerList playerList = JsonUtility.FromJson<PlayerList>( webRequest.downloadHandler.text);
 
-        foreach (PlayerInfo player in playerList.accounts)
+        /*foreach (PlayerInfo player in playerList.accounts)
         {
             Debug.Log(player.username);
             
 
         }
-        finished = true;
+        finished = true;*/
     }
     IEnumerator PostRequest(string url, string jsondata,System.Action<string> function)
     {
@@ -122,12 +123,20 @@ public class ServerMOV : MonoBehaviour
         string email ="";
         RegisterPlayerInfo info = new RegisterPlayerInfo(user, password,email);
         string json = JsonUtility.ToJson(info);
-        StartCoroutine(PostRequest(BaseAPI + "/player/login",json, GetCoins));
+        StartCoroutine(PostRequest(BaseAPI + "/player/login",json, GetId));
     }
-    public void GetCoins(string json)
+    public void GetId(string json)
     {
         LoginData log = JsonUtility.FromJson<LoginData>(json);
         Debug.Log(log.id);
+        StartCoroutine(GetPlayersRequest(BaseAPI + "/player/getcoins/" + log.id, GetCoins));
+    }
+
+    public void GetCoins(string json)
+    {
+        PlayerCoins log = JsonUtility.FromJson<PlayerCoins>(json);
+        SavePlayerStats.coins = log.coin;
+        Debug.Log(SavePlayerStats.coins);
     }
 }
 
