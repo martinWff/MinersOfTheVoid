@@ -10,7 +10,7 @@ public static class SavePlayerStats
     public static bool immortality = false;
     public static int level = 1;
     public static int rp = 0;
-
+    public static int requiredRp = 0;
 
     //Money
     public static int bips = 
