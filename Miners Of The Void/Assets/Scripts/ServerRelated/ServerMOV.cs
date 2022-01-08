@@ -7,12 +7,14 @@ public class ServerMOV : MonoBehaviour
     private string BaseAPI = "http://vmi732425.contaboserver.net:3434";
     private bool loginSuccess;
     private bool finished = false;
+    private string output;
     [System.Serializable]
     public class PlayerInfo
     {
         public string username;
         public string password;
         public string email;
+        public int id;
         public PlayerInfo(string user, string pass, string mail)
         {
             username = user;
@@ -78,7 +80,7 @@ public class ServerMOV : MonoBehaviour
         }
         finished = true;
     }
-    IEnumerator PostRequest(string url, string jsondata,System.Action Shenhe)
+    IEnumerator PostRequest(string url, string jsondata,System.Action<string> function)
     {
         UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
         byte[] jsonConverted = new System.Text.UTF8Encoding().GetBytes(jsondata);
@@ -93,6 +95,7 @@ public class ServerMOV : MonoBehaviour
         else
         {
             Debug.Log(webRequest.downloadHandler.text);
+            function(webRequest.downloadHandler.text);
         }
 
     }
@@ -119,6 +122,11 @@ public class ServerMOV : MonoBehaviour
         string email ="";
         RegisterPlayerInfo info = new RegisterPlayerInfo(user, password,email);
         string json = JsonUtility.ToJson(info);
-        StartCoroutine(PostRequest(BaseAPI + "/player/login",json,null));
+        StartCoroutine(PostRequest(BaseAPI + "/player/login",json, GetCoins));
+    }
+    public void GetCoins(string json)
+    {
+        PlayerInfo id = JsonUtility.FromJson<PlayerInfo>(json);
+        Debug.Log(id.id);
     }
 }
