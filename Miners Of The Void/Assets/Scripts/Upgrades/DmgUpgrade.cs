@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class DamageUpgrade : Upgrade
 {
-    private CharacterWeapon weapon;
+    [System.NonSerialized]private CharacterWeapon weapon;
     private StatModifier dmgUp;
     public DamageUpgrade(string upName, int level): base(upName, level) { }
     public override void OnPut(GameObject controller)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PhaseeIII : MonoBehaviour
+public class PhaseIII : MonoBehaviour
 {
 
     [SerializeField] public GameObject pirate;
@@ -18,7 +18,7 @@ public class PhaseeIII : MonoBehaviour
 
     //Arrays
     Array<GameObject> enemies;
-    void Start()
+    void OnEnable()
     {
         levelComplete = false;
         enemies = new Array<GameObject>(3);
@@ -41,7 +41,7 @@ public class PhaseeIII : MonoBehaviour
             //Debug.Log(enemies.Get(0));
             enemies.Get(0).GetComponentInChildren<Enemy>().boss = EnemyDied;
             enemies.Get(1).GetComponentInChildren<Enemy>().boss = EnemyDied;
-            enemies.Get(2).GetComponentInChildren<PirateExplosion>().boss = EnemyDied;
+            enemies.Get(2).GetComponentInChildren<PirateExploosion>().boss = EnemyDied;
 
             spawnEnemies = true;
             
@@ -64,6 +64,17 @@ public class PhaseeIII : MonoBehaviour
             levelComplete = true;
         }
 
+    }
+
+    public void PhaseEnd()
+    {
+
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        spawnEnemies = false;
+        enabled = false;
     }
 
 

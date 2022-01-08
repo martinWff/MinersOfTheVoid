@@ -6,14 +6,35 @@ public static class ArrayUtils
 {
     public static int Find<T>(T[] array, System.Predicate<T> predicate)
     {
-        for (int i = 0; i < array.Length; i++) {
-            if (predicate.Invoke(array[i]))
+        if (predicate !=null)
+        {
+            for (int i = 0; i < array.Length; i++)
             {
-                return i;
+                if (predicate.Invoke(array[i]))
+                {
+                    return i;
+                }
             }
         }
-
         return -1;
+
+    }
+    public static bool FindAndGet<T>(T[] array, System.Predicate<T> predicate,out T value)
+    {
+        if (predicate != null)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (predicate.Invoke(array[i]))
+                {
+                    value = array[i];
+                    return true;
+                }
+            }
+        }
+        value = default(T);
+        
+        return false;
 
     }
 

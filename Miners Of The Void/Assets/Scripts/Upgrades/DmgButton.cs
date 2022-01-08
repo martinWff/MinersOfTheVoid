@@ -9,13 +9,13 @@ public class DmgButton : UpgradeButton
 
     public override Upgrade GetUpgrade(int level = 1)
     {
-        if (!UpgradeTransporter.levels.ContainsKey("dmg"))
-            return new DamageUpgrade("dmg", level) { sprite = spriteUpgrade };
+        if (!UpgradeTransporter.levels.ContainsKey("damage"))
+            return new DamageUpgrade("damage", level) { sprite = spriteUpgrade };
         else
         {
-            int temp = (int)UpgradeTransporter.levels["dmg"];
-            UpgradeTransporter.levels.Remove("dmg");
-            return new DamageUpgrade("dmg", temp) { sprite = spriteUpgrade };
+            int temp = (int)UpgradeTransporter.levels["damage"];
+            UpgradeTransporter.levels.Remove("damage");
+            return new DamageUpgrade("damage", temp) { sprite = spriteUpgrade };
         }
 
     }

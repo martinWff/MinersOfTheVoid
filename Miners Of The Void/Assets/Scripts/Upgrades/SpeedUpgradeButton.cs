@@ -22,6 +22,7 @@ public class SpeedUpgradeButton : UpgradeButton
             costs.SetActive(true);
             upgradeControllerUI.upgrade = GetUpgrade();
             upgradeControllerUI.currentController = currentUpgradeController;
+            upgradeControllerUI.ApplyData();
         }
 
     }

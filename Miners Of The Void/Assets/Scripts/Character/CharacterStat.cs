@@ -64,6 +64,7 @@ public class CharacterStat
 
 }
 
+[System.Serializable]
 public struct StatModifier
 {
     public readonly float value;

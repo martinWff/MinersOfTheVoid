@@ -2,51 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeInv : MonoBehaviour
+namespace MOV.deprecated
 {
-    
-    Inventory inventory;
-    // Start is called before the first frame update
-    void Awake()
+    public class UpgradeInv : MonoBehaviour
     {
-        inventory = new UpgradeInventory();
-    }
-    
-    public void AddUpgradeVisual(string upgradeName, float level ,Sprite sprite, bool isBool)
-    {
-        if (!isBool)
+
+        Inventory inventory;
+        // Start is called before the first frame update
+        void Awake()
         {
-            if (!inventory.ContainsOre(upgradeName) || inventory.GetOreAmount(upgradeName) <= 0)
-                inventory.AddOre(new OreStack(upgradeName, (int)level + 1, sprite));
+            inventory = new UpgradeInventory();
+        }
+
+        public void AddUpgradeVisual(string upgradeName, float level, Sprite sprite, bool isBool)
+        {
+            if (!isBool)
+            {
+                if (!inventory.ContainsOre(upgradeName) || inventory.GetOreAmount(upgradeName) <= 0)
+                    inventory.AddOre(new OreStack(upgradeName, (int)level + 1, sprite));
+                else
+                {
+                    inventory.AddOre(new OreStack(upgradeName, 1, sprite));
+                }
+            }
             else
             {
-                inventory.AddOre(new OreStack(upgradeName, 1, sprite));
+                if (!inventory.ContainsOre(upgradeName))
+                {
+                    inventory.AddOre(new OreStack(upgradeName, 1, sprite));
+                }
             }
         }
-        else
+        public void RemoveUpgrade(string upgradeName, float level)
         {
-            if (!inventory.ContainsOre(upgradeName))
-            {
-                inventory.AddOre(new OreStack(upgradeName, 1, sprite));
-            }
+            inventory.RetrieveAmount(upgradeName, (int)level);
+
         }
-    }
-    public void RemoveUpgrade(string upgradeName, float level)
-    {
-        inventory.RetrieveAmount(upgradeName, (int)level);
-        
-    }
-    public bool ContainsOre(string upgradeName)
-    {
-        if (inventory.ContainsOre(upgradeName)) return true;
-        else return false;
-    }
-    public void RemoveUpgrade(string UpgradeName) 
-    {
-        inventory.RetrieveAmount(UpgradeName, 6);
-    } 
-    public void OnStart(InventoryController inv)
-    {
-        inv.AttachInventory(inventory);
+        public bool ContainsOre(string upgradeName)
+        {
+            if (inventory.ContainsOre(upgradeName)) return true;
+            else return false;
+        }
+        public void RemoveUpgrade(string UpgradeName)
+        {
+            inventory.RetrieveAmount(UpgradeName, 6);
+        }
+        public void OnStart(InventoryController inv)
+        {
+            inv.AttachInventory(inventory);
+        }
     }
 }

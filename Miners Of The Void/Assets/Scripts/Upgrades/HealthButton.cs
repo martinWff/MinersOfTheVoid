@@ -8,13 +8,13 @@ public class HealthButton : UpgradeButton
 
     public override Upgrade GetUpgrade(int level = 1)
     {
-        if (!UpgradeTransporter.levels.ContainsKey("hp"))
-        return new HealthUpgrade("hp", level) { sprite = spriteUpgrade };
+        if (!UpgradeTransporter.levels.ContainsKey("health"))
+        return new HealthUpgrade("health", level) { sprite = spriteUpgrade };
         else
         {
-            int temp = (int)UpgradeTransporter.levels["hp"];
-            UpgradeTransporter.levels.Remove("hp");
-            return new HealthUpgrade("hp",temp ) { sprite = spriteUpgrade };
+            int temp = (int)UpgradeTransporter.levels["health"];
+            UpgradeTransporter.levels.Remove("health");
+            return new HealthUpgrade("health", temp ) { sprite = spriteUpgrade };
         }
 
 

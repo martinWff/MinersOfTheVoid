@@ -1,0 +1,540 @@
+fileFormatVersion: 2
+guid: 47d7f1fffddb5864989b16ef65198127
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3443571566959184876
+    second: Ore_sprite_sheet_0
+  - first:
+      213: 4610519839855271520
+    second: Ore_sprite_sheet_1
+  - first:
+      213: -3570502679553114330
+    second: Ore_sprite_sheet_2
+  - first:
+      213: -8931029250301905810
+    second: Ore_sprite_sheet_3
+  - first:
+      213: -3930081925719788925
+    second: Ore_sprite_sheet_4
+  - first:
+      213: 7657193858462650186
+    second: Ore_sprite_sheet_5
+  - first:
+      213: 8709672225864512979
+    second: Ore_sprite_sheet_6
+  - first:
+      213: -1551034343575735294
+    second: Ore_sprite_sheet_7
+  - first:
+      213: -7059826126756281828
+    second: Ore_sprite_sheet_8
+  - first:
+      213: 6112817862484750893
+    second: Ore_sprite_sheet_9
+  - first:
+      213: -6193012415045007118
+    second: Ore_sprite_sheet_10
+  - first:
+      213: 6221625713903472652
+    second: Ore_sprite_sheet_11
+  - first:
+      213: -8786083673704475374
+    second: Ore_sprite_sheet_12
+  - first:
+      213: 6572502835087652892
+    second: Ore_sprite_sheet_13
+  - first:
+      213: 5378511886176545713
+    second: Ore_sprite_sheet_14
+  - first:
+      213: -6989757833223985497
+    second: Ore_sprite_sheet_15
+  - first:
+      213: -5261229605144256927
+    second: Ore_sprite_sheet_16
+  - first:
+      213: -6063212200173641977
+    second: Ore_sprite_sheet_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 225
+        width: 73
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cebcc3768160acf20800000000000000
+      internalID: 3443571566959184876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 227
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ed674ed5bdbff30800000000000000
+      internalID: 4610519839855271520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 228
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ff7a3fab6037ec0800000000000000
+      internalID: -3570502679553114330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 225
+        width: 84
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64b129273c9e0480800000000000000
+      internalID: -8931029250301905810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 229
+        width: 74
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382f94f9f4b8579c0800000000000000
+      internalID: -3930081925719788925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 237
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f08f5ae31d34a60800000000000000
+      internalID: 7657193858462650186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 138
+        width: 59
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d57dbc5eb8fed870800000000000000
+      internalID: 8709672225864512979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 138
+        width: 59
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204bcb47b7e997ae0800000000000000
+      internalID: -1551034343575735294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 139
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c128ba2da85760e90800000000000000
+      internalID: -7059826126756281828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 138
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22f016757715d450800000000000000
+      internalID: 6112817862484750893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 128
+        width: 24
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f888af35000e0aa0800000000000000
+      internalID: -6193012415045007118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 141
+        width: 74
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0017aa8f97a75650800000000000000
+      internalID: 6221625713903472652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 37
+        width: 105
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2155cfd037f811680800000000000000
+      internalID: -8786083673704475374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 37
+        width: 106
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18b5a28188363b50800000000000000
+      internalID: 6572502835087652892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 38
+        width: 106
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bbe4cb501054aa40800000000000000
+      internalID: 5378511886176545713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 37
+        width: 107
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a62ea4b8446ffe90800000000000000
+      internalID: -6989757833223985497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 38
+        width: 106
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e9b9f9c8b5cf6b0800000000000000
+      internalID: -5261229605144256927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ore_sprite_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 37
+        width: 107
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fd5d2d0a42bdba0800000000000000
+      internalID: -6063212200173641977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

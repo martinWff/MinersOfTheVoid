@@ -9,10 +9,16 @@ public class UpgradeController : MonoBehaviour
     public Upgrade[] upgradeHolder;
     public static System.Action<UpgradeController,Upgrade,int> onUpgradePut;
     public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemoved;
+
+    private void Awake()
+    {
+        SaveManager.onAfterLoaded += OnUpgradesLoaded;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
         if (gameObject.tag == "Player") 
         {
             upgradeHolder = new Upgrade[6];
@@ -32,7 +38,35 @@ public class UpgradeController : MonoBehaviour
         
     }
 
-    
+    void OnUpgradesLoaded(SavedData sv)
+    {
+        
+        
+        if (gameObject.tag == "Player")
+        {
+            Upgrade[] humanPlayer = UpgradeTransporter.humanPlayer;
+            upgradeHolder = new Upgrade[6];
+            
+            foreach (Upgrade up in humanPlayer)
+            {
+                PlaceUpgrade(up);
+                //   Debug.Log(up.upgradeName);
+            }
+        }
+        if (gameObject.tag == "Spaceship")
+        {
+            Upgrade[] spaceship = UpgradeTransporter.spaceship;
+            upgradeHolder = new Upgrade[4];
+            foreach (Upgrade up in spaceship)
+                PlaceUpgrade(up);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SaveManager.onAfterLoaded -= OnUpgradesLoaded;
+    }
+
 
     public bool PlaceUpgrade(Upgrade upgrade)
     {

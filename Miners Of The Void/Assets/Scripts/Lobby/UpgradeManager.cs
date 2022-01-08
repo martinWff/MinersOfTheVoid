@@ -126,9 +126,10 @@ public class Hp : Upgrade
     }
 
     }*/
+    [System.Serializable]
     public class SpeedUpgrade : Upgrade
     {
-        CharacterMovement characterMovement;
+        [System.NonSerialized]CharacterMovement characterMovement;
         StatModifier modifier;
     public SpeedUpgrade(string upName,int _level = 1) : base(upName,_level)
     {

@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 249e529d663ac6148a0a5437983a75fc, type: 2}
   - {fileID: 11400000, guid: 342af8162be946446a7f01c622a606cc, type: 2}
   - {fileID: 11400000, guid: eece4584c102d86419c4b3b3aa450d14, type: 2}
-  tile: {fileID: 11400000, guid: c16bf8087212b0c499a5851bc0c80998, type: 2}
+  tile: {fileID: 11400000, guid: 5187131356146794c94f22aa313f3098, type: 2}
   oreBaseRarity: 0

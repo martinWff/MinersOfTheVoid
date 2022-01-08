@@ -21,13 +21,11 @@ public class CharacterMovement : MonoBehaviour
         main = Camera.main;
         camera = main.GetComponent<StaticCameraController>();
         rb = GetComponent<Rigidbody2D>();
-        
+    }  
 
-    }
     private void Start()
     {
         inicialPos = transform.position;
-
     }
 
     // Update is called once per frame
@@ -47,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
         }
-        if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
+     //   if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
        
     }
 
@@ -63,8 +61,9 @@ public class CharacterMovement : MonoBehaviour
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
                 rb.SetRotation(angle);
             }
-            if (gameObject.tag == "Spaceship") rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
-            else rb.velocity = (verticalInput * Vector2.up * movementSpeed.value) + (horizontalInput * Vector2.right * movementSpeed.value);
+            rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
+          /*  if (gameObject.tag == "Spaceship") rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
+            else rb.velocity = (verticalInput * Vector2.up * movementSpeed.value) + (horizontalInput * Vector2.right * movementSpeed.value);*/
         }
         else
         {
@@ -96,7 +95,21 @@ public class CharacterMovement : MonoBehaviour
                     //transform.position = inicialPos;
                     GetComponent<EntityController>().disableEntity(false);
                 }
-            if (collision.gameObject.tag == "SceneLoader") player2.SceneChanger(3);
+
+                if (collision.gameObject.tag == "SceneLoader")
+                {
+                    if(PlayerContracts.instance.acceptedContract?.contractType == Contract.ContractType.position)
+                    {
+                      Debug.Log("Boss !!!!");
+                        player2.SceneChanger(5);
+                    }
+                    else
+                    {
+                        player2.SceneChanger(3);
+                    }
+                            
+
+                }
 
             }
             

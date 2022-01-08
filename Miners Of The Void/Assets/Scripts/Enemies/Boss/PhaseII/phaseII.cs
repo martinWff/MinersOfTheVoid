@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class phaseII : MonoBehaviour
+public class PhaseII : MonoBehaviour
 {
 
     [SerializeField] public GameObject enemyHelp;
+
+    private GameObject miniom1;
+    private GameObject miniom2;
+
 
     //boss
     private Rigidbody2D boss;
@@ -54,7 +58,7 @@ public class phaseII : MonoBehaviour
 
 
 
-    void Start()
+    void OnEnable()
     {
         cam = Camera.main;
         camPosX = cam.transform.position.x;
@@ -103,10 +107,10 @@ public class phaseII : MonoBehaviour
             rect2lessX = camPosXCurent + camdiv3 * 2 + enemyHelpRadius;
 
             
-            Instantiate(enemyHelp, new Vector3(Random.Range(rect1moreX, rect1lessX), bossPosY, 0), Quaternion.identity);
+            miniom1 = Instantiate(enemyHelp, new Vector3(Random.Range(rect1moreX, rect1lessX), bossPosY, 0), Quaternion.identity);
             //Debug.Log(bossPosY);
 
-            Instantiate(enemyHelp, new Vector3(Random.Range(rect2moreX, rect2lessX), bossPosY, 0), Quaternion.identity);
+            miniom2 = Instantiate(enemyHelp, new Vector3(Random.Range(rect2moreX, rect2lessX), bossPosY, 0), Quaternion.identity);
             spawnEnemyHelpBool = true;
         }
 
@@ -139,9 +143,19 @@ public class phaseII : MonoBehaviour
         }
     }
 
-    
+    public void PhaseEnd()
+    {
 
-    
+        Destroy(miniom1);
+        Destroy(miniom2);
+        spawnEnemyHelpBool = false;
+        enabled = false;
 
-    
+    }
+
+
+
+
+
+
 }

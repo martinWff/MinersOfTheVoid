@@ -36,23 +36,29 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-      //  Debug.DrawRay(transform.position + (transform.right * xOffset), transform.right, new Color(1, 1, 0));
+
+        //   Debug.DrawLine((transform.position + transform.up), (transform.position + transform.up)+offset);
+     //   Debug.DrawLine(transform.position, transform.position + (transform.right*2));
         if (currentPosition != transform.position || currentDirection != transform.rotation || reload)
         {
             currentPosition = transform.position;
             currentDirection = transform.rotation;
             reload = false;
 
-           RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.right * xOffset), transform.right,range,LayerMask.GetMask("Interactable"));
-            
-            
+            //    RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.right * xOffset), transform.right,range,LayerMask.GetMask("Interactable"));
+            //RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.up), transform.right, range, LayerMask.GetMask("Interactable"));
+            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position + (transform.right * 2), transform.right, range, LayerMask.GetMask("Interactable"));
+
+
             if (raycastHit)
             {
 
-                targetedVector = colliderMap.WorldToCell(transform.position+(transform.right* (raycastHit.distance+0.5f)));
-                   
-                    Vector3 vec = colliderMap.CellToWorld(targetedVector);
+                //   targetedVector = colliderMap.WorldToCell(transform.position+(transform.right* (raycastHit.distance+0.5f)));
+                //    targetedVector = colliderMap.WorldToCell(transform.position + (transform.right * (raycastHit.distance)));
+                targetedVector = colliderMap.WorldToCell(transform.position + (transform.right * (raycastHit.distance+1f)));
+
+
+                Vector3 vec = colliderMap.CellToWorld(targetedVector);
                     Tile targetTile = colliderMap.GetTile<Tile>(targetedVector);
                 if (targetTile != null)
                 {

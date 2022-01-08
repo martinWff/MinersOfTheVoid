@@ -7,17 +7,44 @@ public class ContractGenerator : MonoBehaviour
     public static Array<Contract> contracts = new Array<Contract>(4);
     public delegate void ContractGenerated(Contract contract);
     public static event ContractGenerated onContractGenerated;
+    private bool bossContractGenerated = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
+    {
+        
+        ContractManager.onContractFinished += ContractManager_onContractFinished;
+        ContractManager.onContractFinished += WinBoss;
+
+
+    }
+
+    private void Start()
+    {
+        ProcessContractGeneration();
+    }
+
+    private void ContractManager_onContractFinished(Contract contract)
+    {
+        if (contracts.Contains(contract))
+        {
+            contracts.Remove(contract);
+        }
+        ProcessContractGeneration();
+    }
+
+    private void ProcessContractGeneration()
     {
         if (contracts.Count < contracts.Length)
         {
-            for (int i = 0; i < contracts.Length; i++)
-            {
-
-                contracts.InsertAtEnd(GenerateGatherContract());
-            }
+           
+           contracts.InsertAtEnd(GenerateRandomContract());
+            ProcessContractGeneration();
+            
         }
+    }
+    private void OnDestroy()
+    {
+        ContractManager.onContractFinished -= ContractManager_onContractFinished;
     }
 
     // Update is called once per frame
@@ -26,36 +53,29 @@ public class ContractGenerator : MonoBehaviour
         
     }
     
-    public void CreateContract()
-    {
-        if (ContractManager.contractsLeftUntilBoss < 0)
-        {
-        
-        } 
-    }
-
-    public Contract GenerateContract()
-    {
-
-
-        if (ContractManager.contractsLeftUntilBoss < 0)
-        {
-            return GenerateBossContract();
-        }
-
-        return null;
-       
-    }
 
     public Contract GenerateBossContract()
     {
+        
         Array<Goal> arr = new Array<Goal>(1);
-        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1));
+
+        EnemyElement value;
+        ArrayUtils.FindAndGet<EnemyElement>(UpgradeLoader.instance.enemies, (EnemyElement e) => { return e.enemyName == "boss"; },out value);
+
+        arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,value.sprite));
 
         Contract c = new Contract(Contract.ContractType.position, arr);
-
+        c.bips = 120;
         return c;
 
+    }
+
+    private void WinBoss(Contract c)
+    {
+        if (c.contractType == Contract.ContractType.position)
+        {
+            SavePlayerStats.level++;
+        }
     }
 
     public Contract GenerateGatherContract()
@@ -69,10 +89,6 @@ public class ContractGenerator : MonoBehaviour
         {
             oresToUse.Add(element.oreName);
         }
-        
-
-
-
         
         for (int i = 0; i < numberOfGoals; i++)
         {
@@ -94,6 +110,73 @@ public class ContractGenerator : MonoBehaviour
 
         return c;
 
+    }
+
+
+    public Contract GenerateCombatContract()
+    {
+        int numberOfGoals = Random.Range(1, 3);
+        Array<Goal> arr = new Array<Goal>(numberOfGoals);
+
+
+        for (int i = 0; i < numberOfGoals; i++)
+        {
+            int quantity = Random.Range(1, 5);
+            int goalType = Random.Range(0, 3);
+
+            EnemyElement enemyElement = UpgradeLoader.instance.enemies[Random.Range(0, UpgradeLoader.instance.enemies.Length)];
+            if (goalType <= 1) {
+                arr.InsertAtEnd(new KillGoal(enemyElement.enemyName, "Kill {quantity} {name}(s)", quantity, enemyElement.sprite));
+            } else {
+
+                int quantityOffset = Random.Range(80, 200);
+                arr.InsertAtEnd(new DamageGoal(enemyElement.enemyName, "Deal {quantity} damage to {name}",quantity + quantityOffset, enemyElement.sprite));
+            }
+        }
+        Contract c = new Contract(Contract.ContractType.combat, arr);
+
+        c.bips = Random.Range(30, 51);
+        c.famePoints = Random.Range(30, 41);
+
+        return c;
+
+    }
+
+    public Contract GenerateRandomContract()
+    {
+        if (SavePlayerStats.rp < 5)
+        {
+            return GenerateCommonContracts();
+        }
+        else
+        {
+            if (!bossContractGenerated)
+            {
+                bossContractGenerated = true;
+                return GenerateBossContract();
+            } else
+            {
+                return GenerateCommonContracts();
+            }
+        }
+
+
+
+      
+    }
+
+    public Contract GenerateCommonContracts()
+    {
+        int choice = Random.Range(0, 5);
+
+        if (choice < 3)
+        {
+            return GenerateGatherContract();
+        }
+        else
+        {
+            return GenerateCombatContract();
+        }
     }
 
 }

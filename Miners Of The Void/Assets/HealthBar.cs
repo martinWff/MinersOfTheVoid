@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public float shield = 10;
     public CharacterStat totalShield = new CharacterStat(10);
     public CharacterStat totalhp = new CharacterStat(20);
-    public float hp = new CharacterStat(20).value;
+    public float hp = 20;
     public bool immortality = false;
     private EntityController entity;
     public bool lazerCharge = false;
@@ -24,6 +24,48 @@ public class HealthBar : MonoBehaviour
         lifeBar = GameObject.Find("Life").GetComponent<Image>();
         shieldBar = GameObject.Find("Shield").GetComponent<Image>();
     }
+
+
+    private void Awake()
+    {
+        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Spaceship")) {
+            SaveManager.saveStarted += OnSavePlayerHealth;
+            SaveManager.onAfterLoaded += OnLoadPlayerHealth;
+        }
+    }
+
+    public void OnDestroy()
+    {
+        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Spaceship"))
+        {
+            SaveManager.saveStarted -= OnSavePlayerHealth;
+            SaveManager.onAfterLoaded -= OnLoadPlayerHealth;
+        }
+    }
+
+    void OnSavePlayerHealth(SavedData sv)
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            sv.humanoidHealth = hp;
+        } else if (gameObject.CompareTag("Spaceship"))
+            {
+                sv.spaceshipHealth = hp;
+            }
+        
+    }
+    void OnLoadPlayerHealth(SavedData sv)
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            hp = sv.humanoidHealth;
+        }
+        else if (gameObject.CompareTag("Spaceship"))
+        {
+            hp = sv.spaceshipHealth;
+        }
+    }
+
     private void Update()
     {
         lifeBar.fillAmount = hp / totalhp.value;
@@ -39,7 +81,7 @@ public class HealthBar : MonoBehaviour
     {
         if (((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool" || (collision.gameObject.tag == "Lazer" && lazerCharge == false))))
         {
-            Debug.Log(immortality);
+            //Debug.Log(immortality);
             
             if (!immortality)
             {
@@ -52,7 +94,7 @@ public class HealthBar : MonoBehaviour
                 }
                 if (hp <= 0)
                 {
-                    if (gameObject.tag == "Player" || gameObject.tag == "Spaceship") entity.SceneChanger(0);
+                    if (gameObject.tag == "Player" || gameObject.tag == "Spaceship") entity.SceneChanger(2);
                     
                 }
                 if (collision.gameObject.tag != "PirateExplosion" && collision.gameObject.tag != "Lazer")

@@ -7,7 +7,7 @@ public class SpaceEnemyMove : MonoBehaviour
     private GameObject spaceship;
     private float distance;
     private Rigidbody2D enemy;
-    public float enemyRange = 30;
+    public float enemyRange = 15;
     public float speed = 3;
     private Vector3 targetPosition;
     public bool human = true; 
@@ -36,15 +36,18 @@ public class SpaceEnemyMove : MonoBehaviour
             //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             //enemy.rotation = angle - 90;
         }
-        
 
+        
         distance = Mathf.Sqrt(Mathf.Pow(spaceship.transform.position.x - transform.position.x, 2) + Mathf.Pow(spaceship.transform.position.y - transform.position.y, 2));
         if (distance < enemyRange)
         {
-            if(distance > nearPlayer)
+
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+            if (distance > nearPlayer)
             {
                 //Debug.Log("speed: " + transform.position);
-               transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+               //transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
             }
             

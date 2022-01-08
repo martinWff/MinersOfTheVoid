@@ -10,9 +10,15 @@ public class SavedData
     public Upgrade[] humanoidUpgrades = new Upgrade[4];
     public Upgrade[] spaceshipUpgrades = new Upgrade[4];
 
-    public Vector2Serializable characterPosition;
+    public Vector3Serializable humanoidPosition;
+    public Vector3Serializable spaceshipPosition;
+
+    public float humanoidHealth;
+    public float spaceshipHealth;
 
     public int bips;
+    public int experience;
+    public int level;
 
     public float currentHealth;
 

@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public shieldbar shieldbar;
 
     public System.Action<GameObject> boss;
-
+    private bool died;
+    public EnemyData enemyData;
 
     //Enemy shoot
     public GameObject bulletPrefab;
@@ -44,14 +45,11 @@ public class Enemy : MonoBehaviour
     //bool enemy Planet
     public bool enemyPlanet = false;
 
-    //UI
-    public Text bipText;
+
 
 
     void Start()
     {
-        bipText = GameObject.Find("Bips").GetComponent<Text>();
-        bipText.text = "Bips: " + SavePlayerStats.bips;
         if (enemyPlanet == true)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -86,7 +84,6 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         enemy.rotation = angle - 90;
 
-        Debug.Log("Enemy rotation "+enemy.rotation);
 
         Distance = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2) + Mathf.Pow(player.transform.position.y - transform.position.y, 2));
         if (Distance < enemyRange)
@@ -130,12 +127,16 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-          
+         
 
             if (shield >= playerdmg) shield -= playerdmg;
             if (shield < playerdmg)
             {
-                if (shield != 0) enemieHealth -= (playerdmg - shield);
+                float dmgReduction = (playerdmg - shield);
+                if (shield != 0) { 
+                    enemieHealth -= dmgReduction;
+                    enemyData.OnDamageReceived(dmgReduction);
+                }
 
                 shield = 0;
             }
@@ -145,24 +146,23 @@ public class Enemy : MonoBehaviour
                 enemieHealth = 0;
                 shield = 0;
                 SavePlayerStats.bips += (int)Random.Range(3,5);
-                
-                bipText.text = "Bips: " + SavePlayerStats.bips;
 
-                
+                if (!died)
+                {
+                 //   CombatSystem.onDied?.Invoke("Shooter");
+                    died = true;
+                    enemyData.OnKilled();
+                }
                 Destroy(transform.parent.gameObject);
 
                 boss?.Invoke(transform.parent.gameObject);
 
             }
 
-            Debug.Log(enemieHealth);
             perEnemyLife = enemieHealth / enemieHealthTotal;
             perEnemyShield = shield / totalShield;
             lifebar.Setsize(perEnemyLife);
             shieldbar.Setsize2(perEnemyShield);
-
-            Debug.Log(enemieHealth);
-            Debug.Log(shield);
 
             Destroy(collision.gameObject);
         }
