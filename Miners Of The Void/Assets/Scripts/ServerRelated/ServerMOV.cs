@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class ServerMOV : MonoBehaviour
 {
     private string BaseAPI = "http://vmi732425.contaboserver.net:3434";
     private bool loginSuccess;
     private bool finished = false;
     private string output;
+    public Text error;
     [System.Serializable]
     public class PlayerInfo
     {
@@ -97,6 +99,7 @@ public class ServerMOV : MonoBehaviour
         else
         {
             Debug.Log(webRequest.downloadHandler.text);
+            if(function !=null)
             function(webRequest.downloadHandler.text);
         }
 
@@ -129,6 +132,7 @@ public class ServerMOV : MonoBehaviour
     public void GetId(string json)
     {
         LoginData log = JsonUtility.FromJson<LoginData>(json);
+        if (json == string.Empty) error.text = "Error, wrong login data or server problems";
         Debug.Log(log.id);
         SavePlayerStats.id = log.id;
         StartCoroutine(GetPlayersRequest(BaseAPI + "/player/getcoins/" + log.id, GetCoins));
