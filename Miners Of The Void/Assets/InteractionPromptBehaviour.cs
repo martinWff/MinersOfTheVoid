@@ -18,9 +18,11 @@ public class InteractionPromptBehaviour : MonoBehaviour
     {
         keybind.SetPosition(transform.position + interactionArea.uIKeyBindPosition);
         keybind.Show(true);
+        Debug.Log("primpt");
     }
     public void OnExitArea(GameObject player)
     {
+        Debug.Log("area left");
         keybind.Show(false);
     }
     public void OnStayArea(GameObject player)

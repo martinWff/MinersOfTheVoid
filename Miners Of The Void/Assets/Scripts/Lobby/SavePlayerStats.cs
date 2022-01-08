@@ -8,22 +8,37 @@ public static class SavePlayerStats
 
     //cheats
     public static bool immortality = false;
-<<<<<<< Updated upstream
-    public static int level = 0;
+    public static int level = 1;
     public static int rp = 0;
-=======
-
-    public static int exp = 0;
-    public static int expNeeded = 200;
-    public static int WorldLevel = 1;
-
-    //level
-    public static Hashtable humanLevels = new Hashtable(400);
-
->>>>>>> Stashed changes
-
+    
+    
+    //used to cache the required rp for level up
+    private static int requiredRp;
+    private static int dirtyLevel;
+  
+    public static int GetRequiredRP()
+    {
+        if (dirtyLevel == level)
+        {
+            return requiredRp;
+        }else
+        {
+            requiredRp = GetWorldLevelValueINT(150,level);
+            dirtyLevel = level;
+            return requiredRp;
+        }
+    }
 
     //Money
     public static int bips = 
         0;
+    
+    public static float GetWorldLevelValue(float baseValue,int worldLevel)
+    {
+        return baseValue * (Mathf.Pow(1.4f,worldLevel));
+    }
+    public static int GetWorldLevelValueINT(float baseValue, int worldLevel)
+    {
+        return Mathf.CeilToInt(GetWorldLevelValue(baseValue, worldLevel));
+    }
 }

@@ -7,8 +7,10 @@ using UnityEngine.Events;
 [System.Serializable]
 public class Inventory
 {
-    protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
-    public int CountDifferent { get { return oresStacks.Count; } }
+   // protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
+    protected Hashtable oresStacks = new Hashtable(300);
+    private HashSet<string> keys = new HashSet<string>();
+  //  public int CountDifferent { get { return oresStacks.; } }
 
     public delegate void InventoryChanged(Inventory inv, string oreName,int amountChanged);
     public static event InventoryChanged onInventoryChanged;
@@ -18,13 +20,16 @@ public class Inventory
         if (ore == null) return false;
         if (ore.amount == 0) return false;
 
+
+        keys.Add(ore.oreName);
+
         if (!oresStacks.ContainsKey(ore.oreName))
         {
-            oresStacks.Add(ore.oreName, ore);
+            oresStacks.Insert(ore.oreName, ore);
         }
         else
         {
-            OreStack oreStack = oresStacks[ore.oreName];
+            OreStack oreStack = (OreStack)oresStacks.GetValue(ore.oreName);
             oreStack.amount += ore.amount;
         }
         
@@ -41,7 +46,7 @@ public class Inventory
     public virtual int GetOreAmount(string oreName)
     {
         if (oresStacks.ContainsKey(oreName)) {
-            return oresStacks[oreName].amount;
+            return (oresStacks.GetValue(oreName) as OreStack).amount;
         } else
         {
             return 0;
@@ -51,12 +56,13 @@ public class Inventory
 
     public OreStack GetOreStack(string oreName)
     {
-        return oresStacks[oreName];
+        return (OreStack)oresStacks.GetValue(oreName);
     }
 
     public void Reset()
     {
-        oresStacks.Clear();
+        oresStacks = new Hashtable(300);
+        keys.Clear();
     }
 
 
@@ -67,15 +73,16 @@ public class Inventory
         if (oreAmount <= 0) return 0;
 
         int clampedAmount = Mathf.Clamp(amount, 0, oreAmount);
-        OreStack oreFound = oresStacks[oreName];
+        OreStack oreFound = (OreStack)oresStacks.GetValue(oreName);
  
         oreFound.amount -= clampedAmount;
         if (oreFound.amount > 0)
         {
-            oresStacks[oreName] = oreFound;
+            oresStacks.Insert(oreName,oreFound);
         } else
         {
             oresStacks.Remove(oreName);
+            keys.Remove(oreName);
         }
         
         onInventoryChanged?.Invoke(this, oreName,-clampedAmount);
@@ -86,6 +93,14 @@ public class Inventory
 
     public Dictionary<string, OreStack> GetOres()
     {
-        return oresStacks;
+
+
+        Dictionary<string, OreStack> ores = new Dictionary<string, OreStack>(keys.Count);
+        foreach (string key in keys)
+        {
+            ores.Add(key,(OreStack)oresStacks.GetValue(key));
+        }
+
+        return ores;
     }
 }

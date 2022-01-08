@@ -32,7 +32,6 @@ public class OreChunk : MonoBehaviour
 
             // Tile is not empty; do stuff
         }
-        Debug.Log("amount of positions "+positions.Count);
         oreTiles = new string[positions.Count];
         distributor.SetNumberOfRocks(positions.Count);
 
