@@ -7,7 +7,8 @@ public class NPCSkins : MonoBehaviour
     public GameObject player;
     public GameObject prefab;
     private GameObject openedMenu;
-    private bool menuIsOpen = false;
+    public GameObject canvas;
+    public bool menuIsOpen = false;
    
 
     // Update is called once per frame
@@ -15,15 +16,11 @@ public class NPCSkins : MonoBehaviour
     {
         if (Maths.Distance(player.transform.position, gameObject.transform.position) < 3 && Input.GetKeyDown(KeyCode.F) && !menuIsOpen)
         {
-            openedMenu = Instantiate(prefab);
+            openedMenu = Instantiate(prefab, canvas.transform);
+            player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             player.GetComponent<CharacterMovement>().enabled = false;
             menuIsOpen = true;
         }
     }
-    public void CloseMenu()
-    {
-        Destroy(openedMenu);
-        player.GetComponent<CharacterMovement>().enabled = true;
-        menuIsOpen = false;
-    }
+    
 }

@@ -118,7 +118,7 @@ public class UpgradeUIController : MonoBehaviour
             invPlayer.RetrieveAmount(materials[0], level);
             invPlayer.RetrieveAmount(materials[1], level);
             invPlayer.RetrieveAmount(materials[3], level);
-            SavePlayerStats.bips -= (200 * Mathf.Pow(1.3f, level));
+            SavePlayerStats.bips -= (int)(200 * Mathf.Pow(1.3f, level));
             //notices.text = "Aquiered!";
             return true;
         }

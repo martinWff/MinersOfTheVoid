@@ -8946,7 +8946,7 @@ GameObject:
   - component: {fileID: 1647681816}
   - component: {fileID: 1647681815}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: NPCSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8965,7 +8965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 190096029}
-  prefab: {fileID: 0}
+  prefab: {fileID: 2486808496755152116, guid: ca5fc92d72296fe48b51c8d6baa39d31, type: 3}
+  canvas: {fileID: 1166462585}
+  menuIsOpen: 0
 --- !u!212 &1647681816
 SpriteRenderer:
   m_ObjectHideFlags: 0

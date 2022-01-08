@@ -29,10 +29,10 @@ public class Enemy : MonoBehaviour
     //Enemy stats
     public float perEnemieHealthTotal = 1;
     public float perEnemieShieldTotal = 1;
-    public float enemieHealthTotal = 20;
-    public float enemieHealth = 20;
-    public float totalShield = 10;
-    public float shield = 10;
+    public float enemieHealthTotal = 20 * SavePlayerStats.level;
+    public float enemieHealth = 20 * SavePlayerStats.level;
+    public float totalShield = 10 * SavePlayerStats.level;
+    public float shield = 10 * SavePlayerStats.level;
     public float playerdmg;
     private float perEnemyLife;
     private float perEnemyShield;

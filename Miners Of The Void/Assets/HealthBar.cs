@@ -82,13 +82,13 @@ public class HealthBar : MonoBehaviour
         if (((collision.gameObject.tag == "BulletEnemie" || collision.gameObject.tag == "PirateExplosion" || collision.gameObject.tag == "BulletEnemiePool" || (collision.gameObject.tag == "Lazer" && lazerCharge == false))))
         {
             //Debug.Log(immortality);
-            
+            float dmg = 10 * Mathf.Pow(1.2f, SavePlayerStats.level-1);
             if (!immortality)
             {
-                if (shield >= 10) shield -= 10;
-                if (shield < 10)
+                if (shield >= dmg) shield -= dmg;
+                if (shield < dmg)
                 {
-                    if (shield != 0) hp -= (10 - shield);
+                    if (shield != 0) hp -= (dmg - shield);
 
                     shield = 0;
                 }

@@ -21,7 +21,7 @@ public class BipsUIController : MonoBehaviour
         {
             if (currentXP != SavePlayerStats.rp)
             {
-                experienceText.text = "XP: "+SavePlayerStats.rp+"/"+SavePlayerStats.GetRequiredRP();
+                experienceText.text = "XP: "+SavePlayerStats.rp+"/"+SavePlayerStats.requieredRp;
             }
         }
     }

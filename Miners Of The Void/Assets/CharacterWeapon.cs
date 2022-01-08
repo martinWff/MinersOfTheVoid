@@ -11,6 +11,7 @@ public class CharacterWeapon : MonoBehaviour
     private float bulletShootTime = 0.5f;
     public bool backweaponMode = false;
     public bool firePermission = false;
+    
     public CharacterStat dmg = new CharacterStat(10);
     // Start is called before the first frame update
 
@@ -18,6 +19,7 @@ public class CharacterWeapon : MonoBehaviour
     {
         bulletSpeed = gameObject.GetComponent<CharacterMovement>().movementSpeed.value + 20;
         Debug.Log(bulletPrefab);
+        
     }
     // Update is called once per frame
     void Update()

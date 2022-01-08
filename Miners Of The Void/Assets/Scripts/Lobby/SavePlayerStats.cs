@@ -11,17 +11,41 @@ public static class SavePlayerStats
     public static bool immortality = false;
     public static int level = 1;
     public static int rp = 0;
+    public static int requieredRp = 200;
 
 
     //used to cache the required rp for level up
-    private static int requiredRp;
-    private static int dirtyLevel;
+
+
+    //Money
+    public static int coins = 0;
+    public static int bips = 200;
+    
+    public static bool UpgradeLevel()
+    {
+        requieredRp = (int)GetWorldLevelValue(200, level - 1);
+        if (rp >= GetWorldLevelValue(200,level-1))
+        {
+            rp = rp - (int)GetWorldLevelValue(200, level - 1);
+            level++;
+            
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
+    /*private static int dirtyLevel;
 
     public static int GetRequiredRP()
     {
         if (dirtyLevel == level)
         {
-            return requiredRp;
+            return requiredRprequiredRp;
         }
         else
         {
@@ -29,11 +53,11 @@ public static class SavePlayerStats
             dirtyLevel = level;
             return requiredRp;
         }
-    }
+    }*/
 
-    //Money
-    public static int coins = 0;
-    public static int bips =200;
+
+
+
 
     public static float GetWorldLevelValue(float baseValue, int worldLevel)
     {

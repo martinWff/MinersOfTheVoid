@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EntityManager : MonoBehaviour
+public class EntityController : MonoBehaviour
 {
     public bool movement = true;
     public bool weapon = true;
@@ -16,12 +16,14 @@ public class EntityManager : MonoBehaviour
 
     private void Start()
     {
+        SavePlayerStats.GetWorldLevelValue(200, SavePlayerStats.level - 1);
         if (gameObject.tag == "Spaceship" || gameObject.tag == "Player")
         {
             movementScript = gameObject.GetComponent<CharacterMovement>();
             weaponScript = gameObject.GetComponent<CharacterWeapon>();
             lifeScript = gameObject.GetComponent<HealthBar>();
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            if(SavePlayerStats.currentSkin != null)spriteRenderer.sprite = SavePlayerStats.currentSkin;
         }
     }
     public void disableEntity(bool disableRenderer)

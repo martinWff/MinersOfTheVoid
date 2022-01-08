@@ -13,7 +13,8 @@ public class CharacterMovement : MonoBehaviour
     public bool animated = false;
     public bool thereIsNoHumansInSpace = false;
     public EntityController player2;
-    
+    public Animator animator;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -25,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Start()
     {
+        if(gameObject.tag=="Spaceship")animator = gameObject.GetComponent<Animator>();
         inicialPos = transform.position;
     }
 
@@ -44,6 +46,10 @@ public class CharacterMovement : MonoBehaviour
             float angle = Mathf.Atan2(mouseDirection.normalized.y,
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
+            if(verticalInput != 0 && gameObject.tag == "Spaceship")
+            {
+                
+            }
         }
      //   if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
        
