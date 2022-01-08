@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor.Animations;
 
 public class SkinShop : MonoBehaviour
 {
@@ -8,9 +10,16 @@ public class SkinShop : MonoBehaviour
     public Sprite skin0;
     public Sprite skin1;
     public Sprite skin2;
-    public Animator anim0;
-    public Animator anim1;
-    public Animator anim2;
+    public AnimatorController anim0;
+    public AnimatorController anim1;
+    public AnimatorController anim2;
+    //UI
+    public Text currency;
+
+    public Text skin1Acq;
+    public Text skin2Acq;
+
+
 
     private GameObject player;
     private GameObject human;
@@ -21,6 +30,8 @@ public class SkinShop : MonoBehaviour
         bought = new Array<int>(4);
         player = GameObject.FindGameObjectWithTag("Spaceship");
         human = GameObject.FindGameObjectWithTag("Player");
+        currency.text = "Currency: " + SavePlayerStats.coins;
+
     }
 
     public void ChooseSkin(int id)
@@ -34,11 +45,13 @@ public class SkinShop : MonoBehaviour
         }
         if(id == 1 && CheckSkinInv(id))
         {
-            /*player.GetComponent<SpriteRenderer>().sprite = skin1;
+            player.GetComponent<SpriteRenderer>().sprite = skin1;
             SavePlayerStats.currentSkin = skin1;
             SavePlayerStats.anim = anim1;
-            SavePlayerStats.skinId = id;*/
-            Debug.Log("I think this shit works: " + SavePlayerStats.coins);
+            SavePlayerStats.skinId = id;
+            skin1Acq.text = "";
+            
+
 
         }
         if (id == 2 && CheckSkinInv(id))
@@ -47,8 +60,9 @@ public class SkinShop : MonoBehaviour
             SavePlayerStats.currentSkin = skin2;
             SavePlayerStats.anim = anim2;
             SavePlayerStats.skinId = id;
+            skin2Acq.text = "";
         }
-        
+        currency.text = "Currency: " + SavePlayerStats.coins;
     }
     public bool CheckSkinInv(int id)
     {

@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.Animations;
 
 public static class SavePlayerStats
 {
     //Skin
     public static Sprite currentSkin;
     public static int skinId;
-    public static Animator anim;
+    public static AnimatorController anim;
+    
 
     //cheats
     public static bool immortality = false;
@@ -23,6 +25,7 @@ public static class SavePlayerStats
     //Money
     public static int coins = 50;
     public static int bips = 200;
+    public static int id = 0;
     
     public static bool UpgradeLevel()
     {
@@ -36,6 +39,8 @@ public static class SavePlayerStats
         }
         return false;
     }
+
+    
     
 
 

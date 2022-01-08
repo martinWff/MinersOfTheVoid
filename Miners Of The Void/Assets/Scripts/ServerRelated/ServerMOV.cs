@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 public class ServerMOV : MonoBehaviour
 {
     private string BaseAPI = "http://vmi732425.contaboserver.net:3434";
@@ -129,6 +130,7 @@ public class ServerMOV : MonoBehaviour
     {
         LoginData log = JsonUtility.FromJson<LoginData>(json);
         Debug.Log(log.id);
+        SavePlayerStats.id = log.id;
         StartCoroutine(GetPlayersRequest(BaseAPI + "/player/getcoins/" + log.id, GetCoins));
     }
 
@@ -137,6 +139,7 @@ public class ServerMOV : MonoBehaviour
         PlayerCoins log = JsonUtility.FromJson<PlayerCoins>(json);
         SavePlayerStats.coins = log.coin;
         Debug.Log(SavePlayerStats.coins);
+        SceneManager.LoadScene(2);
     }
 }
 

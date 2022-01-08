@@ -26,8 +26,12 @@ public class CharacterMovement : MonoBehaviour
 
     private void Start()
     {
-        if(gameObject.tag=="Spaceship")animator = gameObject.GetComponent<Animator>();
+        if (gameObject.tag == "Spaceship") 
+        { 
+            animator = gameObject.GetComponent<Animator>();
+        }
         inicialPos = transform.position;
+        
         
     }
 
