@@ -5,46 +5,57 @@ using UnityEngine.Networking;
 public class ServerMOV : MonoBehaviour
 {
     private string BaseAPI = "http://vmi732425.contaboserver.net:3434";
-
+    private bool loginSuccess;
+    private bool finished = false;
+    private string output;
     [System.Serializable]
     public class PlayerInfo
     {
         public string username;
-        public int score;
-        public PlayerInfo(string user, int s)
+        public string password;
+        public string email;
+        public int id;
+        public PlayerInfo(string user, string pass, string mail)
         {
             username = user;
-            score = s;
+            password = pass;
+            email = mail;
+        }
+        public PlayerInfo()
+        {
+          
         }
     }
     [System.Serializable]
     public class PlayerList
     {
-        public PlayerInfo[] players;
+        public PlayerInfo[] accounts;
     }
     [System.Serializable]
     public class RegisterPlayerInfo
     {
         public string username;
         public string password;
-        public RegisterPlayerInfo(string u, string p)
+        public string email;
+        public RegisterPlayerInfo(string u, string p, string e)
         {
             username = u;
             password = p;
+            email = e;
         }
     }
     [System.Serializable]
     public class UpdatePlayerInfo
     {
         public int id;
-        public int score;
-        public UpdatePlayerInfo(int i, int s)
+        public string email;
+        public UpdatePlayerInfo(int i, string e)
         {
             id = i;
-            score = s;
+            email = e;
         }
     }
-    IEnumerator GetPlayersRequest(string url)
+    IEnumerator GetPlayersRequest(string url, string user, string pass)
     {
         //Debug.Log(url);
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
@@ -59,15 +70,17 @@ public class ServerMOV : MonoBehaviour
         }
         Debug.Log(webRequest.downloadHandler.text);
 
-        PlayerList playerList = JsonUtility.FromJson<PlayerList>(webRequest.downloadHandler.text);
+        PlayerList playerList = JsonUtility.FromJson<PlayerList>( webRequest.downloadHandler.text);
 
-        foreach (PlayerInfo player in playerList.players)
+        foreach (PlayerInfo player in playerList.accounts)
         {
             Debug.Log(player.username);
-            Debug.Log(player.score);
+            
+
         }
+        finished = true;
     }
-    IEnumerator PostRequest(string url, string jsondata)
+    IEnumerator PostRequest(string url, string jsondata,System.Action<string> function)
     {
         UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
         byte[] jsonConverted = new System.Text.UTF8Encoding().GetBytes(jsondata);
@@ -82,31 +95,38 @@ public class ServerMOV : MonoBehaviour
         else
         {
             Debug.Log(webRequest.downloadHandler.text);
+            function(webRequest.downloadHandler.text);
         }
+
     }
     // Start is called before the first frame update
     void Start()
     {
-       /* RegisterPlayerInfo info = new RegisterPlayerInfo("nelio", "god");
-        string json = JsonUtility.ToJson(info);
-        Debug.Log(json);
-        //StartCoroutine(GetPlayersRequest(BaseAPI + "/player/list"));
-        //StartCoroutine(PostRequest(BaseAPI + "/player/new", json));
-        UpdatePlayerInfo scoreinfo = new UpdatePlayerInfo(3, 666);
-        string json2 = JsonUtility.ToJson(scoreinfo);
-        StartCoroutine(PostRequest(BaseAPI + "/player/updatescore", json2));*/
+        
+        //UpdatePlayerInfo scoreinfo = new UpdatePlayerInfo(3, 6);
+        //string json2 = JsonUtility.ToJson(scoreinfo);
+        //StartCoroutine(PostRequest(BaseAPI + "/player/updatescore", json2));
     }
 
-    public void RegisterPlayer()
+    // Update is called once per frame
+    public void Register(string user, string password, string email)
     {
-        RegisterPlayerInfo info = new RegisterPlayerInfo("nelio", "god");
+        RegisterPlayerInfo info = new RegisterPlayerInfo(user, password, email);
         string json = JsonUtility.ToJson(info);
         Debug.Log(json);
-        //StartCoroutine(GetPlayersRequest(BaseAPI + "/player/list"));
-        //StartCoroutine(PostRequest(BaseAPI + "/player/new", json));
-        UpdatePlayerInfo scoreinfo = new UpdatePlayerInfo(3, 666);
-        string json2 = JsonUtility.ToJson(scoreinfo);
-        StartCoroutine(PostRequest(BaseAPI + "/player/updatescore", json2));
+        
+        StartCoroutine(PostRequest(BaseAPI + "/player/new", json,null));
     }
-
+    public void Login(string user, string password)
+    {
+        string email ="";
+        RegisterPlayerInfo info = new RegisterPlayerInfo(user, password,email);
+        string json = JsonUtility.ToJson(info);
+        StartCoroutine(PostRequest(BaseAPI + "/player/login",json, GetCoins));
+    }
+    public void GetCoins(string json)
+    {
+        PlayerInfo id = JsonUtility.FromJson<PlayerInfo>(json);
+        Debug.Log(id.id);
+    }
 }

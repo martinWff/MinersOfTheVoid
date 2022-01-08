@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject loginScene;
     public GameObject registerScene;
+    public InputField username;
+    public InputField password;
+    public InputField email;
+    public InputField loginUsername;
+    public InputField loginPassword;
     ServerMOV server;
     Button register;
 
@@ -26,7 +31,12 @@ public class MainMenu : MonoBehaviour
     }
     public void Register()
     {
-        server.RegisterPlayer();
+        server.Register(username.text, password.text, email.text);
+    }
+    public void Login()
+    {
+        server.Login(loginUsername.text, loginPassword.text);
+      
     }
 
 }
