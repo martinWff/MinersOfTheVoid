@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 643600271919104169}
   - component: {fileID: 643600271919104174}
-  - component: {fileID: 643600271919104168}
   - component: {fileID: 643600271919104171}
   - component: {fileID: 643600271919104170}
-  - component: {fileID: 511966407}
   - component: {fileID: 511966408}
   - component: {fileID: 353336886}
+  - component: {fileID: 552992928}
+  - component: {fileID: 552992929}
+  - component: {fileID: 552992931}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -89,26 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &643600271919104168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643600271919104175}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7f870eb4082404997b5c888bbf870f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shockWave: {fileID: 1820699774051753430, guid: 38968a736f2aa444c82e83e433455589, type: 3}
-  safeArea: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
-  shootTimer: 0
-  phaseITimer: 0
-  bulletOffset: 2
-  bulletShootTime: 1.5
-  bulletCooldownTime: 1.5
-  bulletSpeed: 14
 --- !u!50 &643600271919104171
 Rigidbody2D:
   serializedVersion: 4
@@ -146,7 +127,43 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!114 &511966407
+--- !u!114 &511966408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4628d48c1b5834ea10be6df12b2751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pirate: {fileID: 2650102425109889620, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
+  pirateexplosion: {fileID: 5508214930983710229, guid: e646e54c84cf1824884519a41130a362, type: 3}
+  boss: {fileID: 643600271919104175}
+  levelComplete: 0
+--- !u!114 &353336886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5521a0e50169e724ea746555101a7262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tpPlayer: {fileID: 0}
+  perBossHealthTotal: 1
+  bossHealthTotal: 100
+  phaseI: {fileID: 552992931}
+  phaseII: {fileID: 552992928}
+  phaseIII: {fileID: 511966408}
+  phaseController: {fileID: 552992929}
+  lifebar: {fileID: 0}
+--- !u!114 &552992928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,25 +180,9 @@ MonoBehaviour:
   bulletOffset: 4
   bulletSpeed: 14
   bulletCooldownTime: 1.5
-  bulletShootTime: 1.5
-  enemyHelpSpeed: 5
---- !u!114 &511966408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643600271919104175}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f4628d48c1b5834ea10be6df12b2751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pirate: {fileID: 2650102425109889620, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
-  pirateexplosion: {fileID: 3479204000134808011, guid: e646e54c84cf1824884519a41130a362, type: 3}
-  boss: {fileID: 643600271919104175}
-  levelComplete: 0
---- !u!114 &353336886
+  bulletShootTime: 0.5
+  enemyHelpSpeed: 3
+--- !u!114 &552992929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,6 +191,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 643600271919104175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5521a0e50169e724ea746555101a7262, type: 3}
+  m_Script: {fileID: 11500000, guid: d7e4929d6434a9d4884ec18c9d0881e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phaseI: {fileID: 552992931}
+  phaseII: {fileID: 552992928}
+  phaseIII: {fileID: 511966408}
+--- !u!114 &552992931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7f870eb4082404997b5c888bbf870f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shockWave: {fileID: 1820699774051753430, guid: 38968a736f2aa444c82e83e433455589, type: 3}
+  safeArea: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
+  shootTimer: 0
+  phaseITimer: 0
+  bulletOffset: 2
+  bulletShootTime: 1.5
+  bulletCooldownTime: 1.5
+  bulletSpeed: 14

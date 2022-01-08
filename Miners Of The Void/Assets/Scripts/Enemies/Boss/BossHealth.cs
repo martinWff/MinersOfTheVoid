@@ -71,6 +71,8 @@ public class BossHealth : MonoBehaviour
                 Destroy(transform.gameObject);
                 Destroy(lifebar.gameObject);
 
+                CombatSystem.onDied?.Invoke("boss", false);
+
                 Debug.Log("Boss is Dead!!");
                 SceneManager.LoadScene(2);
 

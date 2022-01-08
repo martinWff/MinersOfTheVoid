@@ -11,10 +11,13 @@ public class ContractGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SavePlayerStats.rp = 60;
-        ContractManager.onContractFinished += ContractManager_onContractFinished;
         
+        ContractManager.onContractFinished += ContractManager_onContractFinished;
+        ContractManager.onContractFinished += WinBoss;
+
+
     }
+
     private void Start()
     {
         ProcessContractGeneration();
@@ -58,9 +61,18 @@ public class ContractGenerator : MonoBehaviour
         arr.InsertAtEnd(new KillGoal("boss", "Kill the Boss", 1,null));
 
         Contract c = new Contract(Contract.ContractType.position, arr);
+        c.bips = 120;
         //Debug.Log("something");
         return c;
 
+    }
+
+    private void WinBoss(Contract c)
+    {
+        if (c.contractType == Contract.ContractType.position)
+        {
+            SavePlayerStats.level++;
+        }
     }
 
     public Contract GenerateGatherContract()
@@ -129,7 +141,7 @@ public class ContractGenerator : MonoBehaviour
 
     public Contract GenerateRandomContract()
     {
-       
+        return GenerateBossContract();
 
         if (SavePlayerStats.rp < 5)
         {

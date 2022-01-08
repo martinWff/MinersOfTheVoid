@@ -29,7 +29,12 @@ public class ContractFeedBackBehaviour : MonoBehaviour
     public void OnContractFinished(Contract contract)
     {
         string contractReward = $"Reward: <color=red> +{contract.bips} Bips </color>  <color=purple>+{contract.famePoints} XP </color>";
-        ShowWithReward("You sucessfully finished the contract",contractReward);
+
+        if (contract.contractType == Contract.ContractType.position)
+        {
+            contractReward = contractReward + " World Level Increased "+ (SavePlayerStats.level + 1).ToString();
+        }
+        ShowWithReward("You sucessfully finished the contract", contractReward);
 
 
     }
@@ -38,7 +43,7 @@ public class ContractFeedBackBehaviour : MonoBehaviour
     {
         panel.SetActive(true);
         statusText.text = text;
-        StartCoroutine(HideAfter(5));
+        StartCoroutine(HideAfter(3));
 
     }
 

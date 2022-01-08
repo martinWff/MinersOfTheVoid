@@ -100,6 +100,7 @@ public class CharacterMovement : MonoBehaviour
                 {
                     if(PlayerContracts.instance.acceptedContract?.contractType == Contract.ContractType.position)
                     {
+                      Debug.Log("Boss !!!!");
                         player2.SceneChanger(5);
                     }
                     else

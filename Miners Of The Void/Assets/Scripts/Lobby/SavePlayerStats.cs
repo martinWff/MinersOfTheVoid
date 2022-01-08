@@ -8,7 +8,7 @@ public static class SavePlayerStats
 
     //cheats
     public static bool immortality = false;
-    public static int level = 0;
+    public static int level = 1;
     public static int rp = 0;
 
 

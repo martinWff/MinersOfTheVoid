@@ -159,7 +159,4 @@ public class PhaseI : MonoBehaviour
         spawnAreaBool = false;
         enabled = false;
     }
-
-
-
 }
