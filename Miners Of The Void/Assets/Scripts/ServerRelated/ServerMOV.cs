@@ -126,7 +126,12 @@ public class ServerMOV : MonoBehaviour
     }
     public void GetCoins(string json)
     {
-        PlayerInfo id = JsonUtility.FromJson<PlayerInfo>(json);
-        Debug.Log(id.id);
+        LoginData log = JsonUtility.FromJson<LoginData>(json);
+        Debug.Log(log.id);
     }
+}
+
+public class LoginData
+{
+    public int id;
 }

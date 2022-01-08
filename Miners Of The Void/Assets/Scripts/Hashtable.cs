@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public class HashtableNode
 {
     public string Key { set; get; }
@@ -16,6 +16,7 @@ public class HashtableNode
         Next = null;
     }
 }
+[System.Serializable]
 public class Hashtable
 {
     private int i = 0;
