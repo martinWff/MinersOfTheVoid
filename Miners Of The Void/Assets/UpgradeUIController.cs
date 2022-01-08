@@ -14,9 +14,11 @@ public class UpgradeUIController : MonoBehaviour
 
     public GameObject purchaseWindow;
     public Text purchaseText;
+    public Inventory invPlayer;
 
     private void Start()
     {
+        invPlayer = PlayerInventory.staticInventory;
         controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
         
         if (controller != null)
@@ -70,8 +72,12 @@ public class UpgradeUIController : MonoBehaviour
 
     public void ApplyPurchase()
     {
-
-        if (currentController != null && upgrade != null)
+        //Em vez de colocar assim, pode ter 1 parametro no upgrade com 1 string[] costs ou assim. Depois é só inserir aq
+        string[] materials = new string[3];
+        materials.SetValue("material1", 0);
+        materials.SetValue("material2", 1);
+        materials.SetValue("material3", 2);
+        if (currentController != null && upgrade != null && AddCost(materials))
         {
             
             currentController.PlaceUpgrade(upgrade);
@@ -102,5 +108,24 @@ public class UpgradeUIController : MonoBehaviour
         UpgradeController.onUpgradePut -= OnUpgradePut;
         UpgradeController.onUpgradeRemoved -= OnUpgradeRemoved;
 
+    }
+    public bool AddCost(string[] materials)      
+    {
+        int level = upgrade.level;
+        if (invPlayer.GetOreAmount(materials[0]) >= level && invPlayer.GetOreAmount(materials[1]) >= level  && invPlayer.GetOreAmount(materials[3]) >= level && SavePlayerStats.bips >= (200 * Mathf.Pow(1.3f, level)))
+        {
+
+            invPlayer.RetrieveAmount(materials[0], level);
+            invPlayer.RetrieveAmount(materials[1], level);
+            invPlayer.RetrieveAmount(materials[3], level);
+            SavePlayerStats.bips -= (bips * (int)level);
+            //notices.text = "Aquiered!";
+            return true;
+        }
+        else
+        {
+            //notices.text = "Not enough ore: " + material1 + ":" + invPlayer.inventory.GetOreAmount(material1) + "; " + material2 + ":" + invPlayer.inventory.GetOreAmount(material2) + material3 + ":" + invPlayer.inventory.GetOreAmount(material3) + ", you need at least " + level + 1 + " of each and " + 200 * (level + 1) + "bips";
+            return false;
+        }
     }
 }

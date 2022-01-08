@@ -33,7 +33,7 @@ public static class SavePlayerStats
 
     //Money
     public static int coins = 0;
-    public static int bips =0;
+    public static int bips =200;
 
     public static float GetWorldLevelValue(float baseValue, int worldLevel)
     {
