@@ -6,6 +6,8 @@ public static class SavePlayerStats
 {
     //Skin
     public static Sprite currentSkin;
+    public static int skinId;
+    public static Animation anim;
 
     //cheats
     public static bool immortality = false;
@@ -33,6 +35,7 @@ public static class SavePlayerStats
         }
         return false;
     }
+    
 
 
 

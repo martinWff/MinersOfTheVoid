@@ -28,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if(gameObject.tag=="Spaceship")animator = gameObject.GetComponent<Animator>();
         inicialPos = transform.position;
+        
     }
 
     // Update is called once per frame
@@ -46,9 +47,16 @@ public class CharacterMovement : MonoBehaviour
             float angle = Mathf.Atan2(mouseDirection.normalized.y,
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
             rb.SetRotation(angle);
-            if(verticalInput != 0 && gameObject.tag == "Spaceship")
+            if (gameObject.tag == "Spaceship")
             {
-                
+                if (verticalInput != 0)
+                {
+                    animator.SetInteger("Moving", 1);
+                }
+                else
+                {
+                    animator.SetInteger("Moving", 0);
+                }
             }
         }
      //   if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
@@ -74,6 +82,7 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             rb.SetRotation(180);
+            animator.SetInteger("Moving", 1);
             rb.velocity = (transform.right) * movementSpeed.value;
         }
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 927a2526d0780ed4cacd658d162d6b00
+guid: 73ef0c2bc4f5a62418d9dc81f13b092c
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -106,8 +106,8 @@ TextureImporter:
       name: SquidShip_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 1637
+        x: 117
+        y: 1638
         width: 1100
         height: 528
       alignment: 0
@@ -127,8 +127,8 @@ TextureImporter:
       name: SquidShip_1
       rect:
         serializedVersion: 2
-        x: 140
-        y: 803
+        x: 141
+        y: 802
         width: 1100
         height: 528
       alignment: 0
@@ -149,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1486
-        y: 803
+        y: 815
         width: 1100
         height: 528
       alignment: 0
@@ -169,8 +169,8 @@ TextureImporter:
       name: SquidShip_3
       rect:
         serializedVersion: 2
-        x: 140
-        y: 12
+        x: 146
+        y: 0
         width: 1100
         height: 528
       alignment: 0
