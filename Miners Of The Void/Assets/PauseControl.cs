@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseControl : MonoBehaviour
 {
     public GameObject pausePanel;
+    public GameObject settingsPanel;
     public static PauseControl instance;
     // Start is called before the first frame update
     void Awake()
@@ -26,5 +27,10 @@ public class PauseControl : MonoBehaviour
         {
             pausePanel.SetActive(!pausePanel.activeSelf);
         }
+    }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
     }
 }
