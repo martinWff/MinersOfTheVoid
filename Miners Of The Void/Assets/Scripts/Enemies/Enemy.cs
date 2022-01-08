@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     public float playerdmg;
     private float perEnemyLife;
     private float perEnemyShield;
+    public AudioSource audioSource;
 
 
 
@@ -105,6 +106,11 @@ public class Enemy : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
                 bulletShootTime = bulletCooldownTime;
                 bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
+                if (audioSource != null && audioSource.clip != null)
+                {
+                    Debug.Log("plau clip");
+                    audioSource?.Play();
+                }
             }
             if (bulletShootTime >= 0)
             {
