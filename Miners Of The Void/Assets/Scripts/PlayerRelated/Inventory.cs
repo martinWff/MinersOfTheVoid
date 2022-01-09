@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class Inventory
 {
    // protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
-    protected Hashtable oresStacks = new Hashtable(300);
+    protected Hashtable oresStacks = new Hashtable(5000);
     private HashSet<string> keys = new HashSet<string>();
   //  public int CountDifferent { get { return oresStacks.; } }
 
@@ -46,7 +46,8 @@ public class Inventory
     public virtual int GetOreAmount(string oreName)
     {
         if (oresStacks.ContainsKey(oreName)) {
-            return (oresStacks.GetValue(oreName) as OreStack).amount;
+            OreStack o = (OreStack)oresStacks.GetValue(oreName);
+            return o.amount;
         } else
         {
             return 0;
