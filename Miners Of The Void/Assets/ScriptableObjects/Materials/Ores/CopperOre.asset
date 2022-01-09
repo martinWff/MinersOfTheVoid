@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
   m_Name: CopperOre
   m_EditorClassIdentifier: 
-  resourceId: 437
+  resourceId: 911
   resourceName: Copper
   resourceType: 0
-  sprite: {fileID: -8931029250301905810, guid: 47d7f1fffddb5864989b16ef65198127, type: 3}
+  sprite: {fileID: 5992830139680216607, guid: 4abc6671d711c65438b48473868618e0, type: 3}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
-  m_Name: OsmiumIngot
+  m_Name: Cut Diamond
   m_EditorClassIdentifier: 
-  resourceId: 1147
-  resourceName: OsmiumIngot
+  resourceId: 0
+  resourceName: Cut Diamond
   resourceType: 2
-  sprite: {fileID: -6193012415045007118, guid: 47d7f1fffddb5864989b16ef65198127, type: 3}
+  sprite: {fileID: 6221625713903472652, guid: 47d7f1fffddb5864989b16ef65198127, type: 3}
