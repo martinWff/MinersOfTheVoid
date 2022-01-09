@@ -6,8 +6,10 @@ using UnityEngine;
 public class SkinChanger : MonoBehaviour
 {
     public Sprite skin;
+    public Sprite fire;
     private Sprite cache;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer fireSpriteRenderer;
 
     public bool fireIsHidden;
     void Start()
@@ -16,14 +18,16 @@ public class SkinChanger : MonoBehaviour
         {
             skin = SavePlayerStats.currentSkin;
             spriteRenderer.sprite = skin;
+
+            fireSpriteRenderer.sprite = fire;
         }
     }
 
     void Update()
     {
-        if (skin != cache)
+        if (fire != cache)
         {
-            spriteRenderer.sprite = skin;
+            fireSpriteRenderer.sprite = fire;
             cache = skin;
         }
     }

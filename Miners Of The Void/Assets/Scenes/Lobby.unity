@@ -760,7 +760,7 @@ PrefabInstance:
     - target: {fileID: 2724869212869716263, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4960293823910237081, guid: 126244dd2044c6c499cbc64aa9c47408, type: 3}
+      objectReference: {fileID: 1754310593498549605, guid: f008ad65ecdf8f1499116992780d3957, type: 3}
     - target: {fileID: 2724869212869716280, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5096,7 +5096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 868, y: 458}
+  m_AnchoredPosition: {x: 878, y: 458}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111701692
@@ -5121,10 +5121,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0

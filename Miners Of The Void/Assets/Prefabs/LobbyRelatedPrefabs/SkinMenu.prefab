@@ -570,7 +570,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Not Aquuiered!
+  m_Text: Not Acquiered!
 --- !u!1 &2486808496755152116
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +753,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Not Aquiered!
+  m_Text: Not Acquiered!
 --- !u!1 &2486808496894360594
 GameObject:
   m_ObjectHideFlags: 0

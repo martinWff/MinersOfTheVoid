@@ -13,7 +13,7 @@ public class SaveManager : MonoBehaviour
 
     public string key;
 
-    private static SaveManager instance;
+    public static SaveManager instance;
     private SavedData saveData;
 
     public void OnSaving()

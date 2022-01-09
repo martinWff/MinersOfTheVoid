@@ -23,7 +23,7 @@ public class EntityController : MonoBehaviour
             weaponScript = gameObject.GetComponent<CharacterWeapon>();
             lifeScript = gameObject.GetComponent<HealthBar>();
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-            if(SavePlayerStats.currentSkin != null)spriteRenderer.sprite = SavePlayerStats.currentSkin;
+            if(SavePlayerStats.currentSkin != null && gameObject.CompareTag("Spaceship"))spriteRenderer.sprite = SavePlayerStats.currentSkin;
         }
     }
     public void disableEntity(bool disableRenderer)
