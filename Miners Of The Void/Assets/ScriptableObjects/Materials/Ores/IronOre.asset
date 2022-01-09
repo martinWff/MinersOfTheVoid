@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29b527f592551846bdc78f585acecd4, type: 3}
   m_Name: IronOre
   m_EditorClassIdentifier: 
-  resourceId: 129
+  resourceId: 702
   resourceName: Iron
   resourceType: 0
-  sprite: {fileID: -3570502679553114330, guid: 47d7f1fffddb5864989b16ef65198127, type: 3}
+  sprite: {fileID: 7281372278489256099, guid: 4abc6671d711c65438b48473868618e0, type: 3}
