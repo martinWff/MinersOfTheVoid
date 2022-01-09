@@ -1,14 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
-
 public static class SavePlayerStats
 {
     //Skin
     public static Sprite currentSkin;
     public static int skinId;
-    public static AnimatorController anim;
     
 
     //cheats
