@@ -19,6 +19,7 @@ public class SpeedUpgradeButton : UpgradeButton
     {
         if (upgradeControllerUI.controller != null)
         {
+            upgradeControllerUI.costs = new string[] { "Osmium", "Copper Nugget", "Cutted Diamond" };
             costs.SetActive(true);
             upgradeControllerUI.upgrade = GetUpgrade();
             upgradeControllerUI.currentController = currentUpgradeController;

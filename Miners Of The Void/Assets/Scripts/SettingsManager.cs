@@ -25,8 +25,6 @@ public class SettingsManager : MonoBehaviour
 
     public void LoadSettings()
     {
-        Debug.Log("loaded settings");
-        Debug.Log(PlayerPrefs.GetFloat("masterVolume", GetLinearVolume("masterVolume")));
         SetVolume("masterVolume",PlayerPrefs.GetFloat("masterVolume", GetLinearVolume("masterVolume")));
         SetVolume("sfxVolume", PlayerPrefs.GetFloat("sfxVolume", GetLinearVolume("sfxVolume")));
         SetVolume("bgmVolume", PlayerPrefs.GetFloat("bgmVolume", GetLinearVolume("bgmVolume")));

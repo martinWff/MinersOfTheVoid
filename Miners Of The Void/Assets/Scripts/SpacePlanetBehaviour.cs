@@ -47,9 +47,11 @@ public class SpacePlanetBehaviour : MonoBehaviour
             {
                 if (!hasBlockade)
                 {
-                    Animator animator = spaceship.GetComponent<Animator>();
-                    animator.SetInteger("sceneId", sceneId);
-                    animator.SetTrigger("isEnteringPlanet");
+                    /*     Animator animator = spaceship.GetComponent<Animator>();
+                         animator.SetInteger("sceneId", sceneId);
+                         animator.SetTrigger("isEnteringPlanet");*/
+
+                    SceneManager.LoadScene(sceneId);
 
                 }
                 else

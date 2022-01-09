@@ -25,6 +25,7 @@ public class DmgButton : UpgradeButton
 
         if (upgradeControllerUI.controller != null)
         {
+            upgradeControllerUI.costs = new string[] { "Iron Ore", "Diamond", "Copper Ingot" };
             costs.SetActive(true);
             upgradeControllerUI.upgrade = GetUpgrade();
             upgradeControllerUI.currentController = currentUpgradeController;

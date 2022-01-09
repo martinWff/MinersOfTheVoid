@@ -6,12 +6,25 @@ using UnityEngine;
 public class SkinChanger : MonoBehaviour
 {
     public Sprite skin;
+    private Sprite cache;
+    public SpriteRenderer spriteRenderer;
+
+    public bool fireIsHidden;
     void Start()
     {
         if (SavePlayerStats.currentSkin != null)
         {
             skin = SavePlayerStats.currentSkin;
-            gameObject.GetComponent<SpriteRenderer>().sprite = skin;
+            spriteRenderer.sprite = skin;
+        }
+    }
+
+    void Update()
+    {
+        if (skin != cache)
+        {
+            spriteRenderer.sprite = skin;
+            cache = skin;
         }
     }
 }

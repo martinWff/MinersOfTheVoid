@@ -449,6 +449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b04d270b9f381db40a11513b53bef367, type: 3}
+--- !u!212 &163452308 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 981679730318006082, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+  m_PrefabInstance: {fileID: 211222590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &190096029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6479248026894717176, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
@@ -719,11 +724,35 @@ PrefabInstance:
     - target: {fileID: 265170836, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 02ce28ef59f771f49b0f3a2820371a3b, type: 2}
+      objectReference: {fileID: 9100000, guid: fda2b6eb7693d2143832f465d759473b, type: 2}
     - target: {fileID: 488194360, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: player2
       value: 
       objectReference: {fileID: 6091295736085832283}
+    - target: {fileID: 646653827, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 163452308}
+    - target: {fileID: 981679730318006082, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 981679730318006082, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136092534300184750, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136092534300184750, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136092534300184750, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 2724869212869716259, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: m_Name
       value: PlayerSpaceship
@@ -775,6 +804,14 @@ PrefabInstance:
     - target: {fileID: 2724869212869716280, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530262372959587261, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10.999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530262372959587261, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.3115983
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89d8b75a8d8d32649bb6774f840cc696, type: 3}
@@ -5138,7 +5175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

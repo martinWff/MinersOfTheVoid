@@ -16,6 +16,8 @@ public class UpgradeUIController : MonoBehaviour
     public Text purchaseText;
     public Inventory invPlayer;
 
+    public string[] costs;
+
     private void Start()
     {
         invPlayer = PlayerInventory.staticInventory;
@@ -73,11 +75,8 @@ public class UpgradeUIController : MonoBehaviour
     public void ApplyPurchase()
     {
         //Em vez de colocar assim, pode ter 1 parametro no upgrade com 1 string[] costs ou assim. Depois é só inserir aq
-        string[] materials = new string[3];
-        materials.SetValue("material1", 0);
-        materials.SetValue("material2", 1);
-        materials.SetValue("material3", 2);
-        if (currentController != null && upgrade != null && AddCost(materials))
+        
+        if (currentController != null && upgrade != null && AddCost(costs))
         {
             
             currentController.PlaceUpgrade(upgrade);
@@ -94,7 +93,18 @@ public class UpgradeUIController : MonoBehaviour
         {
             string ptext = purchaseText.text;
 
-            purchaseText.text = ptext.Replace("{upgrade}", upgrade.upgradeName).Replace("{cost}", "(undefined)");
+            string costText = " ";
+            for (int i = 0;i<costs.Length;i++)
+            {
+                costText += costs[i];
+                if (i < 2)
+                {
+                    costText += ", ";
+                }
+
+            }
+
+            purchaseText.text = ptext.Replace("{upgrade}", upgrade.upgradeName).Replace("{cost}", costText);
 
         }
     }
@@ -112,13 +122,13 @@ public class UpgradeUIController : MonoBehaviour
     public bool AddCost(string[] materials)      
     {
         int level = upgrade.level;
-        if (invPlayer.GetOreAmount(materials[0]) >= level && invPlayer.GetOreAmount(materials[1]) >= level  && invPlayer.GetOreAmount(materials[3]) >= level && SavePlayerStats.bips >= (200 * Mathf.Pow(1.3f, level)))
+        if (invPlayer.GetOreAmount(materials[0]) >= level && invPlayer.GetOreAmount(materials[1]) >= level  && invPlayer.GetOreAmount(materials[2]) >= level && SavePlayerStats.bips >= (200 * Mathf.Pow(1.3f, level-1)))
         {
-
+            
             invPlayer.RetrieveAmount(materials[0], level);
             invPlayer.RetrieveAmount(materials[1], level);
-            invPlayer.RetrieveAmount(materials[3], level);
-            SavePlayerStats.bips -= (int)(200 * Mathf.Pow(1.3f, level));
+            invPlayer.RetrieveAmount(materials[2], level);
+            SavePlayerStats.bips -= (int)(200 * Mathf.Pow(1.3f, level-1));
             //notices.text = "Aquiered!";
             return true;
         }

@@ -458,7 +458,6 @@ MonoBehaviour:
   costs: {fileID: 5536737435441390111}
   spriteUpgrade: {fileID: 0}
   upgradeControllerUI: {fileID: 7501354405973232793}
-  levelUp: 0
 --- !u!1 &436727301
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,8 +578,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825733355}
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
-  m_Value: -0.00000045776366
-  m_Size: 0.6666667
+  m_Value: -0.0001347351
+  m_Size: 0.6666052
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1050,7 +1049,6 @@ MonoBehaviour:
   costs: {fileID: 5536737435441390111}
   spriteUpgrade: {fileID: 0}
   upgradeControllerUI: {fileID: 7501354405973232793}
-  levelUp: 0
 --- !u!1 &1254315579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0008464705, y: 100.00005}
+  m_AnchoredPosition: {x: -0.0008464705, y: 100.01347}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1730842876
@@ -2690,7 +2688,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Do you want to buy {upgrade} upgrade for
 
@@ -3498,7 +3496,6 @@ MonoBehaviour:
   costs: {fileID: 5536737435441390111}
   spriteUpgrade: {fileID: 21300000, guid: bd4c68fd45f2c6b4c92cf752fc2954dc, type: 3}
   upgradeControllerUI: {fileID: 7501354405973232793}
-  levelUp: 0
 --- !u!1 &4277814287816247210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,7 +4216,6 @@ MonoBehaviour:
   costs: {fileID: 5536737435441390111}
   spriteUpgrade: {fileID: 21300000, guid: efbf37c811a211b468659a63e120ee98, type: 3}
   upgradeControllerUI: {fileID: 7501354405973232793}
-  levelUp: 0
 --- !u!1 &6728199569288855180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4869,6 +4865,7 @@ MonoBehaviour:
   currentController: {fileID: 0}
   purchaseWindow: {fileID: 5536737435441390111}
   purchaseText: {fileID: 7089158600258348397}
+  costs: []
 --- !u!1 &8062091757054387875
 GameObject:
   m_ObjectHideFlags: 0

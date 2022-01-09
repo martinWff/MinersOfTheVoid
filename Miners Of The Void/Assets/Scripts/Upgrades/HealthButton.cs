@@ -20,11 +20,13 @@ public class HealthButton : UpgradeButton
 
     }
 
+
     public void OnClick()
     {
-
+        
         if (upgradeControllerUI.controller != null)
         {
+            upgradeControllerUI.costs = new string[] { "Copper", "Iron Ingot", "Osmium Nugget" };
             costs.SetActive(true);
             upgradeControllerUI.upgrade = GetUpgrade();
             upgradeControllerUI.currentController = currentUpgradeController;
@@ -32,5 +34,5 @@ public class HealthButton : UpgradeButton
 
     }
 
-   
+
 }

@@ -23,6 +23,7 @@ public class ShieldButton : UpgradeButton
 
         if (upgradeControllerUI.controller != null)
         {
+            upgradeControllerUI.costs = new string[] { "Gold Ingot", "Osmium Nugget", "Copper" };
             costs.SetActive(true);
             upgradeControllerUI.upgrade = GetUpgrade();
             upgradeControllerUI.currentController = currentUpgradeController;
