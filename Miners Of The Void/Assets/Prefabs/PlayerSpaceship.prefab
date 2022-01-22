@@ -254,7 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skin: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  fire: {fileID: 0}
+  spriteRenderer: {fileID: 2724869212869716263}
+  fireSpriteRenderer: {fileID: 981679730318006082}
   fireIsHidden: 0
 --- !u!61 &5530262372959587261
 BoxCollider2D:
