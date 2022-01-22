@@ -189,6 +189,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &387860538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 643600271919104175, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+  m_PrefabInstance: {fileID: 552992926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &387860539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387860538}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7f870eb4082404997b5c888bbf870f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shockWave: {fileID: 1820699774051753430, guid: 38968a736f2aa444c82e83e433455589, type: 3}
+  safeArea: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
+  shootTimer: 0
+  phaseITimer: 0
+  bulletOffset: 2
+  bulletShootTime: 1.5
+  bulletCooldownTime: 1.5
+  bulletSpeed: 14
 --- !u!1 &421728956
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +326,18 @@ PrefabInstance:
       propertyPath: lifebar
       value: 
       objectReference: {fileID: 1205946903}
+    - target: {fileID: 353336886, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 552992929, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: phaseI
+      value: 
+      objectReference: {fileID: 387860539}
+    - target: {fileID: 552992929, guid: 1425efea4089e814f97d4327836785c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 643600271919104169, guid: 1425efea4089e814f97d4327836785c2, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -349,7 +386,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 552992931, guid: 1425efea4089e814f97d4327836785c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1425efea4089e814f97d4327836785c2, type: 3}
 --- !u!1001 &731330388
 PrefabInstance:

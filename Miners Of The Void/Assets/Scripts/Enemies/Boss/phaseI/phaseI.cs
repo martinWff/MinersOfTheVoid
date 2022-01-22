@@ -61,6 +61,7 @@ public class PhaseI : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        Debug.Log("deu");
         bossG = this.GetComponent<GameObject>();
         cam = Camera.main;
         camPosX = cam.transform.position.x;

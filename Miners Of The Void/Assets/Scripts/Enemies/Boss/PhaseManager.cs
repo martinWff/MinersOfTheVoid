@@ -32,6 +32,7 @@ public class PhaseManager : MonoBehaviour
 
 
         if (randomNumber == 1 && previousPhase != 1) phaseI.enabled = true;
+        Debug.Log(phaseI.enabled);
         if (randomNumber == 2 && previousPhase != 2) phaseII.enabled = true;
         if (randomNumber == 3 && previousPhase != 3) phaseIII.enabled = true;
 
