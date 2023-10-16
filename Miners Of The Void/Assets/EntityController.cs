@@ -47,6 +47,7 @@ public class EntityController : MonoBehaviour
     }
     public void SceneChanger(int id)
     {
+        DontDestroyOnLoad(GameObject.Find("DebugCanvas"));
         SceneManager.LoadScene(id);
     }
     
