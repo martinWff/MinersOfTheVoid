@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Oscars : MonoBehaviour
 {
+    [SerializeField] PersistentData persistentData;
     private void Awake()
     {
         ContractManager.onContractFinished += GetAwards;
     }
     private void GetAwards(Contract contract)
     {
-        SavePlayerStats.bips += contract.bips;
-        SavePlayerStats.rp += contract.famePoints;
-
+        persistentData.bips += contract.bips;
+        persistentData.xp += contract.famePoints;
     }
 
     private void OnDestroy()

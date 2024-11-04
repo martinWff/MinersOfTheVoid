@@ -35,23 +35,19 @@ public class OreChunk : MonoBehaviour
         oreTiles = new string[positions.Count];
         distributor.SetNumberOfRocks(positions.Count);
 
-        //  while (distributor.distributions.Count > 0)
-        //  {
-       
-            for (int i = 0; i < oreTiles.Length; i++)
-            {
-                oreTiles[i] = distributor.Calculate();
+        for (int i = 0; i < oreTiles.Length; i++)
+        {
+            oreTiles[i] = distributor.Calculate();
             //  Debug.Log(oreTiles[i]);
 
-                if (oreTiles[i] != null && oreTiles[i] != "Rock")
+            if (oreTiles[i] != null && oreTiles[i] != "Rock")
+            {
+                if (tileDictionary.ContainsKey(oreTiles[i]))
                 {
-                    if (tileDictionary.ContainsKey(oreTiles[i]))
-                    {
-                        tilemap.SetTile(positions[i], tileDictionary[oreTiles[i]]);
-                    }
+                    tilemap.SetTile(positions[i], tileDictionary[oreTiles[i]]);
                 }
             }
-        // }
+        }
 
 
 

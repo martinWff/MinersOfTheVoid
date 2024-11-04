@@ -151,6 +151,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5637517, y: 1.7061863, z: -49.28634}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -180,8 +181,6 @@ MonoBehaviour:
   - 0.05
   amountOfRocksToGenerate: 1
   distribution: []
-  distributions: []
-  numberOfRocks: 0
 --- !u!114 &235258936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +282,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567422534}
   m_RootOrder: 4
@@ -475,6 +475,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567422534}
   m_RootOrder: 1
@@ -607,7 +608,6 @@ GameObject:
   - component: {fileID: 567422533}
   - component: {fileID: 567422532}
   - component: {fileID: 567422531}
-  - component: {fileID: 567422536}
   - component: {fileID: 567422535}
   m_Layer: 5
   m_Name: Canvas
@@ -687,6 +687,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1571571419}
   - {fileID: 494687406}
@@ -715,19 +716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bipsText: {fileID: 494687407}
   experienceText: {fileID: 299815409}
---- !u!114 &567422536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 567422530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76221d661c83dd548b895c62b89f06e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryTab: {fileID: 1025167822}
 --- !u!1 &584670238
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +891,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -1046,6 +1035,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1217929105}
   - {fileID: 1690238982}
@@ -1215,11 +1205,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9137380297744941724, guid: 61ba532e9a2696d4d90ca4b0131a6ef4, type: 3}
   m_PrefabInstance: {fileID: 1025167820}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1025167822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9137380297744941725, guid: 61ba532e9a2696d4d90ca4b0131a6ef4, type: 3}
-  m_PrefabInstance: {fileID: 1025167820}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146321575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1267,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -1314,6 +1300,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961203540}
   m_RootOrder: 0
@@ -17788,6 +17775,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -17964,6 +17952,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961203540}
   m_RootOrder: 1

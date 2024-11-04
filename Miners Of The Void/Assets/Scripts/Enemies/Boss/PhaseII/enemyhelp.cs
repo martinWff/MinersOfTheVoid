@@ -12,7 +12,7 @@ public class enemyhelp : MonoBehaviour
     private float bossPosY;
 
     //player
-    private HealthBar player;
+    private Health player;
 
     //Camera Componets
     private Camera cam;
@@ -92,7 +92,7 @@ public class enemyhelp : MonoBehaviour
 
 
         lazer = transform.Find("Lazer").GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<HealthBar>();
+        player = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<Health>();
         
     }
 
@@ -221,14 +221,12 @@ public class enemyhelp : MonoBehaviour
 
 
                 lazer.color = lazer_NewColor;
-                player.lazerCharge = true;
 
             }
         }
 
         if(lazerOn == true)
         {
-            player.lazerCharge = false;
             timerAttack -= Time.deltaTime;
             lazer_NewColor = new Color32(226, 52, 10, 225);
             lazer.color = lazer_NewColor;

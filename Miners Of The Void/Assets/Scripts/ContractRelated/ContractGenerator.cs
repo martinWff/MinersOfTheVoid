@@ -8,6 +8,9 @@ public class ContractGenerator : MonoBehaviour
     public delegate void ContractGenerated(Contract contract);
     public static event ContractGenerated onContractGenerated;
     private bool bossContractGenerated = false;
+
+    public GameObject player;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -90,6 +93,9 @@ public class ContractGenerator : MonoBehaviour
             oresToUse.Add(element.oreName);
         }
         
+
+        InventoryBehaviour inv = player.GetComponent<InventoryBehaviour>();
+
         for (int i = 0; i < numberOfGoals; i++)
         {
 
@@ -101,7 +107,7 @@ public class ContractGenerator : MonoBehaviour
  
             int quantity = Random.Range(1, 6);
 
-            arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack(quantity),PlayerInventory.staticInventory));
+            arr.InsertAtEnd(new GatheringGoal(OreManager.instance.GetOreMaterialByMaterialName(rs.oreName).GetOreStack(quantity),inv.inventory ));
         }
         Contract c = new Contract(Contract.ContractType.mining, arr);
 

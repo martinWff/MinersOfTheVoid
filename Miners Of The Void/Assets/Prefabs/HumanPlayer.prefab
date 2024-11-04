@@ -12,11 +12,17 @@ GameObject:
   - component: {fileID: 6908643661827950554}
   - component: {fileID: 6612837595655447796}
   - component: {fileID: 2080799885}
-  - component: {fileID: 1479208916}
   - component: {fileID: 1479208917}
   - component: {fileID: 1479208922}
   - component: {fileID: 1991176871}
   - component: {fileID: 8984838886299686476}
+  - component: {fileID: 5862159558700102606}
+  - component: {fileID: 3681031538192541480}
+  - component: {fileID: 4275139050618371542}
+  - component: {fileID: 6121879472425201739}
+  - component: {fileID: 2018257755244897514}
+  - component: {fileID: 1129249129517225414}
+  - component: {fileID: 8142096344548386686}
   m_Layer: 0
   m_Name: HumanPlayer
   m_TagString: Player
@@ -34,6 +40,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: -0.63, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -137,27 +144,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.614854, y: 0.6341107}
   m_EdgeRadius: 0
---- !u!114 &1479208916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6479248026894717176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c475b3f2d76ed48a62451620ffc9a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDamage: 10
-  shield: 20
-  totalShield:
-    baseValue: 10
-  totalhp:
-    baseValue: 20
-  hp: 20
-  immortality: 0
-  lazerCharge: 0
 --- !u!114 &1479208917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,10 +178,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed:
     baseValue: 4
-  rb: {fileID: 0}
+  rb: {fileID: 6612837595655447796}
   animated: 0
   thereIsNoHumansInSpace: 0
   player2: {fileID: 0}
+  animator: {fileID: 0}
+  disallowMovement: 0
 --- !u!114 &1991176871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +196,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a341f547e1a7fc343bd5422d046e5c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeControllerId: human
+  upgradeCount: 6
+  onUpgradePlaced:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpgradeRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8984838886299686476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +223,125 @@ MonoBehaviour:
   weaponScript: {fileID: 0}
   lifeScript: {fileID: 0}
   spriteRenderer: {fileID: 0}
+--- !u!114 &5862159558700102606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc82cc3257ef7204693de621b45401ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1.5
+  onInteractionTargeting:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractionTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3681031538192541480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae52331569bc9f429a4b9492b7ca661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: 10
+  maxShield:
+    baseValue: 10
+  maxHP:
+    baseValue: 20
+  hp: 20
+  immortality: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2018257755244897514}
+        m_TargetAssemblyTypeName: DeathBehaviour, Assembly-CSharp
+        m_MethodName: OnDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4275139050618371542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7791395322c0d14fbb0969194b97780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistentData: {fileID: 11400000, guid: 719ba8a53ac71a043a1278b2b810ec10, type: 2}
+--- !u!114 &6121879472425201739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9252d286bffbe43b4ad2f0c0fefbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistentData: {fileID: 11400000, guid: 719ba8a53ac71a043a1278b2b810ec10, type: 2}
+  health: {fileID: 3681031538192541480}
+--- !u!114 &2018257755244897514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664e885cd9e188546b0c70d9b4faffeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backScene: 2
+--- !u!114 &1129249129517225414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5cf5e6f3d312b499aecc82a441cce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8142096344548386686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6479248026894717176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d65c354f1a62694eab565e74c39c020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryBehaviour: {fileID: 1129249129517225414}
+  persistentData: {fileID: 11400000, guid: 719ba8a53ac71a043a1278b2b810ec10, type: 2}

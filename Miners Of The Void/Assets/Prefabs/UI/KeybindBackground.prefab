@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471144496974352199}
   m_RootOrder: 1
@@ -104,6 +105,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7446716788886396509}
   - {fileID: 5934026116192763833}
@@ -173,6 +175,7 @@ MonoBehaviour:
   pressedColor: {r: 1, g: 0.9796701, b: 0.19339621, a: 1}
   progressColor: {r: 1, g: 0.7339252, b: 0, a: 1}
   mainCamera: {fileID: 0}
+  defDescription: Interact
 --- !u!1 &6613453272762524458
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +204,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471144496974352199}
   m_RootOrder: 2
@@ -280,6 +284,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471144496974352199}
   m_RootOrder: 0

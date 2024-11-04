@@ -95,11 +95,18 @@ public class OreManager : MonoBehaviour
 
     public OreResourceObject GetOreResourceFromMaterial(MaterialResourceObject mat)
     {
-        if (mat != null)
+        foreach (OreResourceObject oreResourceObject in ores)
         {
-            return GetOreResourceByName(mat.resourceName);
+            foreach (MaterialResourceObject material in oreResourceObject.materialResourceObjects)
+            {
+                if (material == mat)
+                {
+                    return oreResourceObject;
+                }
+            }
         }
-        else return null;
+
+        return null;
     }
 
     public OreResourceObject GetOreResourceFromMaterialName(string materialName)

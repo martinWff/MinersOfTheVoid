@@ -25,8 +25,6 @@ public class BossHealth : MonoBehaviour
     //phase controller
     public PhaseManager phaseController;
 
-    [SerializeField] public lifebar lifebar;
-
     //player
     private GameObject player;
     private float playerdmg;
@@ -37,7 +35,6 @@ public class BossHealth : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Spaceship");
         playerdmg = player.GetComponent<CharacterWeapon>().dmg.value;
         bossHealth = bossHealthTotal;
-        lifebar.Setsize(perBossHealthTotal);
     }
 
     // Update is called once per frame
@@ -56,7 +53,6 @@ public class BossHealth : MonoBehaviour
 
             bossHealth -= playerdmg;
             perBossLife = bossHealth / bossHealthTotal;
-            lifebar.Setsize(perBossLife);
 
 
             if (bossHealth <= 0)
@@ -69,7 +65,6 @@ public class BossHealth : MonoBehaviour
 
 
                 Destroy(transform.gameObject);
-                Destroy(lifebar.gameObject);
 
                 CombatSystem.onDied?.Invoke("boss", false);
 

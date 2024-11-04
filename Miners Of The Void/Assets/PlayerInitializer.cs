@@ -7,6 +7,9 @@ public class PlayerInitializer : MonoBehaviour
 {
     GameObject spaceship;
     GameObject humanoid;
+
+    [SerializeField] PersistentData persistentData;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,9 +21,9 @@ public class PlayerInitializer : MonoBehaviour
 
     void OnSavingStats(SavedData sv)
     {
-        sv.bips = SavePlayerStats.bips;
-        sv.experience = SavePlayerStats.rp;
-        sv.level = SavePlayerStats.level;
+        sv.bips = persistentData.bips;
+        sv.experience = persistentData.xp;
+        sv.level = persistentData.level;
         sv.currentSceneId = SceneManager.GetActiveScene().buildIndex;
         if (humanoid == null || spaceship == null)
         {
@@ -40,9 +43,9 @@ public class PlayerInitializer : MonoBehaviour
 
     void OnLoadStats(SavedData sv)
     {
-        SavePlayerStats.bips = sv.bips;
-        SavePlayerStats.rp = sv.experience;
-        SavePlayerStats.level = sv.level;
+        persistentData.bips = sv.bips;
+        persistentData.xp = sv.experience;
+        persistentData.level = sv.level;
         if (humanoid == null || spaceship == null)
         {
             humanoid = GameObject.FindGameObjectWithTag("Player");

@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject cheatsTab;
+    public Button backMainMenuButton;
+
+    private void Awake()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +34,11 @@ public class PauseMenuController : MonoBehaviour
     public void OpenCheatsButton()
     {
         cheatsTab.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(1);
     }
 
     private void OnEnable()

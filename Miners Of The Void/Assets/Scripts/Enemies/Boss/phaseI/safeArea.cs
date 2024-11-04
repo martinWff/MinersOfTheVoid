@@ -6,12 +6,12 @@ public class safeArea : MonoBehaviour
 {
     public float safeAreaLifeTime = 9;
     public GameObject player;
-    private HealthBar immortality;
+    private Health immortality;
     void Start()
     {
         Destroy(gameObject, safeAreaLifeTime);
         player = GameObject.FindGameObjectWithTag("Spaceship");
-        immortality = player.GetComponent<HealthBar>();
+        immortality = player.GetComponent<Health>();
     }
 
     private void Update()

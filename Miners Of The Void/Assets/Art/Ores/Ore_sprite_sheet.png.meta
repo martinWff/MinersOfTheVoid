@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -532,6 +533,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Ore_sprite_sheet_4: -3930081925719788925
+      Ore_sprite_sheet_2: -3570502679553114330
+      Ore_sprite_sheet_17: -6063212200173641977
+      Ore_sprite_sheet_7: -1551034343575735294
+      Ore_sprite_sheet_6: 8709672225864512979
+      Ore_sprite_sheet_11: 6221625713903472652
+      Ore_sprite_sheet_1: 4610519839855271520
+      Ore_sprite_sheet_3: -8931029250301905810
+      Ore_sprite_sheet_16: -5261229605144256927
+      Ore_sprite_sheet_0: 3443571566959184876
+      Ore_sprite_sheet_10: -6193012415045007118
+      Ore_sprite_sheet_12: -8786083673704475374
+      Ore_sprite_sheet_14: 5378511886176545713
+      Ore_sprite_sheet_5: 7657193858462650186
+      Ore_sprite_sheet_15: -6989757833223985497
+      Ore_sprite_sheet_8: -7059826126756281828
+      Ore_sprite_sheet_9: 6112817862484750893
+      Ore_sprite_sheet_13: 6572502835087652892
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,144 +1,138 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class RefineryInventory : MonoBehaviour
 {
-    
-
-
-    //Sprites
-    public Sprite goldOreSprite;
-    public Sprite ironOreSprite;
-    public Sprite copperOreSprite;
-    public Sprite goldNuggetSprite;
-    public Sprite ironNuggetSprite;
-    public Sprite copperNuggetSprite;
-
     //Class related stuff
-    public OreStack oreStack;
-    public Inventory inventory;
+    public InventoryBehaviour inventory;
     public Contract oreContract;
-    InventoryController inventoryController;
+   
+    public UnityEvent<RefineryItem> onRefining;
+    public UnityEvent<RefineryItem> onFinishedRefining;
+    
+    public UnityEvent<OreStack> onCollectRefinery;
 
+    public Queue<RefineryItem> refiningQueue = new Queue<RefineryItem>();
 
-    //Gameobjects to select
-    public Image progress;
-    public Image inputItem;
-    public Image outputItem;
+    public Stack<OreStack> outputStackCollection = new Stack<OreStack>();
 
-
-    //Refine
-    Queue<MaterialID> myQueue;
-    OreResourceObject ore;
-
-    MaterialResourceObject next;
-    MaterialResourceObject prev;
-
-
-    //Unclassified variables
-    float timer = 0;
-    private bool imageIsInSlot = false;
-
-    private void Awake()
-    {
-        inventoryController = GetComponent<InventoryController>();
-       // InventoryController.onInventoryControllerCreated += InventoryController_onInventoryControllerCreated;
-        myQueue = new Queue<MaterialID>();
-        
-    }
-
-    public void InitializeInventory(InventoryController invController)
-    {
-        inventory = PlayerInventory.staticInventory;
-        invController.AttachInventory(inventory);
-        
-    }
+    public float duration = 5;
 
 
     void Start()
     {
-      /*  inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Nugget").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Nugget").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Nugget").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Nugget").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Ingot").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Ingot").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Ingot").GetOreStack(64));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Ingot").GetOreStack(64));*/
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Nugget").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Nugget").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Nugget").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Nugget").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Ingot").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Ingot").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Ingot").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Ingot").GetOreStack(20));
     }
     private void Update()
     {
-
-        if (prev !=null)
+        if (!refiningQueue.IsEmpty())
         {
+            RefineryItem ri = refiningQueue.Peek().Data;
             
-            if(timer <= 0)
+            if (ri.duration <= 0)
             {
+                inventory.AddOre(ri.output);
 
-                inventory.AddOre(new OreStack(next.resourceName, 1, next.sprite));
-                
-                inputItem.color = new Color(255, 255, 255, 0);
-                outputItem.color = new Color(255, 255, 255, 0);
-                timer = 5;
-                prev = null;
-                progress.fillAmount = 0;
-                imageIsInSlot = false;
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-                progress.fillAmount += Time.deltaTime * 0.2f;  
+                outputStackCollection.Push(refiningQueue.Dequeue().Data.output);
 
+                onFinishedRefining?.Invoke(ri);                
             }
-            if (Input.GetKeyDown(KeyCode.P)) timer = 0;
-        }
-        if (!imageIsInSlot && !myQueue.IsEmpty())
-        {
-            MaterialID id = myQueue.Dequeue().Data;            
-            prev = OreManager.instance.GetOreMaterialByMaterialName(id.name, out id.index);
-            OreResourceObject oreResource = OreManager.instance.GetOreResourceFromMaterialName(id.name);
-            next = oreResource.materialResourceObjects[id.index + 1];
-            imageIsInSlot = true;
-            inputItem.sprite = prev.sprite;
-            outputItem.sprite = next.sprite;
-            inputItem.color = new Color(255, 255, 255, 255);
-            outputItem.color = new Color(255, 255, 255, 255);
-            timer = 5;
-            imageIsInSlot = true;
+
+            ri.duration -= Time.deltaTime;
+
         }
         
         
     }
 
-   /* public void CreateRefineryItem(GameObject prefabInput, GameObject prefabOutput)
+    public void Refine(OreStack stack)
     {
-       
-            inputItem = Instantiate(prefabInput, inputRef.transform);
-            outputItem = Instantiate(prefabOutput, outputRef.transform);
-        
-        
-    }*/
-
-            public void Refine(string name,int quantity)
-    {
-        if (quantity >= 3)
+        if (stack.amount >= 3)
         {
-            int index = 0;
-            if (myQueue.IsEmpty()) timer = 5;
-            MaterialResourceObject mat = OreManager.instance.GetOreMaterialByMaterialName(name, out index);
-            myQueue.Enqueue(new MaterialID(name,index));
-            inventory.RetrieveAmount(name, 3);
+            int index;
+            MaterialResourceObject mat = OreManager.instance.GetOreMaterialByMaterialName(stack.oreName, out index);
+
+            OreResourceObject oreRes = OreManager.instance.GetOreResourceFromMaterial(mat);
+
+            int nextIndex = index + 1;
+            if (oreRes.materialResourceObjects.Length > nextIndex)
+            {
+                MaterialResourceObject nextMat = oreRes.materialResourceObjects[nextIndex];
+
+                RefineryItem refiItem = new RefineryItem(stack, duration, new MaterialID(nextMat.resourceName, nextIndex));
+
+                refiItem.output = nextMat.GetOreStack();
+
+                inventory.inventory.RetrieveAmount(stack.oreName, 3);
+
+                refiningQueue.Enqueue(refiItem);
+                onRefining?.Invoke(refiItem);
+            }
+
         }
         else Debug.Log("You don't have enough "+name);
 
     }
-    
+
+    public float GetRemainingDuration()
+    {
+        if (refiningQueue.IsEmpty())
+        {
+            return 0;
+        } else
+        {
+            return refiningQueue.Peek().Data.duration;
+        }
+
+    }
+
+    public bool HasFinished()
+    {
+        return refiningQueue.IsEmpty();
+    }
+    public OreStack CollectOutput()
+    {
+        if (outputStackCollection.Count == 0)
+            return null;
+
+        OreStack s = outputStackCollection.Pop();
+
+        if (s == null)
+            return null;
+
+        inventory.AddOre(s);
+
+        if (onCollectRefinery != null)
+        {
+            onCollectRefinery.Invoke(s);
+        }
+
+        return s;
+    }
+
+
+    public OreStack GetOutput()
+    {
+        if (outputStackCollection.Count == 0)
+            return null;
+
+        return outputStackCollection.Peek();
+    }
+
     /*private void InventoryController_onInventoryControllerCreated(InventoryController inventoryController)
     {
         if (!inventoryController.hasInventory)
@@ -146,6 +140,24 @@ public class RefineryInventory : MonoBehaviour
             inventoryController.AttachInventory(inventory);
         }
     }+*/
+
+    public class RefineryItem
+    {
+        public OreStack oreStack;
+        public float duration;
+
+        public MaterialID matId;
+
+        public OreStack output;
+
+
+        public RefineryItem(OreStack s,float d,MaterialID id)
+        {
+            this.oreStack = s;
+            this.duration = d;
+            this.matId = id;
+        }
+    }
 
 }
 public class MaterialID

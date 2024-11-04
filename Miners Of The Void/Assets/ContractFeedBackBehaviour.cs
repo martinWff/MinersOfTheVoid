@@ -10,6 +10,9 @@ public class ContractFeedBackBehaviour : MonoBehaviour
     public GameObject panel;
     public Text statusText;
     public Text rewardText;
+
+    [SerializeField] PersistentData persistentData;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,7 +35,7 @@ public class ContractFeedBackBehaviour : MonoBehaviour
 
         if (contract.contractType == Contract.ContractType.position)
         {
-            contractReward = contractReward + " World Level Increased "+ (SavePlayerStats.level + 1).ToString();
+            contractReward = contractReward + " World Level Increased "+ (persistentData.level + 1).ToString();
         }
         ShowWithReward("You sucessfully finished the contract", contractReward);
 

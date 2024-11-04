@@ -12,7 +12,12 @@ public class SlotController : MonoBehaviour
     [SerializeField]private Image image;
     [SerializeField]private Text quantityText;
 
-    
+    private RefineryUIController refinaryUI;
+    private void Start()
+    {
+        refinaryUI = GetComponentInParent<RefineryUIController>();
+    }
+
     public void SetContent(OreStack o)
     {
         oreStack = o;
@@ -34,7 +39,7 @@ public class SlotController : MonoBehaviour
 
     public void PrepareRefine()
     {
-            transform.parent.GetComponent<RefineryInventory>().Refine(oreStack.oreName, oreStack.amount);   
+        refinaryUI.Refine(oreStack);   
     }
     public void RemoveUpgrade()
     {

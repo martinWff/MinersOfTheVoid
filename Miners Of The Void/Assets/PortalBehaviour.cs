@@ -3,50 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(InteractionArea))]
-public class PortalBehaviour : MonoBehaviour
+public class PortalBehaviour : MonoBehaviour, IInteractable
 {
-    public string action;
     public int sceneId;
-    public InteractionArea interaction;
-    [SerializeField] bool isPlayerInside;
-    GameObject spaceship;
-    // Start is called before the first frame update
-    void Awake()
+
+    public void Interact(GameObject instigator)
     {
-        interaction = GetComponent<InteractionArea>();
+        SceneManager.LoadScene(sceneId);
     }
-
-   
-    private void Update()
-    {
-        if (isPlayerInside)
-        {
-            if (Input.GetButtonDown("Interaction"))
-            {
-                SceneManager.LoadScene(sceneId);
-            }
-        }
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isPlayerInside = true;
-            spaceship = collision.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isPlayerInside = false;
-            spaceship = null;
-        }
-    }
-   
-
 }

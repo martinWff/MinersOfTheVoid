@@ -15,6 +15,8 @@ public class Inventory
     public delegate void InventoryChanged(Inventory inv, string oreName,int amountChanged);
     public static event InventoryChanged onInventoryChanged;
 
+    public int CountDistinct => keys.Count;
+
     public virtual bool AddOre(OreStack ore)
     {
         if (ore == null) return false;

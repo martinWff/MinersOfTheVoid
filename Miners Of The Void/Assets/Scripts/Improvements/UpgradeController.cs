@@ -6,9 +6,18 @@ using UnityEngine.Events;
 
 public class UpgradeController : MonoBehaviour
 {
+    //used for cross scene saving and loading
+    public string upgradeControllerId;
+    //6 for player - 4 for spaceship
+    public int upgradeCount = 0;
     public Upgrade[] upgradeHolder;
     public static System.Action<UpgradeController,Upgrade,int> onUpgradePut;
-    public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemoved;
+    public static System.Action<UpgradeController,Upgrade, int> onUpgradeRemovedAction;
+
+    public UnityEvent<int,Upgrade> onUpgradePlaced;
+    public UnityEvent<int,Upgrade> onUpgradeRemoved;
+    
+    [SerializeField] private bool preventUse; 
 
     private void Awake()
     {
@@ -19,52 +28,41 @@ public class UpgradeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.tag == "Player") 
-        {
-            upgradeHolder = new Upgrade[6];
-            foreach (Upgrade up in UpgradeTransporter.humanPlayer) {
-                PlaceUpgrade(up);
-             //   Debug.Log(up.upgradeName);
-            }
-        }
-        if (gameObject.tag == "Spaceship")
-        {
-            upgradeHolder = new Upgrade[4];
-            foreach (Upgrade up in UpgradeTransporter.spaceship)
-                PlaceUpgrade(up);
-        }
+        upgradeHolder = new Upgrade[upgradeCount];
 
-       
-        
+        LoadUpgrades();
+
+
     }
 
     void OnUpgradesLoaded(SavedData sv)
     {
-        
-        
-        if (gameObject.tag == "Player")
+
+        upgradeHolder = new Upgrade[upgradeCount];
+        LoadUpgrades();
+    }
+
+    void LoadUpgrades()
+    {
+        upgradeHolder = new Upgrade[upgradeCount];
+
+        Upgrade[] upgrades = UpgradePersistentData.GetUpgrades(upgradeControllerId);
+        if (upgrades != null)
         {
-            Upgrade[] humanPlayer = UpgradeTransporter.humanPlayer;
-            upgradeHolder = new Upgrade[6];
-            
-            foreach (Upgrade up in humanPlayer)
+            foreach (Upgrade up in upgrades)
             {
-                PlaceUpgrade(up);
-                //   Debug.Log(up.upgradeName);
+                if (up != null)
+                {
+                    PlaceUpgrade(up);
+                }
             }
-        }
-        if (gameObject.tag == "Spaceship")
-        {
-            Upgrade[] spaceship = UpgradeTransporter.spaceship;
-            upgradeHolder = new Upgrade[4];
-            foreach (Upgrade up in spaceship)
-                PlaceUpgrade(up);
         }
     }
 
     private void OnDestroy()
     {
         SaveManager.onAfterLoaded -= OnUpgradesLoaded;
+        UpgradePersistentData.upgrades[upgradeControllerId] = upgradeHolder;
     }
 
 
@@ -72,48 +70,23 @@ public class UpgradeController : MonoBehaviour
     {
         bool wasPlaced = false;
         
-        //    if (upgrade == null) return  false;
-        int index = FindUpgradeByName(upgrade?.upgradeName);
-        if (index < 0)
+        if (!HasUpgradeByName(upgrade.upgradeName))
         {
-         //   int cIndex = upgradeHolder.Length;
-            /* for (int i = 0;i<upgradeHolder.Length;i++)
-             {
-                 Debug.Log(upgradeHolder.Get(i)+" "+i );
-                 if (upgradeHolder.Get(i) == null)
-                 {
-                     Debug.Log("Empty "+i);
-                     wasPlaced = upgradeHolder.InsertAt(upgrade, i);
-                     cIndex = i;
-                     break;
-                 }
-             }*/
-            int last = ArrayUtils.Find<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg == null; });
-            int cIndex = last;
-            upgradeHolder[last] = upgrade;
-            
-            wasPlaced = true;
-          //  wasPlaced = upgradeHolder.InsertAtEnd(upgrade);
-            if (wasPlaced)
+            for (int i = 0;i<upgradeHolder.Length;i++)
             {
-                OnUpgradeAdded(upgrade, cIndex);
-            }
-        } else
-        {
-            Upgrade upg = upgradeHolder[index];
+                if (upgradeHolder[i] == null)
+                {
+                    wasPlaced = true;
+                    upgradeHolder[i] = upgrade;
 
-            if (upg != null)
-            {
-               if (upg.level + upgrade.level < upgrade.maxLevel)
-                {
-                    upg.level += upgrade.level;
-                    OnUpgradeAdded(upg, index);
-                    wasPlaced = true;
-                } else
-                {
-                    upg.level = upgrade.maxLevel;
-                    OnUpgradeAdded(upg, index);
-                    wasPlaced = true;
+                    onUpgradePlaced?.Invoke(i, upgrade);
+
+                    if (!preventUse)
+                    {
+                        upgrade.OnPut(gameObject);
+                    }
+
+                    break;
                 }
             }
         }
@@ -121,7 +94,38 @@ public class UpgradeController : MonoBehaviour
         return wasPlaced;
     }
 
+    public void RemoveUpgradeAt(int slot)
+    {
+        if (slot >= 0 && slot < upgradeHolder.Length)
+        {
+            Upgrade upgrade = upgradeHolder[slot];
+            if (upgrade != null)
+            {
+                if (!preventUse)
+                {
+                    upgrade.OnRemove();
+                }
+                upgradeHolder[slot] = null;
+                onUpgradeRemoved?.Invoke(slot, upgrade);
+            }
+        }
+    }
 
+    public bool RemoveUpgradeAt(Upgrade upgrade)
+    {
+        bool wasRemoved = false;
+        for (int i = 0; i < upgradeHolder.Length; i++)
+        {
+            if (upgradeHolder[i] == upgrade)
+            {
+                wasRemoved = true;
+                RemoveUpgradeAt(i);
+                break;
+            }
+        }
+
+        return wasRemoved;
+    }
 
     public bool HasUpgradeByName(string upgradeName)
     {
@@ -133,45 +137,5 @@ public class UpgradeController : MonoBehaviour
         return ArrayUtils.Find<Upgrade>(upgradeHolder, (Upgrade upg) => { return upg?.upgradeName == upgradeName; }); 
     }
 
-    public void TakeOfUpgrade(Upgrade upgrade)
-    {
-        int index = FindUpgradeByName(upgrade.upgradeName);
-        upgrade.OnRemove();
-        upgradeHolder[index] = null;
-    }
-
-    public void TakeOfUpgrade(string upgradeName)
-    {
-        int index = FindUpgradeByName(upgradeName);
-        if (index >= 0)
-        {
-            Upgrade value = upgradeHolder[index];
-            value.OnRemove();
-            upgradeHolder[index] = null;
-        }
-    }
-
-    public void TakeOfUpgrade(int slot)
-    {
-       Upgrade upgrade = upgradeHolder[slot];
-        if (upgrade != null)
-        {
-            UpgradeTransporter.upgradeSaver(upgrade.upgradeName, upgrade.level);
-            upgrade.OnRemove();
-            upgradeHolder[slot] = null;
-            onUpgradeRemoved?.Invoke(this,upgrade, slot);
-        }
-
-    }
-
-    private void OnUpgradeAdded(Upgrade upgrade,int index)
-    {
-        
-        upgrade.OnPut(gameObject);
-        onUpgradePut?.Invoke(this, upgrade,index);
-
-        if(gameObject.tag == "Player") UpgradeTransporter.humanPlayer = upgradeHolder;
-        if (gameObject.tag == "Spaceship") UpgradeTransporter.spaceship = upgradeHolder;
-   
-    }
+    
 }

@@ -41,7 +41,7 @@ public class PhaseIII : MonoBehaviour
             //Debug.Log(enemies.Get(0));
             enemies.Get(0).GetComponentInChildren<Enemy>().boss = EnemyDied;
             enemies.Get(1).GetComponentInChildren<Enemy>().boss = EnemyDied;
-            enemies.Get(2).GetComponentInChildren<PirateExploosion>().boss = EnemyDied;
+         //   enemies.Get(2).GetComponentInChildren<PirateExploosion>().boss = EnemyDied;
 
             spawnEnemies = true;
             

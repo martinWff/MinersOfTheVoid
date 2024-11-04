@@ -82,14 +82,13 @@ public class ContractBoardController : MonoBehaviour
 
     public void Close()
     {
-        
-        gameObject.SetActive(false);
+
+        MenuManager.instance.DeactivatePanel();
         
     }
 
     private void OnDisable()
     {
-        contractNPC.disabled = false;
         for (int i = contractPanels.Count-1; i >= 0; i--) {
             Destroy(contractPanels[i]);
         }

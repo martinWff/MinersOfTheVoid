@@ -10,18 +10,20 @@ public class BipsUIController : MonoBehaviour
     private int currentBips = -1;
     private int currentXP = -1;
 
+    public PersistentData persistentData;
+
     private void Update()
     {
-        if (currentBips != SavePlayerStats.bips)
+        if (currentBips != persistentData.bips)
         {
-            currentBips = SavePlayerStats.bips;
+            currentBips = persistentData.bips;
             bipsText.text = "Bips: " + currentBips;
         }
         if (experienceText != null)
         {
-            if (currentXP != SavePlayerStats.rp)
+            if (currentXP != persistentData.xp)
             {
-                experienceText.text = "XP: "+SavePlayerStats.rp+"/"+SavePlayerStats.requieredRp;
+                experienceText.text = "XP: "+persistentData.xp+"/"+persistentData.requiredXP;
             }
         }
     }

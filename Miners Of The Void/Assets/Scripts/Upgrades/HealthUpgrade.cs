@@ -5,20 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class HealthUpgrade : Upgrade
 {
-    [System.NonSerialized]private HealthBar hpShield;
+    [System.NonSerialized]private Health hpShield;
     private StatModifier hpUp;
     public HealthUpgrade(string upName, int level) : base(upName, level) { }
     public override void OnPut(GameObject controller)
     {
-        hpShield = controller.GetComponent<HealthBar>();
-        hpShield.totalhp.RemoveAllFromSource(this);
+        hpShield = controller.GetComponent<Health>();
+        hpShield.maxHP.RemoveAllFromSource(this);
         hpUp = new StatModifier(20 * level, this);
-        hpShield.totalhp.AddModifier(hpUp);
+        hpShield.maxHP.AddModifier(hpUp);
     }
 
     public override void OnRemove()
     {
-        hpShield.totalhp.RemoveAllFromSource(this);
+        hpShield.maxHP.RemoveAllFromSource(this);
     }
 
 

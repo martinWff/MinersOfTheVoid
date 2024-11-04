@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
@@ -16,11 +17,16 @@ public class SaveManager : MonoBehaviour
     public static SaveManager instance;
     private SavedData saveData;
 
+
+    public UnityEvent<SavedData> onSaved;
+    public UnityEvent<SavedData> onLoaded;
+
     public void OnSaving()
     {
 
          SavedData generatedSavedData = new SavedData();
          saveStarted?.Invoke(generatedSavedData);
+         onSaved?.Invoke(generatedSavedData);
 
         SaveSystem.Save(generatedSavedData, key);
     }
@@ -29,6 +35,8 @@ public class SaveManager : MonoBehaviour
     {
         SavedData sv = SaveSystem.Load<SavedData>(key);
         SceneManager.LoadScene(sv.currentSceneId);
+
+        onLoaded?.Invoke(sv);
 
         /* saveLoaded?.Invoke(sv);
 
@@ -58,7 +66,7 @@ public class SaveManager : MonoBehaviour
         {
             instance = this;
 
-            SaveSystem.path = Application.dataPath + "/saves/";
+            SaveSystem.path = System.IO.Path.Combine(Application.persistentDataPath,"saves");
             SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         }
 

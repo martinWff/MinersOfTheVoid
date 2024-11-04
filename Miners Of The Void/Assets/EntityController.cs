@@ -11,7 +11,7 @@ public class EntityController : MonoBehaviour
 
     public CharacterMovement movementScript;
     public CharacterWeapon weaponScript;
-    public HealthBar lifeScript;
+    public Health lifeScript;
     public SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -21,7 +21,7 @@ public class EntityController : MonoBehaviour
         {
             movementScript = gameObject.GetComponent<CharacterMovement>();
             weaponScript = gameObject.GetComponent<CharacterWeapon>();
-            lifeScript = gameObject.GetComponent<HealthBar>();
+            lifeScript = gameObject.GetComponent<Health>();
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             if(SavePlayerStats.currentSkin != null && gameObject.CompareTag("Spaceship"))spriteRenderer.sprite = SavePlayerStats.currentSkin;
         }

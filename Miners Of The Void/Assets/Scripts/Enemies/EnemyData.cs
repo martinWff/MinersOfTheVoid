@@ -19,6 +19,8 @@ public class EnemyData : MonoBehaviour
         {
             CombatSystem.onDied?.Invoke(enemyName,isPlanetary);
             isDead = true;
+            Destroy(gameObject);
+
         }
     }
 

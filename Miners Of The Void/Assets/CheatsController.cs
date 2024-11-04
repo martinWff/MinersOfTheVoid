@@ -6,10 +6,17 @@ using UnityEngine.UI;
 public class CheatsController : MonoBehaviour
 {
     public bool human = true;
+
+    public GameObject target;
+
+    public PersistentData persistentData;
+
+    [SerializeField] Toggle immortalityToggle;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        immortalityToggle.isOn = persistentData.immortality;
     }
 
     // Update is called once per frame
@@ -22,26 +29,26 @@ public class CheatsController : MonoBehaviour
         
     }
 
-    /*public void OnImortalityToggled(bool immortality)
+    public void OnImortalityToggled(bool immortality)
     {
-        
-        Debug.Log(immortality);
-        SavePlayerStats.immortality = immortality;
-        if (human)
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().immortality = immortality; 
-        else
-            GameObject.FindGameObjectWithTag("Spaceship").GetComponent<SpaceshipMovement>().immortality = immortality;
+        Health health = target.GetComponent<Health>();
 
-    }*/
+        health.immortality = immortality;
+
+        persistentData.immortality = immortality;
+
+    }
 
     
     public void OnClickOres()
     {
+        InventoryBehaviour inventory = target.GetComponent<InventoryBehaviour>();
+
         foreach (OreResourceObject oreResourceObject in OreManager.instance.ores)
         {
             foreach (MaterialResourceObject material in oreResourceObject.materialResourceObjects)
             {
-                PlayerInventory.staticInventory.AddOre(material.GetOreStack(100));
+                inventory.AddOre(material.GetOreStack(100));
             }
         }
     }
@@ -50,7 +57,7 @@ public class CheatsController : MonoBehaviour
     {
         int money;
         int.TryParse(bips, out money);
-        SavePlayerStats.bips = money;
-        Debug.Log(SavePlayerStats.bips);
+        persistentData.bips = money;
+
     }
 }
