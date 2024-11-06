@@ -151,6 +151,7 @@ MonoBehaviour:
   target: {fileID: 0}
   minimumPrize: 5
   maximumPrize: 8
+  experienceReward: 7
 --- !u!50 &5628975642726394799
 Rigidbody2D:
   serializedVersion: 4

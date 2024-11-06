@@ -249,6 +249,7 @@ MonoBehaviour:
   target: {fileID: 0}
   minimumPrize: 3
   maximumPrize: 5
+  experienceReward: 8
 --- !u!82 &1820437077519304950
 AudioSource:
   m_ObjectHideFlags: 0

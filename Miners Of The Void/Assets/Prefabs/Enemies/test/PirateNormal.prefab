@@ -277,6 +277,9 @@ MonoBehaviour:
   isPlanetary: 0
   enemyName: Shooter
   target: {fileID: 0}
+  minimumPrize: 2
+  maximumPrize: 4
+  experienceReward: 5
 --- !u!114 &4708107711352073262
 MonoBehaviour:
   m_ObjectHideFlags: 0

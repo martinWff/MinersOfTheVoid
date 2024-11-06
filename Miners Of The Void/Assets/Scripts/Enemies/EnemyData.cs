@@ -14,6 +14,8 @@ public class EnemyData : MonoBehaviour
     public int minimumPrize;
     public int maximumPrize;
 
+    public int experienceReward;
+
 
     private void Start()
     {
@@ -27,8 +29,9 @@ public class EnemyData : MonoBehaviour
             isDead = true;
             Destroy(gameObject);
 
-            FindObjectOfType<PersistentDataController>().persistentData.bips += Random.Range(minimumPrize, maximumPrize);
-
+            PersistentData persistentData = FindObjectOfType<PersistentDataController>().persistentData;
+            persistentData.bips += Random.Range(minimumPrize, maximumPrize);
+            persistentData.xp += experienceReward;
         }
     }
 

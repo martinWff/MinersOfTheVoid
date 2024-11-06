@@ -21,6 +21,8 @@ public class BossStateMachine : MonoBehaviour
     public List<StateMilestone> milestones = new List<StateMilestone>();
     private int milestoneReached = 0;
 
+    [SerializeField] int sceneId = 2;
+
 
     void Start()
     {
@@ -54,59 +56,64 @@ public class BossStateMachine : MonoBehaviour
         }
     }
 
-   /* private void OnTriggerEnter2D(Collider2D collision)
+    public void OnDied()
     {
-        if (collision.gameObject.tag == "Bullet")
-        {
+        SceneManager.LoadScene(sceneId);
+    }
+
+    /* private void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (collision.gameObject.tag == "Bullet")
+         {
 
 
 
 
-            bossHealth -= playerdmg;
-            perBossLife = bossHealth / bossHealthTotal;
+             bossHealth -= playerdmg;
+             perBossLife = bossHealth / bossHealthTotal;
 
 
-            if (bossHealth <= 0)
-            {
-                //Death
-                bossHealth = 0;
-                SavePlayerStats.bips += (int)Random.Range(3, 5);
-
-                
-
-
-                Destroy(transform.gameObject);
-
-                CombatSystem.onDied?.Invoke("boss", false);
-
-                Debug.Log("Boss is Dead!!");
-                SceneManager.LoadScene(2);
-
-            }
+             if (bossHealth <= 0)
+             {
+                 //Death
+                 bossHealth = 0;
+                 SavePlayerStats.bips += (int)Random.Range(3, 5);
 
 
 
-            Debug.Log(perBossLife);
 
-            if(perBossLife < 0.666 && phaseChanger == 3)
-            {
+                 Destroy(transform.gameObject);
 
-                phaseController.ProgressPhase();
-                phaseChanger = 2;
-            }
+                 CombatSystem.onDied?.Invoke("boss", false);
 
-            if (perBossLife < 0.333 && phaseChanger == 2)
-            {
+                 Debug.Log("Boss is Dead!!");
+                 SceneManager.LoadScene(2);
+
+             }
 
 
-                phaseController.ProgressPhase();
-                phaseChanger = 1;
-            }
+
+             Debug.Log(perBossLife);
+
+             if(perBossLife < 0.666 && phaseChanger == 3)
+             {
+
+                 phaseController.ProgressPhase();
+                 phaseChanger = 2;
+             }
+
+             if (perBossLife < 0.333 && phaseChanger == 2)
+             {
 
 
-            Destroy(collision.gameObject);
-        }
-    }*/
+                 phaseController.ProgressPhase();
+                 phaseChanger = 1;
+             }
+
+
+             Destroy(collision.gameObject);
+         }
+     }*/
 
     [System.Serializable]
     public struct StateMilestone
