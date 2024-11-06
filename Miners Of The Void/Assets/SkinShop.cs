@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 
 public class SkinShop : MonoBehaviour
 {
@@ -10,9 +9,6 @@ public class SkinShop : MonoBehaviour
     public Sprite skin0;
     public Sprite skin1;
     public Sprite skin2;
-    public AnimatorController anim0;
-    public AnimatorController anim1;
-    public AnimatorController anim2;
     //UI
     public Text currency;
 
@@ -40,14 +36,12 @@ public class SkinShop : MonoBehaviour
         {
             player.GetComponent<SpriteRenderer>().sprite = skin0;
             SavePlayerStats.currentSkin = skin0;
-            SavePlayerStats.anim = anim0;
             SavePlayerStats.skinId = id;
         }
         if(id == 1 && CheckSkinInv(id))
         {
             player.GetComponent<SpriteRenderer>().sprite = skin1;
             SavePlayerStats.currentSkin = skin1;
-            SavePlayerStats.anim = anim1;
             SavePlayerStats.skinId = id;
             skin1Acq.text = "";
             
@@ -58,7 +52,6 @@ public class SkinShop : MonoBehaviour
         {
             player.GetComponent<SpriteRenderer>().sprite = skin2;
             SavePlayerStats.currentSkin = skin2;
-            SavePlayerStats.anim = anim2;
             SavePlayerStats.skinId = id;
             skin2Acq.text = "";
         }

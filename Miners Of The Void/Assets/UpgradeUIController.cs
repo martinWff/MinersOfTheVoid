@@ -30,6 +30,12 @@ public class UpgradeUIController : MonoBehaviour
 
     [SerializeField] PersistentData persistentData;
 
+    [SerializeField] List<UpgradeView> upgradeViews = new List<UpgradeView>();
+    private int currentUpgradeView = 0;
+
+    [SerializeField] private Image viewImage;
+
+
     private void Start()
     {
         previousMode = modes[0];       
@@ -91,6 +97,25 @@ public class UpgradeUIController : MonoBehaviour
         failureObj.gameObject.SetActive(false);
     }
 
+    public void SwitchUpgradeView()
+    {
+        upgradeViews[currentUpgradeView].tab.SetActive(false);
+
+        currentUpgradeView++;
+        if (currentUpgradeView >= upgradeViews.Count)
+        {
+            currentUpgradeView = 0;
+        }
+
+        UpgradeView v = upgradeViews[currentUpgradeView];
+        v.tab.SetActive(true);
+
+        viewImage.sprite = v.sprite;
+
+      //  currentController = v.upgradeController;
+
+    }
+
     public bool ApplyCosts(UpgradeCost[] materials)      
     {
 
@@ -129,20 +154,13 @@ public class UpgradeUIController : MonoBehaviour
 
         return enough;
 
-        /*if (invPlayer.GetOreAmount(materials[0]) >= level && invPlayer.GetOreAmount(materials[1]) >= level  && invPlayer.GetOreAmount(materials[2]) >= level && SavePlayerStats.bips >= (200 * Mathf.Pow(1.3f, level-1)))
-        {
-            
-            invPlayer.RetrieveAmount(materials[0], level);
-            invPlayer.RetrieveAmount(materials[1], level);
-            invPlayer.RetrieveAmount(materials[2], level);
-            SavePlayerStats.bips -= (int)(200 * Mathf.Pow(1.3f, level-1));
-            //notices.text = "Aquiered!";
-            return true;
-        }
-        else
-        {
-            //notices.text = "Not enough ore: " + material1 + ":" + invPlayer.inventory.GetOreAmount(material1) + "; " + material2 + ":" + invPlayer.inventory.GetOreAmount(material2) + material3 + ":" + invPlayer.inventory.GetOreAmount(material3) + ", you need at least " + level + 1 + " of each and " + 200 * (level + 1) + "bips";
-            return false;
-        }*/
+    }
+
+    [System.Serializable]
+    public struct UpgradeView
+    {
+        public Sprite sprite;
+        public GameObject tab;
+        public UpgradeController upgradeController;
     }
 }
