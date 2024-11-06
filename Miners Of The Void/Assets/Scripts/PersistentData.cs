@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PersistentData : ScriptableObject
 {
-    public Inventory inventory;
+    [System.NonSerialized] public Inventory inventory;
 
     public Dictionary<string,List<Upgrade>> upgrades = new Dictionary<string, List<Upgrade>>();
 

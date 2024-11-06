@@ -13,13 +13,16 @@ GameObject:
   - component: {fileID: 643600271919104171}
   - component: {fileID: 643600271919104170}
   - component: {fileID: 511966408}
-  - component: {fileID: 353336886}
   - component: {fileID: 552992928}
   - component: {fileID: 552992929}
-  - component: {fileID: 552992931}
+  - component: {fileID: 1028099698271965917}
+  - component: {fileID: 4090880010758776760}
+  - component: {fileID: 660556210116218664}
+  - component: {fileID: 4892029569780193857}
+  - component: {fileID: 1543034371143887957}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1747293633
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 961147b6c80feef45991b4c3ca309c0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,28 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pirate: {fileID: 2650102425109889620, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
   pirateexplosion: {fileID: 5508214930983710229, guid: e646e54c84cf1824884519a41130a362, type: 3}
-  boss: {fileID: 643600271919104175}
   levelComplete: 0
---- !u!114 &353336886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643600271919104175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5521a0e50169e724ea746555101a7262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tpPlayer: {fileID: 0}
-  perBossHealthTotal: 1
-  bossHealthTotal: 100
-  phaseI: {fileID: 552992931}
-  phaseII: {fileID: 552992928}
-  phaseIII: {fileID: 511966408}
-  phaseController: {fileID: 552992929}
-  lifebar: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &552992928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,11 +160,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHelp: {fileID: 8393208275591319378, guid: b8fb33471c1e39e41964a10582604572, type: 3}
+  rb: {fileID: 0}
   bulletPrefab: {fileID: 9068906604437571471, guid: 7d7571cbca5234041b52214aab336b62, type: 3}
   bulletOffset: 4
   bulletSpeed: 14
   bulletCooldownTime: 1.5
   bulletShootTime: 0.5
+  player: {fileID: 0}
   enemyHelpSpeed: 3
 --- !u!114 &552992929
 MonoBehaviour:
@@ -194,26 +180,142 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e4929d6434a9d4884ec18c9d0881e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseI: {fileID: 552992931}
-  phaseII: {fileID: 552992928}
-  phaseIII: {fileID: 511966408}
---- !u!114 &552992931
+  phases:
+  - {fileID: 660556210116218664}
+  - {fileID: 552992928}
+  - {fileID: 511966408}
+--- !u!114 &1028099698271965917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643600271919104175}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7f870eb4082404997b5c888bbf870f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ae52331569bc9f429a4b9492b7ca661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: 10
+  maxShield:
+    baseValue: 10
+  maxHP:
+    baseValue: 20
+  hp: 20
+  immortality: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4892029569780193857}
+        m_TargetAssemblyTypeName: BossStateMachine, Assembly-CSharp
+        m_MethodName: OnDamaged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 552992929}
+        m_TargetAssemblyTypeName: PhaseManager, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1543034371143887957}
+        m_TargetAssemblyTypeName: EnemyData, Assembly-CSharp
+        m_MethodName: OnKilled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4090880010758776760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcb3fdd11249de4fb8bf42cb3faefa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 7638802270652993692, guid: 9e181a5ea656f124386cd8a16cffa754, type: 3}
+  health: {fileID: 1028099698271965917}
+--- !u!114 &660556210116218664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa46c9d98fc8d2d4dbe989949a912817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shockWave: {fileID: 1820699774051753430, guid: 38968a736f2aa444c82e83e433455589, type: 3}
   safeArea: {fileID: 5580067059291294687, guid: 91d04e8d958b5224691e4f2d9c1adf56, type: 3}
-  shootTimer: 0
-  phaseITimer: 0
+  phaseDuration: 3
   bulletOffset: 2
   bulletShootTime: 1.5
   bulletCooldownTime: 1.5
   bulletSpeed: 14
+  waveCount: 3
+  safeAreaDelay: 2
+--- !u!114 &4892029569780193857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5521a0e50169e724ea746555101a7262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perBossHealthTotal: 1
+  bossHealthTotal: 100
+  phaseController: {fileID: 552992929}
+  player: {fileID: 0}
+  health: {fileID: 1028099698271965917}
+  milestones:
+  - health: 0.67
+    phase: 1
+  - health: 0.333
+    phase: 2
+--- !u!114 &1543034371143887957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643600271919104175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3fb80e422e7174abc4730a978747f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlanetary: 0
+  enemyName: Boss
+  target: {fileID: 0}
+  minimumPrize: 18
+  maximumPrize: 24

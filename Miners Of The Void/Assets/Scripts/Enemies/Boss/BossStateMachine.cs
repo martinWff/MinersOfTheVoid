@@ -3,47 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BossHealth : MonoBehaviour
+public class BossStateMachine : MonoBehaviour
 {
-
-    public EntityController tpPlayer;
-
-
     //boss stats
     public float perBossHealthTotal = 1;
     public float bossHealthTotal = 100;
-    private float bossHealth;
-    private float perBossLife;
-    private int phaseChanger = 3;
-
-    //phases
-    public PhaseI phaseI;
-    public PhaseII phaseII;
-    public PhaseIII phaseIII;
 
 
     //phase controller
     public PhaseManager phaseController;
 
     //player
-    private GameObject player;
-    private float playerdmg;
+    [SerializeField] GameObject player;
+
+    [SerializeField] Health health;
+
+    public List<StateMilestone> milestones = new List<StateMilestone>();
+    private int milestoneReached = 0;
 
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Spaceship");
-        playerdmg = player.GetComponent<CharacterWeapon>().dmg.value;
-        bossHealth = bossHealthTotal;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnDamaged(float dmg)
     {
-        
+        State(dmg);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    protected virtual void State(float dmg)
+    {
+        float hp = health.hp;
+
+        int currentMilestone = -1;
+
+        for (int i = 0;i<milestones.Count;i++)
+        {
+            if (milestones[i].phase > milestoneReached && (milestones[i].health * health.maxHP.value) >= hp)
+            {
+                currentMilestone = milestones[i].phase;
+            }
+        }
+
+        if (currentMilestone > -1)
+        {
+            milestoneReached = currentMilestone;
+            phaseController.GoToPhase(currentMilestone);
+        }
+    }
+
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
@@ -80,7 +91,7 @@ public class BossHealth : MonoBehaviour
             if(perBossLife < 0.666 && phaseChanger == 3)
             {
 
-                phaseController.RandomNumber();
+                phaseController.ProgressPhase();
                 phaseChanger = 2;
             }
 
@@ -88,16 +99,21 @@ public class BossHealth : MonoBehaviour
             {
 
 
-                phaseController.RandomNumber();
+                phaseController.ProgressPhase();
                 phaseChanger = 1;
             }
 
 
             Destroy(collision.gameObject);
         }
+    }*/
+
+    [System.Serializable]
+    public struct StateMilestone
+    {
+        public float health;
+        public int phase;
     }
-
-
 
 }
 

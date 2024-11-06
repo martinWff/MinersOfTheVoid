@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6351638024861030536}
   m_Layer: 0
   m_Name: PirateExplosion
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlanetary: 0
   enemyName: Drone
+  target: {fileID: 0}
+  minimumPrize: 5
+  maximumPrize: 8
 --- !u!50 &5628975642726394799
 Rigidbody2D:
   serializedVersion: 4
@@ -300,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e37a9bc4bfd9e43b25a8d0771c9538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   rb: {fileID: 5628975642726394799}
   enemyRange: 20
   speed: 15

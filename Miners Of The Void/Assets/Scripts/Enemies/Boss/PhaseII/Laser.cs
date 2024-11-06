@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lazer : MonoBehaviour
+public class Laser : MonoBehaviour
 {
 
+    public SpriteRenderer spriteRenderer;
 
+    private bool laserIsActive;
 
     //Camera Componets
     private Camera cam;
@@ -18,6 +20,7 @@ public class lazer : MonoBehaviour
 
     private float xpos;
 
+    public float damage = 5;
 
 
     void Start()
@@ -38,8 +41,33 @@ public class lazer : MonoBehaviour
 
     }
 
-    
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (laserIsActive && collision.CompareTag("Player"))
+        {
+            IDamageable health = collision.GetComponent<IDamageable>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+        }
+    }
+
+    public void Activate()
+    {
+        laserIsActive = true;
+    }
+
+    public void Deactivate()
+    {
+        laserIsActive = false;
+    }
+
+    public bool IsRunning()
+    {
+        return laserIsActive;
+    }
 
 
 }

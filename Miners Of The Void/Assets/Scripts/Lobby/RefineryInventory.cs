@@ -24,7 +24,7 @@ public class RefineryInventory : MonoBehaviour
 
     void Start()
     {
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(20));
+     /*   inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron").GetOreStack(20));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper").GetOreStack(20));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold").GetOreStack(20));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium").GetOreStack(20));
@@ -35,7 +35,7 @@ public class RefineryInventory : MonoBehaviour
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Iron Ingot").GetOreStack(20));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Copper Ingot").GetOreStack(20));
         inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Gold Ingot").GetOreStack(20));
-        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Ingot").GetOreStack(20));
+        inventory.AddOre(OreManager.instance.GetOreMaterialByMaterialName("Osmium Ingot").GetOreStack(20));*/
     }
     private void Update()
     {
@@ -84,7 +84,10 @@ public class RefineryInventory : MonoBehaviour
             }
 
         }
-        else Debug.Log("You don't have enough "+name);
+        else
+        {
+            Debug.Log("You don't have enough " + name);
+        }
 
     }
 

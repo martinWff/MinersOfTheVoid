@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject target;
+    public Transform target => enemyData.target;
     private float targetDistance;
 
     public System.Action<GameObject> boss;

@@ -11,8 +11,6 @@ public class CharacterMovement : MonoBehaviour, IMoveable
     private StaticCameraController camera;
     private Vector3 inicialPos;
     public bool animated = false;
-    public bool thereIsNoHumansInSpace = false;
-    public EntityController player2;
     public Animator animator;
 
 

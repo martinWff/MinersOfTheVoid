@@ -10,11 +10,13 @@ public class InventoryBehaviour : MonoBehaviour
     void Start()
     {
 
-     //   SaveManager.saveStarted += OnSaved;
-      //  SaveManager.saveLoaded += OnLoaded;
+        //   SaveManager.saveStarted += OnSaved;
+        //  SaveManager.saveLoaded += OnLoaded;
 
-        inventory = new Inventory();
-
+        if (inventory == null)
+        {
+            inventory = new Inventory();
+        }
 
     }
 

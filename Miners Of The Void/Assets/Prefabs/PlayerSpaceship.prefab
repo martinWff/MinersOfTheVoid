@@ -124,7 +124,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -212,6 +212,7 @@ MonoBehaviour:
   onUpgradeRemoved:
     m_PersistentCalls:
       m_Calls: []
+  preventUse: 0
 --- !u!61 &5530262372959587261
 BoxCollider2D:
   m_ObjectHideFlags: 0

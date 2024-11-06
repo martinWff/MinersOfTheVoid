@@ -9,7 +9,10 @@ public class InventoryPersistent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventoryBehaviour.inventory = persistentData.inventory;
+        if (persistentData.inventory != null)
+        {
+            inventoryBehaviour.inventory = persistentData.inventory;
+        }
     }
 
     private void OnDestroy()

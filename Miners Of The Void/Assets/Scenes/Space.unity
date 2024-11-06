@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2042161477}
+    - target: {fileID: 7950877790781370696, guid: e646e54c84cf1824884519a41130a362, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2042161490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e646e54c84cf1824884519a41130a362, type: 3}
 --- !u!1001 &161592119
@@ -392,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 1143883089}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: sceneId
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: planetName
@@ -704,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3211792870850047414, guid: dc91671b66ffc7b41b142e49840c9adc, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3211792870850047414, guid: dc91671b66ffc7b41b142e49840c9adc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -965,7 +969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5914060800013174082, guid: 0d4fb5055e53a6a4e9c563e2a98d33d3, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5914060800013174082, guid: 0d4fb5055e53a6a4e9c563e2a98d33d3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1207,6 +1211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4370854283594097988, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2042161490}
     - target: {fileID: 5805542404547013256, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
       propertyPath: m_AffectRotationX
       value: 1
@@ -1300,6 +1308,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7950877790781370696, guid: e646e54c84cf1824884519a41130a362, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2042161490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e646e54c84cf1824884519a41130a362, type: 3}
 --- !u!1 &1306370485
@@ -1438,6 +1450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4370854283594097988, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2042161490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4347e88b17697d64b87492b2fccc3603, type: 3}
 --- !u!1001 &1342785812
@@ -1609,7 +1625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: planetName
-      value: Anani'ha
+      value: "Lo\u2019ry"
       objectReference: {fileID: 0}
     - target: {fileID: 3341750531408611348, guid: 49e63126ee3ec8d40a395bd1336b77da, type: 3}
       propertyPath: interaction
@@ -1741,7 +1757,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596500845
 GameObject:
@@ -1788,7 +1804,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732612750
 GameObject:
@@ -2149,5 +2165,9 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2042161477}
+    - target: {fileID: 7950877790781370696, guid: e646e54c84cf1824884519a41130a362, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2042161490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e646e54c84cf1824884519a41130a362, type: 3}

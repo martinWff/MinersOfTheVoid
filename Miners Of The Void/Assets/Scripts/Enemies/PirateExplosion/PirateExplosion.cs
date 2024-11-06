@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PirateExplosion : MonoBehaviour
 {
 
-    [SerializeField] GameObject target;
+    Transform target => enemyData.target;
     private float distance;
     [SerializeField] Rigidbody2D rb;
     public float enemyRange = 20;
@@ -38,7 +38,7 @@ public class PirateExplosion : MonoBehaviour
         if (target == null) return;
 
 
-        distance = Mathf.Sqrt(Mathf.Pow(target.transform.position.x - transform.position.x, 2) + Mathf.Pow(target.transform.position.y - transform.position.y, 2));
+        distance = Mathf.Sqrt(Mathf.Pow(target.position.x - transform.position.x, 2) + Mathf.Pow(target.position.y - transform.position.y, 2));
         if (distance < enemyRange)
         {
             Warning();
@@ -60,8 +60,8 @@ public class PirateExplosion : MonoBehaviour
 
         if (!isAttacking && !preparingAttack)
         {
-            Vector3 direction = target.transform.position - transform.position;
-            targetPosition = target.transform.position;
+            Vector3 direction = target.position - transform.position;
+            targetPosition = target.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rb.rotation = angle - 90;
 

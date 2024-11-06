@@ -9,6 +9,12 @@ public class EnemyData : MonoBehaviour
 
     public bool isDead { get; private set; }
 
+    public Transform target;
+
+    public int minimumPrize;
+    public int maximumPrize;
+
+
     private void Start()
     {
         isDead = false;
@@ -20,6 +26,8 @@ public class EnemyData : MonoBehaviour
             CombatSystem.onDied?.Invoke(enemyName,isPlanetary);
             isDead = true;
             Destroy(gameObject);
+
+            FindObjectOfType<PersistentDataController>().persistentData.bips += Random.Range(minimumPrize, maximumPrize);
 
         }
     }

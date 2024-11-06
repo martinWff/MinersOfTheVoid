@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyhelp : MonoBehaviour
+public class EnemyHelp : MonoBehaviour
 {
     [SerializeField] public GameObject boss;
-    [SerializeField] public SpriteRenderer lazer;
+    [SerializeField] public Laser laser;
     
 
-    //boss
-    private float bossPosY;
-
     //player
-    private Health player;
 
     //Camera Componets
     private Camera cam;
@@ -28,21 +24,23 @@ public class enemyhelp : MonoBehaviour
     private float enemyHelpSize;
     private float enemyHelpRadius;
     public float enemyHelpSpeed = 3;
-    private SpriteRenderer enemyHelp;
 
 
-    //Enemy Lazer
-    private bool lazerOn = false;
-    private float timerLazer = 0.5f;
-    private float lazerHigth;
-    private float lazerHigthdiv2;
-    private bool lazerColorOn = false;
-    private bool colorSwitch = false;
-    Color lazer_NewColor;
-    private float timerAttack = 3;
+    //Enemy Laser
+    private float timerLaser = 0.5f;
+
+    private bool runningLaserAnim = false;
+
+    [SerializeField]private float laserDelay = 0.5f;
+    [SerializeField]private int laserAlarmRepetitions = 3;
+
+
+  //  private bool colorSwitch = false;
+
+    private float timerAttack = 0;
+    [SerializeField] private float attackDuration = 3;
 
     //stop the alarm 
-    private bool attack = false;
     private int change = 0;
 
 
@@ -79,20 +77,16 @@ public class enemyhelp : MonoBehaviour
         enemyHelpSize = transform.localScale.x;
         enemyHelpRadius = enemyHelpSize / 2;
 
-        bossPosY = transform.position.y;
 
         rect1moreX = camPosXCurent + camdiv3 - enemyHelpRadius;
         //Debug.Log("rect1moreX" + rect1moreX);
         rect1lessX = camPosXCurent + enemyHelpRadius;
         //Debug.Log("rect1lessX" + rect1lessX);
-        bossPosY = boss.transform.position.y;
-        targetPosition1 = new Vector3(rect1moreX, bossPosY, 0);
-        targetPosition2 = new Vector3(rect1lessX, bossPosY, 0);
+
+        targetPosition1 = new Vector3(rect1moreX, boss.transform.position.y, 0);
+        targetPosition2 = new Vector3(rect1lessX, boss.transform.position.y, 0);
         targetPosition = targetPosition1;
 
-
-        lazer = transform.Find("Lazer").GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<Health>();
         
     }
 
@@ -100,13 +94,13 @@ public class enemyhelp : MonoBehaviour
     void Update()
     {
         MoveEnemyHelp();
-        LazerAlarm();
+        LaserAlarm();
     }
 
     private void MoveEnemyHelp()
     {
 
-        if (lazerOn == false)
+        if (!laser.IsRunning())
         {
             //rect1
             rect1moreX = camPosXCurent + camdiv3 - enemyHelpRadius;
@@ -118,11 +112,11 @@ public class enemyhelp : MonoBehaviour
 
             if (transform.position.x < 0)
             {
-                LimitMovemt1();
+                LimitMovement1();
             }
             else
             {
-                LimitMovemt2();
+                LimitMovement2();
             }
         }
         
@@ -130,22 +124,23 @@ public class enemyhelp : MonoBehaviour
     }
 
 
-    private void LimitMovemt1()
+    private void LimitMovement1()
     {
-        if(move == true)
+        if(move)
         {
-
-            targetPosition = new Vector3(rect1moreX, bossPosY, 0);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyHelpSpeed * Time.deltaTime);
+            targetPosition = new Vector3(rect1moreX, boss.transform.position.y, 0);
         }
         else
         {
 
-            targetPosition = new Vector3(rect1lessX, bossPosY, 0);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyHelpSpeed * Time.deltaTime);
+            targetPosition = new Vector3(rect1lessX, boss.transform.position.y, 0);
+            
         }
 
-        if(transform.position.x == rect1moreX)
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyHelpSpeed * Time.deltaTime);
+
+        if (transform.position.x == rect1moreX)
         {
             //Debug.Log("position 1 more");
             move = false;
@@ -159,18 +154,18 @@ public class enemyhelp : MonoBehaviour
 
 
     }
-    private void LimitMovemt2()
+    private void LimitMovement2()
     {
-        if (move2 == true)
+        if (move2)
         {
 
-            targetPosition = new Vector3(rect2moreX, bossPosY, 0);
+            targetPosition = new Vector3(rect2moreX, boss.transform.position.y, 0);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyHelpSpeed * Time.deltaTime);
         }
         else
         {
 
-            targetPosition = new Vector3(rect2lessX, bossPosY, 0);
+            targetPosition = new Vector3(rect2lessX, boss.transform.position.y, 0);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyHelpSpeed * Time.deltaTime);
         }
 
@@ -189,58 +184,56 @@ public class enemyhelp : MonoBehaviour
 
     }
 
-    private void LazerAlarm()
+    private void LaserAlarm()
     {
-        if(lazerOn == false)
+        if(!laser.IsRunning() && !runningLaserAnim)
         {
-            timerLazer -= Time.deltaTime;
-            if (timerLazer <= 0 && attack == false)
+           // timerLaser -= Time.deltaTime;
+
+            runningLaserAnim = true;
+
+            StartCoroutine(LaserAlarmAnim());
+
+        }
+
+        if (laser.IsRunning())
+        {
+            if (timerAttack >= attackDuration)
             {
-                if (colorSwitch == false)
-                {
-                    lazer_NewColor = new Color32(226, 52, 10, 225);
-                    colorSwitch = true;
-                    timerLazer = 0.5f;
-                    change = change + 1;
-                }
-                else
-                {
-                    lazer_NewColor = new Color32(226, 52, 10, 0);
-                    colorSwitch = false;
-                    timerLazer = 0.5f;
-                    change = change + 1;
-                }
+                timerAttack = 0;
 
-                if (change >= 9 && attack == false)
-                {
-                    attack = true;
-                    change = 0;
-                    lazerOn = true;
-
-                }
-
-
-                lazer.color = lazer_NewColor;
-
+                laser.Deactivate();
+                Color c = laser.spriteRenderer.color;
+                c.a = 0;
+                laser.spriteRenderer.color = c;
             }
+
+            timerAttack += Time.deltaTime;
+
         }
 
-        if(lazerOn == true)
-        {
-            timerAttack -= Time.deltaTime;
-            lazer_NewColor = new Color32(226, 52, 10, 225);
-            lazer.color = lazer_NewColor;
-        }
 
-        if(timerAttack <= 0)
-        {
-            attack = false;
-            lazerOn = false;
-            timerAttack = 3;
-        }
     }
 
-  
+    private IEnumerator LaserAlarmAnim()
+    {
+        for (int i = 0; i < laserAlarmRepetitions; i++)
+        {
+            laser.spriteRenderer.color = new Color32(226, 52, 10, 0);
+
+            yield return new WaitForSeconds(laserDelay);
+
+            laser.spriteRenderer.color = new Color32(226, 52, 10, 255);
+
+            yield return new WaitForSeconds(laserDelay);
+        }
+
+        laser.Activate();
+
+        runningLaserAnim = false;
+    }
+
+
 
 
 }

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaseII : MonoBehaviour
+public class HelperPhase : PhaseBase
 {
 
     [SerializeField] public GameObject enemyHelp;
 
-    private GameObject miniom1;
-    private GameObject miniom2;
+    private GameObject minion1;
+    private GameObject minion2;
 
 
     //boss
-    private Rigidbody2D boss;
+    [SerializeField] Rigidbody2D rb;
     private float bossPosY;
     public GameObject bulletPrefab;
     public float bulletOffset = 4f;
@@ -21,7 +21,7 @@ public class PhaseII : MonoBehaviour
     public float bulletShootTime = 0.5f;
 
     //player
-    private GameObject player;
+    [SerializeField] GameObject player;
 
     //Camera Componets
     private Camera cam;
@@ -54,11 +54,9 @@ public class PhaseII : MonoBehaviour
     private float rect2lessX;
 
 
-    private bool spawnEnemyHelpBool = false;
+    private bool hasSpawnedMinions = false;
 
-
-
-    void OnEnable()
+    public override void OnPhaseBegan()
     {
         cam = Camera.main;
         camPosX = cam.transform.position.x;
@@ -81,21 +79,28 @@ public class PhaseII : MonoBehaviour
         //Debug.Log("rect1moreX" + rect1moreX);
         rect1lessX = camPosXCurent + enemyHelpRadius;
         //Debug.Log("rect1lessX" + rect1lessX);
-        boss = this.GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Spaceship");
     }
 
+    void OnEnable()
+    {
+        
+    }
 
-    void Update()
+    public override void OnTick()
     {
         SpawnEnemyHelp();
         BossShoot();
     }
 
+    void Update()
+    {
+        
+    }
+
 
     private void SpawnEnemyHelp()
     {
-        if (spawnEnemyHelpBool == false)
+        if (!hasSpawnedMinions)
         {
            
             //rect1
@@ -107,11 +112,11 @@ public class PhaseII : MonoBehaviour
             rect2lessX = camPosXCurent + camdiv3 * 2 + enemyHelpRadius;
 
             
-            miniom1 = Instantiate(enemyHelp, new Vector3(Random.Range(rect1moreX, rect1lessX), bossPosY, 0), Quaternion.identity);
+            minion1 = Instantiate(enemyHelp, new Vector3(Random.Range(rect1moreX, rect1lessX), bossPosY, 0), Quaternion.identity);
             //Debug.Log(bossPosY);
 
-            miniom2 = Instantiate(enemyHelp, new Vector3(Random.Range(rect2moreX, rect2lessX), bossPosY, 0), Quaternion.identity);
-            spawnEnemyHelpBool = true;
+            minion2 = Instantiate(enemyHelp, new Vector3(Random.Range(rect2moreX, rect2lessX), bossPosY, 0), Quaternion.identity);
+            hasSpawnedMinions = true;
         }
 
 
@@ -121,10 +126,10 @@ public class PhaseII : MonoBehaviour
     {
         //Debug.Log("Chega aqui");
         if (player == null) return;
-        Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
         Vector3 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        boss.rotation = angle - 90;
+        rb.rotation = angle - 90;
 
         //Debug.Log("Chega aqui");
         if ((bulletShootTime <= 0))
@@ -146,16 +151,17 @@ public class PhaseII : MonoBehaviour
     public void PhaseEnd()
     {
 
-        Destroy(miniom1);
-        Destroy(miniom2);
-        spawnEnemyHelpBool = false;
+        Destroy(minion1);
+        Destroy(minion2);
+        hasSpawnedMinions = false;
         enabled = false;
 
     }
 
-
-
-
-
+    public override void OnPhaseFinished()
+    {
+        Destroy(minion1);
+        Destroy(minion2);
+    }
 
 }

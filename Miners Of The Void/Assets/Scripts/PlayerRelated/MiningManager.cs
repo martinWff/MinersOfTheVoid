@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class MiningManager : MonoBehaviour
@@ -14,13 +15,19 @@ public class MiningManager : MonoBehaviour
 
     public int dropRate;
 
-    [SerializeField]private Tile targetedTile;
+    private Tile targetedTile;
     [SerializeField] float miningDuration;
-    [SerializeField] private float currentMiningDuration;
+    private float currentMiningDuration;
 
     public float miningRange;
 
     private Vector3Int miningPosition;
+
+    public UnityEvent<Tile> onStartedMining;
+    public UnityEvent<Tile> onCompletedMining;
+    public UnityEvent onStoppedMining;
+
+    private bool hasStoppedMining = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +49,10 @@ public class MiningManager : MonoBehaviour
             miningPosition = grid.WorldToCell(hit.point);
             targetedTile = tilemap.GetTile<Tile>(miningPosition);
             currentMiningDuration = 0;
+            
+            onStartedMining?.Invoke(targetedTile);
+
+            hasStoppedMining = false;
 
         }
 
@@ -56,6 +67,8 @@ public class MiningManager : MonoBehaviour
             if (currentMiningDuration >= miningDuration)
             {
                 OreResourceObject resourceObj = OreManager.instance.GetOreResourceByTile(targetedTile);
+
+                Tile mined = targetedTile;
 
                 targetedTile = null;
 
@@ -73,11 +86,30 @@ public class MiningManager : MonoBehaviour
 
                 tilemap.SetTile(miningPosition, null);
 
+                onCompletedMining?.Invoke(mined);
+
             }
             else
             {
                 currentMiningDuration += miningSpeed.value * Time.deltaTime;
             }
+        } else
+        {
+            if (!hasStoppedMining)
+            {
+                onStoppedMining?.Invoke();
+                hasStoppedMining = true;
+            }
         }
+    }
+
+    public float GetProgress()
+    {
+        return currentMiningDuration / miningDuration;
+    }
+
+    public bool IsMining()
+    {
+        return !hasStoppedMining;
     }
 }

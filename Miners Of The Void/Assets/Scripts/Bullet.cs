@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!gameObject.CompareTag(ignoreTag))
+        if (!collision.CompareTag(ignoreTag))
         {
             IDamageable damageable = collision.GetComponent<IDamageable>();
 
