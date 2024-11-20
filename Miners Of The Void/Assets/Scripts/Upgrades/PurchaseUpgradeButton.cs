@@ -18,6 +18,8 @@ public class PurchaseUpgradeButton : MonoBehaviour
 
     public UpgradeController upgradeController;
 
+    [SerializeField] private UpgradeStorageUI storageUI;
+
     private void Start()
     {
 
@@ -28,12 +30,15 @@ public class PurchaseUpgradeButton : MonoBehaviour
     {
         Upgrade upgrade = upgradeBuiler.Build(1);
         upgradeControllerUI.costs = upgradeBuiler.GetUpgradeCosts(1);
+        upgradeControllerUI.bipCost = upgradeBuiler.GetBipCost(1);
         upgradeControllerUI.upgrade = upgrade;
         upgradeControllerUI.currentController = upgradeController;
         upgradeControllerUI.storage = upgradeStorage;
+        upgradeControllerUI.storageUI = storageUI;
         upgradeControllerUI.ApplyData();
 
-        costs.SetActive(true);
+        //costs.SetActive(true);
+        MenuManager.instance.ActivateSubPanel(costs);
     }
 
 }

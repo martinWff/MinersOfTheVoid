@@ -1080,8 +1080,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3211792870850047415}
-        m_TargetAssemblyTypeName: PauseControl, Assembly-CSharp
+      - m_Target: {fileID: 3211792870955454108}
+        m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
@@ -1282,6 +1282,7 @@ GameObject:
   - component: {fileID: 3211792870171489498}
   - component: {fileID: 3211792870171489497}
   - component: {fileID: 3211792870171489499}
+  - component: {fileID: 7832211472745689910}
   m_Layer: 5
   m_Name: Cheats
   m_TagString: Untagged
@@ -1368,6 +1369,24 @@ MonoBehaviour:
   target: {fileID: 0}
   persistentData: {fileID: 11400000, guid: 719ba8a53ac71a043a1278b2b810ec10, type: 2}
   immortalityToggle: {fileID: 3211792870410875699}
+--- !u!114 &7832211472745689910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211792870171489503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdca5173cecac04f9702de8ea1f8928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClose:
+    m_PersistentCalls:
+      m_Calls: []
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3211792870270034387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2329,6 @@ GameObject:
   - component: {fileID: 3211792870850047413}
   - component: {fileID: 3211792870850047412}
   - component: {fileID: 3211792870850047403}
-  - component: {fileID: 3211792870850047415}
   m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -2402,21 +2420,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3211792870850047415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211792870850047402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f46b3c77db2cc1c49b158106bf19e405, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pausePanel: {fileID: 3211792870955454096}
-  settingsPanel: {fileID: 4158189256579082334}
-  backMainMenuButton: {fileID: 0}
 --- !u!1 &3211792870904466449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2671,6 +2674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cheatsTab: {fileID: 3211792870171489503}
   backMainMenuButton: {fileID: 3211792869179229069}
+  settingsTab: {fileID: 4158189256579082334}
 --- !u!114 &5296978509624290540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2683,6 +2687,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdca5173cecac04f9702de8ea1f8928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onClose:
+    m_PersistentCalls:
+      m_Calls: []
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3211792870959747674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,6 +3534,7 @@ GameObject:
   - component: {fileID: 7643251694147019503}
   - component: {fileID: 6878798864286029421}
   - component: {fileID: 6596744251568392246}
+  - component: {fileID: 5876155230705981657}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -3615,6 +3626,24 @@ MonoBehaviour:
   sfxSlider:
     volumeNumber: {fileID: 5680276324593668751}
     slider: {fileID: 8825126158470878541}
+--- !u!114 &5876155230705981657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158189256579082334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdca5173cecac04f9702de8ea1f8928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClose:
+    m_PersistentCalls:
+      m_Calls: []
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4347005301859439105
 GameObject:
   m_ObjectHideFlags: 0

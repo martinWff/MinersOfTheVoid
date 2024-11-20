@@ -22,11 +22,7 @@ public class UpgradeStorageUI : MonoBehaviour
 
     private void OnEnable()
     {
-        List<Upgrade> unlockedUpgrades = storage.unlockedUpgrades;
-        for (int i = 0;i<unlockedUpgrades.Count;i++)
-        {
-            CreateButton(unlockedUpgrades[i]);
-        }
+        OnGenerate();
     }
 
     private GameObject CreateButton(Upgrade upgrade)
@@ -44,11 +40,32 @@ public class UpgradeStorageUI : MonoBehaviour
 
     private void OnDisable()
     {
-        for (int i = 0;i<buttons.Count;i++)
+        OnClear();
+    }
+
+
+    private void OnClear()
+    {
+        for (int i = 0; i < buttons.Count; i++)
         {
             Destroy(buttons[i]);
         }
 
         buttons.Clear();
+    }
+
+    private void OnGenerate()
+    {
+        List<Upgrade> unlockedUpgrades = storage.unlockedUpgrades;
+        for (int i = 0; i < unlockedUpgrades.Count; i++)
+        {
+            CreateButton(unlockedUpgrades[i]);
+        }
+    }
+
+    public void ReloadStorage()
+    {
+        OnClear();
+        OnGenerate();
     }
 }

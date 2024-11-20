@@ -8,6 +8,7 @@ public class PauseMenuController : MonoBehaviour
 {
     public GameObject cheatsTab;
     public Button backMainMenuButton;
+    public GameObject settingsTab;
 
     private void Awake()
     {
@@ -28,12 +29,20 @@ public class PauseMenuController : MonoBehaviour
 
     public void ResumeButton()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+
+        MenuManager.instance.DeactivatePanel();
     }
 
     public void OpenCheatsButton()
     {
-        cheatsTab.SetActive(true);
+       // cheatsTab.SetActive(true);
+        MenuManager.instance.ActivateSubPanel(cheatsTab);
+    }
+
+    public void OpenSettings()
+    {
+        MenuManager.instance.ActivateSubPanel(settingsTab);
     }
 
     public void BackToMainMenu()

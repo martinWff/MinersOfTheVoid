@@ -15,6 +15,7 @@ public class UpgradeUIController : MonoBehaviour
     public InventoryBehaviour playerInventory;
 
     public UpgradeCost[] costs;
+    public int bipCost;
 
 
     [SerializeField] [TextArea]private string costText;
@@ -25,6 +26,7 @@ public class UpgradeUIController : MonoBehaviour
 
     public UpgradeController currentController;
     public UpgradeStorage storage;
+    public UpgradeStorageUI storageUI;
 
     [SerializeField] PersistentData persistentData;
 
@@ -47,8 +49,9 @@ public class UpgradeUIController : MonoBehaviour
             Upgrade addedUpgrade = storage.AddUpgrade(upgrade);
             currentController.PlaceUpgrade(addedUpgrade);
             ClosePurchaseWindow();
-
-        } else
+            storageUI.ReloadStorage();
+        }
+        else
         {
             //not enough resources
             failureObj.gameObject.SetActive(true);
@@ -67,12 +70,15 @@ public class UpgradeUIController : MonoBehaviour
 
             string ptext = costText;
 
-            string[] _costElement = new string[costs.Length];
+            string[] _costElement = new string[costs.Length+1];
             for (int i = 0;i<costs.Length;i++)
             {
                 _costElement[i] = costs[i].quantity + "x " + costs[i].name;
 
             }
+            _costElement[costs.Length] = bipCost + "x bips";
+
+
            string _costText = string.Join(", ", _costElement);
 
             purchaseText.text = ptext.Replace("{upgrade}", upgrade.upgradeName).Replace("{cost}", _costText);
@@ -89,28 +95,11 @@ public class UpgradeUIController : MonoBehaviour
 
     }
 
-    public void ClosePurchaseWindow()
+    private void ClosePurchaseWindow()
     {
-        purchaseWindow.SetActive(false);
-        failureObj.gameObject.SetActive(false);
-    }
+        //purchaseWindow.SetActive(false);
 
-    public void SwitchUpgradeView()
-    {
-        upgradeViews[currentUpgradeView].tab.SetActive(false);
-
-        currentUpgradeView++;
-        if (currentUpgradeView >= upgradeViews.Count)
-        {
-            currentUpgradeView = 0;
-        }
-
-        UpgradeView v = upgradeViews[currentUpgradeView];
-        v.tab.SetActive(true);
-
-        viewImage.sprite = v.sprite;
-
-      //  currentController = v.upgradeController;
+        MenuManager.instance.DeactivateSubPanel();
 
     }
 
@@ -118,10 +107,6 @@ public class UpgradeUIController : MonoBehaviour
     {
 
         Inventory invPlayer = playerInventory.inventory;
-
-
-        int level = upgrade.level;
-
 
         bool enough = true;
         for (int i = 0;i<materials.Length;i++)
@@ -134,7 +119,7 @@ public class UpgradeUIController : MonoBehaviour
         }
 
 
-        int calculcatedBipCost = (int)(200 * Mathf.Pow(1.3f, level - 1));
+        int calculcatedBipCost = bipCost;
         if (persistentData.bips < calculcatedBipCost) {
             enough = false;
         }
@@ -146,7 +131,7 @@ public class UpgradeUIController : MonoBehaviour
                 invPlayer.RetrieveAmount(materials[i].name, materials[i].quantity);
             }
 
-            persistentData.bips -= Random.Range(3, 5);
+            persistentData.bips -= calculcatedBipCost;
 
         }
 
