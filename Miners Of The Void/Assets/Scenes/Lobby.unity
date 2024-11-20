@@ -3179,17 +3179,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
   m_PrefabInstance: {fileID: 1754822020}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &776051132 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1273615937588115207, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-  m_PrefabInstance: {fileID: 1354119523}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653214321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd7d9d608033ac640bfc1b409bed2377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &785692731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7193,6 +7182,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 241376200556268025, guid: b04d270b9f381db40a11513b53bef367, type: 3}
   m_PrefabInstance: {fileID: 701479796}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1204502615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5997248913439265085, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+  m_PrefabInstance: {fileID: 1354119523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7d9d608033ac640bfc1b409bed2377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1208534928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4373045603281658320, guid: 5afdbb2474300ee409c7ee2ffed25011, type: 3}
@@ -8201,6 +8201,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 605160322191970007, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000045776367
+      objectReference: {fileID: 0}
+    - target: {fileID: 605160322191970007, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 653463944167690120, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8301,6 +8309,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3223866716623874529, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223866716623874529, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223866716623874529, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223866716623874529, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223866716623874529, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223866716623874529, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3304537317854700951, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8313,10 +8345,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 17.404053
       objectReference: {fileID: 0}
+    - target: {fileID: 3888135814093346323, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888135814093346323, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888135814093346323, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888135814093346323, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888135814093346323, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888135814093346323, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3937657709302897876, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: upgradeController
       value: 
       objectReference: {fileID: 6091295736085832294}
+    - target: {fileID: 3970349267252812317, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5900879
+      objectReference: {fileID: 0}
     - target: {fileID: 4123257112689201071, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -3.6192627
@@ -8325,6 +8385,30 @@ PrefabInstance:
       propertyPath: upgradeController
       value: 
       objectReference: {fileID: 6091295736085832294}
+    - target: {fileID: 4473929459967043091, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473929459967043091, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473929459967043091, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473929459967043091, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473929459967043091, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473929459967043091, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4551343918337633282, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000027507678
@@ -8441,10 +8525,38 @@ PrefabInstance:
       propertyPath: upgradeController
       value: 
       objectReference: {fileID: 6091295736085832294}
+    - target: {fileID: 5232428944904674004, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232428944904674004, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232428944904674004, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232428944904674004, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232428944904674004, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232428944904674004, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5833836792882800831, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5997248913439265085, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 6091295736085832294}
     - target: {fileID: 6682851878411973326, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: controller
       value: 
@@ -8529,10 +8641,6 @@ PrefabInstance:
       propertyPath: upgradeViews.Array.data[1].upgradeController
       value: 
       objectReference: {fileID: 6091295736085832294}
-    - target: {fileID: 7517837696303216573, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -3.6192627
-      objectReference: {fileID: 0}
     - target: {fileID: 8000535262878306449, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: upgradeStorage
       value: 
@@ -8544,10 +8652,6 @@ PrefabInstance:
     - target: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
       propertyPath: m_Name
       value: UpgradePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967736207942527770, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ac067a9d62d4d4ba543d709e63d90c, type: 3}
@@ -15091,11 +15195,11 @@ PrefabInstance:
     - target: {fileID: 1991176871, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
       propertyPath: onUpgradePlaced.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 776051132}
+      objectReference: {fileID: 1204502615}
     - target: {fileID: 1991176871, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
       propertyPath: onUpgradeRemoved.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 776051132}
+      objectReference: {fileID: 1204502615}
     - target: {fileID: 1991176871, guid: 64541f0cc4d85f34aaf15f8d43d7a62a, type: 3}
       propertyPath: onUpgradePlaced.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UpgradeUIController : MonoBehaviour
 {
-    public List<GameObject> upgradeUI = new List<GameObject>(4);
-
     public Upgrade upgrade;
 
     public GameObject purchaseWindow;

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1479208917}
   - component: {fileID: 1479208922}
   - component: {fileID: 1991176871}
-  - component: {fileID: 8984838886299686476}
   - component: {fileID: 5862159558700102606}
   - component: {fileID: 3681031538192541480}
   - component: {fileID: 4275139050618371542}
@@ -180,10 +179,7 @@ MonoBehaviour:
     baseValue: 4
   rb: {fileID: 6612837595655447796}
   animated: 0
-  thereIsNoHumansInSpace: 0
-  player2: {fileID: 0}
   animator: {fileID: 0}
-  disallowMovement: 0
 --- !u!114 &1991176871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,25 +200,7 @@ MonoBehaviour:
   onUpgradeRemoved:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8984838886299686476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6479248026894717176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798510a662e32bf4f8312a3535ac5815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: 1
-  weapon: 1
-  life: 1
-  movementScript: {fileID: 0}
-  weaponScript: {fileID: 0}
-  lifeScript: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  preventUse: 0
 --- !u!114 &5862159558700102606
 MonoBehaviour:
   m_ObjectHideFlags: 0
