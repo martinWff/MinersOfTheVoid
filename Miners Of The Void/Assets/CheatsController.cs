@@ -19,16 +19,6 @@ public class CheatsController : MonoBehaviour
         immortalityToggle.isOn = persistentData.immortality;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            gameObject.SetActive(false);
-        }
-        
-    }
-
     public void OnImortalityToggled(bool immortality)
     {
         Health health = target.GetComponent<Health>();

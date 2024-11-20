@@ -121,7 +121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825733355}
   m_HandleRect: {fileID: 1825733354}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1642,6 +1642,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: 0096fd43ced7bfe46b8c20ea65501da5, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 4698337330953750004}
 --- !u!1 &1433317938174947877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0008464705, y: 0.0000052452087}
+  m_AnchoredPosition: {x: -0.0008464705, y: 0.0035728917}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2580595725474876369
@@ -3752,9 +3753,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7501354405973232793}
-        m_TargetAssemblyTypeName: UpgradeUIController, Assembly-CSharp
-        m_MethodName: ClosePurchaseWindow
+      - m_Target: {fileID: 3397853278490648345}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4777,6 +4778,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: c84e1653e9bcaea4dacac6a6ac2ff7fd, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 4698337330953750004}
 --- !u!1 &4932563923196923401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5115,6 +5117,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: c84e1653e9bcaea4dacac6a6ac2ff7fd, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 656813861141736858}
 --- !u!1 &5198845257984633948
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,7 +5261,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0.9999852}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5433,6 +5436,7 @@ GameObject:
   - component: {fileID: 3835667840612446214}
   - component: {fileID: 6033689117115645882}
   - component: {fileID: 5997607590774594098}
+  - component: {fileID: 3397853278490648345}
   m_Layer: 5
   m_Name: Costs
   m_TagString: Untagged
@@ -5503,6 +5507,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3397853278490648345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536737435441390111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdca5173cecac04f9702de8ea1f8928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6991601905737591631}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5546468877129491630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,6 +5863,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: 7b729d21dac870f4bb10a9049a78c23c, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 656813861141736858}
 --- !u!1 &5833836792882800831
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,6 +6057,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: e97ff9a1cc81dde46b6330f029941fa4, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 656813861141736858}
 --- !u!1 &6093501792833539517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,6 +7014,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: 7b729d21dac870f4bb10a9049a78c23c, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 4698337330953750004}
 --- !u!1 &7110310565556519650
 GameObject:
   m_ObjectHideFlags: 0
@@ -6989,7 +7026,6 @@ GameObject:
   - component: {fileID: 3042482307609533548}
   - component: {fileID: 8754202210485703256}
   - component: {fileID: 3830158058685896642}
-  - component: {fileID: 2909225416653512408}
   m_Layer: 5
   m_Name: Center
   m_TagString: Untagged
@@ -7055,35 +7091,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2909225416653512408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7110310565556519650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7501354405973232793}
-          m_TargetAssemblyTypeName: UpgradeUIController, Assembly-CSharp
-          m_MethodName: SwitchUpgradeView
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &7289778981629368097
 GameObject:
   m_ObjectHideFlags: 0
@@ -7411,12 +7418,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afe282d52997104cb82c8fd301d6706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeUI: []
   purchaseWindow: {fileID: 5536737435441390111}
   purchaseText: {fileID: 7089158600258348397}
   failureObj: {fileID: 6991601905737591631}
   playerInventory: {fileID: 0}
   costs: []
+  bipCost: 0
   costText: 'Do you want to buy <color=yellow>{upgrade}</color> upgrade for
 
     <color=yellow>{cost}</color>'
@@ -7425,6 +7432,7 @@ MonoBehaviour:
   - {fileID: 5833836792882800831}
   currentController: {fileID: 0}
   storage: {fileID: 0}
+  storageUI: {fileID: 0}
   persistentData: {fileID: 11400000, guid: 719ba8a53ac71a043a1278b2b810ec10, type: 2}
   upgradeViews: []
   viewImage: {fileID: 3830158058685896642}
@@ -7938,6 +7946,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: e97ff9a1cc81dde46b6330f029941fa4, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 4698337330953750004}
 --- !u!1 &8513467667233729606
 GameObject:
   m_ObjectHideFlags: 0
@@ -8092,6 +8101,7 @@ MonoBehaviour:
   upgradeStorage: {fileID: 0}
   upgradeBuiler: {fileID: 11400000, guid: 0096fd43ced7bfe46b8c20ea65501da5, type: 2}
   upgradeController: {fileID: 0}
+  storageUI: {fileID: 656813861141736858}
 --- !u!1 &8545957118466004780
 GameObject:
   m_ObjectHideFlags: 0
@@ -8332,8 +8342,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4698405016217601919}
   m_HandleRect: {fileID: 5049835552036603423}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.9999852
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8601,6 +8611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdca5173cecac04f9702de8ea1f8928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onClose:
+    m_PersistentCalls:
+      m_Calls: []
+  onOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8989904232984476961
 GameObject:
   m_ObjectHideFlags: 0

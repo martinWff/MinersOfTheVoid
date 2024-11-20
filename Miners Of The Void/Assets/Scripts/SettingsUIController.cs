@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class SettingsUIController : MonoBehaviour
 {
-   /* public Slider masterSlider;
-    public Slider bgmSlider;
-    public Slider sfxSlider;
-
-    public Text masterText;
-    public Text bgmText;
-    public Text sfxText;*/
 
     public SoundSliderElement masterSlider;
     public SoundSliderElement bgmSlider;
@@ -35,27 +28,34 @@ public class SettingsUIController : MonoBehaviour
     public void OnMasterVolumeSliderChanged(float v)
     {
         SettingsManager.instance.SetVolume("masterVolume",v);
-        masterSlider.volumeNumber.text = Mathf.FloorToInt((SettingsManager.instance.GetLinearVolume("masterVolume")*100)).ToString();
+        masterSlider.volumeNumber.text = GetLinearVolume("masterVolume").ToString();
    //     masterText.text = (v * 100).ToString();
     }
 
     public void OnBGMVolumeSliderChanged(float v)
     {
         Debug.Log(SettingsManager.instance.SetVolume("bgmVolume", v));
-        bgmSlider.volumeNumber.text = Mathf.FloorToInt(SettingsManager.instance.GetLinearVolume("bgmVolume")*100).ToString();
+        bgmSlider.volumeNumber.text = GetLinearVolume("bgmVolume").ToString();
     }
     public void OnSFXVolumeSliderChanged(float v)
     {
         //this is done because the volumes are measured in decibels soo we need the maximum = 20, and the conversion Log
         SettingsManager.instance.SetVolume("sfxVolume",v); // Mathf.Log10(v)*20
-        sfxSlider.volumeNumber.text = Mathf.FloorToInt(SettingsManager.instance.GetLinearVolume("sfxVolume")*100).ToString();
+        sfxSlider.volumeNumber.text = GetLinearVolume("sfxVolume").ToString();
         //   sfxText.text = (v * 100).ToString();
+    }
+
+
+    private int GetLinearVolume(string channel)
+    {
+        return Mathf.FloorToInt(SettingsManager.instance.GetLinearVolume(channel) * 100);
     }
 
     public void CloseSettingsPanel()
     {
         SettingsManager.instance.SaveSettings();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        MenuManager.instance.DeactivateSubPanel();
     }
 
     private void Update()

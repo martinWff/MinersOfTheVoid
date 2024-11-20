@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    private MenuController menuOpen;
+    private Stack<MenuController> menuStack = new Stack<MenuController>();
 
     public static MenuManager instance;
 
@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
         {
             if (IsMenuOpen())
             {
-                DeactivatePanel();
+                DeactivateSubPanel();
             } else
             {
                 ActivatePanel(pausePanel);
@@ -41,29 +41,52 @@ public class MenuManager : MonoBehaviour
 
     public void ActivatePanel(GameObject element)
     {
-        if (menuOpen)
+        if (menuStack.Count > 0)
             return;
 
-        menuOpen = element.GetComponent<MenuController>();
-        element.SetActive(true);
+        ActivateSubPanel(element);
 
-        movementController.disableMovement = true;
     }
 
     public void DeactivatePanel()
     {
-        if (menuOpen != null)
+        while (menuStack.Count > 0)
         {
-            menuOpen.gameObject.SetActive(false);
+            MenuController mc = menuStack.Pop();
+            mc.gameObject.SetActive(false);
+        }
 
+        movementController.disableMovement = false;
+
+    }
+
+    public void ActivateSubPanel(GameObject element)
+    {
+        MenuController mc = element.GetComponent<MenuController>();
+        mc.gameObject.SetActive(true);
+        menuStack.Push(mc);
+
+        movementController.disableMovement = true;
+
+    }
+
+    public void DeactivateSubPanel()
+    {
+        if (menuStack.Count > 0)
+        {
+            MenuController mc = menuStack.Pop();
+            mc.gameObject.SetActive(false);
+            
+        }
+
+        if (menuStack.Count == 0)
+        {
             movementController.disableMovement = false;
-
-            menuOpen = null;
         }
     }
 
     public bool IsMenuOpen()
     {
-        return menuOpen != null;
+        return menuStack.Count > 0;
     }
 }

@@ -27,20 +27,25 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moveable != null && !disableMovement)
+        if (moveable != null)
         {
-
-            Vector2 mouseDirection = Input.mousePosition -
-                Camera.main.WorldToScreenPoint(targetObject.position);
-            if (mouseDirection.magnitude > 40)
+            if (!disableMovement)
             {
-                float angle = Mathf.Atan2(mouseDirection.normalized.y,
-                                      mouseDirection.normalized.x) * Mathf.Rad2Deg;
-                moveable.Look(angle);
+                Vector2 mouseDirection = Input.mousePosition -
+                    Camera.main.WorldToScreenPoint(targetObject.position);
+                if (mouseDirection.magnitude > 40)
+                {
+                    float angle = Mathf.Atan2(mouseDirection.normalized.y,
+                                          mouseDirection.normalized.x) * Mathf.Rad2Deg;
+                    moveable.Look(angle);
+                }
+
+
+                moveable.Move(verticalInput * targetObject.right);
+            } else
+            {
+                moveable.Move(Vector2.zero);
             }
-
-
-            moveable.Move(verticalInput * targetObject.right);
         }
     }
 }

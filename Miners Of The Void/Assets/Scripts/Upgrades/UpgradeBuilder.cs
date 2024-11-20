@@ -29,4 +29,9 @@ public class UpgradeBuilder : ScriptableObject
     {
         return costs[level - 1].upgradeCosts;
     }
+
+    public int GetBipCost(int level)
+    {
+        return Mathf.RoundToInt(200 * Mathf.Pow(1.3f, level - 1));
+    }
 }
