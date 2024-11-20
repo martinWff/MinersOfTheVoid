@@ -17,8 +17,8 @@ public class Refinery : MonoBehaviour
     }
     public void CloseMenu()
     {
-        NPC.GetComponent<NPCMenus>().openMenu = false;
-        player.GetComponent<CharacterMovement>().enabled = true;
-        menu.GetComponent<RectTransform>().anchoredPosition = new Vector2(2000, 2000);
+        
+        MenuManager.instance.DeactivatePanel();
+
     }
 }

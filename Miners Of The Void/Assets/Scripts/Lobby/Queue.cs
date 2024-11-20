@@ -58,11 +58,22 @@ public class Queue<T>
         {
             QueueNode<T> node = front;
             front = front.Next;
-            if (front == null) back = null;
+            if (front == null)
+            {
+                back = null;
+            }
+            Count--;
+
+
             return node;
         }
-        Count--;
     }
+
+    public QueueNode<T> Peek()
+    {
+        return front;
+    }
+
     public bool IsEmpty()
     {
         return front == null;

@@ -9,6 +9,14 @@ public class EnemyData : MonoBehaviour
 
     public bool isDead { get; private set; }
 
+    public Transform target;
+
+    public int minimumPrize;
+    public int maximumPrize;
+
+    public int experienceReward;
+
+
     private void Start()
     {
         isDead = false;
@@ -19,6 +27,11 @@ public class EnemyData : MonoBehaviour
         {
             CombatSystem.onDied?.Invoke(enemyName,isPlanetary);
             isDead = true;
+            Destroy(gameObject);
+
+            PersistentData persistentData = FindObjectOfType<PersistentDataController>().persistentData;
+            persistentData.bips += Random.Range(minimumPrize, maximumPrize);
+            persistentData.xp += experienceReward;
         }
     }
 

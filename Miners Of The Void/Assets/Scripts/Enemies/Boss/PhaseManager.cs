@@ -5,39 +5,69 @@ using UnityEngine;
 public class PhaseManager : MonoBehaviour
 {
     //number
-    private int randomNumber = 0;
-    private int previousPhase = 0;
+    private int currentPhase = 0;
+    private int previousPhase = -1;
 
-    //phases
-    public PhaseI phaseI;
-    public PhaseII phaseII;
-    public PhaseIII phaseIII;
+    public List<PhaseBase> phases = new List<PhaseBase>();
 
 
 
     void Start()
     {
-        RandomNumber();
+        ProgressPhase();
     }
 
 
-    public void RandomNumber()
+    public void ProgressPhase()
     {
-        if (previousPhase == 1) phaseI.PhaseEnd();
-        if (previousPhase == 2) phaseII.PhaseEnd();
-        if (previousPhase == 3) phaseIII.PhaseEnd();
 
-        randomNumber++;
-        Debug.Log("Random number " + randomNumber);
+        GoToPhase(currentPhase++);
 
-
-        if (randomNumber == 1 && previousPhase != 1) phaseI.enabled = true;
-        if (randomNumber == 2 && previousPhase != 2) phaseII.enabled = true;
-        if (randomNumber == 3 && previousPhase != 3) phaseIII.enabled = true;
-
-        previousPhase = randomNumber;
     }
 
+    public void GoToPhase(int phase)
+    {
+        currentPhase = phase;
+        if (currentPhase >= phases.Count)
+        {
+            currentPhase = 0;
+        }
+
+        if (previousPhase > -1 && previousPhase < phases.Count)
+        {
+            phases[previousPhase].OnPhaseFinished();
+        }
+
+        phases[currentPhase].OnPhaseBegan();
+
+
+        previousPhase = currentPhase;
+    }
+
+    public int GetPhase()
+    {
+        return currentPhase;
+    }
+
+
+    private void Update()
+    {
+        if (currentPhase >= 0 && currentPhase < phases.Count) {
+            PhaseBase b = phases[currentPhase];
+            b.OnTick();
+        }
+    }
+
+    public void Stop()
+    {
+        if (currentPhase >= 0 && currentPhase < phases.Count)
+        {
+            PhaseBase b = phases[currentPhase];
+            b.OnPhaseFinished();
+        }
+        currentPhase = -1;
+
+    }
 
 
 

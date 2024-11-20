@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour, IMoveable
 {
     public CharacterStat movementSpeed = new CharacterStat(8);
     public Rigidbody2D rb;
@@ -11,8 +11,6 @@ public class CharacterMovement : MonoBehaviour
     private StaticCameraController camera;
     private Vector3 inicialPos;
     public bool animated = false;
-    public bool thereIsNoHumansInSpace = false;
-    public EntityController player2;
     public Animator animator;
 
 
@@ -21,15 +19,11 @@ public class CharacterMovement : MonoBehaviour
     {
         main = Camera.main;
         camera = main.GetComponent<StaticCameraController>();
-        rb = GetComponent<Rigidbody2D>();
     }  
 
     private void Start()
     {
-        if (gameObject.tag == "Spaceship") 
-        { 
-            animator = gameObject.GetComponent<Animator>();
-        }
+       
         inicialPos = transform.position;
         
         
@@ -40,7 +34,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!animated)
         {
-            verticalInput = Input.GetAxis("Vertical");
+        /*    verticalInput = Input.GetAxis("Vertical");
             if (gameObject.tag == "Player")
                 horizontalInput = Input.GetAxis("Horizontal");
 
@@ -50,8 +44,8 @@ public class CharacterMovement : MonoBehaviour
 
             float angle = Mathf.Atan2(mouseDirection.normalized.y,
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
-            rb.SetRotation(angle);
-            if (gameObject.tag == "Spaceship")
+          //  rb.SetRotation(angle);
+           /* if (gameObject.tag == "Spaceship")
             {
                 if (verticalInput != 0)
                 {
@@ -61,7 +55,7 @@ public class CharacterMovement : MonoBehaviour
                 {
                     animator.SetInteger("Moving", 0);
                 }
-            }
+            }*/
         }
      //   if (Input.GetKeyDown(KeyCode.L)) Maths.TransformUp(gameObject);
        
@@ -77,62 +71,28 @@ public class CharacterMovement : MonoBehaviour
             {
                 float angle = Mathf.Atan2(mouseDirection.normalized.y,
                                       mouseDirection.normalized.x) * Mathf.Rad2Deg;
-                rb.SetRotation(angle);
+      //          rb.SetRotation(angle);
             }
-            rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
+         //   rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
           /*  if (gameObject.tag == "Spaceship") rb.velocity = (verticalInput * transform.right) * movementSpeed.value;
             else rb.velocity = (verticalInput * Vector2.up * movementSpeed.value) + (horizontalInput * Vector2.right * movementSpeed.value);*/
         }
         else
         {
-            rb.SetRotation(180);
-            animator.SetInteger("Moving", 1);
-            rb.velocity = (transform.right) * movementSpeed.value;
+           // rb.SetRotation(180);
+        //    animator.SetInteger("Moving", 1);
+        //    rb.velocity = (transform.right) * movementSpeed.value;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {         
-            if (gameObject.tag == "Player")
-            {
-                if (collision.gameObject.tag == "Passage") {
-                    camera.Human = false;
-                    camera.ChangeCamera();
-                    player2.enableEntity(false);
-                    rb.velocity = new Vector2(0, 0);
-                    player2.animationRun(true);
-                    GetComponent<EntityController>().disableEntity(true);
-                }
-            }
-            if (gameObject.tag == "Spaceship")
-            {
-                if (collision.gameObject.tag == "Passage")
-                {
-                    camera.ChangeCamera();
-                    player2.enableEntity(true);
-                    rb.velocity = new Vector2(0, 0);
-                    rb.SetRotation(0);
-                    //transform.position = inicialPos;
-                    GetComponent<EntityController>().disableEntity(false);
-                }
 
-                if (collision.gameObject.tag == "SceneLoader")
-                {
-                    if(PlayerContracts.instance.acceptedContract?.contractType == Contract.ContractType.position)
-                    {
-                        Debug.Log("Boss !!!!");
-                        player2.SceneChanger(5);
-                    }
-                    else
-                    {
-                        player2.SceneChanger(3);
-                    }
-                            
-
-                }
-
-            }
-            
-            
-        
+    public void Move(Vector2 dir)
+    {
+        rb.velocity = dir * movementSpeed.value;
     }
+
+    public void Look(float angle)
+    {
+        rb.SetRotation(angle);
+    }
+
 }

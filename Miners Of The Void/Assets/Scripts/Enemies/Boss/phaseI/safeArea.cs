@@ -2,30 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class safeArea : MonoBehaviour
+public class SafeArea : MonoBehaviour
 {
-    public float safeAreaLifeTime = 9;
-    public GameObject player;
-    private HealthBar immortality;
+    public float radius = 5;
+
+    private Health _health;
+
+    [SerializeField] PersistentData persistent;
+
     void Start()
     {
-        Destroy(gameObject, safeAreaLifeTime);
-        player = GameObject.FindGameObjectWithTag("Spaceship");
-        immortality = player.GetComponent<HealthBar>();
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(Maths.Distance(transform.position, player.transform.position) < 5)
+        if (collision.CompareTag("Player"))
         {
-            immortality.immortality = true;
+            Health health = collision.GetComponent<Health>();
+            health.immortality = true;
+            _health = health;
         }
-        else
-        {
-            immortality.immortality = false;
-        }
-        
+    }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && _health != null)
+        {
+            _health.immortality = persistent.immortality;
+            _health = null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_health != null)
+        {
+            _health.immortality = persistent.immortality;
+            _health = null;
+        }
     }
 
 }

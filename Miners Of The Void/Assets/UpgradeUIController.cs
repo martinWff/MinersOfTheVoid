@@ -5,137 +5,160 @@ using UnityEngine.UI;
 
 public class UpgradeUIController : MonoBehaviour
 {
-    public List<GameObject> upgradeUI = new List<GameObject>(4);
-    public UpgradeController controller;
-    public UpgradeController humanoidController;
-
-    public UpgradeController currentController;
     public Upgrade upgrade;
 
     public GameObject purchaseWindow;
     public Text purchaseText;
-    public Inventory invPlayer;
+    public GameObject failureObj;
 
-    public string[] costs;
+
+    public InventoryBehaviour playerInventory;
+
+    public UpgradeCost[] costs;
+
+
+    [SerializeField] [TextArea]private string costText;
+
+
+    [SerializeField] GameObject[] modes;
+    GameObject previousMode;
+
+    public UpgradeController currentController;
+    public UpgradeStorage storage;
+
+    [SerializeField] PersistentData persistentData;
+
+    [SerializeField] List<UpgradeView> upgradeViews = new List<UpgradeView>();
+    private int currentUpgradeView = 0;
+
+    [SerializeField] private Image viewImage;
+
 
     private void Start()
     {
-        invPlayer = PlayerInventory.staticInventory;
-        controller = GameObject.FindGameObjectWithTag("Spaceship").GetComponent<UpgradeController>();
-        
-        if (controller != null)
-        {
-            if (controller.upgradeHolder != null)
-            {
-                for (int i = 0; i < controller.upgradeHolder.Length; i++)
-                {
-                    if (controller.upgradeHolder[i] != null)
-                    {
-                        OnUpgradePut(controller,controller.upgradeHolder[i], i);
-                    }
-                }
-            }
-        }
-    }
-
-    public void OnUpgradePut(UpgradeController uc,Upgrade upg,int slot)
-    {
-        if (uc.gameObject.CompareTag("Spaceship"))
-        {
-            GameObject upgObject = upgradeUI[slot];
-
-            if (slot >= 0)
-            {
-
-                Image img = upgObject.transform.Find("Button").GetComponent<Image>();
-                img.sprite = upg.sprite;
-                img.color = Color.white;
-                upgObject.GetComponentInChildren<Text>().text = upg.level.ToString();
-
-            }
-        }
-    }
-
-    public void OnUpgradeRemoved(UpgradeController uc,Upgrade upg,int slot)
-    {
-        if (uc.gameObject.CompareTag("Spaceship"))
-        {
-            GameObject upgObject = upgradeUI[slot];
-
-            if (slot >= 0)
-            {
-                Image img = upgObject.transform.Find("Button").GetComponent<Image>();
-                img.sprite = null;
-                img.color = new Color(0, 0, 0, 0);
-                upgObject.GetComponentInChildren<Text>().text = string.Empty;
-            }
-        }
+        previousMode = modes[0];       
     }
 
     public void ApplyPurchase()
     {
-        //Em vez de colocar assim, pode ter 1 parametro no upgrade com 1 string[] costs ou assim. Depois é só inserir aq
-        
-        if (currentController != null && upgrade != null && AddCost(costs))
+
+        if (currentController != null && upgrade != null && ApplyCosts(costs))
         {
-            
-            currentController.PlaceUpgrade(upgrade);
-            currentController = null;
-            upgrade = null;
+            Upgrade addedUpgrade = storage.AddUpgrade(upgrade);
+            currentController.PlaceUpgrade(addedUpgrade);
             ClosePurchaseWindow();
 
+        } else
+        {
+            //not enough resources
+            failureObj.gameObject.SetActive(true);
         }
+
+        currentController = null;
+
+
     }
 
     public void ApplyData()
     {
-        if (currentController != null && upgrade != null)
+        if (upgrade != null)
         {
-            string ptext = purchaseText.text;
+            purchaseText.text = costText;
 
-            string costText = " ";
+            string ptext = costText;
+
+            string[] _costElement = new string[costs.Length];
             for (int i = 0;i<costs.Length;i++)
             {
-                costText += costs[i];
-                if (i < 2)
-                {
-                    costText += ", ";
-                }
+                _costElement[i] = costs[i].quantity + "x " + costs[i].name;
 
             }
+           string _costText = string.Join(", ", _costElement);
 
-            purchaseText.text = ptext.Replace("{upgrade}", upgrade.upgradeName).Replace("{cost}", costText);
+            purchaseText.text = ptext.Replace("{upgrade}", upgrade.upgradeName).Replace("{cost}", _costText);
 
         }
     }
+
+    public void EnterShopMode(int m)
+    {
+        modes[m].SetActive(true);
+        previousMode.SetActive(false);
+
+        previousMode = modes[m];
+
+    }
+
     public void ClosePurchaseWindow()
     {
         purchaseWindow.SetActive(false);
+        failureObj.gameObject.SetActive(false);
     }
 
-    private void OnDisable()
+    public void SwitchUpgradeView()
     {
-        UpgradeController.onUpgradePut -= OnUpgradePut;
-        UpgradeController.onUpgradeRemoved -= OnUpgradeRemoved;
+        upgradeViews[currentUpgradeView].tab.SetActive(false);
+
+        currentUpgradeView++;
+        if (currentUpgradeView >= upgradeViews.Count)
+        {
+            currentUpgradeView = 0;
+        }
+
+        UpgradeView v = upgradeViews[currentUpgradeView];
+        v.tab.SetActive(true);
+
+        viewImage.sprite = v.sprite;
+
+      //  currentController = v.upgradeController;
 
     }
-    public bool AddCost(string[] materials)      
+
+    public bool ApplyCosts(UpgradeCost[] materials)      
     {
+
+        Inventory invPlayer = playerInventory.inventory;
+
+
         int level = upgrade.level;
-        if (invPlayer.GetOreAmount(materials[0]) >= level && invPlayer.GetOreAmount(materials[1]) >= level  && invPlayer.GetOreAmount(materials[2]) >= level && SavePlayerStats.bips >= (200 * Mathf.Pow(1.3f, level-1)))
+
+
+        bool enough = true;
+        for (int i = 0;i<materials.Length;i++)
         {
-            
-            invPlayer.RetrieveAmount(materials[0], level);
-            invPlayer.RetrieveAmount(materials[1], level);
-            invPlayer.RetrieveAmount(materials[2], level);
-            SavePlayerStats.bips -= (int)(200 * Mathf.Pow(1.3f, level-1));
-            //notices.text = "Aquiered!";
-            return true;
+            if (invPlayer.GetOreAmount(materials[i].name) < materials[i].quantity)
+            {
+                enough = false;
+                break;
+            }
         }
-        else
+
+
+        int calculcatedBipCost = (int)(200 * Mathf.Pow(1.3f, level - 1));
+        if (persistentData.bips < calculcatedBipCost) {
+            enough = false;
+        }
+
+        if (enough)
         {
-            //notices.text = "Not enough ore: " + material1 + ":" + invPlayer.inventory.GetOreAmount(material1) + "; " + material2 + ":" + invPlayer.inventory.GetOreAmount(material2) + material3 + ":" + invPlayer.inventory.GetOreAmount(material3) + ", you need at least " + level + 1 + " of each and " + 200 * (level + 1) + "bips";
-            return false;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                invPlayer.RetrieveAmount(materials[i].name, materials[i].quantity);
+            }
+
+            persistentData.bips -= Random.Range(3, 5);
+
         }
+
+        return enough;
+
+    }
+
+    [System.Serializable]
+    public struct UpgradeView
+    {
+        public Sprite sprite;
+        public GameObject tab;
+        public UpgradeController upgradeController;
     }
 }

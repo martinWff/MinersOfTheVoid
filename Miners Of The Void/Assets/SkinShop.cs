@@ -36,14 +36,12 @@ public class SkinShop : MonoBehaviour
         {
             player.GetComponent<SpriteRenderer>().sprite = skin0;
             SavePlayerStats.currentSkin = skin0;
-         
             SavePlayerStats.skinId = id;
         }
         if(id == 1 && CheckSkinInv(id))
         {
             player.GetComponent<SpriteRenderer>().sprite = skin1;
             SavePlayerStats.currentSkin = skin1;
-         
             SavePlayerStats.skinId = id;
             skin1Acq.text = "";
             

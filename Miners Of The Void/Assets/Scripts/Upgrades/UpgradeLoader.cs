@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeLoader : MonoBehaviour
 {
-    public UpgradeElement[] upgrades;
+    public UpgradeBuilder[] upgrades;
     public EnemyElement[] enemies;
     public static UpgradeLoader instance;
     // Start is called before the first frame update
@@ -21,20 +21,15 @@ public class UpgradeLoader : MonoBehaviour
 
     void OnSaveUpgrades(SavedData sv)
     {
-        sv.humanoidUpgrades = UpgradeTransporter.humanPlayer;
-        sv.spaceshipUpgrades = UpgradeTransporter.spaceship;
+    //    sv.humanoidUpgrades = UpgradePersistentData.humanPlayer;
+     //   sv.spaceshipUpgrades = UpgradePersistentData.spaceship;
     }
 
     void OnLoadUpgrades(SavedData sv) {
-        UpgradeTransporter.humanPlayer = sv.humanoidUpgrades;
-        UpgradeTransporter.spaceship = sv.spaceshipUpgrades;
-        foreach (Upgrade up in UpgradeTransporter.spaceship)
+      //  UpgradePersistentData.humanPlayer = sv.humanoidUpgrades;
+      //  UpgradePersistentData.spaceship = sv.spaceshipUpgrades;
+        foreach (Upgrade up in UpgradePersistentData.upgrades["spaceship"])
         {
-            UpgradeElement sample;
-            if (ArrayUtils.FindAndGet<UpgradeElement>(upgrades, (UpgradeElement ue) => { return ue.upgradeName == up?.upgradeName; },out sample))
-            {
-                up.sprite = sample.upgradeSprite;
-            }
             
         }
     }

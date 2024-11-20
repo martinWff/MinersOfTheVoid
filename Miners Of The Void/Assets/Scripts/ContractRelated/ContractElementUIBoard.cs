@@ -63,7 +63,8 @@ public class ContractElementUIBoard : MonoBehaviour
         if (PlayerContracts.instance.acceptedContract == null)
         {
             ContractManager.AcceptContract(contract);
-            board.SetActive(false);
+            //board.SetActive(false);
+            MenuManager.instance.DeactivatePanel();
         }
         
     }

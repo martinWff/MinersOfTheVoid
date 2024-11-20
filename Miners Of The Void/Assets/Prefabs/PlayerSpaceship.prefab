@@ -13,16 +13,17 @@ GameObject:
   - component: {fileID: 2724869212869716261}
   - component: {fileID: 2724869212869716260}
   - component: {fileID: 265170836}
-  - component: {fileID: 488194358}
   - component: {fileID: 488194359}
   - component: {fileID: 488194360}
   - component: {fileID: 488194364}
-  - component: {fileID: 488194367}
-  - component: {fileID: 646653827}
   - component: {fileID: 5530262372959587261}
+  - component: {fileID: 4625930418820976832}
+  - component: {fileID: 6543741165426165705}
+  - component: {fileID: 6678877231873922448}
+  - component: {fileID: 4253672564245861068}
   m_Layer: 0
   m_Name: PlayerSpaceship
-  m_TagString: Spaceship
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,6 +38,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.09, y: -0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1136092534300184750}
   m_Father: {fileID: 0}
@@ -109,7 +111,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -122,7 +124,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -133,7 +135,7 @@ CircleCollider2D:
   m_Radius: 4
 --- !u!95 &265170836
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,31 +148,11 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &488194358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c475b3f2d76ed48a62451620ffc9a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDamage: 10
-  shield: 20
-  totalShield:
-    baseValue: 10
-  totalhp:
-    baseValue: 20
-  hp: 20
-  immortality: 0
-  lazerCharge: 0
 --- !u!114 &488194359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8840353403444447381, guid: 01c41104b574be246a8e1747981f6c60, type: 3}
-  bulletOffset: 1.5
+  bulletOffset: 3
   bulletSpeed: 18
   bulletCooldownTime: 0.5
   backweaponMode: 0
@@ -198,18 +180,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaed2980123b0824f82170cef558b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed:
     baseValue: 4
-  rb: {fileID: 0}
+  rb: {fileID: 2724869212869716261}
   animated: 0
   thereIsNoHumansInSpace: 0
   player2: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 265170836}
 --- !u!114 &488194364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,42 +204,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a341f547e1a7fc343bd5422d046e5c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &488194367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798510a662e32bf4f8312a3535ac5815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: 0
-  weapon: 0
-  life: 0
-  movementScript: {fileID: 0}
-  weaponScript: {fileID: 0}
-  lifeScript: {fileID: 0}
-  spriteRenderer: {fileID: 0}
---- !u!114 &646653827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2724869212869716259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bc0e22c66597004da0b534e2c47a62e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skin: {fileID: 0}
-  fire: {fileID: 0}
-  spriteRenderer: {fileID: 2724869212869716263}
-  fireSpriteRenderer: {fileID: 981679730318006082}
-  fireIsHidden: 0
+  upgradeControllerId: spaceship
+  upgradeCount: 4
+  onUpgradePlaced:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpgradeRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  preventUse: 0
 --- !u!61 &5530262372959587261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -268,7 +223,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2, y: 0}
@@ -284,6 +239,89 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 5.2807565}
   m_EdgeRadius: 0
+--- !u!114 &4625930418820976832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae52331569bc9f429a4b9492b7ca661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: 10
+  maxShield:
+    baseValue: 10
+  maxHP:
+    baseValue: 20
+  hp: 20
+  immortality: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4253672564245861068}
+        m_TargetAssemblyTypeName: DeathBehaviour, Assembly-CSharp
+        m_MethodName: OnDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6543741165426165705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc82cc3257ef7204693de621b45401ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1.5
+  onInteractionTargeting:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractionTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6678877231873922448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9252d286bffbe43b4ad2f0c0fefbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistentData: {fileID: 11400000, guid: 719ba8a53ac71a043a1278b2b810ec10, type: 2}
+  health: {fileID: 4625930418820976832}
+--- !u!114 &4253672564245861068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724869212869716259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664e885cd9e188546b0c70d9b4faffeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backScene: 2
 --- !u!1 &4085497306639446739
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +349,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -2.51, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2724869212869716280}
   m_RootOrder: 0

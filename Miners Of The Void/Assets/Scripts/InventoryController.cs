@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
-    public Inventory inventory;
+    public Inventory inventory => inventoryBehaviour.inventory;
+
+    public InventoryBehaviour inventoryBehaviour;
+
     public GameObject slotPrefab;
     /* public delegate void InventoryControllerCreated(InventoryController inventoryController);
      public static event InventoryControllerCreated onInventoryControllerCreated;*/
@@ -15,7 +18,7 @@ public class InventoryController : MonoBehaviour
     public Dictionary<string, GameObject> slotList = new Dictionary<string, GameObject>();
     public UnityEvent<SlotController> onSlotCreated;
     public UnityEvent<SlotController> onSlotRemoved;
-    public bool hasInventory { get; protected set;}
+    public bool hasInventory => inventory != null;
 
 
 
@@ -25,23 +28,12 @@ public class InventoryController : MonoBehaviour
         Inventory.onInventoryChanged += SpawnSlot;
         if (inventory != null)
         {
+            Debug.Log("POPULATING UI INVENTORY");
             Populate();
         }
         onControllerInitialized?.Invoke(this);
         //onInventoryControllerCreated?.Invoke(this);
     }
-
-    public void AttachInventory(Inventory inv)
-    {
-        inventory = inv;
-        hasInventory = inventory != null;
-        if (hasInventory)
-        {
-            Populate();
-        }
-        
-    }
-
 
 
     public void Populate()
@@ -65,9 +57,7 @@ public class InventoryController : MonoBehaviour
                 slotList.Remove(o.Key);
             }
         }
-   
-
-}
+    }
 
 
     private void OnDisable()
@@ -101,7 +91,7 @@ public class InventoryController : MonoBehaviour
                 SlotController slotController = obj.GetComponent<SlotController>();
                 slotController.SetContent(oreStack);
                 //     .oreStack = oreStack
-                btn.GetComponent<Image>().sprite = oreStack.sprite;
+               // btn.GetComponent<Image>().sprite = oreStack.sprite;
 
                 slotList.Add(oreName, obj);
                 onSlotCreated?.Invoke(slotController);

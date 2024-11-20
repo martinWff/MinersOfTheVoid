@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 9137380297744941698}
   - component: {fileID: 9137380297744941699}
   - component: {fileID: 1119737650}
-  - component: {fileID: 781245069}
   - component: {fileID: 5418321551401109295}
+  - component: {fileID: 1889493574231215125}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: InventoryPanel
@@ -32,6 +32,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -115,40 +116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97916e28cd6fe02458b6e52bb8f1e0cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryBehaviour: {fileID: 0}
   slotPrefab: {fileID: 1464214486118114577, guid: b74c5bae66bc0f147afc31031be24275, type: 3}
   onControllerInitialized:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781245069}
-        m_TargetAssemblyTypeName: PlayerInventoryObserver, Assembly-CSharp
-        m_MethodName: InventoryControllerInitialized
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onSlotCreated:
     m_PersistentCalls:
       m_Calls: []
   onSlotRemoved:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &781245069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9137380297744941725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cf77965407bdc4d89ae7603a9dedb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5418321551401109295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +142,15 @@ MonoBehaviour:
   rectTransform: {fileID: 9137380297744941724}
   group: {fileID: 9137380297744941699}
   factor: 10
+--- !u!114 &1889493574231215125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9137380297744941725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdca5173cecac04f9702de8ea1f8928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

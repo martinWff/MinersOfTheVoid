@@ -7,13 +7,13 @@ using UnityEngine.Events;
 [System.Serializable]
 public class Inventory
 {
-   // protected Dictionary<string,OreStack> oresStacks = new Dictionary<string, OreStack>();
-    protected Hashtable oresStacks = new Hashtable(5000);
+    protected Hashtable oresStacks = new Hashtable(300);
     private HashSet<string> keys = new HashSet<string>();
-  //  public int CountDifferent { get { return oresStacks.; } }
 
     public delegate void InventoryChanged(Inventory inv, string oreName,int amountChanged);
     public static event InventoryChanged onInventoryChanged;
+
+    public int CountDistinct => keys.Count;
 
     public virtual bool AddOre(OreStack ore)
     {
@@ -46,8 +46,7 @@ public class Inventory
     public virtual int GetOreAmount(string oreName)
     {
         if (oresStacks.ContainsKey(oreName)) {
-            OreStack o = (OreStack)oresStacks.GetValue(oreName);
-            return o.amount;
+            return (oresStacks.GetValue(oreName) as OreStack).amount;
         } else
         {
             return 0;

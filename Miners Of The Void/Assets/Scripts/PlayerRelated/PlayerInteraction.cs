@@ -113,8 +113,8 @@ public class PlayerInteraction : MonoBehaviour
                     MaterialResourceObject mat = OreManager.instance.GetOreMaterialByMaterialName(interactableTargeted);
                     if (mat != null)
                     {
-                        Debug.Log("drop ammount");
-                        PlayerInventory.staticInventory.AddOre(mat.GetOreStack(dropAmount));
+                        Debug.Log("drop amount");
+                     //   PlayerInventory.staticInventory.AddOre(mat.GetOreStack(dropAmount));
                         holdTime = 0;
                         keybindDebounce = true;
                     }

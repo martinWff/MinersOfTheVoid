@@ -5,22 +5,31 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float bulletLifeTime = 5;
-    
 
+    public float damage;
+
+    public string ignoreTag;
 
     void Start()
     {
-        
         Destroy(gameObject, bulletLifeTime);
     }
 
-    private void Update()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+        if (!collision.CompareTag(ignoreTag))
+        {
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
     }
 
 
 
-    
-    
 }

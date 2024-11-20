@@ -14,9 +14,9 @@ public class OreDistributtor : MonoBehaviour
 
     public Dictionary<string, int> distributionTable = new Dictionary<string, int>(5);
 
-    public List<OreDistributionElement> distributions = new List<OreDistributionElement>();
+    private List<OreDistributionElement> distributions = new List<OreDistributionElement>();
 
-    public int numberOfRocks;
+    private int numberOfRocks;
 
 
 //    private List<OreGenerator> oreSpawners = new List<OreGenerator>();
@@ -43,7 +43,6 @@ public class OreDistributtor : MonoBehaviour
 
     public string Calculate()
     {
-     //   Debug.Log("calculation");
         if (distributions.Count > 0)
         {
 
@@ -67,14 +66,6 @@ public class OreDistributtor : MonoBehaviour
                 }
 
                 return element.oreName;
-              /*  if (element.oreName == "Rock")
-                {
-                    return null;
-                }
-                else
-                {
-                    return element.oreName;
-                }*/
             }
             else
             {
@@ -91,22 +82,10 @@ public class OreDistributtor : MonoBehaviour
     //if rarity is 40% than its 4 in 10
    public void GenerateDistributionPool()
     {
-        /*   for (int x = 0; x < ores.Length; x++)
-           {
-
-               for (int y = 0; y < table[x]; y++)
-               {
-                   distribution.Add(ores[x].oreName);
-               }
-           }*/
 
         for (int i = 0; i < table.Length; i++)
         {
-            /*float famount = ((float)table[i]/(float)100) / (float)numberOfRocks;
-            int amount = (int)(famount * 100);
-            distributionTable.Add(ores[i].oreName, amount);
-            //distribution.Add(ores[i].oreName);
-            distributions.Add(new OreDistributionElement(ores[i].oreName, amount));*/
+            
             float percentage = table[i];
 
             int amount = Mathf.FloorToInt((numberOfRocks * percentage));//(int)(percentage / numberOfRocks);

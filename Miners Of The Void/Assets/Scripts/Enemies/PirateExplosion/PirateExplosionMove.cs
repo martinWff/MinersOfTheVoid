@@ -5,38 +5,16 @@ using UnityEngine;
 public class PirateExplosionMove : MonoBehaviour
 {
     //movement
-    private PirateExploosion pirate;
-    private Vector3 targetPositionChildren;
-    private float speed;
-    private bool attack;
+    [SerializeField] PirateExplosion pirate;
 
     //enemy
-    private Rigidbody2D enemy;
+    [SerializeField]private Rigidbody2D rb;
 
-
-    void Start()
+    private void FixedUpdate()
     {
-        enemy = GetComponent<Rigidbody2D>();
-        pirate = GetComponentInChildren<PirateExploosion>();
-        speed = pirate.speed;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        targetPositionChildren = pirate.targetPosition;
-        attack = pirate.attack;
-        //Debug.Log(attack);
-
-        if (attack == true)
+        if (pirate.isAttacking)
         {
-            //Debug.Log("chegou aqui");
-            
-            transform.position = Vector3.MoveTowards(transform.position, targetPositionChildren, speed * Time.deltaTime);
-            //Debug.Log(targetPositionChildren);
-            //Debug.Log(transform.position);
-
+            rb.velocity = (pirate.targetPosition - transform.position).normalized * pirate.speed;
         }
     }
 }

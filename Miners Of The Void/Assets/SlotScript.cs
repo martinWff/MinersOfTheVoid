@@ -1,25 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class SlotScript : MonoBehaviour
+public class SlotScript : MonoBehaviour, IPointerClickHandler
 {
     public int slotIndex;
-    public UpgradeUIController upgradeUIController;
+    public UpgradeEquipUIController upgradeUIController;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void RemoveUpgrade() 
     {
-        upgradeUIController.controller.TakeOfUpgrade(slotIndex);
+        upgradeUIController.controller.RemoveUpgradeAt(slotIndex);
         
     }
-        
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        RemoveUpgrade();
+    }
 }

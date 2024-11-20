@@ -14,12 +14,15 @@ public class KeybindController : MonoBehaviour
     public Color progressColor;
     public Camera mainCamera;
     private Vector2 cachedPosition;
+
+    public string defDescription;
+
     // Start is called before the first frame update
     void Start()
     {
         // instance = this;
-        InteractionArea.onShowKeyBind += Show;
-        InteractionArea.onUpdateKeybindPosition += SetPosition;
+     //   InteractionArea.onShowKeyBind += Show;
+      //  InteractionArea.onUpdateKeybindPosition += SetPosition;
         gameObject.SetActive(false);
         mainCamera = Camera.main;
         imageRenderer.color = defaultColor;
@@ -30,11 +33,6 @@ public class KeybindController : MonoBehaviour
         if (imageRenderer != null)
         {
             imageRenderer.color = defaultColor;
-            if (Input.GetButton("Interaction"))
-            {
-                imageRenderer.color = pressedColor;
-            }
-         
         }
     }
 
@@ -89,5 +87,16 @@ public class KeybindController : MonoBehaviour
     public void SetDetail(string txt)
     {
         descriptionText.text = txt;
+    }
+
+    public void OnTargetObject(GameObject target,IInteractableInfoHandler infoHandler)
+    {
+        SetPosition(target.transform.position);
+        Show(true);
+        descriptionText.text = infoHandler == null ? defDescription : infoHandler.GetTitle();
+    }
+    public void OnTargetObjectLost()
+    {
+        Show(false);
     }
 }
