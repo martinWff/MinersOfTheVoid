@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ServerMOV : MonoBehaviour
 {
-    private string BaseAPI = "http://vmi732425.contaboserver.net:3434";
-    private bool loginSuccess;
-    private bool finished = false;
-    private string output;
+    [SerializeField] string BaseAPI;
+
     public Text error;
     [System.Serializable]
     public class PlayerInfo
@@ -84,7 +82,7 @@ public class ServerMOV : MonoBehaviour
         }
         finished = true;*/
     }
-    IEnumerator PostRequest(string url, string jsondata,System.Action<string> function)
+    IEnumerator PostRequest(string url, string jsondata,System.Action<string> callback)
     {
         UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
         byte[] jsonConverted = new System.Text.UTF8Encoding().GetBytes(jsondata);
@@ -99,18 +97,67 @@ public class ServerMOV : MonoBehaviour
         else
         {
             Debug.Log(webRequest.downloadHandler.text);
-            if(function !=null)
-            function(webRequest.downloadHandler.text);
+            if(callback !=null)
+            callback(webRequest.downloadHandler.text);
         }
 
     }
     // Start is called before the first frame update
     void Start()
     {
+        string url = Application.persistentDataPath;
+        string fileUrl = System.IO.Path.Combine(url, "server_settings.txt");
+        if (System.IO.File.Exists(fileUrl))
+        {
+           string[] properties = System.IO.File.ReadAllLines(fileUrl);
+           
+            for (int i = 0;i<properties.Length;i++)
+            {
+                ParseProperty(properties[i], out string key, out string value);
+                if (key == "url" && !string.IsNullOrEmpty(value))
+                {
+                    BaseAPI = value;
+                }
+            }
+
+        } else
+        {
+            System.IO.StreamWriter stream = System.IO.File.CreateText(fileUrl);
+            stream.WriteLine("url=");
+            stream.Close();
+            stream.Dispose();
+        }
         
         //UpdatePlayerInfo scoreinfo = new UpdatePlayerInfo(3, 6);
         //string json2 = JsonUtility.ToJson(scoreinfo);
         //StartCoroutine(PostRequest(BaseAPI + "/player/updatescore", json2));
+    }
+
+    private bool ParseProperty(string text,out string key,out string value)
+    {
+        key = null;
+        value = null;
+        string[] kvp = text.Split("=", 2);
+        for (int i = 0;i<kvp.Length;i++)
+        {
+            kvp[i] = kvp[i].Trim();
+        }
+
+        if (kvp.Length > 0)
+        {
+            if (!string.IsNullOrEmpty(kvp[0]))
+            {
+                key = kvp[0];
+            } 
+
+            if (kvp.Length == 2 && !string.IsNullOrEmpty(kvp[1]))
+            {
+                value = kvp[1];
+            }
+            return true;
+        }
+
+        return false;
     }
 
     // Update is called once per frame
