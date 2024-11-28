@@ -191,6 +191,7 @@ public class ServerMOV : MonoBehaviour
         SavePlayerStats.coins = log.coin;
         Debug.Log(SavePlayerStats.coins);
         SceneManager.LoadScene(2);
+        Debug.Log("load scene");
     }
 }
 

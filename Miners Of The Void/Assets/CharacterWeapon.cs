@@ -38,7 +38,6 @@ public class CharacterWeapon : MonoBehaviour
             Vector3 Shotdirection = transform.right;
             GameObject bullet = Instantiate(bulletPrefab, transform.position + (Shotdirection.normalized * bulletOffset), Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = Shotdirection.normalized * bulletSpeed;
-
             if (backweaponMode)
             {
                 Vector3 Shotdirection2 = -transform.right;
