@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4472406858249178969}
   - component: {fileID: 4472406858249178968}
-  - component: {fileID: 4472406858249178971}
   - component: {fileID: 2691963092970363344}
   - component: {fileID: 7051804966932211181}
   - component: {fileID: 5572324175782947814}
+  - component: {fileID: 5048288559779065871}
   m_Layer: 0
   m_Name: RefineryNPC
   m_TagString: Untagged
@@ -88,22 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4472406858249178971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4472406858249178970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 099be1d0ecfc43343aba2045fba35f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuPrefab: {fileID: 8870235217466389503, guid: a2bc5cd1692135948b091f2ecbcc2fa6, type: 3}
-  canvas: {fileID: 0}
-  openMenu: 0
-  inventoryCon: 0
 --- !u!114 &2691963092970363344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +143,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 20
+--- !u!114 &5048288559779065871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472406858249178970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a545567c6d353224b8fa1e60cebe153b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}

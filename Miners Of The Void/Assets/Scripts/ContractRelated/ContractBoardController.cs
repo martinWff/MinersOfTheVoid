@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ContractBoardController : MonoBehaviour
 {
-    public ContractNPC contractNPC;
     public GameObject contractUI;
     public GameObject goalUI;
     public Button accept;
