@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHelp : MonoBehaviour
+public class EnemySupport : MonoBehaviour
 {
     [SerializeField] public GameObject boss;
     [SerializeField] public Laser laser;
