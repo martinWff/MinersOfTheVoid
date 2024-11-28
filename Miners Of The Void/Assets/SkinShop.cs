@@ -17,15 +17,13 @@ public class SkinShop : MonoBehaviour
 
 
 
-    private GameObject player;
-    private GameObject human;
+    [SerializeField] GameObject spaceship;
+    [SerializeField] GameObject human;
     private int idSkin;
     public Array<int> bought;
     void Start()
     {
         bought = new Array<int>(4);
-        player = GameObject.FindGameObjectWithTag("Spaceship");
-        human = GameObject.FindGameObjectWithTag("Player");
         currency.text = "Currency: " + SavePlayerStats.coins;
 
     }
@@ -34,13 +32,13 @@ public class SkinShop : MonoBehaviour
     {
         if (id == 0)
         {
-            player.GetComponent<SpriteRenderer>().sprite = skin0;
+            spaceship.GetComponent<SpriteRenderer>().sprite = skin0;
             SavePlayerStats.currentSkin = skin0;
             SavePlayerStats.skinId = id;
         }
         if(id == 1 && CheckSkinInv(id))
         {
-            player.GetComponent<SpriteRenderer>().sprite = skin1;
+            spaceship.GetComponent<SpriteRenderer>().sprite = skin1;
             SavePlayerStats.currentSkin = skin1;
             SavePlayerStats.skinId = id;
             skin1Acq.text = "";
@@ -50,7 +48,7 @@ public class SkinShop : MonoBehaviour
         }
         if (id == 2 && CheckSkinInv(id))
         {
-            player.GetComponent<SpriteRenderer>().sprite = skin2;
+            spaceship.GetComponent<SpriteRenderer>().sprite = skin2;
             SavePlayerStats.currentSkin = skin2;
             SavePlayerStats.skinId = id;
             skin2Acq.text = "";
@@ -70,11 +68,5 @@ public class SkinShop : MonoBehaviour
         {
             return false;
         }
-    }
-    public void CloseMenu()
-    {
-        Destroy(gameObject);
-        human.GetComponent<CharacterMovement>().enabled = true;
-        GameObject.Find("NPCSkin").GetComponent<NPCSkins>().menuIsOpen = false;
     }
 }

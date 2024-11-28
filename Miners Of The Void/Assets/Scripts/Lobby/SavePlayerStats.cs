@@ -21,7 +21,7 @@ public static class SavePlayerStats
 
 
     //Money
-    public static int coins = 50;
+    public static int coins = 0;
     public static int bips = 0;
     public static int id = 0;
     

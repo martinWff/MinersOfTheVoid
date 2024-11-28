@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4472406858249178971}
   - component: {fileID: 2691963092970363344}
   - component: {fileID: 7051804966932211181}
+  - component: {fileID: 5572324175782947814}
   m_Layer: 0
   m_Name: RefineryNPC
   m_TagString: Untagged
@@ -115,15 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0ee84fe4dfb5548b3d70cbf3a75431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreStack:
-    oreName: 
-    amount: 0
-  inputStack:
-    oreName: 
-    amount: 0
-  outputStack:
-    oreName: 
-    amount: 0
   inventory: {fileID: 7051804966932211181}
   oreContract:
     contractType: 0
@@ -135,6 +127,10 @@ MonoBehaviour:
   onFinishedRefining:
     m_PersistentCalls:
       m_Calls: []
+  onCollectRefinery:
+    m_PersistentCalls:
+      m_Calls: []
+  duration: 5
 --- !u!114 &7051804966932211181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +143,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5cf5e6f3d312b499aecc82a441cce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &5572324175782947814
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472406858249178970}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 20
